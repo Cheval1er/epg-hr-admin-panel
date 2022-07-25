@@ -35,11 +35,14 @@ export class LoginComponent implements OnInit {
   }
 
   send() {
+
+
     this.router.navigate(['/']);
+
 
   }
 
-  onSubmit() {
+  onReset() {
     this.form.reset();
 
   }
