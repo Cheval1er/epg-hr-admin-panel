@@ -10,7 +10,7 @@ import { Observable, of } from 'rxjs';
 @Component({
   selector: 'vex-toolbar',
   templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.scss']
+  styleUrls: ['./toolbar.component.scss',]
 })
 export class ToolbarComponent {
 
@@ -31,9 +31,9 @@ export class ToolbarComponent {
   megaMenuOpen$: Observable<boolean> = of(false);
 
   constructor(private layoutService: LayoutService,
-              private configService: ConfigService,
-              private navigationService: NavigationService,
-              private popoverService: PopoverService) { }
+    private configService: ConfigService,
+    private navigationService: NavigationService,
+    private popoverService: PopoverService) { }
 
   openQuickpanel(): void {
     this.layoutService.openQuickpanel();

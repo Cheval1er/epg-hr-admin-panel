@@ -16,7 +16,7 @@ import { QuickpanelModule } from '../../@vex/layout/quickpanel/quickpanel.module
     CommonModule,
     LayoutModule,
     SidenavModule,
-    ToolbarModule,
+    // ToolbarModule,
     FooterModule,
     ConfigPanelModule,
     SidebarModule,
