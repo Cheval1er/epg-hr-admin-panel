@@ -30,10 +30,10 @@ export class SidenavComponent implements OnInit {
   items = this.navigationService.items;
 
   constructor(private navigationService: NavigationService,
-              private layoutService: LayoutService,
-              private configService: ConfigService,
-              private readonly popoverService: PopoverService,
-              private readonly dialog: MatDialog) { }
+    private layoutService: LayoutService,
+    private configService: ConfigService,
+    private readonly popoverService: PopoverService,
+    private readonly dialog: MatDialog) { }
 
   ngOnInit() {
   }

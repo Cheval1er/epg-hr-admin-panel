@@ -21,16 +21,16 @@ import { ColorVariable, colorVariables } from '../@vex/components/config-panel/c
 })
 export class AppComponent {
   constructor(private configService: ConfigService,
-              private renderer: Renderer2,
-              private platform: Platform,
-              @Inject(DOCUMENT) private document: Document,
-              @Inject(LOCALE_ID) private localeId: string,
-              private layoutService: LayoutService,
-              private route: ActivatedRoute,
-              private navigationService: NavigationService,
-              private splashScreenService: SplashScreenService,
-              private readonly matIconRegistry: MatIconRegistry,
-              private readonly domSanitizer: DomSanitizer) {
+    private renderer: Renderer2,
+    private platform: Platform,
+    @Inject(DOCUMENT) private document: Document,
+    @Inject(LOCALE_ID) private localeId: string,
+    private layoutService: LayoutService,
+    private route: ActivatedRoute,
+    private navigationService: NavigationService,
+    private splashScreenService: SplashScreenService,
+    private readonly matIconRegistry: MatIconRegistry,
+    private readonly domSanitizer: DomSanitizer) {
     Settings.defaultLocale = this.localeId;
 
     if (this.platform.BLINK) {
@@ -125,9 +125,23 @@ export class AppComponent {
         children: [
           {
             type: 'link',
-            label: 'Analytics',
+            label: 'External Vacancies',
             route: '/',
-            icon: 'mat:insights',
+            // icon: 'mat:insights',
+            routerLinkActiveOptions: { exact: true }
+          },
+          {
+            type: 'link',
+            label: 'Applicants Search',
+            route: '/',
+            // icon: 'mat:insights',
+            routerLinkActiveOptions: { exact: true }
+          },
+          {
+            type: 'link',
+            label: 'User Search',
+            route: '/',
+            // icon: 'mat:insights',
             routerLinkActiveOptions: { exact: true }
           }
         ]
