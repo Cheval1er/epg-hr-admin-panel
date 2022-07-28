@@ -40,7 +40,9 @@
     }
 
     ::ng-deep {
-      .vex-sidenav-subheading, .vex-sidenav-item__label {
+
+      .vex-sidenav-subheading,
+      .vex-sidenav-item__label {
         transition: all 300ms var(--trans-ease-out-timing-function);
       }
 
@@ -110,10 +112,10 @@
   @apply border-t;
 }
 
-.vex-sidenav-user {
-  @apply relative transition-all duration-300 ease-out rounded hover:bg-white/10 select-none cursor-pointer;
-  padding: var(--padding-6) var(--padding-8) var(--padding-6) var(--padding-6);
-}
+// .vex-sidenav-user {
+//   @apply relative transition-all duration-300 ease-out rounded hover: bg-white/10 select-none cursor-pointer;
+//   padding: var(--padding-6) var(--padding-8) var(--padding-6) var(--padding-6);
+// }
 
 .vex-sidenav-user__image {
   @apply w-9 h-9 block rounded-full;
@@ -147,10 +149,10 @@
   @apply z-10;
 }
 
-.vex-sidenav-search {
-  @apply rounded bg-white/10 text-contrast-white/30 hover:bg-white/20 hover:text-contrast-white/60 cursor-pointer transition duration-300 ease-out flex items-center select-none;
-  padding: var(--padding-4) var(--padding-4) var(--padding-4) var(--padding-12);
-}
+// .vex-sidenav-search {
+//   @apply rounded bg-white/10 text-contrast-white/30 hover: bg-white/20 hover:text-contrast-white/60 cursor-pointer transition duration-300 ease-out flex items-center select-none;
+//   padding: var(--padding-4) var(--padding-4) var(--padding-4) var(--padding-12);
+// }
 
 .vex-sidenav-search__icon {
   @apply icon-sm;

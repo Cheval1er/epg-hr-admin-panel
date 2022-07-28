@@ -10,6 +10,7 @@ import { SidebarModule } from '../../@vex/components/sidebar/sidebar.module';
 import { QuickpanelModule } from '../../@vex/layout/quickpanel/quickpanel.module';
 
 
+
 @NgModule({
   declarations: [CustomLayoutComponent],
   imports: [
@@ -20,7 +21,8 @@ import { QuickpanelModule } from '../../@vex/layout/quickpanel/quickpanel.module
     FooterModule,
     ConfigPanelModule,
     SidebarModule,
-    QuickpanelModule
+    QuickpanelModule,
+
   ]
 })
 export class CustomLayoutModule {

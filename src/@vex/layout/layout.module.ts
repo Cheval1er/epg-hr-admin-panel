@@ -7,6 +7,7 @@ import { ProgressBarModule } from '../components/progress-bar/progress-bar.modul
 import { SearchModule } from '../components/search/search.module';
 
 
+
 @NgModule({
   declarations: [LayoutComponent],
   imports: [
@@ -14,7 +15,8 @@ import { SearchModule } from '../components/search/search.module';
     RouterModule,
     MatSidenavModule,
     ProgressBarModule,
-    SearchModule
+    SearchModule,
+
   ],
   exports: [LayoutComponent]
 })
