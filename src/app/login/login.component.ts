@@ -35,11 +35,7 @@ export class LoginComponent implements OnInit {
   }
 
   send() {
-
-
     this.router.navigate(['/']);
-
-
   }
 
   onReset() {
