@@ -9,12 +9,11 @@ import { Observable, of } from 'rxjs';
 import { UserMenuComponent } from '../../components/user-menu/user-menu.component';
 import { MatDialog } from '@angular/material/dialog';
 import { SearchModalComponent } from '../../components/search-modal/search-modal.component';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'vex-sidenav',
   templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.scss', './sidenav.component.css']
+  styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
 
@@ -30,12 +29,11 @@ export class SidenavComponent implements OnInit {
 
   items = this.navigationService.items;
 
-  constructor(private router: Router,
-    private navigationService: NavigationService,
-    private layoutService: LayoutService,
-    private configService: ConfigService,
-    private readonly popoverService: PopoverService,
-    private readonly dialog: MatDialog) { }
+  constructor(private navigationService: NavigationService,
+              private layoutService: LayoutService,
+              private configService: ConfigService,
+              private readonly popoverService: PopoverService,
+              private readonly dialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -84,9 +82,5 @@ export class SidenavComponent implements OnInit {
       width: '100%',
       maxWidth: '600px'
     });
-  }
-  onLogout() {
-    this.router.navigate(['/login']);
-
   }
 }

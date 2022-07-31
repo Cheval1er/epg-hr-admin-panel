@@ -4,16 +4,13 @@ import { LayoutModule } from './layout/layout.module';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldDefaultOptions } from '@angular/material/form-field';
 
 
-
 @NgModule({
   imports: [
     CommonModule,
-    LayoutModule,
-
+    LayoutModule
   ],
   exports: [
-    LayoutModule,
-
+    LayoutModule
   ],
   providers: [
     {

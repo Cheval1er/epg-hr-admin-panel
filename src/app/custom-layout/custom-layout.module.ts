@@ -10,19 +10,17 @@ import { SidebarModule } from '../../@vex/components/sidebar/sidebar.module';
 import { QuickpanelModule } from '../../@vex/layout/quickpanel/quickpanel.module';
 
 
-
 @NgModule({
   declarations: [CustomLayoutComponent],
   imports: [
     CommonModule,
     LayoutModule,
     SidenavModule,
-    // ToolbarModule,
+    ToolbarModule,
     FooterModule,
     ConfigPanelModule,
     SidebarModule,
-    QuickpanelModule,
-
+    QuickpanelModule
   ]
 })
 export class CustomLayoutModule {

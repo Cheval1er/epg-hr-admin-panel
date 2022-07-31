@@ -9,6 +9,7 @@
 
     &:not(.open) {
       .vex-sidenav-toolbar__headline {
+        margin-left: -15%;
         opacity: 0;
         padding-inline-start: var(--sidenav-item-padding-horizontal);
       }

@@ -126,14 +126,14 @@ export class AppComponent {
           {
             type: 'link',
             label: 'External Vacancies',
-            route: '/',
+            route: '/src/app/pages/external-vacancies',
             // icon: 'mat:insights',
-            routerLinkActiveOptions: { exact: true }
+            // routerLinkActiveOptions: { exact: true }
           },
           {
             type: 'link',
             label: 'Applicants Search',
-            route: '/',
+            route: '/applicantsSearch',
             // icon: 'mat:insights',
             routerLinkActiveOptions: { exact: true }
           },

@@ -6,11 +6,12 @@ import { NavigationService } from '../../services/navigation.service';
 import { PopoverService } from '../../components/popover/popover.service';
 import { MegaMenuComponent } from '../../components/mega-menu/mega-menu.component';
 import { Observable, of } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'vex-toolbar',
   templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.scss',]
+  styleUrls: ['./toolbar.component.scss', './toolbar.component.css']
 })
 export class ToolbarComponent {
 
@@ -30,7 +31,8 @@ export class ToolbarComponent {
 
   megaMenuOpen$: Observable<boolean> = of(false);
 
-  constructor(private layoutService: LayoutService,
+  constructor(private router: Router,
+    private layoutService: LayoutService,
     private configService: ConfigService,
     private navigationService: NavigationService,
     private popoverService: PopoverService) { }
@@ -72,5 +74,10 @@ export class ToolbarComponent {
 
   openSearch(): void {
     this.layoutService.openSearch();
+  }
+
+  onLogout() {
+    this.router.navigate(['/login']);
+
   }
 }
