@@ -6,13 +6,22 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ExternalVacanciesComponent } from './external-vacancies.component';
 import { ExternalVacanciesRoutingModule } from './external-vacancies-routing.module';
+import { VacancyTableComponent } from 'src/app/vacancy-table/vacancy-table.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
-    declarations: [ExternalVacanciesComponent],
+    declarations: [ExternalVacanciesComponent, VacancyTableComponent],
     imports: [
         CommonModule,
-        ExternalVacanciesRoutingModule
+        ExternalVacanciesRoutingModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule
+
+
 
     ]
 })

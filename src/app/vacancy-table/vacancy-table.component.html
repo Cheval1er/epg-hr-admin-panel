@@ -1,26 +1,96 @@
 <div class="mat-elevation-z8">
   <table mat-table class="full-width-table" matSort aria-label="Elements">
+
+    <!-- new Vacancy header -->
+    <ng-container matColumnDef="grouped">
+      <th mat-header-cell *matHeaderCellDef colspan="10"> <button class="button-7" role="button">New Vacancy</button>
+      </th>
+    </ng-container>
+
+
+    <!-- options header -->
+    <ng-container matColumnDef="options">
+      <th mat-header-cell *matHeaderCellDef colspan="10">
+        <div class="buttonDisplay">
+          <span> <button class="button-7" role="button">New</button></span>
+          <span> <button class="button-7" role="button">Active</button></span>
+          <span> <button class="button-7" role="button">Cancelled</button></span>
+          <span> <button class="button-7" role="button">Completed</button></span>
+          <span> <button class="button-7" role="button">Stopped</button></span>
+        </div>
+      </th>
+
+    </ng-container>
+
     <!-- Id Column -->
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
       <td mat-cell *matCellDef="let row">{{row.id}}</td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Vacancy Name</th>
       <td mat-cell *matCellDef="let row">{{row.name}}</td>
     </ng-container>
 
+    <!-- Title Column -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+      <td mat-cell *matCellDef="let row">{{row.title}}</td>
+    </ng-container>
+
+    <!-- Vacancy Address Column -->
+    <ng-container matColumnDef="vacancyAddress">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Vacancy Address</th>
+      <td mat-cell *matCellDef="let row">{{row.vacancyAddress}}</td>
+    </ng-container>
+
+    <!-- Dead Line Column -->
+    <ng-container matColumnDef="deadLine">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Dead Line</th>
+      <td mat-cell *matCellDef="let row">{{row.deadLine}}</td>
+    </ng-container>
+
+    <!-- Category Column -->
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+      <td mat-cell *matCellDef="let row">{{row.category}}</td>
+    </ng-container>
+
+
+    <!-- description Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+      <td mat-cell *matCellDef="let row">{{row.description}}</td>
+    </ng-container>
+
+    <!-- probationary period Column -->
+    <ng-container matColumnDef="probationaryPeriod">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Probationary Period</th>
+      <td mat-cell *matCellDef="let row">{{row.probationaryPeriod}}</td>
+    </ng-container>
+
+    <!-- schedule Column -->
+    <ng-container matColumnDef="schedule">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Schedule</th>
+      <td mat-cell *matCellDef="let row">{{row.schedule}}</td>
+    </ng-container>
+
+    <!-- status Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+      <td mat-cell *matCellDef="let row">{{row.status}}</td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="groupedColumns; sticky: true"></tr>
+    <tr mat-header-row *matHeaderRowDef="secondGroupedColumns; sticky: true"></tr>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  <mat-paginator #paginator
-      [length]="dataSource?.data?.length"
-      [pageIndex]="0"
-      [pageSize]="10"
-      [pageSizeOptions]="[5, 10, 20]"
-      aria-label="Select page">
+  <mat-paginator class="full-width-table" #paginator [length]="dataSource?.data?.length" [pageIndex]="0" [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 20]" aria-label="Select page">
   </mat-paginator>
 </div>

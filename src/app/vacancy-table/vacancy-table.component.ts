@@ -7,7 +7,7 @@ import { VacancyTableDataSource, VacancyTableItem } from './vacancy-table-dataso
 @Component({
   selector: 'vex-vacancy-table',
   templateUrl: './vacancy-table.component.html',
-  styleUrls: ['./vacancy-table.component.scss']
+  styleUrls: ['./vacancy-table.component.scss', './vacancy-table.component.css']
 })
 export class VacancyTableComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -16,7 +16,10 @@ export class VacancyTableComponent implements AfterViewInit {
   dataSource: VacancyTableDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  displayedColumns = ['id', 'name', 'title', 'vacancyAddress', 'deadLine',
+    'category', 'description', 'probationaryPeriod', 'schedule', 'status'];
+  groupedColumns: string[] = ['grouped'];
+  secondGroupedColumns: string[] = ['options'];
 
   constructor() {
     this.dataSource = new VacancyTableDataSource();
