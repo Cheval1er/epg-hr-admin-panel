@@ -20,6 +20,7 @@ export class VacancyTableComponent implements AfterViewInit {
     'category', 'description', 'probationaryPeriod', 'schedule', 'status'];
   groupedColumns: string[] = ['grouped'];
   secondGroupedColumns: string[] = ['options'];
+  thirdGroupedColumns: string[] = ['edit'];
 
   constructor() {
     this.dataSource = new VacancyTableDataSource();

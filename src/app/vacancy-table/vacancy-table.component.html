@@ -22,75 +22,94 @@
 
     </ng-container>
 
+
+
+    <!-- edit options header -->
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef colspan="10">
+        <div class="buttonDisplay">
+          <span> <button class="button-2" role="button">Refresh</button></span>
+          <span> <button class="button-2" role="button">Edit Vacancy</button></span>
+          <span> <button class="button-2" role="button">View Vacancy</button></span>
+          <span> <button class="button-2" role="button">Cancel Vacancy</button></span>
+          <span> <button class="button-2" role="button">Delete Vacancy</button></span>
+          <span> <button class="button-2" role="button">Duplicate Vacancy</button></span>
+        </div>
+      </th>
+
+    </ng-container>
+
+
     <!-- Id Column -->
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">ID</th>
       <td mat-cell *matCellDef="let row">{{row.id}}</td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Vacancy Name</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Vacancy Name</th>
       <td mat-cell *matCellDef="let row">{{row.name}}</td>
     </ng-container>
 
     <!-- Title Column -->
     <ng-container matColumnDef="title">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Title</th>
       <td mat-cell *matCellDef="let row">{{row.title}}</td>
     </ng-container>
 
     <!-- Vacancy Address Column -->
     <ng-container matColumnDef="vacancyAddress">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Vacancy Address</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Vacancy Address</th>
       <td mat-cell *matCellDef="let row">{{row.vacancyAddress}}</td>
     </ng-container>
 
     <!-- Dead Line Column -->
     <ng-container matColumnDef="deadLine">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Dead Line</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Dead Line</th>
       <td mat-cell *matCellDef="let row">{{row.deadLine}}</td>
     </ng-container>
 
     <!-- Category Column -->
     <ng-container matColumnDef="category">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Category</th>
       <td mat-cell *matCellDef="let row">{{row.category}}</td>
     </ng-container>
 
 
     <!-- description Column -->
     <ng-container matColumnDef="description">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Description</th>
       <td mat-cell *matCellDef="let row">{{row.description}}</td>
     </ng-container>
 
     <!-- probationary period Column -->
     <ng-container matColumnDef="probationaryPeriod">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Probationary Period</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class=" body">Probationary Period</th>
       <td mat-cell *matCellDef="let row">{{row.probationaryPeriod}}</td>
     </ng-container>
 
     <!-- schedule Column -->
     <ng-container matColumnDef="schedule">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Schedule</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class=" body">Schedule</th>
       <td mat-cell *matCellDef="let row">{{row.schedule}}</td>
     </ng-container>
 
     <!-- status Column -->
     <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class=" body">Status</th>
       <td mat-cell *matCellDef="let row">{{row.status}}</td>
     </ng-container>
 
 
     <tr mat-header-row *matHeaderRowDef="groupedColumns; sticky: true"></tr>
     <tr mat-header-row *matHeaderRowDef="secondGroupedColumns; sticky: true"></tr>
+    <tr mat-header-row *matHeaderRowDef="thirdGroupedColumns; sticky: true"></tr>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  <mat-paginator class="full-width-table" #paginator [length]="dataSource?.data?.length" [pageIndex]="0" [pageSize]="10"
-    [pageSizeOptions]="[5, 10, 20]" aria-label="Select page">
+  <mat-paginator class="full-width-table body" #paginator [length]="dataSource?.data?.length" [pageIndex]="0"
+    [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" aria-label="Select page">
   </mat-paginator>
 </div>
