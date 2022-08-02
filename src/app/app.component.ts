@@ -128,7 +128,7 @@ export class AppComponent {
             label: 'External Vacancies',
             route: '/pages/externalVacancies',
             // icon: 'mat:insights',
-            // routerLinkActiveOptions: { exact: true }
+            routerLinkActiveOptions: { exact: true }
           },
           {
             type: 'link',
