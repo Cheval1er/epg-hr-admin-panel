@@ -12,7 +12,7 @@ import { ApplicantsSearchComponent } from './pages/applicants-search/applicants-
 import { UserSearchComponent } from './pages/user-search/user-search.component';
 
 @NgModule({
-  declarations: [AppComponent, ApplicantsSearchComponent, UserSearchComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

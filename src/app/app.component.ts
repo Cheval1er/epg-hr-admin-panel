@@ -133,14 +133,14 @@ export class AppComponent {
           {
             type: 'link',
             label: 'Applicants Search',
-            route: '/applicantsSearch',
+            route: '/pages/applicantsSearch',
             // icon: 'mat:insights',
             routerLinkActiveOptions: { exact: true }
           },
           {
             type: 'link',
             label: 'User Search',
-            route: '/userSearch',
+            route: '/pages/userSearch',
             // icon: 'mat:insights',
             routerLinkActiveOptions: { exact: true }
           }

@@ -21,6 +21,15 @@ const routes: VexRoutes = [
           path: 'externalVacancies',
           loadChildren: () => import('./pages/external-vacancies/external-vacancies.module').then(m => m.ExternalVacanciesModule)
         },
+        {
+          path: 'applicantsSearch',
+          loadChildren: () => import('./pages/applicants-search/applicants-search.module').then(m => m.ApplicantsSearchModule)
+        },
+        {
+          path: 'userSearch',
+          loadChildren: () => import('./pages/user-search/user-search.module').then(m => m.UserSearchModule)
+        }
+
       ]
     }]
   }
