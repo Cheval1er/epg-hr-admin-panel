@@ -126,7 +126,7 @@ export class AppComponent {
           {
             type: 'link',
             label: 'External Vacancies',
-            route: '/src/app/pages/external-vacancies',
+            route: '/pages/externalVacancies',
             // icon: 'mat:insights',
             // routerLinkActiveOptions: { exact: true }
           },
@@ -140,7 +140,7 @@ export class AppComponent {
           {
             type: 'link',
             label: 'User Search',
-            route: '/',
+            route: '/userSearch',
             // icon: 'mat:insights',
             routerLinkActiveOptions: { exact: true }
           }
