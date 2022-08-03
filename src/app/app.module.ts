@@ -7,9 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { VexModule } from '../@vex/vex.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomLayoutModule } from './custom-layout/custom-layout.module';
+import { VacancyFormComponent } from './pages/vacancy-form/vacancy-form.component';
 
 @NgModule({
-  declarations: [AppComponent,],
+  declarations: [AppComponent, VacancyFormComponent,],
   imports: [
     BrowserModule,
     AppRoutingModule,

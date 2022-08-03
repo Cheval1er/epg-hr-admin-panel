@@ -3,7 +3,10 @@
 
     <!-- new Vacancy header -->
     <ng-container matColumnDef="grouped">
-      <th mat-header-cell *matHeaderCellDef colspan="10"> <button class="button-7" role="button">New Vacancy</button>
+      <th mat-header-cell *matHeaderCellDef colspan="10"> <button class="button-7" role="button" (click)="openDialog()">
+          <mat-icon [ngStyle]=" {'color':'rgb(132, 139, 238)'}">assignment</mat-icon>
+          New Vacancy
+        </button>
       </th>
     </ng-container>
 
@@ -28,12 +31,24 @@
     <ng-container matColumnDef="edit">
       <th mat-header-cell *matHeaderCellDef colspan="10">
         <div class="buttonDisplay">
-          <span> <button class="button-2" role="button">Refresh</button></span>
-          <span> <button class="button-2" role="button">Edit Vacancy</button></span>
-          <span> <button class="button-2" role="button">View Vacancy</button></span>
-          <span> <button class="button-2" role="button">Cancel Vacancy</button></span>
-          <span> <button class="button-2" role="button">Delete Vacancy</button></span>
-          <span> <button class="button-2" role="button">Duplicate Vacancy</button></span>
+          <span> <button class="button-2" role="button">
+              <mat-icon>cached</mat-icon> Refresh
+            </button></span>
+          <span> <button class="button-2" role="button">
+              <mat-icon>edit</mat-icon> Edit Vacancy
+            </button></span>
+          <span> <button class="button-2" role="button">
+              <mat-icon>remove_red_eye</mat-icon> View Vacancy
+            </button></span>
+          <span> <button class="button-2" role="button">
+              <mat-icon>cancel</mat-icon>Cancel Vacancy
+            </button></span>
+          <span> <button class="button-2" role="button">
+              <mat-icon>delete_forever</mat-icon> Delete Vacancy
+            </button></span>
+          <span> <button class="button-2" role="button">
+              <mat-icon>file_copy</mat-icon> Duplicate Vacancy
+            </button></span>
         </div>
       </th>
 

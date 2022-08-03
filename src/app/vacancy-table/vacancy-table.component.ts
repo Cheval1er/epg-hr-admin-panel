@@ -1,7 +1,9 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
+import { VacancyFormComponent } from '../pages/vacancy-form/vacancy-form.component';
 import { VacancyTableDataSource, VacancyTableItem } from './vacancy-table-datasource';
 
 @Component({
@@ -22,8 +24,12 @@ export class VacancyTableComponent implements AfterViewInit {
   secondGroupedColumns: string[] = ['options'];
   thirdGroupedColumns: string[] = ['edit'];
 
-  constructor() {
+  constructor(private dialogRef: MatDialog) {
     this.dataSource = new VacancyTableDataSource();
+  }
+
+  openDialog() {
+    this.dialogRef.open(VacancyFormComponent);
   }
 
   ngAfterViewInit(): void {

@@ -10,6 +10,7 @@ import { VacancyTableComponent } from 'src/app/vacancy-table/vacancy-table.compo
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -19,7 +20,10 @@ import { MatTableModule } from '@angular/material/table';
         ExternalVacanciesRoutingModule,
         MatTableModule,
         MatPaginatorModule,
-        MatSortModule
+        MatSortModule,
+        MatIconModule,
+        MatButtonModule,
+        MatDialogModule
 
 
 
