@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, RequiredValidator, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'vex-vacancy-form',
@@ -8,7 +10,8 @@ import { FormBuilder, RequiredValidator, Validators } from '@angular/forms';
 })
 export class VacancyFormComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+    private dialogRef: MatDialog) { }
 
 
   vacancyForm = this.formBuilder.group({
@@ -34,7 +37,19 @@ export class VacancyFormComponent implements OnInit {
     console.log('Form data is ', this.vacancyForm.value);
   }
 
+  closeForm() {
+    this.dialogRef.closeAll();
+  }
+  categoryList: string[] = [
+    'ადამიანური რესურსების მართვა',
+    'ადმინისტრაცია',
+    'ანალიტიკა',
+    'აუდიტი',
+    'ბიზნესის მართვა',
+    'ბილინგი'
 
+
+  ];
   ngOnInit(): void {
   }
 }

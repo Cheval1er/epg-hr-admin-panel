@@ -29,11 +29,15 @@ export class VacancyTableComponent implements AfterViewInit {
   }
 
   openDialog() {
-    this.dialogRef.open(VacancyFormComponent,
-      {
-        height: '1000px',
-        width: '1300px'
-      });
+    this.dialogRef.open(VacancyFormComponent, {
+      disableClose: true,
+      height: '900px',
+      width: '1200px'
+    });
+
+
+
+
 
   }
 

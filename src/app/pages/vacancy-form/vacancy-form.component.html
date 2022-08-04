@@ -42,12 +42,17 @@
                 <div class="flex flex-col sm:flex-row sm:gap-4">
                     <span>Category</span>
                     <mat-form-field class="flex-auto">
-                        <mat-select formControlName="category">
+                        <!-- <mat-select formControlName="category">
                             <mat-option value="Hr">ადამიანური რესურსების მართვა</mat-option>
                             <mat-option value="Admin">ადმინისტრაცია</mat-option>
                             <mat-option value="Analytics">ანალიტიკა</mat-option>
-                            <mat-option value="Mango">Mango</mat-option>
-                            <mat-option value="Apples">Cucumber</mat-option>
+                            <mat-option value="Audit">აუდიტი</mat-option>
+                            <mat-option value="BusinessManager">ბიზნესის მართვა</mat-option>
+                            <mat-option value="Billing">ბილინგი</mat-option>
+                        </mat-select> -->
+                        <mat-select formControlName="category">
+                            <mat-option *ngFor="let category of categoryList" [value]="category">{{category}}
+                            </mat-option>
                         </mat-select>
                         <mat-error>This field is required</mat-error>
                     </mat-form-field>
@@ -67,14 +72,14 @@
                     <span> Description: </span>
                     <mat-form-field [style.width.%]="90">
                         <textarea formControlName="description" matInput cdkTextareaAutosize
-                            #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="4" cdkAutosizeMaxRows="500"> </textarea>
+                            #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3" cdkAutosizeMaxRows="500"> </textarea>
                     </mat-form-field>
                 </div>
                 <div>
                     <span>Experience: </span>
                     <mat-form-field [style.width.%]="90">
                         <textarea formControlName="experience" matInput cdkTextareaAutosize
-                            #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="4" cdkAutosizeMaxRows="500"> </textarea>
+                            #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3" cdkAutosizeMaxRows="500"> </textarea>
                     </mat-form-field>
                 </div>
 
@@ -100,13 +105,43 @@
 
                 </div>
 
+                <div class="flex flex-col sm:flex-row sm:gap-2">
+                    <span>Education Sphere*: </span>
+                    <mat-form-field>
+                        <mat-select formControlName="educationSphereComment">
+                            <mat-option value="Inner">შიდა ვაკანსია</mat-option>
+                            <mat-option value="External">გარე ვაკანსია</mat-option>
+                            <mat-option value="Intern">სტაჟირება</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <span> Education Sphere Comment: </span>
+                    <mat-form-field class="flex-auto">
+                        <input formControlName="educationSphere" matInput>
+                        <mat-error>This field is required</mat-error>
+                    </mat-form-field>
+
+                </div>
+
+                <div>
+                    <span>Salary: </span>
+                    <mat-form-field [style.width.%]="10">
+                        <input formControlName="salary" matInput>
+                    </mat-form-field>
+
+
+                </div>
+
 
             </div>
-
-
         </mat-card-content>
-        <mat-card-actions>
-            <button (click)="saveForm()" mat-raised-button color="primary">Save</button>
+
+        <mat-card-actions class="flex flex-col sm:flex-row sm:gap-4 margin">
+            <button mat-button class="button-7" role="button" (click)="saveForm()">Save</button>
+
+            <button class="button-7 " role="button" (click)="closeForm()">Cancel</button>
+
+
         </mat-card-actions>
     </mat-card>
 </form>

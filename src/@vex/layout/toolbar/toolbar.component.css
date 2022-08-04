@@ -1,49 +1,46 @@
 /* CSS */
-.button-18 {
-    margin-left: 94%;
-
-
-    align-items: center;
-    background-color: #0c4783;
-    border: 0;
-    border-radius: 100px;
+.button-14 {
+    margin-left: 95.5%;
+    background-image: linear-gradient(#457dee, #13253f);
+    border-color: #adb1b8 #a2a6ac #8d9096;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 3px;
+    box-shadow: rgba(255, 255, 255, .6) 0 1px 0 inset;
     box-sizing: border-box;
-    color: #ffffff;
+    color: #c5f0f0;
     cursor: pointer;
-    display: inline-flex;
-    font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    justify-content: center;
-    line-height: 20px;
-    max-width: 400px;
-    min-height: 40px;
-    min-width: 0px;
+    display: inline-block;
+    font-family: "Amazon Ember", Arial, sans-serif;
+    font-size: 14px;
+    height: 29px;
+    font-size: 13px;
+    outline: 0;
     overflow: hidden;
-    padding: 0px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 0 11px;
     text-align: center;
-    touch-action: manipulation;
-    transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    text-decoration: none;
+    text-overflow: ellipsis;
     user-select: none;
     -webkit-user-select: none;
-    vertical-align: middle;
+    touch-action: manipulation;
+    white-space: nowrap;
 }
 
-.button-18:hover,
-.button-18:focus {
-    background-color: #16437E;
-    color: #ffffff;
+.button-14:active {
+    border-bottom-color: #a2a6ac;
 }
 
-.button-18:active {
-    background: #09223b;
-    color: rgb(255, 255, 255, .7);
+.button-14:active:hover {
+    border-bottom-color: #a2a6ac;
 }
 
-.button-18:disabled {
-    cursor: not-allowed;
-    background: rgba(0, 0, 0, .08);
-    color: rgba(0, 0, 0, .3);
+.button-14:hover {
+    border-color: #a2a6ac #979aa1 #82858a;
+}
+
+.button-14:focus {
+    border-color: #e77600;
+    box-shadow: rgba(228, 121, 17, .5) 0 0 3px 2px;
+    outline: 0;
 }
