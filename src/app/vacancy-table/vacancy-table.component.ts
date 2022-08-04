@@ -29,7 +29,12 @@ export class VacancyTableComponent implements AfterViewInit {
   }
 
   openDialog() {
-    this.dialogRef.open(VacancyFormComponent);
+    this.dialogRef.open(VacancyFormComponent,
+      {
+        height: '800px',
+        width: '1300px'
+      });
+
   }
 
   ngAfterViewInit(): void {

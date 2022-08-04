@@ -11,7 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSliderModule } from '@angular/material/slider';
@@ -38,16 +38,19 @@ import { MatCardModule } from '@angular/material/card';
         MatSelectModule,
         MatDatepickerModule,
         MatNativeDateModule,
-        ReactiveFormsModule,
+
         MatAutocompleteModule,
         MatSliderModule,
         MatCheckboxModule,
         MatRadioModule,
         MatSlideToggleModule,
 
-        MatCardModule
+        MatCardModule,
 
+    ],
+    providers: [
+        { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }
     ]
 })
-export class UserSearchModule {
+export class VacancyFormModule {
 }

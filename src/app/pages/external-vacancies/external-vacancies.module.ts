@@ -11,6 +11,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
+import { VacancyFormModule } from '../vacancy-form/vacancy-form.module';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { MatDialogModule } from '@angular/material/dialog';
         MatSortModule,
         MatIconModule,
         MatButtonModule,
-        MatDialogModule
+        MatDialogModule,
+        VacancyFormModule
 
 
 

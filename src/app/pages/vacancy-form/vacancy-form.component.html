@@ -1,0 +1,48 @@
+<h3 mat-dialog-title> Vacancy Editor </h3>
+<form [formGroup]="vacancyForm" class="form-container">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Vacancy Information</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+
+
+            <div class="px-6 py-4 flex flex-col">
+                <div> Vacancy Name* : </div>
+                <mat-form-field>
+                    <input matInput required>
+                </mat-form-field>
+
+
+
+                <div class="flex flex-col sm:flex-row sm:gap-2">
+                    <span> Address*: </span>
+                    <mat-form-field class="flex-auto">
+
+                        <input matInput>
+                    </mat-form-field>
+                    <span> Dead Line*: </span>
+                    <mat-form-field class="smallBoxClass">
+
+
+                        <input [matDatepicker]="datepickerRef" matInput required>
+                        <mat-hint>DD/MM/YYYY</mat-hint>
+                        <mat-datepicker-toggle [for]="datepickerRef" matSuffix></mat-datepicker-toggle>
+                        <mat-datepicker #datepickerRef></mat-datepicker>
+                    </mat-form-field>
+
+                    <span> Schedule *: </span>
+                    <mat-form-field class="smallBoxClass">
+                        <input matInput required>
+                    </mat-form-field>
+                </div>
+
+            </div>
+
+
+        </mat-card-content>
+        <mat-card-actions>
+            <button (click)="saveForm()" mat-raised-button color="primary">Save</button>
+        </mat-card-actions>
+    </mat-card>
+</form>
