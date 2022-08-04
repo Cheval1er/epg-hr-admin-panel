@@ -10,7 +10,8 @@
             <div class="px-6 py-4 flex flex-col">
                 <div> Vacancy Name* : </div>
                 <mat-form-field>
-                    <input matInput required>
+                    <input formControlName="vacancyName" matInput required>
+                    <mat-error>This field is required</mat-error>
                 </mat-form-field>
 
 
@@ -18,24 +19,87 @@
                 <div class="flex flex-col sm:flex-row sm:gap-2">
                     <span> Address*: </span>
                     <mat-form-field class="flex-auto">
-
-                        <input matInput>
+                        <input formControlName="address" matInput>
+                        <mat-error>This field is required</mat-error>
                     </mat-form-field>
+
                     <span> Dead Line*: </span>
                     <mat-form-field class="smallBoxClass">
-
-
-                        <input [matDatepicker]="datepickerRef" matInput required>
+                        <input formControlName="deadLine" [matDatepicker]="datepickerRef" matInput required>
                         <mat-hint>DD/MM/YYYY</mat-hint>
                         <mat-datepicker-toggle [for]="datepickerRef" matSuffix></mat-datepicker-toggle>
                         <mat-datepicker #datepickerRef></mat-datepicker>
+                        <mat-error>This field is required</mat-error>
                     </mat-form-field>
 
                     <span> Schedule *: </span>
                     <mat-form-field class="smallBoxClass">
-                        <input matInput required>
+                        <input formControlName="schedule" matInput required>
+                        <mat-error>This field is required</mat-error>
                     </mat-form-field>
                 </div>
+
+                <div class="flex flex-col sm:flex-row sm:gap-4">
+                    <span>Category</span>
+                    <mat-form-field class="flex-auto">
+                        <mat-select formControlName="category">
+                            <mat-option value="Hr">ადამიანური რესურსების მართვა</mat-option>
+                            <mat-option value="Admin">ადმინისტრაცია</mat-option>
+                            <mat-option value="Analytics">ანალიტიკა</mat-option>
+                            <mat-option value="Mango">Mango</mat-option>
+                            <mat-option value="Apples">Cucumber</mat-option>
+                        </mat-select>
+                        <mat-error>This field is required</mat-error>
+                    </mat-form-field>
+
+
+                    <span>Type</span>
+                    <mat-form-field class="flex-auto">
+                        <mat-select formControlName="type">
+                            <mat-option value="Inner">შიდა ვაკანსია</mat-option>
+                            <mat-option value="External">გარე ვაკანსია</mat-option>
+                            <mat-option value="Intern">სტაჟირება</mat-option>
+                        </mat-select>
+                        <mat-error>This field is required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <span> Description: </span>
+                    <mat-form-field [style.width.%]="90">
+                        <textarea formControlName="description" matInput cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="4" cdkAutosizeMaxRows="500"> </textarea>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <span>Experience: </span>
+                    <mat-form-field [style.width.%]="90">
+                        <textarea formControlName="experience" matInput cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="4" cdkAutosizeMaxRows="500"> </textarea>
+                    </mat-form-field>
+                </div>
+
+                <div class="flex flex-col sm:flex-row sm:gap-5">
+                    <span>Probationary Period: </span>
+                    <mat-form-field [style.width.%]="10">
+                        <input formControlName="probationaryPeriod" matInput>
+                    </mat-form-field>
+
+                    <span>Education Level*: </span>
+                    <mat-form-field [style.width.%]="40">
+                        <mat-select formControlName="type">
+                            <mat-option value="Inner">შიდა ვაკანსია</mat-option>
+                            <mat-option value="External">გარე ვაკანსია</mat-option>
+                            <mat-option value="Intern">სტაჟირება</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-checkbox>უმაღლესი განათლება</mat-checkbox>
+                </div>
+
+                <div>
+
+                </div>
+
 
             </div>
 

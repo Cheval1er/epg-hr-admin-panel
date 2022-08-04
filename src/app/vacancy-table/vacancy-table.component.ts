@@ -31,7 +31,7 @@ export class VacancyTableComponent implements AfterViewInit {
   openDialog() {
     this.dialogRef.open(VacancyFormComponent,
       {
-        height: '800px',
+        height: '1000px',
         width: '1300px'
       });
 
