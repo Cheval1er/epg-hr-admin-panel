@@ -14,6 +14,8 @@ import { MatIconRegistry, SafeResourceUrlWithIconOptions } from '@angular/materi
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ColorVariable, colorVariables } from '../@vex/components/config-panel/color-variables';
 
+
+
 @Component({
   selector: 'vex-root',
   templateUrl: './app.component.html',
