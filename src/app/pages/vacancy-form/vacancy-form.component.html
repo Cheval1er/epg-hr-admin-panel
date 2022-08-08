@@ -1,5 +1,6 @@
 <h3 mat-dialog-title> Vacancy Editor </h3>
 <form [formGroup]="vacancyForm" class="form-container">
+
     <mat-card>
         <mat-card-header>
             <mat-card-title>Vacancy Information</mat-card-title>
@@ -10,7 +11,7 @@
             <div class="px-6 py-4 flex flex-col">
                 <div> Vacancy Name* : </div>
                 <mat-form-field>
-                    <input formControlName="vacancyName" matInput required>
+                    <input formControlName="vacancyName" matInput required [(ngModel)]="vacancyDataModel.vacancyName">
                     <mat-error>This field is required</mat-error>
                 </mat-form-field>
 
@@ -19,22 +20,23 @@
                 <div class="flex flex-col sm:flex-row sm:gap-2">
                     <span> Address*: </span>
                     <mat-form-field class="flex-auto">
-                        <input formControlName="address" matInput>
+                        <input formControlName="address" matInput [(ngModel)]="vacancyDataModel.address">
                         <mat-error>This field is required</mat-error>
                     </mat-form-field>
 
                     <span> Dead Line*: </span>
                     <mat-form-field class="smallBoxClass">
-                        <input formControlName="deadLine" [matDatepicker]="datepickerRef" matInput required>
+                        <input formControlName="deadLine" [matDatepicker]="datepickerRef" matInput required
+                            [(ngModel)]="vacancyDataModel.deadLine">
                         <mat-hint>DD/MM/YYYY</mat-hint>
-                        <mat-datepicker-toggle [for]="datepickerRef" matSuffix></mat-datepicker-toggle>
+                        <mat-datepicker-toggle [for]=" datepickerRef" matSuffix></mat-datepicker-toggle>
                         <mat-datepicker #datepickerRef></mat-datepicker>
                         <mat-error>This field is required</mat-error>
                     </mat-form-field>
 
                     <span> Schedule *: </span>
                     <mat-form-field class="smallBoxClass">
-                        <input formControlName="schedule" matInput required>
+                        <input formControlName="schedule" matInput required [(ngModel)]="vacancyDataModel.schedule">
                         <mat-error>This field is required</mat-error>
                     </mat-form-field>
                 </div>
@@ -50,7 +52,7 @@
                             <mat-option value="BusinessManager">ბიზნესის მართვა</mat-option>
                             <mat-option value="Billing">ბილინგი</mat-option>
                         </mat-select> -->
-                        <mat-select formControlName="category">
+                        <mat-select formControlName="category" [(ngModel)]="vacancyDataModel.category">
                             <mat-option *ngFor="let category of categoryList" [value]="category">{{category}}
                             </mat-option>
                         </mat-select>
@@ -60,7 +62,7 @@
 
                     <span>Type</span>
                     <mat-form-field class="flex-auto">
-                        <mat-select formControlName="type">
+                        <mat-select formControlName="type" [(ngModel)]="vacancyDataModel.type">
                             <mat-option value="Inner">შიდა ვაკანსია</mat-option>
                             <mat-option value="External">გარე ვაკანსია</mat-option>
                             <mat-option value="Intern">სტაჟირება</mat-option>
@@ -72,32 +74,36 @@
                     <span> Description: </span>
                     <mat-form-field [style.width.%]="90">
                         <textarea formControlName="description" matInput cdkTextareaAutosize
-                            #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3" cdkAutosizeMaxRows="50"> </textarea>
+                            #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3" cdkAutosizeMaxRows="50"
+                            [(ngModel)]="vacancyDataModel.description"> </textarea>
                     </mat-form-field>
                 </div>
                 <div>
                     <span>Experience: </span>
                     <mat-form-field [style.width.%]="90">
                         <textarea formControlName="experience" matInput cdkTextareaAutosize
-                            #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3" cdkAutosizeMaxRows="50"> </textarea>
+                            #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3" cdkAutosizeMaxRows="50"
+                            [(ngModel)]="vacancyDataModel.experience"> </textarea>
                     </mat-form-field>
                 </div>
 
                 <div class="flex flex-col sm:flex-row sm:gap-5">
                     <span>Probationary Period: </span>
                     <mat-form-field [style.width.%]="10">
-                        <input formControlName="probationaryPeriod" matInput>
+                        <input formControlName="probationaryPeriod" matInput
+                            [(ngModel)]="vacancyDataModel.probationaryPeriod">
                     </mat-form-field>
 
                     <span>Education Level*: </span>
                     <mat-form-field [style.width.%]="40">
-                        <mat-select formControlName="educationLevel">
+                        <mat-select formControlName="educationLevel" [(ngModel)]="vacancyDataModel.educationLevel">
                             <mat-option *ngFor="let education of educationList" [value]="education">{{education}}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
 
-                    <mat-checkbox>უმაღლესი განათლება</mat-checkbox>
+                    <mat-checkbox formControlName="education" [(ngModel)]="vacancyDataModel.education">უმაღლესი
+                        განათლება</mat-checkbox>
                 </div>
 
                 <div>
@@ -107,14 +113,15 @@
                 <div class="flex flex-col sm:flex-row sm:gap-2">
                     <span>Education Sphere*: </span>
                     <mat-form-field>
-                        <mat-select formControlName="educationSphere">
+                        <mat-select formControlName="educationSphere" [(ngModel)]="vacancyDataModel.educationSphere">
                             <mat-option *ngFor="let sphere of sphereList" [value]="sphere">{{sphere}}</mat-option>
                         </mat-select>
                     </mat-form-field>
 
                     <span> Education Sphere Comment: </span>
                     <mat-form-field class="flex-auto">
-                        <input formControlName="educationSphereComment" matInput>
+                        <input formControlName="educationSphereComment" matInput
+                            [(ngModel)]="vacancyDataModel.educationSphereComment">
                         <mat-error>This field is required</mat-error>
                     </mat-form-field>
 
@@ -123,7 +130,7 @@
                 <div>
                     <span>Salary: </span>
                     <mat-form-field [style.width.%]="10">
-                        <input formControlName="salary" matInput>
+                        <input formControlName="salary" matInput [(ngModel)]="vacancyDataModel.salary">
                     </mat-form-field>
 
 

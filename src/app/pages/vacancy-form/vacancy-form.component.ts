@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, RequiredValidator, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { VacancyData } from './vacancy-data';
 
 
 @Component({
@@ -32,6 +33,7 @@ export class VacancyFormComponent implements OnInit {
 
   });
 
+  vacancyDataModel = new VacancyData(' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', true, ' ', ' ', ' ',);
 
   saveForm() {
     console.log('Form data is ', this.vacancyForm.value);
