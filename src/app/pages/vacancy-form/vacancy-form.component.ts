@@ -35,6 +35,7 @@ export class VacancyFormComponent implements OnInit {
 
   saveForm() {
     console.log('Form data is ', this.vacancyForm.value);
+    this.dialogRef.closeAll();
   }
 
   closeForm() {
