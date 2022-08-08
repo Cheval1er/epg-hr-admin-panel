@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, RequiredValidator, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, NgForm, RequiredValidator, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { VacancyData } from './vacancy-data';
 
@@ -12,8 +13,11 @@ import { VacancyData } from './vacancy-data';
 export class VacancyFormComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
-    private dialogRef: MatDialog) { }
+    private dialogRef: MatDialog,
+    private http: HttpClient) { }
 
+  editRecordId = null;
+  @ViewChild('f') Forms: NgForm;
 
   vacancyForm = this.formBuilder.group({
     vacancyName: ['', Validators.required],
@@ -32,12 +36,16 @@ export class VacancyFormComponent implements OnInit {
     salary: [''],
 
   });
+  submitted = false;
 
   vacancyDataModel = new VacancyData(' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', true, ' ', ' ', ' ',);
 
   saveForm() {
-    console.log('Form data is ', this.vacancyForm.value);
+    // let url = "http://localhost:4200/pages/externalVacancies";
+    // this.http.post(url, this.vacancyDataModel)
+    this.submitted = true;
     this.dialogRef.closeAll();
+
   }
 
   closeForm() {
