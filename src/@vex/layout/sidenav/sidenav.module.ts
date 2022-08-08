@@ -10,7 +10,6 @@ import { MatRippleModule } from '@angular/material/core';
 import { UserMenuModule } from '../../components/user-menu/user-menu.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SearchModalComponent } from '../../components/search-modal/search-modal.component';
-import { RouterLink } from '@angular/router';
 
 
 @NgModule({
@@ -26,8 +25,7 @@ import { RouterLink } from '@angular/router';
     MatRippleModule,
     UserMenuModule,
 
-    SearchModalComponent,
-
+    SearchModalComponent
   ],
   exports: [SidenavComponent]
 })
