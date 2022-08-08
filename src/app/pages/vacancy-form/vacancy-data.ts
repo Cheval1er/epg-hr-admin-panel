@@ -1,4 +1,5 @@
 export class VacancyData {
+
     constructor(
         public vacancyName: string,
         public address: string,
