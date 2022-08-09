@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { resetExtensions } from 'showdown';
+
 
 @Component({
   selector: 'vex-user-search',
@@ -34,8 +34,5 @@ export class UserSearchComponent implements OnInit {
     this.searchField = '';
     this.searchfield2 = '';
   }
-  onReset() {
-    this.onReset()
 
-  }
 }

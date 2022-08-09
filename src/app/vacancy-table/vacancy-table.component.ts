@@ -18,7 +18,7 @@ export class VacancyTableComponent implements AfterViewInit {
   dataSource: VacancyTableDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name', 'title', 'vacancyAddress', 'deadLine',
+  displayedColumns = ['id', 'vacancyname', 'title', 'vacancyAddress', 'deadLine',
     'category', 'description', 'probationaryPeriod', 'schedule', 'status'];
   groupedColumns: string[] = ['grouped'];
   secondGroupedColumns: string[] = ['options'];
@@ -31,7 +31,7 @@ export class VacancyTableComponent implements AfterViewInit {
   openDialog() {
     this.dialogRef.open(VacancyFormComponent, {
       disableClose: true,
-      height: '900px',
+      height: '950px',
       width: '1200px'
     });
 
