@@ -100,3 +100,13 @@ span {
     font-size: 20px;
 
 }
+
+.searchClass {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.center {
+    margin-left: 50%;
+    margin-bottom: 20px;
+}
