@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'vex-user-search',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserSearchComponent implements OnInit {
 
+  @ViewChild('paginator') paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
+  displayedColumns = ['id', 'username', 'firstname', 'lastname', 'mobile', 'status'];
+  groupedColumns: string[] = ['grouped'];
+
+  thirdGroupedColumns: string[] = ['edit'];
+
+
+
+
   constructor() { }
 
   ngOnInit(): void {
   }
+  ngAfterViewInit(): void {
 
+  }
 }

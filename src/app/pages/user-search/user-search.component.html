@@ -1,1 +1,97 @@
-<p>user-search works!</p>
+<div class="mat-elevation-z8 ">
+    <table mat-table class="full-width-table" matSort aria-label="Elements">
+
+        <!-- new user header -->
+        <ng-container matColumnDef="grouped">
+            <th mat-header-cell *matHeaderCellDef colspan="10">
+                <div class="flex flex-col sm:flex-row sm:gap-8">
+                    <span>User Name:</span>
+                    <mat-form-field appearance="fill" class="flex-auto">
+                        <input matInput placeholder="search" autocomplete="off">
+                    </mat-form-field>
+
+
+                    <span>First Name/Last Name:</span><br>
+                    <mat-form-field appearance="fill" class="flex-auto">
+                        <input matInput placeholder="search" autocomplete="off">
+                    </mat-form-field>
+                </div>
+            </th>
+        </ng-container>
+
+
+
+
+        <!-- edit options header -->
+        <ng-container matColumnDef="edit">
+            <th mat-header-cell *matHeaderCellDef colspan="10">
+                <div class="buttonDisplay  ">
+                    <span> <button class="button-2" role="button">
+                            <mat-icon>cached</mat-icon> Refresh
+                        </button></span>
+                    <span> <button class="button-2" role="button">
+                            <mat-icon>edit</mat-icon> Edit User
+                        </button></span>
+                    <span> <button class="button-2" role="button">
+                            <mat-icon>remove_red_eye</mat-icon> View User
+                        </button></span>
+                    <span> <button class="button-2" role="button">
+                            <mat-icon>cancel</mat-icon>Cancel User
+                        </button></span>
+
+                    <span> <button class="button-2" role="button">
+                            <mat-icon>file_copy</mat-icon> Active User
+                        </button></span>
+                </div>
+            </th>
+
+        </ng-container>
+
+
+        <!-- Id Column -->
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">ID</th>
+            <td mat-cell *matCellDef="let row">{{row.id}}</td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="username">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">User Name</th>
+            <td mat-cell *matCellDef="let row">{{row.username}}</td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="firstname">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">First Name</th>
+            <td mat-cell *matCellDef="let row">{{row.firstname}}</td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="lastname">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Last Name</th>
+            <td mat-cell *matCellDef="let row">{{row.lastname}}</td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="mobile">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Mobile</th>
+            <td mat-cell *matCellDef="let row">{{row.mobile}}</td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class=" body">Status</th>
+            <td mat-cell *matCellDef="let row">{{row.status}}</td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="groupedColumns; sticky: true"></tr>
+
+        <tr mat-header-row *matHeaderRowDef="thirdGroupedColumns; sticky: true"></tr>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator #paginator [pageSize]="25" [pageSizeOptions]="[10, 25, 50, 100]">
+    </mat-paginator>
+</div>
