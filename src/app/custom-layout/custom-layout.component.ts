@@ -30,11 +30,12 @@ export class CustomLayoutComponent implements OnInit {
   @ViewChild('configpanel', { static: true }) configpanel: SidebarComponent;
 
   constructor(private layoutService: LayoutService,
-              private configService: ConfigService,
-              private breakpointObserver: BreakpointObserver,
-              private router: Router) { }
+    private configService: ConfigService,
+    private breakpointObserver: BreakpointObserver,
+    private router: Router) { }
 
   ngOnInit() {
+
     this.layoutService.configpanelOpen$.pipe(
       untilDestroyed(this)
     ).subscribe(open => open ? this.configpanel.open() : this.configpanel.close());

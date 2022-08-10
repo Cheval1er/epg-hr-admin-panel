@@ -11,8 +11,10 @@ import { MatSort } from '@angular/material/sort';
   styleUrls: ['./applicants-search.component.scss', './applicants-search.component.css']
 })
 export class ApplicantsSearchComponent implements OnInit {
-  ngOnInit(): void {
-  }
+
+
+  @ViewChild('paginator') paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
 
 
@@ -53,7 +55,18 @@ export class ApplicantsSearchComponent implements OnInit {
   ]
 
   programsList: string[] = [
-    'Oracle'
+    'ArcGIS',
+    'AutoCAD',
+    'Excel',
+    'IFS',
+    'MS Office',
+    'MS Project',
+    'Oris',
+    'Photoshop',
+    'PowerPoint',
+    'Visio',
+    'Word',
+    'სხვა'
 
 
 
@@ -115,8 +128,6 @@ export class ApplicantsSearchComponent implements OnInit {
   ]
 
 
-  @ViewChild('paginator') paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
 
   displayedColumns: string[] = ['checked', 'id', 'firstname', 'lastname', 'vacancyname',
     'customernubmer', 'birthdate', 'mail', 'mobile', 'additionalphone', 'createuser', 'createdate', 'status'];
@@ -127,11 +138,13 @@ export class ApplicantsSearchComponent implements OnInit {
   ngAfterViewInit(): void {
 
   }
-  searchField;
-  searchfield2;
-  clearSearchField() {
-    this.searchField = '';
-    this.searchfield2 = '';
+
+  ngOnInit(): void {
+  }
+
+
+  onReset() {
+    this.appForm.reset();
   }
 
 }

@@ -5,12 +5,12 @@
 
             <!-- new user header -->
             <ng-container matColumnDef="grouped">
-                <th mat-header-cell *matHeaderCellDef colspan="10" class="size">
+                <th mat-header-cell *matHeaderCellDef colspan="13" class="size">
                     <div class="flex flex-col sm:flex-row sm:gap-8  searchClass">
                         <span>Vacancy:</span>
-                        <mat-form-field appearance="outline" class="flex-auto" [style.width.%]="90"
+                        <mat-form-field appearance="outline" class="flex-auto" [style.width.%]="80"
                             style="font-size: 12px;">
-                            <input [(ngModel)]="searchField" matInput placeholder="search" autocomplete="off">
+                            <input matInput placeholder="search" autocomplete="off" formControlName="vacancy">
                         </mat-form-field>
 
 
@@ -64,13 +64,13 @@
                     <div>
                         <span>Age From:</span>
                         <mat-form-field appearance="outline" class="flex-auto" style="font-size: 12px;">
-                            <input [(ngModel)]="searchField" matInput>
+                            <input matInput formControlName="ageFrom">
                         </mat-form-field>
 
 
                         <span style="margin-left: 20px;">Age To:</span>
                         <mat-form-field appearance="outline" class="flex-auto" style="font-size: 12px;">
-                            <input [(ngModel)]="searchField" matInput>
+                            <input matInput formControlName="ageTo">
                         </mat-form-field>
 
                         <span style="margin-left: 20px;">Only experienced </span>
@@ -100,8 +100,7 @@
                         <mat-card-actions class="flex flex-col sm:flex-row sm:gap-4 center">
                             <button mat-button class="button-7" role="button">Search</button>
 
-                            <button mat-button class="button-7 " role="button"
-                                (click)="clearSearchField()">Reset</button>
+                            <button mat-button class="button-7 " role="button" (click)="onReset()">Reset</button>
 
 
                         </mat-card-actions>
@@ -114,7 +113,7 @@
 
             <!-- edit options header -->
             <ng-container matColumnDef="edit">
-                <th mat-header-cell *matHeaderCellDef colspan="10">
+                <th mat-header-cell *matHeaderCellDef colspan="13">
                     <div class="buttonDisplay">
                         <span> <button class="button-2" role="button">
                                 <mat-icon>cached</mat-icon> Refresh
