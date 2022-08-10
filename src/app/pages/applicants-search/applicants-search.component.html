@@ -1,173 +1,228 @@
-<div class="mat-elevation-z8 ">
-    <table mat-table class="full-width-table" matSort aria-label="Elements">
+<form [formGroup]="appForm">
 
-        <!-- new user header -->
-        <ng-container matColumnDef="grouped">
-            <th mat-header-cell *matHeaderCellDef colspan="10">
-                <div class="flex flex-col sm:flex-row sm:gap-8  searchClass">
-                    <span>User Name:</span>
-                    <mat-form-field appearance="outline" class="flex-auto">
-                        <input [(ngModel)]="searchField" matInput placeholder="search" autocomplete="off">
-                    </mat-form-field>
+    <div class="mat-elevation-z8 ">
+        <table mat-table class="full-width-table" matSort aria-label="Elements">
 
-
-                    <span>First Name/Last Name:</span><br>
-                    <mat-form-field appearance="outline" class="flex-auto">
-                        <input [(ngModel)]="searchfield2" matInput placeholder="search" autocomplete="off">
-                    </mat-form-field>
-                </div>
-
-                <div class="flex flex-col sm:flex-row sm:gap-8  searchClass">
-                    <span>User Name:</span>
-                    <mat-form-field appearance="outline" class="flex-auto">
-                        <input [(ngModel)]="searchField" matInput placeholder="search" autocomplete="off">
-                    </mat-form-field>
+            <!-- new user header -->
+            <ng-container matColumnDef="grouped">
+                <th mat-header-cell *matHeaderCellDef colspan="10" class="size">
+                    <div class="flex flex-col sm:flex-row sm:gap-8  searchClass">
+                        <span>Vacancy:</span>
+                        <mat-form-field appearance="outline" class="flex-auto" [style.width.%]="90"
+                            style="font-size: 12px;">
+                            <input [(ngModel)]="searchField" matInput placeholder="search" autocomplete="off">
+                        </mat-form-field>
 
 
-                    <span>First Name/Last Name:</span><br>
-                    <mat-form-field appearance="outline" class="flex-auto">
-                        <input [(ngModel)]="searchfield2" matInput placeholder="search" autocomplete="off">
-                    </mat-form-field>
-                </div>
-                <div class="flex flex-col sm:flex-row sm:gap-8  searchClass">
-                    <span>User Name:</span>
-                    <mat-form-field appearance="outline" class="flex-auto">
-                        <input [(ngModel)]="searchField" matInput placeholder="search" autocomplete="off">
-                    </mat-form-field>
+                        <span>Languages:</span>
+                        <mat-form-field appearance="outline" class="flex-auto" style="font-size: 12px;">
+                            <mat-select formControlName="languages">
+                                <mat-option *ngFor="let languages of  languagesList" [value]="languages">{{languages}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <span>Programs:</span>
+                        <mat-form-field appearance="outline" class="flex-auto" style="font-size: 12px;">
+                            <mat-select formControlName="programs">
+                                <mat-option *ngFor="let programs of  programsList" [value]="programs">{{programs}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row sm:gap-8">
+                        <span>Departments:</span>
+                        <mat-form-field appearance="outline" class="flex-auto" [style.width.%]="50"
+                            style="font-size: 12px;">
+                            <mat-select formControlName="departments">
+                                <mat-option *ngFor="let departments of  departmentsList" [value]="departments">
+                                    {{departments}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <span>Education Level: </span>
+                        <mat-form-field appearance="outline" [style.width.%]="30" style="font-size: 12px;">
+                            <mat-select formControlName="educationLevel">
+                                <mat-option *ngFor="let education of educationList" [value]="education">{{education}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <span>Gender:</span>
+                        <mat-form-field appearance="outline" [style.width.%]="30" style="font-size: 12px;">
+                            <mat-select formControlName="gender">
+                                <mat-option *ngFor="let gender of genderList" [value]="gender">{{gender}}
+                                </mat-option>
+
+                            </mat-select>
+                        </mat-form-field>
 
 
-                    <span>First Name/Last Name:</span><br>
-                    <mat-form-field appearance="outline" class="flex-auto">
-                        <input [(ngModel)]="searchfield2" matInput placeholder="search" autocomplete="off">
-                    </mat-form-field>
-                </div>
+                    </div>
+                    <div>
+                        <span>Age From:</span>
+                        <mat-form-field appearance="outline" class="flex-auto" style="font-size: 12px;">
+                            <input [(ngModel)]="searchField" matInput>
+                        </mat-form-field>
 
 
-                <div>
-                    <mat-card-actions class="flex flex-col sm:flex-row sm:gap-4 center">
-                        <button mat-button class="button-7" role="button">Search</button>
+                        <span style="margin-left: 20px;">Age To:</span>
+                        <mat-form-field appearance="outline" class="flex-auto" style="font-size: 12px;">
+                            <input [(ngModel)]="searchField" matInput>
+                        </mat-form-field>
 
-                        <button mat-button class="button-7 " role="button" (click)="clearSearchField()">Reset</button>
+                        <span style="margin-left: 20px;">Only experienced </span>
+                        <mat-checkbox formControlName="experience"></mat-checkbox>
+
+                        <span style="margin-left: 35px;">Date From: </span>
+                        <mat-form-field appearance="outline" style="font-size: 12px;">
+                            <input formControlName="deadLine" [matDatepicker]="datepickerRef" matInput required>
+                            <mat-hint>DD/MM/YYYY</mat-hint>
+                            <mat-datepicker-toggle [for]="datepickerRef" matSuffix></mat-datepicker-toggle>
+                            <mat-datepicker #datepickerRef></mat-datepicker>
+
+                        </mat-form-field>
+                        <span style="margin-left: 35px;">Date To: </span>
+                        <mat-form-field appearance="outline" style="font-size: 12px;">
+                            <input formControlName="deadLine" [matDatepicker]="datepickerRef" matInput required>
+                            <mat-hint>DD/MM/YYYY</mat-hint>
+                            <mat-datepicker-toggle [for]="datepickerRef" matSuffix></mat-datepicker-toggle>
+                            <mat-datepicker #datepickerRef></mat-datepicker>
+
+                        </mat-form-field>
+
+                    </div>
 
 
-                    </mat-card-actions>
-                </div>
-            </th>
-        </ng-container>
+                    <div>
+                        <mat-card-actions class="flex flex-col sm:flex-row sm:gap-4 center">
+                            <button mat-button class="button-7" role="button">Search</button>
+
+                            <button mat-button class="button-7 " role="button"
+                                (click)="clearSearchField()">Reset</button>
 
 
-
-
-        <!-- edit options header -->
-        <ng-container matColumnDef="edit">
-            <th mat-header-cell *matHeaderCellDef colspan="10">
-                <div class="buttonDisplay">
-                    <span> <button class="button-2" role="button">
-                            <mat-icon>cached</mat-icon> Refresh
-                        </button></span>
-
-                    <span> <button class="button-2" role="button">
-                            <mat-icon>remove_red_eye</mat-icon> View Applicant
-                        </button></span>
-                    <span> <button class="button-2" role="button">
-                            <mat-icon>print</mat-icon>Print Applicant
-                        </button></span>
-                    <span> <button class="button-2" role="button">
-                            <mat-icon>list_alt</mat-icon> All Applicants
-                        </button></span>
-                    <span> <button class="button-2" role="button">
-                            <mat-icon>playlist_add_check</mat-icon> Selected Vacancy Applicant
-                        </button></span>
-                </div>
-            </th>
-
-        </ng-container>
-
-        <ng-container matColumnDef="checked">
-            <th mat-header-cell *matHeaderCellDef>
-                <mat-checkbox></mat-checkbox>
-            </th>
-            <td mat-cell *matCellDef="let element">
-                <mat-checkbox></mat-checkbox>
-            </td>
-        </ng-container>
-
-        <!-- Id Column -->
-        <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">ID</th>
-            <td mat-cell *matCellDef="let row">{{row.id}}</td>
-        </ng-container>
+                        </mat-card-actions>
+                    </div>
+                </th>
+            </ng-container>
 
 
 
-        <ng-container matColumnDef="firstname">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">First Name</th>
-            <td mat-cell *matCellDef="let row">{{row.firstname}}</td>
-        </ng-container>
+
+            <!-- edit options header -->
+            <ng-container matColumnDef="edit">
+                <th mat-header-cell *matHeaderCellDef colspan="10">
+                    <div class="buttonDisplay">
+                        <span> <button class="button-2" role="button">
+                                <mat-icon>cached</mat-icon> Refresh
+                            </button></span>
+
+                        <span> <button class="button-2" role="button">
+                                <mat-icon>remove_red_eye</mat-icon> View Applicant
+                            </button></span>
+                        <span> <button class="button-2" role="button">
+                                <mat-icon>print</mat-icon>Print Applicant
+                            </button></span>
+                        <span> <button class="button-2" role="button">
+                                <mat-icon>list_alt</mat-icon> All Applicants
+                            </button></span>
+                        <span> <button class="button-2" role="button">
+                                <mat-icon>playlist_add_check</mat-icon> Selected Vacancy Applicant
+                            </button></span>
+                    </div>
+                </th>
+
+            </ng-container>
+
+            <ng-container matColumnDef="checked">
+                <th mat-header-cell *matHeaderCellDef>
+                    <mat-checkbox></mat-checkbox>
+                </th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-checkbox></mat-checkbox>
+                </td>
+            </ng-container>
+
+            <!-- Id Column -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">ID</th>
+                <td mat-cell *matCellDef="let row">{{row.id}}</td>
+            </ng-container>
 
 
-        <ng-container matColumnDef="lastname">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Last Name</th>
-            <td mat-cell *matCellDef="let row">{{row.lastname}}</td>
-        </ng-container>
+
+            <ng-container matColumnDef="firstname">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">First Name</th>
+                <td mat-cell *matCellDef="let row">{{row.firstname}}</td>
+            </ng-container>
 
 
-        <ng-container matColumnDef="vacancyname">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Vacancy Name</th>
-            <td mat-cell *matCellDef="let row">{{row.vacancyname}}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="customernubmer">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Customer Number</th>
-            <td mat-cell *matCellDef="let row">{{row.customernumber}}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="birthdate">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Birth Date</th>
-            <td mat-cell *matCellDef="let row">{{row.birthdate}}</td>
-        </ng-container>
+            <ng-container matColumnDef="lastname">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Last Name</th>
+                <td mat-cell *matCellDef="let row">{{row.lastname}}</td>
+            </ng-container>
 
 
-        <ng-container matColumnDef="mail">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Mail</th>
-            <td mat-cell *matCellDef="let row">{{row.mail}}</td>
-        </ng-container>
+            <ng-container matColumnDef="vacancyname">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Vacancy Name</th>
+                <td mat-cell *matCellDef="let row">{{row.vacancyname}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="customernubmer">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Customer Number</th>
+                <td mat-cell *matCellDef="let row">{{row.customernumber}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="birthdate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Birth Date</th>
+                <td mat-cell *matCellDef="let row">{{row.birthdate}}</td>
+            </ng-container>
 
 
-        <ng-container matColumnDef="mobile">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Mobile</th>
-            <td mat-cell *matCellDef="let row">{{row.mobile}}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="additionalphone">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Additional Phone</th>
-            <td mat-cell *matCellDef="let row">{{row.additionalphone}}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="createuser">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Create User</th>
-            <td mat-cell *matCellDef="let row">{{row.createuser}}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="createdate">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Create Date</th>
-            <td mat-cell *matCellDef="let row">{{row.createdate}}</td>
-        </ng-container>
+            <ng-container matColumnDef="mail">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Mail</th>
+                <td mat-cell *matCellDef="let row">{{row.mail}}</td>
+            </ng-container>
 
 
-        <ng-container matColumnDef="status">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class=" body">Status</th>
-            <td mat-cell *matCellDef="let row">{{row.status}}</td>
-        </ng-container>
+            <ng-container matColumnDef="mobile">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Mobile</th>
+                <td mat-cell *matCellDef="let row">{{row.mobile}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="additionalphone">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Additional Phone</th>
+                <td mat-cell *matCellDef="let row">{{row.additionalphone}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="createuser">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Create User</th>
+                <td mat-cell *matCellDef="let row">{{row.createuser}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="createdate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Create Date</th>
+                <td mat-cell *matCellDef="let row">{{row.createdate}}</td>
+            </ng-container>
 
 
-        <tr mat-header-row *matHeaderRowDef="groupedColumns; sticky: true"></tr>
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class=" body">Status</th>
+                <td mat-cell *matCellDef="let row">{{row.status}}</td>
+            </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="thirdGroupedColumns; sticky: true"></tr>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
 
-    <mat-paginator #paginator [pageSize]="25" [pageSizeOptions]="[10, 25, 50, 100]">
-    </mat-paginator>
-</div>
+            <tr mat-header-row *matHeaderRowDef="groupedColumns; sticky: true"></tr>
+
+            <tr mat-header-row *matHeaderRowDef="thirdGroupedColumns; sticky: true"></tr>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator #paginator [pageSize]="25" [pageSizeOptions]="[10, 25, 50, 100]">
+        </mat-paginator>
+    </div>
+</form>
