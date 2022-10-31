@@ -1,6 +1,6 @@
 
 
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewChecked, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -10,7 +10,7 @@ import { MatSort } from '@angular/material/sort';
   templateUrl: './applicants-search.component.html',
   styleUrls: ['./applicants-search.component.scss', './applicants-search.component.css']
 })
-export class ApplicantsSearchComponent implements OnInit {
+export class ApplicantsSearchComponent implements AfterViewChecked {
 
 
   @ViewChild('paginator') paginator!: MatPaginator;
@@ -20,7 +20,11 @@ export class ApplicantsSearchComponent implements OnInit {
 
 
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+    private readonly changeDetectorRef: ChangeDetectorRef) { }
+  ngAfterViewChecked(): void {
+    this.changeDetectorRef.detectChanges();
+  }
   appForm = this.formBuilder.group({
     vacancy: [""],
     languages: [""],
@@ -135,7 +139,9 @@ export class ApplicantsSearchComponent implements OnInit {
 
   thirdGroupedColumns: string[] = ['edit'];
 
+  //ragac chavtsere ubralod
   ngAfterViewInit(): void {
+    this.appForm
 
   }
 

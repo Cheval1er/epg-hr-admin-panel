@@ -1,21 +1,37 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ExternalVacanciesComponent } from './external-vacancies.component';
 import { ExternalVacanciesRoutingModule } from './external-vacancies-routing.module';
-import { VacancyTableComponent } from 'src/app/vacancy-table/vacancy-table.component';
+
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
-import { VacancyFormModule } from '../vacancy-form/vacancy-form.module';
+import { VacancyFormModule } from './vacancy-form/vacancy-form.module';
+
+import { HttpClientModule } from '@angular/common/http';
+
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSliderModule } from '@angular/material/slider';
+import { VacancyService } from 'src/app/services/vacancy.service';
 
 
 @NgModule({
-    declarations: [ExternalVacanciesComponent, VacancyTableComponent],
+    declarations: [ExternalVacanciesComponent],
     imports: [
         CommonModule,
         ExternalVacanciesRoutingModule,
@@ -25,11 +41,35 @@ import { VacancyFormModule } from '../vacancy-form/vacancy-form.module';
         MatIconModule,
         MatButtonModule,
         MatDialogModule,
-        VacancyFormModule
+        HttpClientModule,
+        MatDatepickerModule,
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+
+        MatInputModule,
+        MatIconModule,
+        MatButtonModule,
+
+        MatSelectModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+
+        MatAutocompleteModule,
+        MatSliderModule,
+        MatCheckboxModule,
+        MatRadioModule,
+        MatSlideToggleModule,
+
+        MatCardModule,
+        VacancyFormModule,
 
 
 
-    ]
+
+    ],
+    providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }, VacancyService, DatePipe]
 })
 export class ExternalVacanciesModule {
 }

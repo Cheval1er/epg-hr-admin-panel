@@ -22,6 +22,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSliderModule } from '@angular/material/slider';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -54,6 +55,7 @@ import { MatSliderModule } from '@angular/material/slider';
         MatSlideToggleModule,
 
         MatCardModule,
+        HttpClientModule
 
     ]
 })

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 
 import { MatButtonModule } from '@angular/material/button';
 
-
+import { VacancyFormComponent } from './vacancy-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
@@ -21,11 +21,10 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { MatCardModule } from '@angular/material/card';
-import { VacancyFormModule } from '../pages/vacancy-form/vacancy-form.module';
 
 
 @NgModule({
-    declarations: [],
+    declarations: [VacancyFormComponent],
     imports: [
         CommonModule,
         FormsModule,
@@ -47,12 +46,12 @@ import { VacancyFormModule } from '../pages/vacancy-form/vacancy-form.module';
         MatSlideToggleModule,
 
         MatCardModule,
-        VacancyFormModule
 
     ],
     providers: [
-        { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }
+        { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+        DatePipe
     ]
 })
-export class VacancyTableModule {
+export class VacancyFormModule {
 }

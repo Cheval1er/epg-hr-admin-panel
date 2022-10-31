@@ -78,15 +78,15 @@
 
                         <span style="margin-left: 35px;">Date From: </span>
                         <mat-form-field appearance="outline" style="font-size: 12px;">
-                            <input formControlName="deadLine" [matDatepicker]="datepickerRef" matInput required>
+                            <input formControlName="dateFrom" [matDatepicker]="datepickerRef1" matInput required>
                             <mat-hint>DD/MM/YYYY</mat-hint>
-                            <mat-datepicker-toggle [for]="datepickerRef" matSuffix></mat-datepicker-toggle>
-                            <mat-datepicker #datepickerRef></mat-datepicker>
+                            <mat-datepicker-toggle [for]="datepickerRef1" matSuffix></mat-datepicker-toggle>
+                            <mat-datepicker #datepickerRef1></mat-datepicker>
 
                         </mat-form-field>
                         <span style="margin-left: 35px;">Date To: </span>
                         <mat-form-field appearance="outline" style="font-size: 12px;">
-                            <input formControlName="deadLine" [matDatepicker]="datepickerRef" matInput required>
+                            <input formControlName="dateTo" [matDatepicker]="datepickerRef" matInput required>
                             <mat-hint>DD/MM/YYYY</mat-hint>
                             <mat-datepicker-toggle [for]="datepickerRef" matSuffix></mat-datepicker-toggle>
                             <mat-datepicker #datepickerRef></mat-datepicker>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, RequiredValidator, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { VacancyService } from 'src/app/services/vacancy.service';
 
 
 @Component({
@@ -11,12 +12,13 @@ import { MatDialog } from '@angular/material/dialog';
 export class VacancyFormComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
-    private dialogRef: MatDialog) { }
+    private dialogRef: MatDialog,
+    private vacancyService: VacancyService) { }
 
 
   vacancyForm = this.formBuilder.group({
     vacancyName: ['', Validators.required],
-    address: ['', Validators.required],
+    vacancyAddress: ['', Validators.required],
     deadLine: ['', Validators.required],
     schedule: ['', Validators.required],
     category: ['', Validators.required],
@@ -33,8 +35,12 @@ export class VacancyFormComponent implements OnInit {
   });
 
 
-  saveForm() {
+  saveFormData() {
     console.log('Form data is ', this.vacancyForm.value);
+
+    this.vacancyService.addVacancy(this.vacancyForm.value).subscribe((result) => {
+      console.log(result)
+    })
     this.dialogRef.closeAll();
   }
 

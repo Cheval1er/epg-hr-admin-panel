@@ -7,7 +7,7 @@
         <mat-card-content>
 
             <!-- about vacancy -->
-            <div class="px-6 py-4 flex flex-col">
+            <div class=" px-6 py-4 flex flex-col">
                 <div> Vacancy Name* : </div>
                 <mat-form-field appearance="outline" style="font-size: 12px;">
                     <input formControlName="vacancyName" matInput required>
@@ -19,7 +19,7 @@
                 <div class="flex flex-col sm:flex-row sm:gap-2">
                     <span> Address*: </span>
                     <mat-form-field appearance="outline" class="flex-auto" style="font-size: 12px;">
-                        <input formControlName="address" matInput>
+                        <input formControlName="vacancyAddress" matInput>
                         <mat-error>This field is required</mat-error>
                     </mat-form-field>
 
@@ -105,12 +105,12 @@
                 </div>
 
                 <div class="flex flex-col sm:flex-row sm:gap-2">
-                    <span>Education Sphere*: </span>
+                    <!-- <span>Education Sphere*: </span>
                     <mat-form-field appearance="outline" style="font-size: 12px;">
                         <mat-select formControlName="educationSphere">
                             <mat-option *ngFor="let sphere of sphereList" [value]="sphere">{{sphere}}</mat-option>
                         </mat-select>
-                    </mat-form-field>
+                    </mat-form-field> -->
 
                     <span> Education Sphere Comment: </span>
                     <mat-form-field appearance="outline" class="flex-auto" style="font-size: 12px;">
@@ -134,7 +134,7 @@
         </mat-card-content>
 
         <mat-card-actions class="flex flex-col sm:flex-row sm:gap-4 margin">
-            <button mat-button class="button-7" role="button" (click)="saveForm()">Save</button>
+            <button mat-button class="button-7" role="button" (click)="saveFormData()">Save</button>
 
             <button class="button-7 " role="button" (click)="closeForm()">Cancel</button>
 

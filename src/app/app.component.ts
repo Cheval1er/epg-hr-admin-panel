@@ -127,7 +127,7 @@ export class AppComponent {
         children: [
           {
             type: 'link',
-            label: 'External Vacancies',
+            label: 'Vacancies',
             route: '/pages/externalVacancies',
             // icon: 'mat:insights',
             routerLinkActiveOptions: { exact: true }
