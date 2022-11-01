@@ -4,13 +4,13 @@ import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTable } from '@angular/material/table';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import highlight from 'highlight.js';
 import { start } from 'repl';
 import { fadeInUp400ms } from 'src/@vex/animations/fade-in-up.animation';
 import { stagger60ms } from 'src/@vex/animations/stagger.animation';
 import { VacancyService } from 'src/app/services/vacancy.service';
-import { Vacancy } from './vacancy';
+import { List, Vacancy } from './vacancy';
 
 import { VacancyFormComponent } from './vacancy-form/vacancy-form.component';
 
@@ -25,11 +25,14 @@ import { VacancyFormComponent } from './vacancy-form/vacancy-form.component';
   ]
 })
 export class ExternalVacanciesComponent implements AfterViewInit {
-  [x: string]: any;
-  // @ViewChild(MatPaginator) paginator!: MatPaginator;
-  // @ViewChild(MatSort) sort!: MatSort;
+  // [x: string]: any;
+
+
   // @ViewChild(MatTable) table!: MatTable<List>;
-  // dataSource: any;
+  dataSource!: MatTableDataSource<any>;
+
+  @ViewChild('paginator') paginator!: MatPaginator;
+  @ViewChild(MatSort) matSort!: MatSort;
 
   data: Vacancy[] = [];
 
@@ -43,12 +46,10 @@ export class ExternalVacanciesComponent implements AfterViewInit {
 
   constructor(private dialogRef: MatDialog,
     private vacancyService: VacancyService,
-    private formBuilder: FormBuilder) {
+
+  ) {
     // this.dataSource = new VacancyTableDataSource();
-    this.vacancyService.getAllVacancies().subscribe(x => {
-      this.data = x['list'];
-      console.log(this.data);
-    })
+
 
 
   }
@@ -56,18 +57,21 @@ export class ExternalVacanciesComponent implements AfterViewInit {
 
   ngOnInit() {
     this.getAllVacancies();
-    this.getAllNewVacancies(1, 5);
+
+
 
   }
 
 
 
   public getAllVacancies(): void {
-    this.vacancyService.getAllVacancies().subscribe(
-      (response: Vacancy[]) => {
-        this.data['list'] = response;
-        // console.log(this.data)
-      },
+    this.vacancyService.getAllVacancies().subscribe(x => {
+      this.dataSource = new MatTableDataSource(this.data = x['list']);
+      // this.data = x['list'];
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.matSort;
+      console.log(this.data);
+    },
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
@@ -75,14 +79,11 @@ export class ExternalVacanciesComponent implements AfterViewInit {
     )
   }
 
-  status: 'new' | 'active';
 
   public getAllNewVacancies(start: number, limit: number): void {
 
+
   }
-
-
-
 
 
 
@@ -105,6 +106,9 @@ export class ExternalVacanciesComponent implements AfterViewInit {
     // this.dataSource.sort = this.sort;
     // this.dataSource.paginator = this.paginator;
     // this.table.dataSource = this.dataSource;
+  }
+  filterData($event: any) {
+    this.dataSource.filter = $event.target.value;
   }
 
 

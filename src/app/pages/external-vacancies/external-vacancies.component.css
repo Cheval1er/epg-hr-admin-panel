@@ -123,6 +123,8 @@ span {
     hyphens: auto;
 }
 
+
+
 .button-7 {
     background-color: #1d5175;
     border: 1px solid transparent;
@@ -209,4 +211,8 @@ span {
     vertical-align: middle;
     font-size: 20px;
 
+}
+
+.filterClass {
+    margin-left: 62%;
 }

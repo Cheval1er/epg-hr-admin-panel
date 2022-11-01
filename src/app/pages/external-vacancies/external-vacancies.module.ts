@@ -30,9 +30,12 @@ import { MatSliderModule } from '@angular/material/slider';
 import { VacancyService } from 'src/app/services/vacancy.service';
 
 
+
 @NgModule({
     declarations: [ExternalVacanciesComponent],
     imports: [
+
+
         CommonModule,
         ExternalVacanciesRoutingModule,
         MatTableModule,

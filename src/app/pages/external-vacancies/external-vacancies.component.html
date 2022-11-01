@@ -1,5 +1,5 @@
 <div class="mat-elevation-z8 ">
-  <table mat-table class="full-width-table" matSort [dataSource]="data">
+  <table mat-table class="full-width-table" matSort [dataSource]="dataSource">
 
 
     <ng-container matColumnDef="grouped">
@@ -20,7 +20,14 @@
           <span> <button class="button-7" role="button">Cancelled</button></span>
           <span> <button class="button-7" role="button">Completed</button></span>
           <span> <button class="button-7" role="button">Stopped</button></span>
+          <span>
+            <mat-form-field appearance="outline" class="filterClass">
+              <input matInput placeholder="search" autocomplete="off" (keyup)="filterData($event)">
+            </mat-form-field>
+          </span>
         </div>
+
+
       </th>
 
     </ng-container>
@@ -57,19 +64,22 @@
 
     <div>
       <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">ID</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">ID
+        </th>
         <td mat-cell *matCellDef="let vacancy">{{vacancy?.id}}</td>
       </ng-container>
 
 
       <ng-container matColumnDef="vacancyName">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Vacancy Name</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
+          Vacancy Name</th>
         <td mat-cell *matCellDef="let vacancy">{{vacancy?.vacancyName}}</td>
       </ng-container>
 
 
       <ng-container matColumnDef="title">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Title</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
+          Title</th>
         <td mat-cell *matCellDef="let vacancy">{{vacancy?.title}}</td>
       </ng-container>
 
@@ -124,7 +134,7 @@
     </div>
   </table>
 
-  <mat-paginator class="full-width-table body" #paginator [pageIndex]="0" [pageSize]="10"
-    [pageSizeOptions]="[5, 10, 20]" aria-label="Select page">
+  <mat-paginator class="full-width-table body" #paginator [pageSize]="10" [pageSizeOptions]="[10,20,30,50]"
+    aria-label="Select page">
   </mat-paginator>
 </div>

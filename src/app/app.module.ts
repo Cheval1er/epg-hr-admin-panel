@@ -10,6 +10,7 @@ import { CustomLayoutModule } from './custom-layout/custom-layout.module';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +21,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     HttpClientModule,
     MatIconModule,
     MatNativeDateModule,
+    MatPaginatorModule,
 
     // Vex
     VexModule,

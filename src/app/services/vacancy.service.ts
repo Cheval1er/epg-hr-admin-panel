@@ -26,7 +26,7 @@ export class VacancyService {
 
 
 
-    public getAllNewVacancies(start: number, limit: number): Observable<void> {
-        return this.http.get<void>(`${this.apiServerUrl}/VacancyAdmin/vacancy/vacancyNew?start=${start}&limit=${limit}`)
+    public getAllNewVacancies(start: number, limit: number): Observable<List['status']> {
+        return this.http.get<List['status']>(`${this.apiServerUrl}/VacancyAdmin/vacancy/vacancyNew?start=${start}&limit=${limit}`)
     }
 }
