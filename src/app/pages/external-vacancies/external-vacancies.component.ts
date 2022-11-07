@@ -57,13 +57,18 @@ export class ExternalVacanciesComponent implements AfterViewInit {
 
   ngOnInit() {
     this.getAllVacancies();
+    this.getAllNewVacancies(0, 80);
+    this.getAllActiveVacancies(0, 80);
+    this.getAllCancelledVacancies(0, 80);
+    this.getAllCompletedVacancies(0, 80);
+    this.getAllStoppedVacancies(0, 80);
 
 
 
   }
 
 
-
+  //get all vacancies
   public getAllVacancies(): void {
     this.vacancyService.getAllVacancies().subscribe(x => {
       this.dataSource = new MatTableDataSource(this.data = x['list']);
@@ -79,13 +84,79 @@ export class ExternalVacanciesComponent implements AfterViewInit {
     )
   }
 
-
+  //get all new vacancies
   public getAllNewVacancies(start: number, limit: number): void {
+    this.vacancyService.getAllNewVacancies(start, limit).subscribe(t => {
+      this.dataSource = new MatTableDataSource(this.data = t['list']);
+
+      console.log(this.data);
+    }),
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+
+
 
 
   }
 
+  // get all active vacancies 
 
+  public getAllActiveVacancies(start: number, limit: number): void {
+    this.vacancyService.getAllActiveVacancies(start, limit).subscribe(a => {
+      this.dataSource = new MatTableDataSource(this.data = a['list']);
+
+      console.log(this.data);
+    }),
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+  }
+
+  //get all cancelled vacancies
+  public getAllCancelledVacancies(start: number, limit: number): void {
+    this.vacancyService.getAllCancelledVacancies(start, limit).subscribe(c => {
+      this.dataSource = new MatTableDataSource(this.data = c['list']);
+
+      let result = this.dataSource.filter
+
+      console.log(this.data);
+    }),
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+  }
+
+
+  public getAllCompletedVacancies(start: number, limit: number): void {
+    this.vacancyService.getAllCompletedVacancies(start, limit).subscribe(c => {
+      this.dataSource = new MatTableDataSource(this.data = c['list']);
+
+      let result = this.dataSource.filter
+
+      console.log(this.data);
+    }),
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+  }
+
+
+  public getAllStoppedVacancies(start: number, limit: number): void {
+    this.vacancyService.getAllStoppedVacancies(start, limit).subscribe(c => {
+
+      this.dataSource = new MatTableDataSource(this.data = c['list']);
+
+
+      let result = this.dataSource.filter
+
+      console.log(this.data);
+
+    }),
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+  }
 
   openDialog() {
     this.dialogRef.open(VacancyFormComponent, {
@@ -112,9 +183,10 @@ export class ExternalVacanciesComponent implements AfterViewInit {
   }
 
 
-
+  selectedRowIndex = -1;
   highlight(row) {
-
+    this.selectedRowIndex = row.id;
+    console.log(row);
   }
 
 

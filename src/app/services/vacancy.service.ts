@@ -29,4 +29,24 @@ export class VacancyService {
     public getAllNewVacancies(start: number, limit: number): Observable<List['status']> {
         return this.http.get<List['status']>(`${this.apiServerUrl}/VacancyAdmin/vacancy/vacancyNew?start=${start}&limit=${limit}`)
     }
+
+    public getAllActiveVacancies(start: number, limit: number): Observable<List['status']> {
+        return this.http.get<List['status']>(`${this.apiServerUrl}/VacancyAdmin/vacancy/vacancyActive?start=${start}&limit=${limit}`)
+    }
+
+    public getAllCancelledVacancies(start: number, limit: number): Observable<List['status']> {
+        return this.http.get<List['status']>(`${this.apiServerUrl}/VacancyAdmin/vacancy/vacancyCancelled?start=${start}&limit=${limit}`)
+    }
+
+
+    public getAllCompletedVacancies(start: number, limit: number): Observable<List['status']> {
+        return this.http.get<List['status']>(`${this.apiServerUrl}/VacancyAdmin/vacancy/vacancyComplated?start=${start}&limit=${limit}`)
+    }
+
+    public getAllStoppedVacancies(start: number, limit: number): Observable<List['status']> {
+        return this.http.get<List['status']>(`${this.apiServerUrl}/VacancyAdmin/vacancy/vacancyStopped?start=${start}&limit=${limit}`)
+    }
+
+
+
 }

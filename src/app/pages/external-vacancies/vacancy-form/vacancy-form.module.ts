@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 
 
@@ -49,8 +49,8 @@ import { MatCardModule } from '@angular/material/card';
 
     ],
     providers: [
-        { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
-        DatePipe
+        { provide: LOCALE_ID, useValue: 'en-IN' }, DatePipe
+
     ]
 })
 export class VacancyFormModule {

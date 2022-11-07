@@ -1,5 +1,6 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, RequiredValidator, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { VacancyService } from 'src/app/services/vacancy.service';
 
@@ -10,11 +11,21 @@ import { VacancyService } from 'src/app/services/vacancy.service';
   styleUrls: ['./vacancy-form.component.scss', './vacancy-form.component.css']
 })
 export class VacancyFormComponent implements OnInit {
+  convertDate: string;
+  dateFormat: string;
 
   constructor(private formBuilder: FormBuilder,
-    private dialogRef: MatDialog,
-    private vacancyService: VacancyService) { }
 
+    private dialogRef: MatDialog,
+    private vacancyService: VacancyService,
+    private datePipe: DatePipe
+
+  ) { }
+
+  ngOnInit(): void {
+
+
+  }
 
   vacancyForm = this.formBuilder.group({
     vacancyName: ['', Validators.required],
@@ -35,8 +46,14 @@ export class VacancyFormComponent implements OnInit {
   });
 
 
+
+
+
+
   saveFormData() {
     console.log('Form data is ', this.vacancyForm.value);
+
+    this.vacancyForm.value.deadLine = this.datePipe.transform(this.vacancyForm.value.deadLine, 'dd-MM-yyyy')
 
     this.vacancyService.addVacancy(this.vacancyForm.value).subscribe((result) => {
       console.log(result)
@@ -116,6 +133,12 @@ export class VacancyFormComponent implements OnInit {
   ]
 
 
-  ngOnInit(): void {
-  }
 }
+
+
+function moment(dateValue: any, arg1: string, arg2: boolean) {
+  throw new Error('Function not implemented.');
+}
+// function moment(date: Date, arg1: string) {
+//   throw new Error('Function not implemented.');
+// }

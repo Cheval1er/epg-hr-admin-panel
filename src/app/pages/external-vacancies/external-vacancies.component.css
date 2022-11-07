@@ -214,5 +214,9 @@ span {
 }
 
 .filterClass {
-    margin-left: 62%;
+    margin-left: 60%;
+}
+
+.highlighted {
+    background: #c1d9f1;
 }

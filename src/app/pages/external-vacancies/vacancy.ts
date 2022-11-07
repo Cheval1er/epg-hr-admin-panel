@@ -21,7 +21,7 @@ export interface List {
     vacancyName: string;
     vacancyAddress: string;
     vacancyDate?: Date;
-    deadLine: Date;
+    deadLine: string;
     category: DictionaryItem;
     type: DictionaryItem;
     description: string;
