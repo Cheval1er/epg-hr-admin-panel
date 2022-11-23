@@ -31,6 +31,10 @@ import { VacancyService } from 'src/app/services/vacancy.service';
 import {
     ResizableModule
 } from 'angular-resizable-element';
+import { CdkTableModule } from '@angular/cdk/table';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { A11yModule } from '@angular/cdk/a11y';
+import { EditVacancyComponent } from './edit-vacancy/edit-vacancy.component';
 
 
 @NgModule({
@@ -72,7 +76,9 @@ import {
 
         ResizableModule,
 
-
+        CdkTableModule,
+        ScrollingModule,
+        A11yModule,
 
     ],
     providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }, VacancyService]

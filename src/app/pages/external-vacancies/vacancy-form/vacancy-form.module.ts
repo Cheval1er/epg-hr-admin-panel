@@ -21,6 +21,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { MatCardModule } from '@angular/material/card';
+import { VacancyService } from 'src/app/services/vacancy.service';
 
 
 @NgModule({
@@ -49,7 +50,7 @@ import { MatCardModule } from '@angular/material/card';
 
     ],
     providers: [
-        { provide: LOCALE_ID, useValue: 'en-IN' }, DatePipe
+        { provide: LOCALE_ID, useValue: 'en-IN' }, DatePipe, VacancyService
 
     ]
 })

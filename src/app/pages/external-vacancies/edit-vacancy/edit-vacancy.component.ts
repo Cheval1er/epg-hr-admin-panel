@@ -1,21 +1,26 @@
 import { DatePipe } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { VacancyService } from 'src/app/services/vacancy.service';
-
-
+import { Vacancy } from '../vacancy';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 @Component({
-  selector: 'vex-vacancy-form',
-  templateUrl: './vacancy-form.component.html',
-  styleUrls: ['./vacancy-form.component.scss', './vacancy-form.component.css']
+  selector: 'vex-edit-vacancy',
+  templateUrl: './edit-vacancy.component.html',
+  styleUrls: ['./edit-vacancy.component.scss', './edit-vacancy.component.css']
 })
-export class VacancyFormComponent implements OnInit {
+export class EditVacancyComponent implements OnInit {
   convertDate: string;
   dateFormat: string;
-  vacancyForm: any;
+  dataSource!: MatTableDataSource<any>;
+  vacancyId: number;
+  vacancy: Vacancy[] = [];
 
+  showAlert = false;
+  vacancyForm: any;
   constructor(private formBuilder: FormBuilder,
 
     private dialogRef: MatDialog,
@@ -24,9 +29,11 @@ export class VacancyFormComponent implements OnInit {
     private route: ActivatedRoute,
     @Inject(MAT_DIALOG_DATA) public editData: any,
 
+
   ) { }
 
   ngOnInit(): void {
+
     this.vacancyForm = this.formBuilder.group({
       vacancyName: ['', Validators.required],
       vacancyAddress: ['', Validators.required],
@@ -62,19 +69,30 @@ export class VacancyFormComponent implements OnInit {
       this.vacancyForm.controls['salary'].setValue(this.editData.salary);
     }
 
-  }
+
+  };
 
 
 
 
-  saveFormData() {
+
+
+
+
+
+
+
+
+
+
+  updateFormData() {
     console.log('Form data is ', this.vacancyForm.value);
 
     this.vacancyForm.value.deadLine = this.datePipe.transform(this.vacancyForm.value.deadLine, 'dd-MM-yyyy')
-
-    this.vacancyService.addVacancy(this.vacancyForm.value).subscribe((result) => {
+    this.vacancyService.updateVacancy(this.vacancyForm.value, this.editData.id).subscribe((result) => {
       console.log(result)
     })
+
     this.dialogRef.closeAll();
   }
 

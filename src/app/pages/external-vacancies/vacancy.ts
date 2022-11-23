@@ -10,7 +10,7 @@ export interface DictionaryItem {
     disabled: boolean;
 }
 
-export interface List {
+export class List {
     createDate: Date;
     createUser: string;
     modifyDate: Date;

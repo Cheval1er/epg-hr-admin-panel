@@ -1,15 +1,16 @@
+import { DatePipe } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { FormBuilder, NgForm, Validators } from '@angular/forms';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
-import highlight from 'highlight.js';
-import { start } from 'repl';
+import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { fadeInUp400ms } from 'src/@vex/animations/fade-in-up.animation';
 import { stagger60ms } from 'src/@vex/animations/stagger.animation';
 import { VacancyService } from 'src/app/services/vacancy.service';
+import { EditVacancyComponent } from './edit-vacancy/edit-vacancy.component';
 import { List, Vacancy } from './vacancy';
 
 import { VacancyFormComponent } from './vacancy-form/vacancy-form.component';
@@ -24,7 +25,7 @@ import { VacancyFormComponent } from './vacancy-form/vacancy-form.component';
     fadeInUp400ms
   ]
 })
-export class ExternalVacanciesComponent implements AfterViewInit {
+export class ExternalVacanciesComponent implements OnInit, AfterViewInit {
   // [x: string]: any;
 
 
@@ -35,17 +36,24 @@ export class ExternalVacanciesComponent implements AfterViewInit {
   @ViewChild(MatSort) matSort!: MatSort;
 
   data: Vacancy[] = [];
+  public editVacancy: List;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  columnsToDisplay = ['id', 'vacancyName', 'title', 'vacancyAddress', 'deadLine',
+  displayedColumns = ['id', 'vacancyName', 'title', 'vacancyAddress', 'deadLine',
     'category', 'description', 'probationaryPeriod', 'schedule', 'status'];
   groupedColumns: string[] = ['grouped'];
   secondGroupedColumns: string[] = ['options'];
   thirdGroupedColumns: string[] = ['edit'];
   highlightedRows: any;
 
+
   constructor(private dialogRef: MatDialog,
     private vacancyService: VacancyService,
+    private formBuilder: FormBuilder,
+
+
+    private datePipe: DatePipe,
+    private router: Router
 
   ) {
     // this.dataSource = new VacancyTableDataSource();
@@ -53,6 +61,7 @@ export class ExternalVacanciesComponent implements AfterViewInit {
 
 
   }
+
 
 
   ngOnInit() {
@@ -66,6 +75,7 @@ export class ExternalVacanciesComponent implements AfterViewInit {
 
 
   }
+
 
 
   //get all vacancies
@@ -158,6 +168,9 @@ export class ExternalVacanciesComponent implements AfterViewInit {
       }
   }
 
+
+
+
   openDialog() {
     this.dialogRef.open(VacancyFormComponent, {
       disableClose: true,
@@ -168,9 +181,10 @@ export class ExternalVacanciesComponent implements AfterViewInit {
 
 
 
+  // editButtonClick(vacancyId: number) {
+  //   this.router.navigate(['/vacancy', vacancyId])
 
-
-
+  // }
 
 
   ngAfterViewInit(): void {
@@ -184,14 +198,31 @@ export class ExternalVacanciesComponent implements AfterViewInit {
 
 
   selectedRowIndex = -1;
-  highlight(row) {
-    this.selectedRowIndex = row.id;
-    console.log(row);
+  highlight(vacancy) {
+    this.selectedRow = vacancy;
+    this.selectedRowIndex = vacancy.id;
+    console.log(vacancy);
+
+
+
+  }
+  selectedRow;
+
+
+  editDialog(rowData) {
+
+    rowData = this.selectedRow
+    this.dialogRef.open(EditVacancyComponent, {
+      disableClose: true,
+      height: '950px',
+      width: '1200px',
+      data: this.selectedRow
+
+    })
+    console.log(rowData)
   }
 
 
 
-
 }
-
 

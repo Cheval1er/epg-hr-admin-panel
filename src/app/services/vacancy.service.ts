@@ -17,6 +17,9 @@ export class VacancyService {
     public getAllVacancies(): Observable<Vacancy[]> {
         return this.http.get<Vacancy[]>(`${this.apiServerUrl}/VacancyAdmin/vacancy/allVacancy`)
     }
+    public getVacancy(id) {
+        return this.http.get(`${this.apiServerUrl}/VacancyAdmin/vacancy/${id}`)
+    }
 
 
     public addVacancy(vacancy: any) {
@@ -49,4 +52,7 @@ export class VacancyService {
 
 
 
+    public updateVacancy(vacancy: Vacancy, id: number) {
+        return this.http.put(`${this.apiServerUrl}/VacancyAdmin/vacancy/${id}`, vacancy)
+    }
 }

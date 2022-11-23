@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { QuicklinkModule, QuicklinkStrategy } from 'ngx-quicklink';
 import { VexRoutes } from 'src/@vex/interfaces/vex-route.interface';
 import { CustomLayoutComponent } from './custom-layout/custom-layout.component';
@@ -22,6 +22,10 @@ const routes: VexRoutes = [
           loadChildren: () => import('./pages/external-vacancies/external-vacancies.module').then(m => m.ExternalVacanciesModule)
         },
         {
+          path: 'vacancy/:vacancyId',
+          loadChildren: () => import('./pages/external-vacancies/edit-vacancy/edit-vacancy.module').then(m => m.EditVacancyModule)
+        },
+        {
           path: 'applicantsSearch',
           loadChildren: () => import('./pages/applicants-search/applicants-search.module').then(m => m.ApplicantsSearchModule)
         },
@@ -32,7 +36,10 @@ const routes: VexRoutes = [
 
       ]
     }]
-  }
+  },
+
+
+
 
 ];
 
