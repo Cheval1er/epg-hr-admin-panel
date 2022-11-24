@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
@@ -21,6 +21,7 @@ export class EditVacancyComponent implements OnInit {
 
   showAlert = false;
   vacancyForm: any;
+
   constructor(private formBuilder: FormBuilder,
 
     private dialogRef: MatDialog,
@@ -88,7 +89,8 @@ export class EditVacancyComponent implements OnInit {
   updateFormData() {
     console.log('Form data is ', this.vacancyForm.value);
 
-    this.vacancyForm.value.deadLine = this.datePipe.transform(this.vacancyForm.value.deadLine, 'dd-MM-yyyy')
+    this.vacancyForm.value.deadLine = this.datePipe.transform(this.vacancyForm.value.deadLine, 'dd-MM-yyyy');
+
     this.vacancyService.updateVacancy(this.vacancyForm.value, this.editData.id).subscribe((result) => {
       console.log(result)
     })

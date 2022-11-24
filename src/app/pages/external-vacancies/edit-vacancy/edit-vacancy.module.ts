@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 
 
@@ -53,7 +53,8 @@ import { MatSliderModule } from '@angular/material/slider';
 
         MatCardModule,
     ],
-    providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }, VacancyService, DatePipe]
+    providers: [{ provide: LOCALE_ID, useValue: 'en-IN' }, DatePipe, VacancyService
+    ]
 })
 export class EditVacancyModule {
 }

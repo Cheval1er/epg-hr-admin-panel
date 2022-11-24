@@ -22,7 +22,7 @@ export class VacancyFormComponent implements OnInit {
     private vacancyService: VacancyService,
     private datePipe: DatePipe,
     private route: ActivatedRoute,
-    @Inject(MAT_DIALOG_DATA) public editData: any,
+    // @Inject(MAT_DIALOG_DATA) public editData: any,
 
   ) { }
 
@@ -44,23 +44,23 @@ export class VacancyFormComponent implements OnInit {
       salary: [''],
 
     });
-    if (this.editData) {
-      this.vacancyForm.controls['vacancyName'].setValue(this.editData.vacancyName);
-      this.vacancyForm.controls['vacancyAddress'].setValue(this.editData.vacancyAddress);
-      this.vacancyForm.controls['deadLine'].setValue(this.editData.deadLine);
-      this.vacancyForm.controls['schedule'].setValue(this.editData.schedule);
-      this.vacancyForm.controls['category'].setValue(this.editData.category);
-      this.vacancyForm.controls['type'].setValue(this.editData.type);
-      this.vacancyForm.controls['description'].setValue(this.editData.description);
-      this.vacancyForm.controls['experience'].setValue(this.editData.experience);
-      this.vacancyForm.controls['probationaryPeriod'].setValue(this.editData.probationaryPeriod);
+    // if (this.editData) {
+    //   this.vacancyForm.controls['vacancyName'].setValue(this.editData.vacancyName);
+    //   this.vacancyForm.controls['vacancyAddress'].setValue(this.editData.vacancyAddress);
+    //   this.vacancyForm.controls['deadLine'].setValue(this.editData.deadLine);
+    //   this.vacancyForm.controls['schedule'].setValue(this.editData.schedule);
+    //   this.vacancyForm.controls['category'].setValue(this.editData.category);
+    //   this.vacancyForm.controls['type'].setValue(this.editData.type);
+    //   this.vacancyForm.controls['description'].setValue(this.editData.description);
+    //   this.vacancyForm.controls['experience'].setValue(this.editData.experience);
+    //   this.vacancyForm.controls['probationaryPeriod'].setValue(this.editData.probationaryPeriod);
 
-      this.vacancyForm.controls['educationLevel'].setValue(this.editData.educationLevel);
-      this.vacancyForm.controls['education'].setValue(this.editData.education);
-      this.vacancyForm.controls['educationSphere'].setValue(this.editData.educationSphere);
-      this.vacancyForm.controls['educationSphereComment'].setValue(this.editData.educationSphereComment);
-      this.vacancyForm.controls['salary'].setValue(this.editData.salary);
-    }
+    //   this.vacancyForm.controls['educationLevel'].setValue(this.editData.educationLevel);
+    //   this.vacancyForm.controls['education'].setValue(this.editData.education);
+    //   this.vacancyForm.controls['educationSphere'].setValue(this.editData.educationSphere);
+    //   this.vacancyForm.controls['educationSphereComment'].setValue(this.editData.educationSphereComment);
+    //   this.vacancyForm.controls['salary'].setValue(this.editData.salary);
+    // }
 
   }
 

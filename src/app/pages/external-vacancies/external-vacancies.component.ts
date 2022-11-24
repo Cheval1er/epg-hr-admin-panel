@@ -1,12 +1,10 @@
-import { DatePipe } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
+import { Route, Router } from '@angular/router';
 import { fadeInUp400ms } from 'src/@vex/animations/fade-in-up.animation';
 import { stagger60ms } from 'src/@vex/animations/stagger.animation';
 import { VacancyService } from 'src/app/services/vacancy.service';
@@ -49,12 +47,7 @@ export class ExternalVacanciesComponent implements OnInit, AfterViewInit {
 
   constructor(private dialogRef: MatDialog,
     private vacancyService: VacancyService,
-    private formBuilder: FormBuilder,
-
-
-    private datePipe: DatePipe,
     private router: Router
-
   ) {
     // this.dataSource = new VacancyTableDataSource();
 
@@ -128,7 +121,6 @@ export class ExternalVacanciesComponent implements OnInit, AfterViewInit {
     this.vacancyService.getAllCancelledVacancies(start, limit).subscribe(c => {
       this.dataSource = new MatTableDataSource(this.data = c['list']);
 
-      let result = this.dataSource.filter
 
       console.log(this.data);
     }),
@@ -142,7 +134,6 @@ export class ExternalVacanciesComponent implements OnInit, AfterViewInit {
     this.vacancyService.getAllCompletedVacancies(start, limit).subscribe(c => {
       this.dataSource = new MatTableDataSource(this.data = c['list']);
 
-      let result = this.dataSource.filter
 
       console.log(this.data);
     }),
@@ -158,7 +149,6 @@ export class ExternalVacanciesComponent implements OnInit, AfterViewInit {
       this.dataSource = new MatTableDataSource(this.data = c['list']);
 
 
-      let result = this.dataSource.filter
 
       console.log(this.data);
 
@@ -180,11 +170,12 @@ export class ExternalVacanciesComponent implements OnInit, AfterViewInit {
   }
 
 
+  editData;
+  editButtonClick(vacancyId: number) {
+    this.router.navigate(['/vacancy', vacancyId]);
+    this.editData = this.selectedRow
 
-  // editButtonClick(vacancyId: number) {
-  //   this.router.navigate(['/vacancy', vacancyId])
-
-  // }
+  }
 
 
   ngAfterViewInit(): void {
@@ -212,6 +203,7 @@ export class ExternalVacanciesComponent implements OnInit, AfterViewInit {
   editDialog(rowData) {
 
     rowData = this.selectedRow
+
     this.dialogRef.open(EditVacancyComponent, {
       disableClose: true,
       height: '950px',
@@ -220,8 +212,8 @@ export class ExternalVacanciesComponent implements OnInit, AfterViewInit {
 
     })
     console.log(rowData)
-  }
 
+  }
 
 
 }
