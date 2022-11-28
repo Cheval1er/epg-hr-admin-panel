@@ -22,8 +22,32 @@ const routes: VexRoutes = [
           loadChildren: () => import('./pages/external-vacancies/external-vacancies.module').then(m => m.ExternalVacanciesModule)
         },
         {
-          path: 'vacancy',
+          path: 'vacancy/:id',
           loadChildren: () => import('./pages/external-vacancies/edit-vacancy/edit-vacancy.module').then(m => m.EditVacancyModule)
+        },
+        {
+          path: 'allVacancies',
+          loadChildren: () => import('./pages/external-vacancies/external-vacancies.module').then(m => m.ExternalVacanciesModule)
+        },
+        {
+          path: 'newVacancies',
+          loadChildren: () => import('./pages/external-vacancies/new-vacancy/new-vacancy.module').then(m => m.NewVacancyModule)
+        },
+        {
+          path: 'activeVacancies',
+          loadChildren: () => import('./pages/external-vacancies/active-vacancy/active-vacancy.module').then(m => m.ActiveVacancyModule)
+        },
+        {
+          path: 'cancelledVacancies',
+          loadChildren: () => import('./pages/external-vacancies/cancelled-vacancy/cancelled-vacancy.module').then(m => m.CancelledVacancyModule)
+        },
+        {
+          path: 'completedVacancies',
+          loadChildren: () => import('./pages/external-vacancies/completed-vacancy/completed-vacancy.module').then(m => m.CompletedVacancyModule)
+        },
+        {
+          path: 'stoppedVacancies',
+          loadChildren: () => import('./pages/external-vacancies/stopped-vacancy/stopped-vacancy.module').then(m => m.StoppedVacancyModule)
         },
         {
           path: 'applicantsSearch',

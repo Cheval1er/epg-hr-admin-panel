@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { fadeInUp400ms } from 'src/@vex/animations/fade-in-up.animation';
 import { stagger60ms } from 'src/@vex/animations/stagger.animation';
 import { VacancyService } from 'src/app/services/vacancy.service';
@@ -31,7 +31,7 @@ export class ExternalVacanciesComponent implements OnInit, AfterViewInit {
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild('paginator') paginator!: MatPaginator;
-  @ViewChild(MatSort) matSort!: MatSort;
+  @ViewChild(MatSort) sort: MatSort;
 
   data: Vacancy[] = [];
   public editVacancy: List;
@@ -59,11 +59,11 @@ export class ExternalVacanciesComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.getAllVacancies();
-    this.getAllNewVacancies(0, 80);
-    this.getAllActiveVacancies(0, 80);
-    this.getAllCancelledVacancies(0, 80);
-    this.getAllCompletedVacancies(0, 80);
-    this.getAllStoppedVacancies(0, 80);
+    // this.getAllNewVacancies(0, 80);
+    // this.getAllActiveVacancies(0, 80);
+    // this.getAllCancelledVacancies(0, 80);
+    // this.getAllCompletedVacancies(0, 80);
+    // this.getAllStoppedVacancies(0, 80);
 
 
 
@@ -77,7 +77,7 @@ export class ExternalVacanciesComponent implements OnInit, AfterViewInit {
       this.dataSource = new MatTableDataSource(this.data = x['list']);
       // this.data = x['list'];
       this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.matSort;
+      this.dataSource.sort = this.sort;
       console.log(this.data);
     },
       (error: HttpErrorResponse) => {
@@ -88,78 +88,84 @@ export class ExternalVacanciesComponent implements OnInit, AfterViewInit {
   }
 
   //get all new vacancies
-  public getAllNewVacancies(start: number, limit: number): void {
-    this.vacancyService.getAllNewVacancies(start, limit).subscribe(t => {
-      this.dataSource = new MatTableDataSource(this.data = t['list']);
+  // public getAllNewVacancies(start: number, limit: number): void {
+  //   this.vacancyService.getAllNewVacancies(start, limit).subscribe(x => {
+  //     this.dataSource = new MatTableDataSource(this.data = x['list']);
 
-      console.log(this.data);
-    }),
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-
-
+  //     console.log(this.data);
+  //   }),
+  //     (error: HttpErrorResponse) => {
+  //       alert(error.message);
+  //     }
 
 
-  }
+
+
+  // }
 
   // get all active vacancies 
 
-  public getAllActiveVacancies(start: number, limit: number): void {
-    this.vacancyService.getAllActiveVacancies(start, limit).subscribe(a => {
-      this.dataSource = new MatTableDataSource(this.data = a['list']);
+  // public getAllActiveVacancies(start: number, limit: number): void {
+  //   this.vacancyService.getAllActiveVacancies(start, limit).subscribe(a => {
+  //     this.dataSource = new MatTableDataSource(this.data = a['list']);
+  //     this.dataSource.sort = this.sort;
+  //     this.dataSource.paginator = this.paginator;
 
-      console.log(this.data);
-    }),
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-  }
+  //     console.log(this.data);
+  //   }),
+  //     (error: HttpErrorResponse) => {
+  //       alert(error.message);
+  //     }
+  // }
 
   //get all cancelled vacancies
-  public getAllCancelledVacancies(start: number, limit: number): void {
-    this.vacancyService.getAllCancelledVacancies(start, limit).subscribe(c => {
-      this.dataSource = new MatTableDataSource(this.data = c['list']);
+  // public getAllCancelledVacancies(start: number, limit: number): void {
+  //   this.vacancyService.getAllCancelledVacancies(start, limit).subscribe(c => {
+  //     this.dataSource = new MatTableDataSource(this.data = c['list']);
 
 
-      console.log(this.data);
-    }),
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
+  //     console.log(this.data);
+  //   }),
+  //     (error: HttpErrorResponse) => {
+  //       alert(error.message);
+  //     }
+  // }
+
+
+  // public getAllCompletedVacancies(start: number, limit: number): void {
+  //   this.vacancyService.getAllCompletedVacancies(start, limit).subscribe(c => {
+  //     this.dataSource = new MatTableDataSource(this.data = c['list']);
+
+
+  //     console.log(this.data);
+  //   }),
+  //     (error: HttpErrorResponse) => {
+  //       alert(error.message);
+  //     }
+  // }
+
+
+  // public getAllStoppedVacancies(start: number, limit: number): void {
+  //   this.vacancyService.getAllStoppedVacancies(start, limit).subscribe(c => {
+
+  //     this.dataSource = new MatTableDataSource(this.data = c['list']);
+
+
+
+  //     console.log(this.data);
+
+  //   }),
+  //     (error: HttpErrorResponse) => {
+  //       alert(error.message);
+  //     }
+  // }
+
+
+  refreshButton() {
+    setTimeout(() => {
+      window.location.reload();
+    }, 50);
   }
-
-
-  public getAllCompletedVacancies(start: number, limit: number): void {
-    this.vacancyService.getAllCompletedVacancies(start, limit).subscribe(c => {
-      this.dataSource = new MatTableDataSource(this.data = c['list']);
-
-
-      console.log(this.data);
-    }),
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-  }
-
-
-  public getAllStoppedVacancies(start: number, limit: number): void {
-    this.vacancyService.getAllStoppedVacancies(start, limit).subscribe(c => {
-
-      this.dataSource = new MatTableDataSource(this.data = c['list']);
-
-
-
-      console.log(this.data);
-
-    }),
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-  }
-
-
-
 
   openDialog() {
     this.dialogRef.open(VacancyFormComponent, {
@@ -205,9 +211,9 @@ export class ExternalVacanciesComponent implements OnInit, AfterViewInit {
     rowData = this.selectedRow
 
     this.dialogRef.open(EditVacancyComponent, {
-      disableClose: true,
+      // disableClose: true,
       height: '950px',
-      width: '1200px',
+      width: '1400px',
       data: this.selectedRow
 
     })

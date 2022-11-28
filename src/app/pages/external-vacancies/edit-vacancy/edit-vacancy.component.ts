@@ -22,6 +22,16 @@ export class EditVacancyComponent implements OnInit {
   showAlert = false;
   vacancyForm: any;
 
+
+  displayedColumns = ['id', 'language'];
+  columnToDisplay = ['id', 'programs'];
+  displayedColumnsSkill = ['id', 'skill'];
+  displayedColumnsApplicants = ['id', 'fName', 'lName', 'personalNumber',
+    'bDay', 'mail', 'additionalMail', 'mobile', 'additionalPhone', 'applyDate'];
+
+  displayedColumnsShortList = ['id', 'fName', 'lName', 'personalNumber',
+    'bDay', 'mail', 'additionalMail', 'mobile', 'additionalPhone', 'applyDate']
+
   constructor(private formBuilder: FormBuilder,
 
     private dialogRef: MatDialog,
@@ -75,24 +85,16 @@ export class EditVacancyComponent implements OnInit {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
   updateFormData() {
     console.log('Form data is ', this.vacancyForm.value);
 
     this.vacancyForm.value.deadLine = this.datePipe.transform(this.vacancyForm.value.deadLine, 'dd-MM-yyyy');
 
     this.vacancyService.updateVacancy(this.vacancyForm.value, this.editData.id).subscribe((result) => {
-      console.log(result)
+      console.log(result);
+      setTimeout(() => {
+        window.location.reload();
+      }, 50);
     })
 
     this.dialogRef.closeAll();
@@ -169,7 +171,11 @@ export class EditVacancyComponent implements OnInit {
 
   ]
 
-
+  refreshButton() {
+    setTimeout(() => {
+      window.location.reload();
+    }, 50);
+  }
 }
 
 

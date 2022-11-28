@@ -1,48 +1,49 @@
 <h3 mat-dialog-title> Vacancy Editor </h3>
-<form [formGroup]="vacancyForm" class="form-container">
-    <mat-card>
-        <mat-card-header>
-            <mat-card-title>Vacancy Information</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
+<mat-tab-group>
+    <mat-tab label="Vacancy Information">
 
-            <!-- about vacancy -->
-            <div class=" px-6 py-4 flex flex-col">
-                <div> Vacancy Name* : </div>
-                <mat-form-field appearance="outline" style="font-size: 12px;">
-                    <input formControlName="vacancyName" matInput required>
-                    <mat-error>This field is required</mat-error>
-                </mat-form-field>
+        <form [formGroup]="vacancyForm" class="form-container">
+            <mat-card>
+
+                <mat-card-content>
+
+                    <!-- about vacancy -->
+                    <div class=" px-6 py-4 flex flex-col">
+                        <div> Vacancy Name* : </div>
+                        <mat-form-field appearance="outline" style="font-size: 12px;">
+                            <input formControlName="vacancyName" matInput required>
+                            <mat-error>This field is required</mat-error>
+                        </mat-form-field>
 
 
 
-                <div class="flex flex-col sm:flex-row sm:gap-2">
-                    <span> Address*: </span>
-                    <mat-form-field appearance="outline" class="flex-auto" style="font-size: 12px;">
-                        <input formControlName="vacancyAddress" matInput>
-                        <mat-error>This field is required</mat-error>
-                    </mat-form-field>
+                        <div class="flex flex-col sm:flex-row sm:gap-2">
+                            <span> Address*: </span>
+                            <mat-form-field appearance="outline" class="flex-auto" style="font-size: 12px;">
+                                <input formControlName="vacancyAddress" matInput>
+                                <mat-error>This field is required</mat-error>
+                            </mat-form-field>
 
-                    <span> Dead Line*: </span>
-                    <mat-form-field appearance="outline" class="smallBoxClass" style="font-size: 12px;">
-                        <input matInput [matDatepicker]="datepickerRef" formControlName="deadLine" required>
-                        <mat-hint>DD/MM/YYYY</mat-hint>
-                        <mat-datepicker-toggle [for]="datepickerRef" matSuffix></mat-datepicker-toggle>
-                        <mat-datepicker #datepickerRef></mat-datepicker>
-                        <mat-error>This field is required</mat-error>
-                    </mat-form-field>
+                            <span> Dead Line*: </span>
+                            <mat-form-field appearance="outline" class="smallBoxClass" style="font-size: 12px;">
+                                <input matInput [matDatepicker]="datepickerRef" formControlName="deadLine" required>
+                                <mat-hint>DD/MM/YYYY</mat-hint>
+                                <mat-datepicker-toggle [for]="datepickerRef" matSuffix></mat-datepicker-toggle>
+                                <mat-datepicker #datepickerRef></mat-datepicker>
+                                <mat-error>This field is required</mat-error>
+                            </mat-form-field>
 
-                    <span> Schedule *: </span>
-                    <mat-form-field appearance="outline" class="smallBoxClass" style="font-size: 12px;">
-                        <input formControlName="schedule" matInput required>
-                        <mat-error>This field is required</mat-error>
-                    </mat-form-field>
-                </div>
-                <!-- categories (list in vacancy-form.component.ts) -->
-                <div class="flex flex-col sm:flex-row sm:gap-4">
-                    <span>Category</span>
-                    <mat-form-field appearance="outline" class="flex-auto" style="font-size: 12px;">
-                        <!-- <mat-select formControlName="category">
+                            <span> Schedule *: </span>
+                            <mat-form-field appearance="outline" class="smallBoxClass" style="font-size: 12px;">
+                                <input formControlName="schedule" matInput required>
+                                <mat-error>This field is required</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <!-- categories (list in vacancy-form.component.ts) -->
+                        <div class="flex flex-col sm:flex-row sm:gap-4">
+                            <span>Category</span>
+                            <mat-form-field appearance="outline" class="flex-auto" style="font-size: 12px;">
+                                <!-- <mat-select formControlName="category">
                             <mat-option value="Hr">ადამიანური რესურსების მართვა</mat-option>
                             <mat-option value="Admin">ადმინისტრაცია</mat-option>
                             <mat-option value="Analytics">ანალიტიკა</mat-option>
@@ -50,95 +51,436 @@
                             <mat-option value="BusinessManager">ბიზნესის მართვა</mat-option>
                             <mat-option value="Billing">ბილინგი</mat-option>
                         </mat-select> -->
-                        <mat-select formControlName="category">
-                            <mat-option *ngFor="let category of categoryList" [value]="category">{{category}}
-                            </mat-option>
-                        </mat-select>
-                        <mat-error>This field is required</mat-error>
-                    </mat-form-field>
+                                <mat-select formControlName="category">
+                                    <mat-option *ngFor="let category of categoryList" [value]="category">{{category}}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error>This field is required</mat-error>
+                            </mat-form-field>
 
 
-                    <span>Type</span>
-                    <mat-form-field appearance="outline" class="flex-auto" style="font-size: 12px;">
-                        <mat-select formControlName="type">
-                            <mat-option value="Inner">შიდა ვაკანსია</mat-option>
-                            <mat-option value="External">გარე ვაკანსია</mat-option>
-                            <mat-option value="Intern">სტაჟირება</mat-option>
-                        </mat-select>
-                        <mat-error>This field is required</mat-error>
-                    </mat-form-field>
-                </div>
-                <div>
-                    <span> Description: </span>
-                    <mat-form-field appearance="outline" [style.width.%]="90" style="font-size: 12px;">
-                        <textarea formControlName="description" matInput cdkTextareaAutosize
-                            #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3" cdkAutosizeMaxRows="50"> </textarea>
-                    </mat-form-field>
-                </div>
-                <div>
-                    <span>Experience: </span>
-                    <mat-form-field appearance="outline" [style.width.%]="90" style="font-size: 12px;">
-                        <textarea formControlName="experience" matInput cdkTextareaAutosize
-                            #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3" cdkAutosizeMaxRows="50"> </textarea>
-                    </mat-form-field>
-                </div>
+                            <span>Type</span>
+                            <mat-form-field appearance="outline" class="flex-auto" style="font-size: 12px;">
+                                <mat-select formControlName="type">
+                                    <mat-option value="Inner">შიდა ვაკანსია</mat-option>
+                                    <mat-option value="External">გარე ვაკანსია</mat-option>
+                                    <mat-option value="Intern">სტაჟირება</mat-option>
+                                </mat-select>
+                                <mat-error>This field is required</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <span> Description: </span>
+                            <mat-form-field appearance="outline" [style.width.%]="90" style="font-size: 12px;">
+                                <textarea formControlName="description" matInput cdkTextareaAutosize
+                                    #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3"
+                                    cdkAutosizeMaxRows="50"> </textarea>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <span>Experience: </span>
+                            <mat-form-field appearance="outline" [style.width.%]="90" style="font-size: 12px;">
+                                <textarea formControlName="experience" matInput cdkTextareaAutosize
+                                    #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3"
+                                    cdkAutosizeMaxRows="50"> </textarea>
+                            </mat-form-field>
+                        </div>
 
-                <div class="flex flex-col sm:flex-row sm:gap-5">
-                    <span>Probationary Period: </span>
-                    <mat-form-field appearance="outline" [style.width.%]="10" style="font-size: 12px;">
-                        <input formControlName="probationaryPeriod" matInput>
-                    </mat-form-field>
+                        <div class="flex flex-col sm:flex-row sm:gap-5">
+                            <span>Probationary Period: </span>
+                            <mat-form-field appearance="outline" [style.width.%]="10" style="font-size: 12px;">
+                                <input formControlName="probationaryPeriod" matInput>
+                            </mat-form-field>
 
-                    <span>Education Level*: </span>
-                    <mat-form-field appearance="outline" [style.width.%]="40" style="font-size: 12px;">
-                        <mat-select formControlName="educationLevel">
-                            <mat-option *ngFor="let education of educationList" [value]="education">{{education}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
+                            <span>Education Level*: </span>
+                            <mat-form-field appearance="outline" [style.width.%]="40" style="font-size: 12px;">
+                                <mat-select formControlName="educationLevel">
+                                    <mat-option *ngFor="let education of educationList" [value]="education">
+                                        {{education}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
 
-                    <mat-checkbox formControlName="education">უმაღლესი განათლება</mat-checkbox>
-                </div>
+                            <mat-checkbox formControlName="education">უმაღლესი განათლება</mat-checkbox>
+                        </div>
 
-                <div>
+                        <div>
 
-                </div>
+                        </div>
 
-                <div class="flex flex-col sm:flex-row sm:gap-2">
-                    <!-- <span>Education Sphere*: </span>
+                        <div class="flex flex-col sm:flex-row sm:gap-2">
+                            <!-- <span>Education Sphere*: </span>
                     <mat-form-field appearance="outline" style="font-size: 12px;">
                         <mat-select formControlName="educationSphere">
                             <mat-option *ngFor="let sphere of sphereList" [value]="sphere">{{sphere}}</mat-option>
                         </mat-select>
                     </mat-form-field> -->
 
-                    <span> Education Sphere Comment: </span>
-                    <mat-form-field appearance="outline" class="flex-auto" style="font-size: 12px;">
-                        <input formControlName="educationSphereComment" matInput>
-                        <mat-error>This field is required</mat-error>
-                    </mat-form-field>
+                            <span> Education Sphere Comment: </span>
+                            <mat-form-field appearance="outline" class="flex-auto" style="font-size: 12px;">
+                                <input formControlName="educationSphereComment" matInput>
+                                <mat-error>This field is required</mat-error>
+                            </mat-form-field>
 
-                </div>
+                        </div>
 
-                <div>
-                    <span>Salary: </span>
-                    <mat-form-field appearance="outline" [style.width.%]="10" style="font-size: 12px;">
-                        <input formControlName="salary" matInput>
-                    </mat-form-field>
-
-
-                </div>
+                        <div>
+                            <span>Salary: </span>
+                            <mat-form-field appearance="outline" [style.width.%]="10" style="font-size: 12px;">
+                                <input formControlName="salary" matInput>
+                            </mat-form-field>
 
 
-            </div>
-        </mat-card-content>
-
-        <mat-card-actions class="flex flex-col sm:flex-row sm:gap-4 margin">
-            <button mat-button class="button-7" role="button" (click)="updateFormData()">Update</button>
-
-            <button class="button-7 " role="button" (click)="closeForm()">Cancel</button>
+                        </div>
 
 
-        </mat-card-actions>
-    </mat-card>
-</form>
+                    </div>
+                </mat-card-content>
+
+                <mat-card-actions class="flex flex-col sm:flex-row sm:gap-4 margin">
+                    <button mat-button class="button-7" role="button" (click)="updateFormData()">Update</button>
+
+                    <button class="button-7 " role="button" (click)="closeForm()">Cancel</button>
+
+
+                </mat-card-actions>
+            </mat-card>
+        </form>
+    </mat-tab>
+
+    <mat-tab label="Vacancy Language">
+        <div class="buttonDisplay">
+            <span> <button class="button-2" role="button" (click)="refreshButton()">
+                    <mat-icon>cached</mat-icon> Refresh
+                </button></span>
+            <span> <button class="button-2" role="button">
+                    <mat-icon>assignment</mat-icon>
+                    New
+                </button></span>
+            <span> <button class="button-2" role="button">
+                    <mat-icon>edit</mat-icon> Edit
+                </button></span>
+            <span> <button class="button-2" role="button">
+                    <mat-icon>remove_red_eye</mat-icon> View
+                </button></span>
+
+            <span> <button class="button-2" role="button">
+                    <mat-icon>delete_forever</mat-icon> Delete
+                </button></span>
+
+        </div>
+        <table mat-table>
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
+                    ID
+                </th>
+                <td mat-cell *matCellDef=" let vacancy">{{vacancy?.id}} </td>
+
+            </ng-container>
+
+            <ng-container matColumnDef="language">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
+                    Language
+                </th>
+                <td mat-cell *matCellDef=" let vacancy">{{vacancy?.language}} </td>
+
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let vacancy; columns: displayedColumns;"></tr>
+        </table>
+        <button class="button-7 displayEnd" role="button" (click)="closeForm()">Cancel</button>
+
+    </mat-tab>
+    <mat-tab label="Vacancy Program">
+        <div class="buttonDisplay">
+            <span> <button class="button-2" role="button" (click)="refreshButton()">
+                    <mat-icon>cached</mat-icon> Refresh
+                </button></span>
+            <span> <button class="button-2" role="button">
+                    <mat-icon>assignment</mat-icon>
+                    New
+                </button></span>
+            <span> <button class="button-2" role="button">
+                    <mat-icon>edit</mat-icon> Edit
+                </button></span>
+            <span> <button class="button-2" role="button">
+                    <mat-icon>remove_red_eye</mat-icon> View
+                </button></span>
+
+            <span> <button class="button-2" role="button">
+                    <mat-icon>delete_forever</mat-icon> Delete
+                </button></span>
+
+        </div>
+        <table mat-table>
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
+                    ID
+                </th>
+                <td mat-cell *matCellDef=" let vacancy">{{vacancy?.id}} </td>
+
+            </ng-container>
+
+            <ng-container matColumnDef="programs">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
+                    Program
+                </th>
+                <td mat-cell *matCellDef=" let vacancy">{{vacancy?.program}} </td>
+
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columnToDisplay"></tr>
+            <tr mat-row *matRowDef="let vacancy; columns: columnToDisplay;"></tr>
+        </table>
+        <button class="button-7 displayEnd" role="button" (click)="closeForm()">Cancel</button>
+    </mat-tab>
+    <mat-tab label="Vacancy Skill">
+        <div class="buttonDisplay">
+            <span> <button class="button-2" role="button" (click)="refreshButton()">
+                    <mat-icon>cached</mat-icon> Refresh
+                </button></span>
+            <span> <button class="button-2" role="button">
+                    <mat-icon>assignment</mat-icon>
+                    New
+                </button></span>
+            <span> <button class="button-2" role="button">
+                    <mat-icon>edit</mat-icon> Edit
+                </button></span>
+            <span> <button class="button-2" role="button">
+                    <mat-icon>remove_red_eye</mat-icon> View
+                </button></span>
+
+            <span> <button class="button-2" role="button">
+                    <mat-icon>delete_forever</mat-icon> Delete
+                </button></span>
+
+        </div>
+        <table mat-table>
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
+                    ID
+                </th>
+                <td mat-cell *matCellDef=" let vacancy">{{vacancy?.id}} </td>
+
+            </ng-container>
+
+            <ng-container matColumnDef="skill">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
+                    Skill
+                </th>
+                <td mat-cell *matCellDef=" let vacancy">{{vacancy?.skill}} </td>
+
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsSkill"></tr>
+            <tr mat-row *matRowDef="let vacancy; columns: displayedColumnsSkill;"></tr>
+        </table>
+        <button class="button-7 displayEnd" role="button" (click)="closeForm()">Cancel</button>
+    </mat-tab>
+    <mat-tab label="Vacancy Applicants">
+        <div class="buttonDisplay">
+            <span> <button class="button-2" role="button" (click)="refreshButton()">
+                    <mat-icon>cached</mat-icon> Refresh
+                </button></span>
+
+            <span> <button class="button-2" role="button">
+                    <mat-icon>edit</mat-icon> Edit Applicant
+                </button></span>
+            <span> <button class="button-2" role="button">
+                    <mat-icon>remove_red_eye</mat-icon> Short List
+                </button></span>
+            <span> <button class="button-2" role="button">
+                    <mat-icon>assignment</mat-icon>
+                    Print Applicant
+                </button></span>
+            <span> <button class="button-2" role="button">
+                    <mat-icon>delete_forever</mat-icon> Applicants Excel
+                </button></span>
+
+        </div>
+        <table mat-table>
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
+                    ID
+                </th>
+                <td mat-cell *matCellDef=" let vacancy">{{vacancy?.id}} </td>
+
+            </ng-container>
+
+            <ng-container matColumnDef="fName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
+                    First Name
+                </th>
+                <td mat-cell *matCellDef=" let vacancy">{{vacancy?.fName}} </td>
+
+            </ng-container>
+            <ng-container matColumnDef="lName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
+                    Last Name
+                </th>
+                <td mat-cell *matCellDef=" let vacancy">{{vacancy?.lName}} </td>
+
+            </ng-container>
+
+            <ng-container matColumnDef="personalNumber">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
+                    Personal Number
+                </th>
+                <td mat-cell *matCellDef=" let vacancy">{{vacancy?.personalNumber}} </td>
+
+            </ng-container>
+            <ng-container matColumnDef="bDay">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
+                    Birth Day
+                </th>
+                <td mat-cell *matCellDef=" let vacancy">{{vacancy?.bDay}} </td>
+
+            </ng-container>
+            <ng-container matColumnDef="mail">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
+                    Mail
+                </th>
+                <td mat-cell *matCellDef=" let vacancy">{{vacancy?.mail}} </td>
+
+            </ng-container>
+
+            <ng-container matColumnDef="additionalMail">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
+                    Additional Mail
+                </th>
+                <td mat-cell *matCellDef=" let vacancy">{{vacancy?.additionalMail}} </td>
+
+            </ng-container>
+
+            <ng-container matColumnDef="mobile">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
+                    Mobile
+                </th>
+                <td mat-cell *matCellDef=" let vacancy">{{vacancy?.mobile}} </td>
+
+            </ng-container>
+
+            <ng-container matColumnDef="additionalPhone">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
+                    Additional Phone
+                </th>
+                <td mat-cell *matCellDef=" let vacancy">{{vacancy?.additionalPhone}} </td>
+
+            </ng-container>
+            <ng-container matColumnDef="applyDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
+                    Apply Date
+                </th>
+                <td mat-cell *matCellDef=" let vacancy">{{vacancy?.applyDate}} </td>
+
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsApplicants"></tr>
+            <tr mat-row *matRowDef="let vacancy; columns: displayedColumnsApplicants;"></tr>
+        </table>
+        <button class="button-7 displayEnd" role="button" (click)="closeForm()">Cancel</button>
+    </mat-tab>
+    <mat-tab label="Short List">
+        <div class="buttonDisplay">
+            <span> <button class="button-2" role="button" (click)="refreshButton()">
+                    <mat-icon>cached</mat-icon> Refresh
+                </button></span>
+
+            <span> <button class="button-2" role="button">
+                    <mat-icon>edit</mat-icon> Edit Applicant
+                </button></span>
+            <span> <button class="button-2" role="button">
+                    <mat-icon>remove_red_eye</mat-icon> Short List
+                </button></span>
+            <span> <button class="button-2" role="button">
+                    <mat-icon>assignment</mat-icon>
+                    Print Applicant
+                </button></span>
+            <span> <button class="button-2" role="button">
+                    <mat-icon>delete_forever</mat-icon>Remove
+                </button></span>
+
+        </div>
+        <table mat-table>
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
+                    ID
+                </th>
+                <td mat-cell *matCellDef=" let vacancy">{{vacancy?.id}} </td>
+
+            </ng-container>
+
+            <ng-container matColumnDef="fName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
+                    First Name
+                </th>
+                <td mat-cell *matCellDef=" let vacancy">{{vacancy?.fName}} </td>
+
+            </ng-container>
+            <ng-container matColumnDef="lName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
+                    Last Name
+                </th>
+                <td mat-cell *matCellDef=" let vacancy">{{vacancy?.lName}} </td>
+
+            </ng-container>
+
+            <ng-container matColumnDef="personalNumber">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
+                    Personal Number
+                </th>
+                <td mat-cell *matCellDef=" let vacancy">{{vacancy?.personalNumber}} </td>
+
+            </ng-container>
+            <ng-container matColumnDef="bDay">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
+                    Birth Day
+                </th>
+                <td mat-cell *matCellDef=" let vacancy">{{vacancy?.bDay}} </td>
+
+            </ng-container>
+            <ng-container matColumnDef="mail">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
+                    Mail
+                </th>
+                <td mat-cell *matCellDef=" let vacancy">{{vacancy?.mail}} </td>
+
+            </ng-container>
+
+            <ng-container matColumnDef="additionalMail">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
+                    Additional Mail
+                </th>
+                <td mat-cell *matCellDef=" let vacancy">{{vacancy?.additionalMail}} </td>
+
+            </ng-container>
+
+            <ng-container matColumnDef="mobile">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
+                    Mobile
+                </th>
+                <td mat-cell *matCellDef=" let vacancy">{{vacancy?.mobile}} </td>
+
+            </ng-container>
+
+            <ng-container matColumnDef="additionalPhone">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
+                    Additional Phone
+                </th>
+                <td mat-cell *matCellDef=" let vacancy">{{vacancy?.additionalPhone}} </td>
+
+            </ng-container>
+            <ng-container matColumnDef="applyDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
+                    Apply Date
+                </th>
+                <td mat-cell *matCellDef=" let vacancy">{{vacancy?.applyDate}} </td>
+
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsShortList"></tr>
+            <tr mat-row *matRowDef="let vacancy; columns: displayedColumnsShortList;"></tr>
+        </table>
+        <button class="button-7 displayEnd" role="button" (click)="closeForm()">Cancel</button>
+    </mat-tab>

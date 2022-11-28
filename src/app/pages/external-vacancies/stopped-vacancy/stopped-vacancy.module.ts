@@ -4,14 +4,12 @@ import { CommonModule } from '@angular/common';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { ExternalVacanciesComponent } from './external-vacancies.component';
-import { ExternalVacanciesRoutingModule } from './external-vacancies-routing.module';
+
 
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
-import { VacancyFormModule } from './vacancy-form/vacancy-form.module';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -34,16 +32,22 @@ import {
 import { CdkTableModule } from '@angular/cdk/table';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { A11yModule } from '@angular/cdk/a11y';
-import { MatTabGroup, MatTabsModule } from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
+
+import { VacancyFormModule } from '../vacancy-form/vacancy-form.module';
+
+import { StoppedVacancyComponent } from './stopped-vacancy.component';
+import { StoppedVacancyRoutingModule } from './stopped-vacancy-routing.module';
+
 
 
 @NgModule({
-    declarations: [ExternalVacanciesComponent],
+    declarations: [StoppedVacancyComponent],
     imports: [
 
 
         CommonModule,
-        ExternalVacanciesRoutingModule,
+        StoppedVacancyRoutingModule,
         MatTableModule,
         MatPaginatorModule,
         MatSortModule,
@@ -80,10 +84,8 @@ import { MatTabGroup, MatTabsModule } from '@angular/material/tabs';
         ScrollingModule,
         A11yModule,
         MatTabsModule,
-
-
     ],
     providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }, VacancyService]
 })
-export class ExternalVacanciesModule {
+export class StoppedVacancyModule {
 }

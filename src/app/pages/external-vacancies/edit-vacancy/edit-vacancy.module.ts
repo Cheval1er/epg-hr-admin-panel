@@ -24,6 +24,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatTab, MatTabsModule } from '@angular/material/tabs';
+import { MatTableModule } from '@angular/material/table';
 
 
 
@@ -50,8 +52,11 @@ import { MatSliderModule } from '@angular/material/slider';
         MatCheckboxModule,
         MatRadioModule,
         MatSlideToggleModule,
-
+        MatIconModule,
         MatCardModule,
+        MatTabsModule,
+        MatTableModule,
+
     ],
     providers: [{ provide: LOCALE_ID, useValue: 'en-IN' }, DatePipe, VacancyService
     ]

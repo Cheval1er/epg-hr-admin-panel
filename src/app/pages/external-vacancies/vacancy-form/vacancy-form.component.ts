@@ -76,6 +76,10 @@ export class VacancyFormComponent implements OnInit {
       console.log(result)
     })
     this.dialogRef.closeAll();
+    setTimeout(() => {
+      window.location.reload();
+    }, 50);
+
   }
 
   closeForm() {
