@@ -40,6 +40,7 @@
 
 
 
+
     <ng-container matColumnDef="edit">
 
         <th mat-header-cell *matHeaderCellDef colspan="10">
@@ -53,21 +54,22 @@
                 <span> <button class="button-2" role="button">
                         <mat-icon>remove_red_eye</mat-icon> View Vacancy
                     </button></span>
-                <span> <button class="button-2" role="button">
+                <span> <button class="button-2" role="button" (click)="activeVacancy(data)">
                         <mat-icon>send</mat-icon> Active Vacancy
                     </button></span>
-                <span> <button class="button-2" role="button">
+                <span> <button class="button-2" role="button" (click)="cancelVacancy(data)">
                         <mat-icon>cancel</mat-icon>Cancel Vacancy
                     </button></span>
-                <span> <button class="button-2" role="button">
+                <span> <button class="button-2" role="button" (click)="deleteVacancy(data)">
                         <mat-icon>delete_forever</mat-icon> Delete Vacancy
                     </button></span>
-                <span> <button class="button-2" role="button">
+                <span> <button class="button-2" role="button" (click)="duplicateVacancy(data)">
                         <mat-icon>file_copy</mat-icon> Duplicate Vacancy
                     </button></span>
             </div>
         </th>
     </ng-container>
+
 
 
 

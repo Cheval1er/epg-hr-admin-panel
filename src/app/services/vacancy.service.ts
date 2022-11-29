@@ -55,4 +55,24 @@ export class VacancyService {
     public updateVacancy(vacancy: Vacancy, id: number) {
         return this.http.put(`${this.apiServerUrl}/VacancyAdmin/vacancy/${id}`, vacancy)
     }
+
+    public cancelVacancy(vacancy: any): Observable<Vacancy[]> {
+        return this.http.post<Vacancy[]>(`${this.apiServerUrl}/VacancyAdmin/vacancy/cancelVacancy`, vacancy)
+    }
+
+    public duplicateVacancy(vacancy: any): Observable<Vacancy[]> {
+        return this.http.post<Vacancy[]>(`${this.apiServerUrl}/VacancyAdmin/vacancy/duplicateVacancy`, vacancy)
+    }
+    public activeVacancy(vacancy: any): Observable<Vacancy[]> {
+        return this.http.post<Vacancy[]>(`${this.apiServerUrl}/VacancyAdmin/vacancy/activeVacancy`, vacancy)
+    }
+
+    public deleteVacancy(vacancy: any): Observable<Vacancy[]> {
+        return this.http.post<Vacancy[]>(`${this.apiServerUrl}/VacancyAdmin/vacancy/deleteVacancy`, vacancy)
+    }
+
+
+
 }
+
+

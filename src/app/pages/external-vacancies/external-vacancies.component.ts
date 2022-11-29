@@ -26,7 +26,7 @@ import { VacancyFormComponent } from './vacancy-form/vacancy-form.component';
 export class ExternalVacanciesComponent implements OnInit, AfterViewInit {
   // [x: string]: any;
 
-
+  selectedRow;
   // @ViewChild(MatTable) table!: MatTable<List>;
   dataSource!: MatTableDataSource<any>;
 
@@ -86,6 +86,50 @@ export class ExternalVacanciesComponent implements OnInit, AfterViewInit {
 
     )
   }
+
+  public cancelVacancy(rowData): void {
+    rowData = this.selectedRow;
+    this.vacancyService.cancelVacancy(rowData).subscribe((result) => {
+      console.log(result)
+    })
+    setTimeout(() => {
+      window.location.reload();
+    }, 2);
+  }
+
+  public duplicateVacancy(rowData): void {
+    rowData = this.selectedRow;
+    this.vacancyService.duplicateVacancy(rowData).subscribe((result) => {
+      console.log(result)
+    })
+    setTimeout(() => {
+      window.location.reload();
+    }, 2);
+  }
+
+
+  public activeVacancy(rowData): void {
+    rowData = this.selectedRow;
+    this.vacancyService.activeVacancy(rowData).subscribe((result) => {
+      console.log(result)
+    })
+    setTimeout(() => {
+      window.location.reload();
+    }, 2);
+
+  }
+
+  public deleteVacancy(rowData): void {
+    rowData = this.selectedRow;
+    this.vacancyService.deleteVacancy(rowData).subscribe((result) => {
+      console.log(result)
+    })
+    setTimeout(() => {
+      window.location.reload();
+    }, 2);
+
+  }
+
 
   //get all new vacancies
   // public getAllNewVacancies(start: number, limit: number): void {
@@ -203,7 +247,7 @@ export class ExternalVacanciesComponent implements OnInit, AfterViewInit {
 
 
   }
-  selectedRow;
+
 
 
   editDialog(rowData) {
