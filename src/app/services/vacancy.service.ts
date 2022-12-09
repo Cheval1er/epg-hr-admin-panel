@@ -4,7 +4,7 @@ import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
 
 import { List, Vacancy } from "../pages/external-vacancies/model/vacancy";
-import { ListProgram, VacancyProgramModel } from "../pages/external-vacancies/model/vacancyProgram";
+
 
 
 
@@ -80,25 +80,18 @@ export class VacancyService {
 
 
     // vacancy program in edit
-    public getAllPrograms(id: number) {
-        return this.http.get(`${this.apiServerUrl}/VacancyAdmin/vacancy/program?vacancyId=${id}`)
-
-    }
 
 
-    public addNewProgram(id: number, program: VacancyProgramModel) {
-        return this.http.post(`${this.apiServerUrl}/VacancyAdmin/vacancy/program?vacancyId=${id}`, program)
-
-    }
-
-    public getNewProgram(id: number, page: number, start: number, limit: number) {
+    public getAllPrograms(id: number, page: number, start: number, limit: number) {
         return this.http.get(`${this.apiServerUrl}/VacancyAdmin/vacancy/program?vacancyId=${id}&page=${page}&start=${start}&limit=${limit}`)
 
     }
-    public updateNewProgram(objectId: number, id: number, program: any) {
-        return this.http.put(`${this.apiServerUrl}/VacancyAdmin/vacancy/program/${objectId}?vacancyId=${id}`, program)
+
+    public addNewProgram(vacancyId: number, program: any) {
+        return this.http.post(`${this.apiServerUrl}/VacancyAdmin/vacancy/program?vacancyId=${vacancyId}`, program)
 
     }
+
 
 
 }

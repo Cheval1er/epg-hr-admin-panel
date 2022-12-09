@@ -34,13 +34,13 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { ResizableModule } from 'angular-resizable-element';
 import { CompletedVacancyRoutingModule } from '../completed-vacancy/completed-vacancy-routing.module';
 import { VacancyFormModule } from '../vacancy-form/vacancy-form.module';
-import { NewProgramComponent } from './new-program/new-program.component';
+
 
 
 
 
 @NgModule({
-    declarations: [EditVacancyComponent, NewProgramComponent,],
+    declarations: [EditVacancyComponent,],
     imports: [
 
         CommonModule,

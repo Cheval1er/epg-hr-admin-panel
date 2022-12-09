@@ -34,7 +34,7 @@ export class List {
     educationLevel: DictionaryItem;
     language?: DictionaryItem;
     languageLevel?: any;
-    programs?: vacancyProgram;
+
     skill?: any;
     probationaryPeriod: string;
     salary: string;
@@ -56,7 +56,7 @@ export interface Vacancy {
     count?: string;
     vacancies?: string;
     languages?: string;
-    programs?: vacancyProgram;
+    programs?: any;
     departments?: string;
     educationLevels?: string;
     gender?: string;
@@ -67,23 +67,5 @@ export interface Vacancy {
     noExperience?: boolean
 }
 
-export interface vacancyLanguage {
-    vacancyId: number;
-    language: DictionaryItem;
-    languageLevel: DictionaryItem;
-    vacancy: Vacancy;
-    otherLanguage: string;
 
 
-}
-
-export interface vacancyProgram {
-    id: number;
-    program: DictionaryItem;
-    programLevel: DictionaryItem;
-    isAdmin: boolean;
-    vacancy: Vacancy;
-    otherProgram: string;
-
-
-}

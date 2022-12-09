@@ -220,12 +220,12 @@ export class ExternalVacanciesComponent implements OnInit, AfterViewInit {
   }
 
 
-  editData;
-  editButtonClick(vacancyId: number) {
-    this.router.navigate(['/vacancy', vacancyId]);
-    this.editData = this.selectedRow
+  // editData;
+  // editButtonClick(vacancyId: number) {
+  //   this.router.navigate(['/vacancy', vacancyId]);
+  //   this.editData = this.selectedRow
 
-  }
+  // }
 
 
   ngAfterViewInit(): void {

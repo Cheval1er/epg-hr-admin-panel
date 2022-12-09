@@ -6,9 +6,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { start } from 'repl';
 import { VacancyService } from 'src/app/services/vacancy.service';
-import { Vacancy, vacancyProgram } from '../model/vacancy';
-import { VacancyProgramModel, ListProgram } from '../model/vacancyProgram';
-import { NewProgramComponent } from './new-program/new-program.component';
+import { Vacancy } from '../model/vacancy';
+
+
 @Component({
   selector: 'vex-edit-vacancy',
   templateUrl: './edit-vacancy.component.html',
@@ -16,16 +16,18 @@ import { NewProgramComponent } from './new-program/new-program.component';
 })
 export class EditVacancyComponent implements OnInit {
   convertDate: string;
-  dateFormat: string;
+  selectedRow;
   dataSource!: MatTableDataSource<any>;
-  vacancyId: number;
+
   vacancy: Vacancy[] = [];
 
   showAlert = false;
   vacancyForm: any;
 
   dataSourceProgram!: MatTableDataSource<any>;
-  programData: ListProgram[] = [];
+
+
+
 
   displayedColumns = ['id', 'language'];
   columnToDisplay = ['id', 'programs'];
@@ -86,8 +88,8 @@ export class EditVacancyComponent implements OnInit {
     }
 
 
-    this.getAllProgram();
 
+    console.log(this.editData)
 
   };
 
@@ -183,26 +185,13 @@ export class EditVacancyComponent implements OnInit {
     }, 50);
   }
 
-  public getAllProgram() {
-    this.vacancyService.getAllPrograms(this.editData.id).subscribe(x => {
-      this.dataSourceProgram = new MatTableDataSource(this.programData = x['list']);
-      console.log(this.programData);
-    })
-  }
-
-  openDialog(editData) {
-    const dialogRef = this.dialog.open(NewProgramComponent, {
-      data: this.editData
-
-    });
-
-
-  }
-
-
 
 
 }
+
+
+
+
 
 
 
