@@ -23,7 +23,8 @@
                         [routerLink]="['/pages/cancelledVacancies']">Cancelled</button></span>
                 <span> <button class="button-7" role="button"
                         [routerLink]="['/pages/completedVacancies']">Completed</button></span>
-                <span> <button class="button-7" role="button">Stopped</button></span>
+                <span> <button class="button-7" role="button"
+                        (click)="getAllStoppedVacancies(0, 80)">Stopped</button></span>
                 <span>
                     <mat-form-field appearance="outline" class="filterClass">
                         <input matInput placeholder="search" autocomplete="off" (keyup)="filterData($event)">

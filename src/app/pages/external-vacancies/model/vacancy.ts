@@ -1,7 +1,7 @@
 
 export interface DictionaryItem {
 
-    id: number;
+    vacancyId: number;
     fixed: boolean;
     key: string;
     name: string;
@@ -17,7 +17,7 @@ export class List {
     modifyUser: string;
     removeDate: Date;
     removeUser: string;
-    id: number;
+    vacancyId: number;
     vacancyName: string;
     vacancyAddress: string;
     vacancyDate?: Date;
@@ -32,8 +32,9 @@ export class List {
     experience: string;
     experienceSphere: DictionaryItem;
     educationLevel: DictionaryItem;
-    language?: any;
+    language?: DictionaryItem;
     languageLevel?: any;
+    programs?: vacancyProgram;
     skill?: any;
     probationaryPeriod: string;
     salary: string;
@@ -55,7 +56,7 @@ export interface Vacancy {
     count?: string;
     vacancies?: string;
     languages?: string;
-    programs?: string;
+    programs?: vacancyProgram;
     departments?: string;
     educationLevels?: string;
     gender?: string;
@@ -64,4 +65,25 @@ export interface Vacancy {
     dateFrom?: string;
     dateTo?: string;
     noExperience?: boolean
+}
+
+export interface vacancyLanguage {
+    vacancyId: number;
+    language: DictionaryItem;
+    languageLevel: DictionaryItem;
+    vacancy: Vacancy;
+    otherLanguage: string;
+
+
+}
+
+export interface vacancyProgram {
+    id: number;
+    program: DictionaryItem;
+    programLevel: DictionaryItem;
+    isAdmin: boolean;
+    vacancy: Vacancy;
+    otherProgram: string;
+
+
 }

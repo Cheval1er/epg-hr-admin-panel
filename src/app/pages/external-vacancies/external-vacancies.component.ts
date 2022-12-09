@@ -9,7 +9,7 @@ import { fadeInUp400ms } from 'src/@vex/animations/fade-in-up.animation';
 import { stagger60ms } from 'src/@vex/animations/stagger.animation';
 import { VacancyService } from 'src/app/services/vacancy.service';
 import { EditVacancyComponent } from './edit-vacancy/edit-vacancy.component';
-import { List, Vacancy } from './vacancy';
+import { List, Vacancy } from './model/vacancy';
 
 import { VacancyFormComponent } from './vacancy-form/vacancy-form.component';
 
@@ -261,6 +261,7 @@ export class ExternalVacanciesComponent implements OnInit, AfterViewInit {
       data: this.selectedRow
 
     })
+
     console.log(rowData)
 
   }

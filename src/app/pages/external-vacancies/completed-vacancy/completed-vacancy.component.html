@@ -21,7 +21,8 @@
                         [routerLink]="['/pages/activeVacancies']">Active</button></span>
                 <span> <button class="button-7" role="button"
                         [routerLink]="['/pages/cancelledVacancies']">Cancelled</button></span>
-                <span> <button class="button-7" role="button">Completed</button></span>
+                <span> <button class="button-7" role="button"
+                        (click)="getAllCompletedVacancies(0, 80)">Completed</button></span>
                 <span> <button class="button-7" role="button"
                         [routerLink]="['/pages/stoppedVacancies']">Stopped</button></span>
                 <span>

@@ -1,12 +1,14 @@
 import { DatePipe } from '@angular/common';
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
+import { start } from 'repl';
 import { VacancyService } from 'src/app/services/vacancy.service';
-import { Vacancy } from '../vacancy';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Vacancy, vacancyProgram } from '../model/vacancy';
+import { VacancyProgramModel, ListProgram } from '../model/vacancyProgram';
+import { NewProgramComponent } from './new-program/new-program.component';
 @Component({
   selector: 'vex-edit-vacancy',
   templateUrl: './edit-vacancy.component.html',
@@ -22,6 +24,8 @@ export class EditVacancyComponent implements OnInit {
   showAlert = false;
   vacancyForm: any;
 
+  dataSourceProgram!: MatTableDataSource<any>;
+  programData: ListProgram[] = [];
 
   displayedColumns = ['id', 'language'];
   columnToDisplay = ['id', 'programs'];
@@ -38,6 +42,7 @@ export class EditVacancyComponent implements OnInit {
     private vacancyService: VacancyService,
     private datePipe: DatePipe,
     private route: ActivatedRoute,
+    public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public editData: any,
 
 
@@ -81,9 +86,10 @@ export class EditVacancyComponent implements OnInit {
     }
 
 
+    this.getAllProgram();
+
+
   };
-
-
 
   updateFormData() {
     console.log('Form data is ', this.vacancyForm.value);
@@ -176,6 +182,28 @@ export class EditVacancyComponent implements OnInit {
       window.location.reload();
     }, 50);
   }
+
+  public getAllProgram() {
+    this.vacancyService.getAllPrograms(this.editData.id).subscribe(x => {
+      this.dataSourceProgram = new MatTableDataSource(this.programData = x['list']);
+      console.log(this.programData);
+    })
+  }
+
+  openDialog(editData) {
+    const dialogRef = this.dialog.open(NewProgramComponent, {
+      data: this.editData
+
+    });
+
+
+  }
+
+
+
+
 }
+
+
 
 

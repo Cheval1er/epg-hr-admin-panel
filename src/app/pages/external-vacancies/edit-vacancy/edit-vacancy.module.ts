@@ -7,10 +7,9 @@ import { CommonModule, DatePipe } from '@angular/common';
 
 
 
-import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatNativeDateModule } from '@angular/material/core';
 import { VacancyService } from 'src/app/services/vacancy.service';
 import { EditVacancyComponent } from './edit-vacancy.component';
-import { EditVacancyRoutingModule } from './edit-vacancy-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
@@ -24,17 +23,37 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSliderModule } from '@angular/material/slider';
-import { MatTab, MatTabsModule } from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
+import { HttpClientModule } from '@angular/common/http';
+import { A11yModule } from '@angular/cdk/a11y';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { CdkTableModule } from '@angular/cdk/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { ResizableModule } from 'angular-resizable-element';
+import { CompletedVacancyRoutingModule } from '../completed-vacancy/completed-vacancy-routing.module';
+import { VacancyFormModule } from '../vacancy-form/vacancy-form.module';
+import { NewProgramComponent } from './new-program/new-program.component';
+
 
 
 
 @NgModule({
-    declarations: [EditVacancyComponent],
+    declarations: [EditVacancyComponent, NewProgramComponent,],
     imports: [
 
         CommonModule,
-        EditVacancyRoutingModule,
+        CompletedVacancyRoutingModule,
+        MatTableModule,
+        MatPaginatorModule,
+
+        MatIconModule,
+        MatButtonModule,
+        MatDialogModule,
+        HttpClientModule,
+        MatDatepickerModule,
+        CommonModule,
         FormsModule,
         ReactiveFormsModule,
         MatFormFieldModule,
@@ -52,10 +71,20 @@ import { MatTableModule } from '@angular/material/table';
         MatCheckboxModule,
         MatRadioModule,
         MatSlideToggleModule,
-        MatIconModule,
+
         MatCardModule,
+        VacancyFormModule,
+
+        ResizableModule,
+
+        CdkTableModule,
+        ScrollingModule,
+        A11yModule,
         MatTabsModule,
-        MatTableModule,
+        MatDialogModule,
+
+
+
 
     ],
     providers: [{ provide: LOCALE_ID, useValue: 'en-IN' }, DatePipe, VacancyService

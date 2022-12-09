@@ -7,7 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { VacancyService } from 'src/app/services/vacancy.service';
 import { EditVacancyComponent } from '../edit-vacancy/edit-vacancy.component';
-import { Vacancy, List } from '../vacancy';
+import { Vacancy, List } from '../model/vacancy';
 import { VacancyFormComponent } from '../vacancy-form/vacancy-form.component';
 
 @Component({

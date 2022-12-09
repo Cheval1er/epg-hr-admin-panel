@@ -1,0 +1,39 @@
+<h1>Vacancy program</h1>
+<form [formGroup]="vacancyProgramForm" class="'form-Container">
+    <mat-card>
+        <div class=" px-6 py-4 flex flex-col">
+            <div>
+                Program:
+                <mat-form-field appearance="outline" class="flex-auto" style="font-size: 12px;">
+                    <mat-select formControlName="programName">
+                        <mat-option *ngFor="let programName of programList" [value]="programName">{{programName}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class=" px-6 py-4 flex flex-col">
+            <div>
+                Comment:
+                <mat-form-field appearance="outline" class="flex-auto" style="font-size: 12px;">
+                    <input formControlName="comment" matInput>
+
+                </mat-form-field>
+            </div>
+        </div>
+
+    </mat-card>
+
+</form>
+
+<div>
+    <mat-card-actions class="flex flex-col sm:flex-row sm:gap-4 margin">
+        <button mat-button class="button-7" role="button" (click)="saveFormData()">Save</button>
+
+
+        <button class="button-7 " role="button" (click)="closeForm()">Cancel</button>
+
+
+    </mat-card-actions>
+
+</div>
