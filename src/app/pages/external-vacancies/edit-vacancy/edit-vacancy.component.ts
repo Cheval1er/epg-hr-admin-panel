@@ -1,4 +1,5 @@
 import { DatePipe } from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -6,7 +7,10 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { start } from 'repl';
 import { VacancyService } from 'src/app/services/vacancy.service';
-import { Vacancy } from '../model/vacancy';
+import { Vacancy, } from '../model/vacancy';
+import { ProgramVacancy } from '../model/vacancy-program-model';
+import { VacancyFormComponent } from '../vacancy-form/vacancy-form.component';
+import { NewProgramFormComponent } from './new-program-form/new-program-form.component';
 
 
 @Component({
@@ -19,12 +23,11 @@ export class EditVacancyComponent implements OnInit {
   selectedRow;
   dataSource!: MatTableDataSource<any>;
 
-  vacancy: Vacancy[] = [];
-
+  dataSourceProgram: ProgramVacancy[]
   showAlert = false;
   vacancyForm: any;
 
-  dataSourceProgram!: MatTableDataSource<any>;
+
 
 
 
@@ -43,7 +46,7 @@ export class EditVacancyComponent implements OnInit {
     private dialogRef: MatDialog,
     private vacancyService: VacancyService,
     private datePipe: DatePipe,
-    private route: ActivatedRoute,
+
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public editData: any,
 
@@ -88,8 +91,8 @@ export class EditVacancyComponent implements OnInit {
     }
 
 
+    this.getAllProgram()
 
-    console.log(this.editData)
 
   };
 
@@ -186,13 +189,29 @@ export class EditVacancyComponent implements OnInit {
   }
 
 
+  public getAllProgram() {
+    this.vacancyService.getAllPrograms(this.editData.id).subscribe(x => {
+      this.dataSource = new MatTableDataSource(this.dataSourceProgram = x['list']);
+      console.log(x['list'])
+      console.log(this.dataSourceProgram)
+    }),
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+
+
+  }
+
+
+
+  openDialog() {
+    this.dialogRef.open(NewProgramFormComponent, {
+      data: this.editData
+    }
+
+    )
+  }
+
+
 
 }
-
-
-
-
-
-
-
-

@@ -197,7 +197,7 @@
             <span> <button class="button-2" role="button" (click)="refreshButton()">
                     <mat-icon>cached</mat-icon> Refresh
                 </button></span>
-            <span> <button class="button-2" role="button">
+            <span> <button class="button-2" role="button" (click)="openDialog()">
                     <mat-icon>assignment</mat-icon>
                     New
                 </button></span>
@@ -213,7 +213,7 @@
                 </button></span>
 
         </div>
-        <table mat-table [dataSource]="dataSourceProgram">
+        <table mat-table [dataSource]="dataSource">
             <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
                     ID
