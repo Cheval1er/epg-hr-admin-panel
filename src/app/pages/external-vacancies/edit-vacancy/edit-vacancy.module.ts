@@ -35,13 +35,14 @@ import { ResizableModule } from 'angular-resizable-element';
 import { CompletedVacancyRoutingModule } from '../completed-vacancy/completed-vacancy-routing.module';
 import { VacancyFormModule } from '../vacancy-form/vacancy-form.module';
 import { NewProgramFormComponent } from './new-program-form/new-program-form.component';
+import { NewProgramFormModule } from './new-program-form/new-program-form.module';
 
 
 
 
 
 @NgModule({
-    declarations: [EditVacancyComponent, NewProgramFormComponent,],
+    declarations: [EditVacancyComponent],
     imports: [
 
         CommonModule,
@@ -83,6 +84,7 @@ import { NewProgramFormComponent } from './new-program-form/new-program-form.com
         A11yModule,
         MatTabsModule,
         MatDialogModule,
+        NewProgramFormModule
 
 
 

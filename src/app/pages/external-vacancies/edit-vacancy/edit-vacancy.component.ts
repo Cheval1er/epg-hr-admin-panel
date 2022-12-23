@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 import { start } from 'repl';
 import { VacancyService } from 'src/app/services/vacancy.service';
 import { Vacancy, } from '../model/vacancy';
-import { ProgramVacancy } from '../model/vacancy-program-model';
+import { ListProgram } from '../model/vacancy-program-model';
 import { VacancyFormComponent } from '../vacancy-form/vacancy-form.component';
 import { NewProgramFormComponent } from './new-program-form/new-program-form.component';
 
@@ -23,17 +23,17 @@ export class EditVacancyComponent implements OnInit {
   selectedRow;
   dataSource!: MatTableDataSource<any>;
 
-  dataSourceProgram: ProgramVacancy[]
+  dataSourceProgram: ListProgram[]
   showAlert = false;
   vacancyForm: any;
 
-
+data: ListProgram[];
 
 
 
 
   displayedColumns = ['id', 'language'];
-  columnToDisplay = ['id', 'programs'];
+  columnToDisplay = ['id', 'programs', 'comment'];
   displayedColumnsSkill = ['id', 'skill'];
   displayedColumnsApplicants = ['id', 'fName', 'lName', 'personalNumber',
     'bDay', 'mail', 'additionalMail', 'mobile', 'additionalPhone', 'applyDate'];
@@ -91,7 +91,7 @@ export class EditVacancyComponent implements OnInit {
     }
 
 
-    this.getAllProgram()
+    this.getAllProgram(1, 0, 25)
 
 
   };
@@ -189,8 +189,8 @@ export class EditVacancyComponent implements OnInit {
   }
 
 
-  public getAllProgram() {
-    this.vacancyService.getAllPrograms(this.editData.id).subscribe(x => {
+  public getAllProgram(page: number, start: number, limit: number) {
+    this.vacancyService.getAllPrograms(this.editData.id, page, start, limit).subscribe(x => {
       this.dataSource = new MatTableDataSource(this.dataSourceProgram = x['list']);
       console.log(x['list'])
       console.log(this.dataSourceProgram)
@@ -202,7 +202,15 @@ export class EditVacancyComponent implements OnInit {
 
   }
 
+  selectedRowIndex = -1;
+  highlight(program) {
+    this.selectedRow = program;
+    this.selectedRowIndex = program.id;
+    console.log(program);
 
+
+
+  }
 
   openDialog() {
     this.dialogRef.open(NewProgramFormComponent, {
@@ -212,6 +220,18 @@ export class EditVacancyComponent implements OnInit {
     )
   }
 
+ 
+  public deleteProgram(program): void {
+    program = this.selectedRow;
+    this.vacancyService.deleteProgram(program.id, program).subscribe((result) => {
+      console.log(result)
+    })
+    // setTimeout(() => {
+    //   window.location.reload();
+    // }, 2);
 
+  }
 
 }
+
+
