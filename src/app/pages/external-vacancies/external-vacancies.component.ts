@@ -208,7 +208,7 @@ export class ExternalVacanciesComponent implements OnInit, AfterViewInit {
   refreshButton() {
     setTimeout(() => {
       window.location.reload();
-    }, 50);
+    }, 2);
   }
 
   openDialog() {

@@ -2,13 +2,13 @@ import { DatePipe } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { start } from 'repl';
 import { VacancyService } from 'src/app/services/vacancy.service';
 import { Vacancy, } from '../model/vacancy';
-import { ListProgram } from '../model/vacancy-program-model';
+import { ProgramVacancy } from '../model/vacancy-program-model';
 import { VacancyFormComponent } from '../vacancy-form/vacancy-form.component';
 import { NewProgramFormComponent } from './new-program-form/new-program-form.component';
 
@@ -23,11 +23,11 @@ export class EditVacancyComponent implements OnInit {
   selectedRow;
   dataSource!: MatTableDataSource<any>;
 
-  dataSourceProgram: ListProgram[]
+  dataSourceProgram: ProgramVacancy[]
   showAlert = false;
   vacancyForm: any;
 
-data: ListProgram[];
+  data: ProgramVacancy[];
 
 
 
@@ -40,9 +40,10 @@ data: ListProgram[];
 
   displayedColumnsShortList = ['id', 'fName', 'lName', 'personalNumber',
     'bDay', 'mail', 'additionalMail', 'mobile', 'additionalPhone', 'applyDate']
+  vacancyProgramForm: any;
 
   constructor(private formBuilder: FormBuilder,
-
+    private router: Router,
     private dialogRef: MatDialog,
     private vacancyService: VacancyService,
     private datePipe: DatePipe,
@@ -88,9 +89,25 @@ data: ListProgram[];
       this.vacancyForm.controls['educationSphere'].setValue(this.editData.educationSphere);
       this.vacancyForm.controls['educationSphereComment'].setValue(this.editData.educationSphereComment);
       this.vacancyForm.controls['salary'].setValue(this.editData.salary);
-    }
+    };
 
 
+    this.vacancyProgramForm = this.formBuilder.group({
+      // id: this.editData.id,
+      // programName: [''],
+      // comment: [''],
+      id: [],
+      objectId: [],
+      otherProgram: [''],
+      vacancyId: [],
+      programId: [''],
+      programName: [''],
+      vacancyName: []
+
+
+
+
+    })
     this.getAllProgram(1, 0, 25)
 
 
@@ -183,16 +200,14 @@ data: ListProgram[];
   ]
 
   refreshButton() {
-    setTimeout(() => {
-      window.location.reload();
-    }, 50);
+    this.ngOnInit()
   }
 
 
   public getAllProgram(page: number, start: number, limit: number) {
     this.vacancyService.getAllPrograms(this.editData.id, page, start, limit).subscribe(x => {
       this.dataSource = new MatTableDataSource(this.dataSourceProgram = x['list']);
-      console.log(x['list'])
+      // console.log(x['list'])
       console.log(this.dataSourceProgram)
     }),
       (error: HttpErrorResponse) => {
@@ -211,27 +226,93 @@ data: ListProgram[];
 
 
   }
-
+  openDialogDeleteProgram(rowData) {
+    rowData = this.selectedRow
+    this.dialogRef.open(DeleteProgramFormComponent, {
+      data: this.selectedRow
+    }).afterClosed().subscribe(EditVacancyComponent => {
+      this.getAllProgram(1, 0, 25)
+    })
+  }
   openDialog() {
     this.dialogRef.open(NewProgramFormComponent, {
       data: this.editData
     }
 
-    )
-  }
-
- 
-  public deleteProgram(program): void {
-    program = this.selectedRow;
-    this.vacancyService.deleteProgram(program.id, program).subscribe((result) => {
-      console.log(result)
+    ).afterClosed().subscribe(EditVacancyComponent => {
+      this.getAllProgram(1, 0, 25)
     })
-    // setTimeout(() => {
-    //   window.location.reload();
-    // }, 2);
 
   }
+
+
+  // public deleteProgram(program): void {
+  //   program = this.selectedRow;
+  //   this.vacancyService.deleteProgram(program.id, program).subscribe((result) => {
+  //     console.log(result)
+  //   })
+  //   // setTimeout(() => {
+  //   //   window.location.reload();
+  //   // }, 2);
+
+  // }
+
 
 }
 
 
+@Component({
+  selector: 'vex-new-program-form',
+  templateUrl: './delete-program-form.component.html',
+  styleUrls: ['./edit-vacancy.component.css']
+})
+export class DeleteProgramFormComponent implements OnInit {
+
+  vacancyProgramForm;
+  dataSource!: MatTableDataSource<any>;
+
+  dataSourceProgram: ProgramVacancy[]
+  editData: any;
+
+
+
+  constructor(private formBuilder: FormBuilder,
+    private vacancyService: VacancyService,
+    private dialogRef: MatDialogRef<DeleteProgramFormComponent>,
+    @Inject(MAT_DIALOG_DATA) public editData2: any,) { }
+  ngOnInit() {
+    this.vacancyProgramForm = this.formBuilder.group({
+      // id: this.editData.id,
+      // programName: [''],
+      // comment: [''],
+      id: [],
+      objectId: [],
+      otherProgram: [''],
+      vacancyId: [],
+      programId: [''],
+      programName: [''],
+      vacancyName: []
+
+
+
+
+    })
+    // if (this.editData2) {
+    //   this.vacancyProgramForm.controls['programName'].setValue(this.editData2.programName);
+    // }
+  }
+
+
+  closeForm() {
+    this.dialogRef.close()
+
+  }
+
+  deleteProgram() {
+    this.vacancyService.deleteProgram(this.vacancyProgramForm.value, this.editData2.id, this.editData2.vacancyId).subscribe((result) => {
+      console.log(result);
+
+    })
+    this.dialogRef.close();
+  }
+}

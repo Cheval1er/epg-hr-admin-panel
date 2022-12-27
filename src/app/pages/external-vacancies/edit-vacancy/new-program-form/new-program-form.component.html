@@ -10,14 +10,19 @@
                     <mat-select formControlName="programName">
                         <mat-option *ngFor="let program of programList" [value]="program">{{program}}
                         </mat-option>
+                        <!-- <mat-option value="arcGis">ArcGis</mat-option>
+                        <mat-option value="excel">Excel</mat-option> -->
                     </mat-select>
+                    <input formControlName="programName" matInput>
+
                 </mat-form-field>
 
-                <div> Comment : </div>
+
+                <!-- <div> Comment : </div>
                 <mat-form-field appearance="outline" style="font-size: 12px;">
                     <input formControlName="comment" matInput>
 
-                </mat-form-field>
+                </mat-form-field> -->
             </div>
         </mat-card-content>
         <mat-card-actions class="flex flex-col sm:flex-row sm:gap-4 margin">

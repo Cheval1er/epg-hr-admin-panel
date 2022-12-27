@@ -50,8 +50,8 @@
                             <mat-option value="BusinessManager">ბიზნესის მართვა</mat-option>
                             <mat-option value="Billing">ბილინგი</mat-option>
                         </mat-select> -->
-                        <mat-select formControlName="category">
-                            <mat-option *ngFor="let category of categoryList" [value]="category">{{category}}
+                        <mat-select formControlName="category" [(value)]="categoryList">
+                            <mat-option *ngFor="let category of categoryList">{{category}}
                             </mat-option>
                         </mat-select>
                         <mat-error>This field is required</mat-error>

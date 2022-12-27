@@ -27,7 +27,7 @@ import { NewProgramFormComponent } from './new-program-form.component';
 
 
 @NgModule({
-    declarations: [NewProgramFormComponent],
+    declarations: [NewProgramFormComponent,],
     imports: [
         CommonModule,
         FormsModule,

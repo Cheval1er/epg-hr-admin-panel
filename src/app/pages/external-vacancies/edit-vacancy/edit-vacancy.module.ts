@@ -9,7 +9,7 @@ import { CommonModule, DatePipe } from '@angular/common';
 
 import { MatNativeDateModule } from '@angular/material/core';
 import { VacancyService } from 'src/app/services/vacancy.service';
-import { EditVacancyComponent } from './edit-vacancy.component';
+import { DeleteProgramFormComponent, EditVacancyComponent } from './edit-vacancy.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
@@ -36,13 +36,14 @@ import { CompletedVacancyRoutingModule } from '../completed-vacancy/completed-va
 import { VacancyFormModule } from '../vacancy-form/vacancy-form.module';
 import { NewProgramFormComponent } from './new-program-form/new-program-form.component';
 import { NewProgramFormModule } from './new-program-form/new-program-form.module';
+import { RouterModule } from '@angular/router';
 
 
 
 
 
 @NgModule({
-    declarations: [EditVacancyComponent],
+    declarations: [EditVacancyComponent, DeleteProgramFormComponent],
     imports: [
 
         CommonModule,
@@ -84,8 +85,7 @@ import { NewProgramFormModule } from './new-program-form/new-program-form.module
         A11yModule,
         MatTabsModule,
         MatDialogModule,
-        NewProgramFormModule
-
+        NewProgramFormModule,
 
 
 

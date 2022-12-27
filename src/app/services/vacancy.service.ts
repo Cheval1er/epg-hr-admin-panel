@@ -4,7 +4,7 @@ import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
 
 import { List, Vacancy } from "../pages/external-vacancies/model/vacancy";
-import { ListProgram } from "../pages/external-vacancies/model/vacancy-program-model";
+import { ProgramVacancy } from "../pages/external-vacancies/model/vacancy-program-model";
 
 
 
@@ -83,17 +83,17 @@ export class VacancyService {
     // vacancy program in edit
 
 
-    public getAllPrograms(vacancyId: number, page: number, start: number, limit: number): Observable<ListProgram[]> {
-        return this.http.get<ListProgram[]>(`${this.apiServerUrl}/VacancyAdmin/vacancy/program?vacancyId=${vacancyId}&page=${page}&start=${start}&limit=${limit}`)
+    public getAllPrograms(vacancyId: number, page: number, start: number, limit: number): Observable<ProgramVacancy[]> {
+        return this.http.get<ProgramVacancy[]>(`${this.apiServerUrl}/VacancyAdmin/vacancy/program?vacancyId=${vacancyId}&page=${page}&start=${start}&limit=${limit}`)
     }
 
-    public addNewProgram(vacancyId: number, program: ListProgram[]): Observable<ListProgram[]> {
-        return this.http.post<ListProgram[]>(`${this.apiServerUrl}/VacancyAdmin/vacancy/program?vacancyId=${vacancyId}`, program)
+    public addNewProgram(programId: number, program: ProgramVacancy[]): Observable<ProgramVacancy[]> {
+        return this.http.post<ProgramVacancy[]>(`${this.apiServerUrl}/VacancyAdmin/vacancy/program?vacancyId=${programId}`, program)
     }
-//delete
-public deleteProgram(objectId: number, program: any): Observable<ListProgram[]> {
-    return this.http.post<ListProgram[]>(`${this.apiServerUrl}/VacancyAdmin/vacancy/program?vacancyId=${objectId}`, program)
-}
+
+    public deleteProgram(program: ProgramVacancy, objectId: number, vacancyId: number) {
+        return this.http.put(`${this.apiServerUrl}/VacancyAdmin/vacancy/program/${objectId}?vacancyId=${vacancyId}`, program)
+    }
 }
 
 
