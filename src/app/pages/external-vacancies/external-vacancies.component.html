@@ -126,7 +126,7 @@
 
   <ng-container matColumnDef="schedule">
     <th mat-header-cell *matHeaderCellDef mat-sort-header class=" body">Schedule</th>
-    <td mat-cell *matCellDef="let vacancy;let i = index">{{vacancy?.schedule}}</td>
+    <td mat-cell *matCellDef="let vacancy">{{vacancy?.schedule}}</td>
   </ng-container>
 
 
