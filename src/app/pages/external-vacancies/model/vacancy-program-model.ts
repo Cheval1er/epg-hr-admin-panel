@@ -36,7 +36,7 @@ export interface ProgramVacancy {
     count?: string;
     vacancies?: string;
     languages?: string;
-    programs?: DictionaryItem;
+    programs?: Program;
     departments?: string;
     educationLevels?: string;
     gender?: string;
@@ -45,6 +45,10 @@ export interface ProgramVacancy {
     dateFrom?: string;
     dateTo?: string;
     noExperience?: boolean
+}
+export interface Program {
+    vacancyId: number;
+    vacancyName: string
 }
 
 export interface VacancyProgram {

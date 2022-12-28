@@ -1,20 +1,17 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { VacancyService } from 'src/app/services/vacancy.service';
-import { threadId } from 'worker_threads';
-import { ListProgram, Program, ProgramVacancy } from '../../model/vacancy-program-model';
-import { EditVacancyComponent } from '../edit-vacancy.component';
-
+import { ProgramVacancy, Program } from '../../../model/vacancy-program-model';
+import { NewProgramFormComponent } from '../new-program-form.component';
 
 @Component({
-  selector: 'vex-new-program-form',
-  templateUrl: './new-program-form.component.html',
-  styleUrls: ['./new-program-form.component.scss']
+  selector: 'vex-edit-program',
+  templateUrl: './edit-program.component.html',
+  styleUrls: ['./edit-program.component.scss']
 })
-export class NewProgramFormComponent implements OnInit {
+export class EditProgramComponent implements OnInit {
   [x: string]: any;
   vacancyProgramForm;
   dataSource!: MatTableDataSource<any>;
@@ -37,16 +34,21 @@ export class NewProgramFormComponent implements OnInit {
       id: [],
       objectId: [],
       otherProgram: [''],
-      vacancyId: this.editData.id,
-      programId: this.data,
-      programName: this.dataName,
-      vacancyName: this.editData.vacancyName,
+      vacancyId: [],
+      programId: [],
+      programName: [],
+      vacancyName: []
 
 
 
 
     })
+    if (this.editData) {
+      this.vacancyProgramForm.controls['comment'].setValue(this.editData.comment);
+      this.vacancyProgramForm.controls['programName'].setValue(this.editData.programName);
+      this.vacancyProgramForm.controls['programId'].setValue(this.editData.programId)
 
+    }
   }
 
 
@@ -68,7 +70,7 @@ export class NewProgramFormComponent implements OnInit {
 
   saveFormData() {
     console.log(this.vacancyProgramForm.value);
-    this.vacancyService.addNewProgram(this.editData.id, this.vacancyProgramForm.value).subscribe((result) => {
+    this.vacancyService.editProgram(this.editData.objectId, this.editData.vacancyId, this.vacancyProgramForm.value).subscribe((result) => {
       console.log(result)
     })
     this.dialogRef.close();
@@ -80,7 +82,6 @@ export class NewProgramFormComponent implements OnInit {
   closeForm() {
     this.dialogRef.close()
   }
-
 
 
 

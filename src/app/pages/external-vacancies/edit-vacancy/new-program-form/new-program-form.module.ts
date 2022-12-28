@@ -23,11 +23,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { VacancyService } from 'src/app/services/vacancy.service';
 import { NewProgramFormComponent } from './new-program-form.component';
+import { EditProgramComponent } from './edit-program/edit-program.component';
 
 
 
 @NgModule({
-    declarations: [NewProgramFormComponent,],
+    declarations: [NewProgramFormComponent, EditProgramComponent,],
     imports: [
         CommonModule,
         FormsModule,

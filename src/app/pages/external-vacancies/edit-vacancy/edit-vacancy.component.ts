@@ -10,6 +10,7 @@ import { VacancyService } from 'src/app/services/vacancy.service';
 import { Vacancy, } from '../model/vacancy';
 import { ProgramVacancy } from '../model/vacancy-program-model';
 import { VacancyFormComponent } from '../vacancy-form/vacancy-form.component';
+import { EditProgramComponent } from './new-program-form/edit-program/edit-program.component';
 import { NewProgramFormComponent } from './new-program-form/new-program-form.component';
 
 
@@ -245,6 +246,12 @@ export class EditVacancyComponent implements OnInit {
 
   }
 
+  openEditProgram() {
+    this.dialogRef.open(EditProgramComponent, {
+      data: this.selectedRow
+
+    })
+  }
 
   // public deleteProgram(program): void {
   //   program = this.selectedRow;
