@@ -87,8 +87,8 @@ export class VacancyService {
         return this.http.get<ProgramVacancy[]>(`${this.apiServerUrl}/VacancyAdmin/vacancy/program?vacancyId=${vacancyId}&page=${page}&start=${start}&limit=${limit}`)
     }
     //add
-    public addNewProgram(programId: number, program: ProgramVacancy[]): Observable<ProgramVacancy[]> {
-        return this.http.post<ProgramVacancy[]>(`${this.apiServerUrl}/VacancyAdmin/vacancy/program?vacancyId=${programId}`, program)
+    public addNewProgram(programId: number, program: ProgramVacancy['list']): Observable<ProgramVacancy['list']> {
+        return this.http.post<ProgramVacancy['list']>(`${this.apiServerUrl}/VacancyAdmin/vacancy/program?vacancyId=${programId}`, program)
     }
     //delete
     public deleteProgram(program: ProgramVacancy, objectId: number, vacancyId: number) {
@@ -96,9 +96,15 @@ export class VacancyService {
     }
 
     //edit
-    public editProgram(objectId: number, vacancyId: number, program: any) {
-        return this.http.post(`${this.apiServerUrl}/VacancyAdmin/vacancy/program?${objectId}?vacancyId=${vacancyId}`, program)
+    public updateProgram(objectId: number, vacancyId: number, program: ProgramVacancy) {
+        return this.http.put(`${this.apiServerUrl}/VacancyAdmin/vacancy/program/${objectId}?vacancyId=${vacancyId}`, program)
     }
+
+
+
+
+
+
 }
 
 

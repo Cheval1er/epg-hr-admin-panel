@@ -24,9 +24,9 @@ export interface ListProgram {
     id: number;
     vacancyId: number;
     vacancyName: string;
-    programId: number;
-    programName: string;
-    otherProgram: any
+    program: Array<Program>;
+    otherProgram: any;
+
 }
 
 export interface ProgramVacancy {

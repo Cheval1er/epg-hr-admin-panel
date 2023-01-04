@@ -1,15 +1,12 @@
 import { DatePipe } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute, Router } from '@angular/router';
-import { start } from 'repl';
+import { Router } from '@angular/router';
 import { VacancyService } from 'src/app/services/vacancy.service';
-import { Vacancy, } from '../model/vacancy';
-import { ProgramVacancy } from '../model/vacancy-program-model';
-import { VacancyFormComponent } from '../vacancy-form/vacancy-form.component';
+import { ListProgram, ProgramVacancy } from '../model/vacancy-program-model';
 import { EditProgramComponent } from './new-program-form/edit-program/edit-program.component';
 import { NewProgramFormComponent } from './new-program-form/new-program-form.component';
 
@@ -24,7 +21,7 @@ export class EditVacancyComponent implements OnInit {
   selectedRow;
   dataSource!: MatTableDataSource<any>;
 
-  dataSourceProgram: ProgramVacancy[]
+  dataSourceProgram: ListProgram[]
   showAlert = false;
   vacancyForm: any;
 
@@ -93,26 +90,14 @@ export class EditVacancyComponent implements OnInit {
     };
 
 
-    this.vacancyProgramForm = this.formBuilder.group({
-      // id: this.editData.id,
-      // programName: [''],
-      // comment: [''],
-      id: [],
-      objectId: [],
-      otherProgram: [''],
-      vacancyId: [],
-      programId: [''],
-      programName: [''],
-      vacancyName: []
 
-
-
-
-    })
     this.getAllProgram(1, 0, 25)
 
 
+
   };
+
+
 
   updateFormData() {
     console.log('Form data is ', this.vacancyForm.value);
@@ -204,7 +189,7 @@ export class EditVacancyComponent implements OnInit {
     this.ngOnInit()
   }
 
-
+  //Programs
   public getAllProgram(page: number, start: number, limit: number) {
     this.vacancyService.getAllPrograms(this.editData.id, page, start, limit).subscribe(x => {
       this.dataSource = new MatTableDataSource(this.dataSourceProgram = x['list']);
@@ -250,19 +235,13 @@ export class EditVacancyComponent implements OnInit {
     this.dialogRef.open(EditProgramComponent, {
       data: this.selectedRow
 
+    }).afterClosed().subscribe(EditVacancyComponent => {
+      this.getAllProgram(1, 0, 25)
     })
   }
 
-  // public deleteProgram(program): void {
-  //   program = this.selectedRow;
-  //   this.vacancyService.deleteProgram(program.id, program).subscribe((result) => {
-  //     console.log(result)
-  //   })
-  //   // setTimeout(() => {
-  //   //   window.location.reload();
-  //   // }, 2);
 
-  // }
+  //Language
 
 
 }

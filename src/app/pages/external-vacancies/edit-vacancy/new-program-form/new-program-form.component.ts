@@ -3,6 +3,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { event } from 'jquery';
 import { VacancyService } from 'src/app/services/vacancy.service';
 import { threadId } from 'worker_threads';
 import { ListProgram, Program, ProgramVacancy } from '../../model/vacancy-program-model';
@@ -33,13 +34,13 @@ export class NewProgramFormComponent implements OnInit {
     this.vacancyProgramForm = this.formBuilder.group({
       // id: this.editData.id,
       // programName: [''],
-      comment: [''],
+      // comment: [''],
       id: [],
       objectId: [],
       otherProgram: [''],
       vacancyId: this.editData.id,
-      programId: this.data,
-      programName: this.dataName,
+      programId: [],
+      programName: [],
       vacancyName: this.editData.vacancyName,
 
 
@@ -50,19 +51,79 @@ export class NewProgramFormComponent implements OnInit {
   }
 
 
-  programList: string[] = [
-    'ArcGis',
-    'AutoCAD',
-    'Excel',
-    'IFS',
-    'MS Office',
-    'MS Project',
-    'Oris',
-    'Photoshop',
-    'PowerPoint',
-    'Visio',
-    'Word',
-    'სხვა'
+  programList: any[] = [
+    {
+      "id": 267,
+      "name": "ArcGIS",
+      "key": "key.program",
+      "sortOrder": 2
+    },
+    {
+      "id": 182,
+      "name": "AutoCAD",
+      "key": "key.program.autoCard",
+      "sortOrder": 1
+    },
+    {
+      "id": 175,
+      "name": "Excel",
+      "key": "key.program.exel",
+      "sortOrder": 1
+    },
+    {
+      "id": 180,
+      "name": "IFS",
+      "key": "key.program.ifs",
+      "sortOrder": 1
+    },
+    {
+      "id": 239,
+      "name": "MS Office",
+      "key": "key.program.MS Office",
+      "sortOrder": 1
+    },
+    {
+      "id": 179,
+      "name": "MS Project",
+      "key": "key.program.project",
+      "sortOrder": 1
+    },
+    {
+      "id": 174,
+      "name": "Oris",
+      "key": "key.program.oris",
+      "sortOrder": 1
+    },
+    {
+      "id": 268,
+      "name": "Photoshop",
+      "key": "key.program",
+      "sortOrder": 1
+    },
+    {
+      "id": 177,
+      "name": "PowerPoint",
+      "key": "key.program.powerPoint",
+      "sortOrder": 1
+    },
+    {
+      "id": 178,
+      "name": "Visio",
+      "key": "key.program.visio",
+      "sortOrder": 1
+    },
+    {
+      "id": 176,
+      "name": "Word",
+      "key": "key.program.word",
+      "sortOrder": 1
+    },
+    {
+      "id": 183,
+      "name": "სხვა",
+      "key": "key.program.other",
+      "sortOrder": 1
+    }
 
   ]
 
@@ -85,3 +146,5 @@ export class NewProgramFormComponent implements OnInit {
 
 
 }
+
+

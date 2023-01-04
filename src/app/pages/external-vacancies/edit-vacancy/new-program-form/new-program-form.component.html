@@ -7,24 +7,25 @@
 
                 <div>Program</div>
                 <mat-form-field appearance="outline" style="font-size: 12px;">
-                    <mat-select formControlName="programName">
-                        <mat-option *ngFor="let program of programList" [value]="program">{{program}}
+                    <mat-select formControlName="programId">
+                        <mat-option *ngFor="let program of programList" [value]="program.id">{{program.name}}
                         </mat-option>
-                        <!-- <mat-option value="arcGis">ArcGis</mat-option>
-                        <mat-option value="excel">Excel</mat-option> -->
+
                     </mat-select>
-                    <input formControlName="programName" matInput>
+
 
                 </mat-form-field>
 
 
                 <div> Comment : </div>
                 <mat-form-field appearance="outline" style="font-size: 12px;">
-                    <input formControlName="comment" matInput>
+                    <input formControlName="otherProgram" matInput>
 
                 </mat-form-field>
+
             </div>
         </mat-card-content>
+
         <mat-card-actions class="flex flex-col sm:flex-row sm:gap-4 margin">
             <button mat-button class="button-7" role="button" (click)="saveFormData()">Save</button>
 
