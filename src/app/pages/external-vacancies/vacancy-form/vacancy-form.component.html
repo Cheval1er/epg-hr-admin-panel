@@ -42,16 +42,8 @@
                 <div class="flex flex-col sm:flex-row sm:gap-4">
                     <span>Category</span>
                     <mat-form-field appearance="outline" class="flex-auto" style="font-size: 12px;">
-                        <!-- <mat-select formControlName="category">
-                            <mat-option value="Hr">ადამიანური რესურსების მართვა</mat-option>
-                            <mat-option value="Admin">ადმინისტრაცია</mat-option>
-                            <mat-option value="Analytics">ანალიტიკა</mat-option>
-                            <mat-option value="Audit">აუდიტი</mat-option>
-                            <mat-option value="BusinessManager">ბიზნესის მართვა</mat-option>
-                            <mat-option value="Billing">ბილინგი</mat-option>
-                        </mat-select> -->
-                        <mat-select formControlName="category" [(value)]="categoryList">
-                            <mat-option *ngFor="let category of categoryList">{{category}}
+                        <mat-select formControlName="categoryId">
+                            <mat-option *ngFor="let category of categoryList" [value]="category.id">{{category.name}}
                             </mat-option>
                         </mat-select>
                         <mat-error>This field is required</mat-error>
@@ -60,10 +52,9 @@
 
                     <span>Type</span>
                     <mat-form-field appearance="outline" class="flex-auto" style="font-size: 12px;">
-                        <mat-select formControlName="type">
-                            <mat-option value="Inner">შიდა ვაკანსია</mat-option>
-                            <mat-option value="External">გარე ვაკანსია</mat-option>
-                            <mat-option value="Intern">სტაჟირება</mat-option>
+                        <mat-select formControlName="typeId">
+                            <mat-option *ngFor="let type of typeList" [value]="type.id">{{type.name}}
+                            </mat-option>
                         </mat-select>
                         <mat-error>This field is required</mat-error>
                     </mat-form-field>
@@ -91,8 +82,9 @@
 
                     <span>Education Level*: </span>
                     <mat-form-field appearance="outline" [style.width.%]="40" style="font-size: 12px;">
-                        <mat-select formControlName="educationLevel">
-                            <mat-option *ngFor="let education of educationList" [value]="education">{{education}}
+                        <mat-select formControlName="educationLevelId">
+                            <mat-option *ngFor="let education of educationList"
+                                [value]="education.id">{{education.name}}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
@@ -105,12 +97,14 @@
                 </div>
 
                 <div class="flex flex-col sm:flex-row sm:gap-2">
-                    <!-- <span>Education Sphere*: </span>
+                    <span>Education Sphere*: </span>
                     <mat-form-field appearance="outline" style="font-size: 12px;">
-                        <mat-select formControlName="educationSphere">
-                            <mat-option *ngFor="let sphere of sphereList" [value]="sphere">{{sphere}}</mat-option>
+                        <mat-select formControlName="experienceSphereId
+                        ">
+                            <mat-option *ngFor="let sphere of sphereList"
+                                [value]="sphere.id">{{sphere.name}}</mat-option>
                         </mat-select>
-                    </mat-form-field> -->
+                    </mat-form-field>
 
                     <span> Education Sphere Comment: </span>
                     <mat-form-field appearance="outline" class="flex-auto" style="font-size: 12px;">
