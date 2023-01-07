@@ -6,9 +6,16 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { VacancyService } from 'src/app/services/vacancy.service';
+import { LanguageVacancy, ListLanguage } from '../model/vacancy-language-model';
 import { ListProgram, ProgramVacancy } from '../model/vacancy-program-model';
+import { ListSkill, SkillVacancy } from '../model/vacancy-skill-model';
+import { EditLanguageComponent } from './new-language-form/edit-language/edit-language.component';
+
+import { NewLanguageFormComponent } from './new-language-form/new-language-form.component';
 import { EditProgramComponent } from './new-program-form/edit-program/edit-program.component';
 import { NewProgramFormComponent } from './new-program-form/new-program-form.component';
+import { EditSkillComponent } from './new-skill-form/edit-skill/edit-skill.component';
+import { NewSkillFormComponent } from './new-skill-form/new-skill-form.component';
 
 
 @Component({
@@ -27,18 +34,25 @@ export class EditVacancyComponent implements OnInit {
 
   data: ProgramVacancy[];
 
+  dataSourceLanguage: ListLanguage[];
+
+  dataSourceSkill: ListSkill[];
 
 
+  displayedColumns = ['id', 'languages', 'comment'];
 
-  displayedColumns = ['id', 'language'];
   columnToDisplay = ['id', 'programs', 'comment'];
-  displayedColumnsSkill = ['id', 'skill'];
+
+  displayedColumnsSkill = ['id', 'skills', 'comment'];
+
   displayedColumnsApplicants = ['id', 'fName', 'lName', 'personalNumber',
     'bDay', 'mail', 'additionalMail', 'mobile', 'additionalPhone', 'applyDate'];
 
   displayedColumnsShortList = ['id', 'fName', 'lName', 'personalNumber',
     'bDay', 'mail', 'additionalMail', 'mobile', 'additionalPhone', 'applyDate']
   vacancyProgramForm: any;
+  selectedRowS: any;
+  selectedRowL: any;
 
   constructor(private formBuilder: FormBuilder,
     private router: Router,
@@ -91,7 +105,11 @@ export class EditVacancyComponent implements OnInit {
 
 
 
-    this.getAllProgram(1, 0, 25)
+    this.getAllProgram(1, 0, 25);
+    this.getAllLanguage(1, 0, 25);
+    this.getAllSkill(1, 0, 25);
+
+
 
 
 
@@ -541,11 +559,109 @@ export class EditVacancyComponent implements OnInit {
 
 
   //Language
+  public getAllLanguage(page: number, start: number, limit: number) {
+    this.vacancyService.getAllLanguages(this.editData.id, page, start, limit).subscribe(x => {
+      this.dataSource = new MatTableDataSource(this.dataSourceLanguage = x['list']);
+      // console.log(x['list'])
+      console.log(this.dataSourceLanguage)
+    }),
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
 
+
+  }
+
+  selectedRowIndexL = -1;
+  highlightL(language) {
+    this.selectedRowL = language;
+    this.selectedRowIndexL = language.id;
+    console.log(language);
+
+
+
+  }
+  openDialogDeleteLanguage(rowData) {
+    rowData = this.selectedRowL
+    this.dialogRef.open(DeleteLanguageFormComponent, {
+      data: this.selectedRowL
+    }).afterClosed().subscribe(EditVacancyComponent => {
+      this.getAllLanguage(1, 0, 25)
+    })
+  }
+  openDialogL() {
+    this.dialogRef.open(NewLanguageFormComponent, {
+      data: this.editData
+    }
+
+    ).afterClosed().subscribe(EditVacancyComponent => {
+      this.getAllLanguage(1, 0, 25)
+    })
+
+  }
+
+  openEditLanguage() {
+    this.dialogRef.open(EditLanguageComponent, {
+      data: this.selectedRowL
+
+    }).afterClosed().subscribe(EditVacancyComponent => {
+      this.getAllLanguage(1, 0, 25)
+    })
+  }
+  // skill
+  public getAllSkill(page: number, start: number, limit: number) {
+    this.vacancyService.getAllSkills(this.editData.id, page, start, limit).subscribe(x => {
+      this.dataSource = new MatTableDataSource(this.dataSourceSkill = x['list']);
+      // console.log(x['list'])
+      console.log(this.dataSourceSkill)
+    }),
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+
+
+  }
+
+  selectedRowIndexS = -1;
+  highlightS(skill) {
+    this.selectedRowS = skill;
+    this.selectedRowIndexS = skill.id;
+    console.log(skill);
+
+
+
+  }
+  openDialogDeleteSkill(rowData) {
+    rowData = this.selectedRowS
+    this.dialogRef.open(DeleteSkillFormComponent, {
+      data: this.selectedRowS
+    }).afterClosed().subscribe(EditVacancyComponent => {
+      this.getAllSkill(1, 0, 25)
+    })
+  }
+  openDialogS() {
+    this.dialogRef.open(NewSkillFormComponent, {
+      data: this.editData
+    }
+
+    ).afterClosed().subscribe(EditVacancyComponent => {
+      this.getAllSkill(1, 0, 25)
+    })
+
+  }
+
+  openEditSkill() {
+    this.dialogRef.open(EditSkillComponent, {
+      data: this.selectedRowS
+
+    }).afterClosed().subscribe(EditVacancyComponent => {
+      this.getAllSkill(1, 0, 25)
+    })
+  }
 
 }
 
-
+// delete program
 @Component({
   selector: 'vex-new-program-form',
   templateUrl: './delete-program-form.component.html',
@@ -564,7 +680,7 @@ export class DeleteProgramFormComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private vacancyService: VacancyService,
     private dialogRef: MatDialogRef<DeleteProgramFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public editData2: any,) { }
+    @Inject(MAT_DIALOG_DATA) public editDataP: any,) { }
   ngOnInit() {
     this.vacancyProgramForm = this.formBuilder.group({
       // id: this.editData.id,
@@ -594,10 +710,125 @@ export class DeleteProgramFormComponent implements OnInit {
   }
 
   deleteProgram() {
-    this.vacancyService.deleteProgram(this.vacancyProgramForm.value, this.editData2.id, this.editData2.vacancyId).subscribe((result) => {
+    this.vacancyService.deleteProgram(this.vacancyProgramForm.value, this.editDataP.id, this.editDataP.vacancyId).subscribe((result) => {
       console.log(result);
 
     })
     this.dialogRef.close();
   }
 }
+
+//delete language
+
+@Component({
+  selector: 'vex-new-language-form',
+  templateUrl: './delete-language-form.component.html',
+  styleUrls: ['./edit-vacancy.component.css']
+})
+export class DeleteLanguageFormComponent implements OnInit {
+
+  vacancyLanguageForm;
+  dataSource!: MatTableDataSource<any>;
+
+  dataSourceLanguage: LanguageVacancy[]
+  editData: any;
+
+
+
+  constructor(private formBuilder: FormBuilder,
+    private vacancyService: VacancyService,
+    private dialogRef: MatDialogRef<DeleteLanguageFormComponent>,
+    @Inject(MAT_DIALOG_DATA) public editDataL: any,) { }
+  ngOnInit() {
+    this.vacancyLanguageForm = this.formBuilder.group({
+      // id: this.editData.id,
+      // programName: [''],
+
+      id: [],
+      objectId: [],
+      otherLanguage: [''],
+      vacancyId: [],
+      languageId: [''],
+      languageName: [''],
+
+
+
+    })
+    // if (this.editData2) {
+    //   this.vacancyLanguageForm.controls['LanguageName'].setValue(this.editData2.LanguageName);
+    // }
+  }
+
+
+  closeForm() {
+    this.dialogRef.close()
+
+  }
+
+  deleteLanguage() {
+    this.vacancyService.deleteLanguage(this.vacancyLanguageForm.value, this.editDataL.id, this.editDataL.vacancyId).subscribe((result) => {
+      console.log(result);
+
+    })
+    this.dialogRef.close();
+  }
+}
+
+//delete skill
+
+@Component({
+  selector: 'vex-new-skill-form',
+  templateUrl: './delete-skill-form.component.html',
+  styleUrls: ['./edit-vacancy.component.css']
+})
+export class DeleteSkillFormComponent implements OnInit {
+
+
+  vacancySkillForm;
+  dataSource!: MatTableDataSource<any>;
+
+  dataSourceSkill: SkillVacancy[]
+  editData: any;
+
+
+
+  constructor(private formBuilder: FormBuilder,
+    private vacancyService: VacancyService,
+    private dialogRef: MatDialogRef<DeleteSkillFormComponent>,
+    @Inject(MAT_DIALOG_DATA) public editDataS: any,) { }
+  ngOnInit() {
+    this.vacancySkillForm = this.formBuilder.group({
+      // id: this.editData.id,
+      // programName: [''],
+
+      id: [],
+      objectId: [],
+      otherSkill: [''],
+      vacancyId: [],
+      skillId: [''],
+      skillName: [''],
+
+
+
+    })
+    // if (this.editData2) {
+    //   this.vacancySkillForm.controls['SkillName'].setValue(this.editData2.SkillName);
+    // }
+  }
+
+
+  closeForm() {
+    this.dialogRef.close()
+
+  }
+
+  deleteSkill() {
+    this.vacancyService.deleteSkill(this.vacancySkillForm.value, this.editDataS.id, this.editDataS.vacancyId).subscribe((result) => {
+      console.log(result);
+
+    })
+    this.dialogRef.close();
+  }
+}
+
+

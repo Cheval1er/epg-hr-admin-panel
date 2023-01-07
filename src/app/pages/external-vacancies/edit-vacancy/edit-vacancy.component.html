@@ -151,44 +151,53 @@
 
     <mat-tab label="Vacancy Language">
         <div class="buttonDisplay">
+
             <span> <button class="button-2" role="button" (click)="refreshButton()">
                     <mat-icon>cached</mat-icon> Refresh
                 </button></span>
-            <span> <button class="button-2" role="button">
+            <span> <button class="button-2" role="button" (click)="openDialogL()">
                     <mat-icon>assignment</mat-icon>
                     New
                 </button></span>
-            <span> <button class="button-2" role="button">
+            <span> <button class="button-2" role="button" (click)="openEditLanguage()">
                     <mat-icon>edit</mat-icon> Edit
                 </button></span>
-            <span> <button class="button-2" role="button">
-                    <mat-icon>remove_red_eye</mat-icon> View
-                </button></span>
+            <!-- <span> <button class="button-2" role="button">
+                        <mat-icon>remove_red_eye</mat-icon> View
+                    </button></span> -->
 
-            <span> <button class="button-2" role="button">
+            <span> <button class="button-2" role="button" (click)="openDialogDeleteLanguage(editData)">
                     <mat-icon>delete_forever</mat-icon> Delete
                 </button></span>
 
         </div>
-        <table mat-table>
+        <table mat-table [dataSource]="dataSourceLanguage">
             <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
                     ID
                 </th>
-                <td mat-cell *matCellDef=" let vacancy">{{vacancy?.id}} </td>
+                <td mat-cell *matCellDef=" let languageData">{{languageData?.id}} </td>
 
             </ng-container>
 
-            <ng-container matColumnDef="language">
+            <ng-container matColumnDef="languages">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
                     Language
                 </th>
-                <td mat-cell *matCellDef=" let vacancy">{{vacancy?.language}} </td>
+                <td mat-cell *matCellDef=" let languageData">{{languageData?.languageName}} </td>
+
+            </ng-container>
+            <ng-container matColumnDef="comment">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
+                    Comment
+                </th>
+                <td mat-cell *matCellDef=" let languageData">{{languageData?.otherLanguage}} </td>
 
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let vacancy; columns: displayedColumns;"></tr>
+            <tr mat-row *matRowDef="let language; columns: displayedColumns;"
+                [ngClass]="{'highlighted': selectedRowIndexL == language.id}" (click)="highlightL(language)"></tr>
         </table>
         <button class="button-7 displayEnd" role="button" (click)="closeForm()">Cancel</button>
 
@@ -243,47 +252,57 @@
                 [ngClass]="{'highlighted': selectedRowIndex == program.id}" (click)="highlight(program)"></tr>
         </table>
         <button class="button-7 displayEnd" role="button" (click)="closeForm()">Cancel</button>
+
+        <!-- skill -->
     </mat-tab>
     <mat-tab label="Vacancy Skill">
         <div class="buttonDisplay">
             <span> <button class="button-2" role="button" (click)="refreshButton()">
                     <mat-icon>cached</mat-icon> Refresh
                 </button></span>
-            <span> <button class="button-2" role="button">
+            <span> <button class="button-2" role="button" (click)="openDialogS()">
                     <mat-icon>assignment</mat-icon>
                     New
                 </button></span>
-            <span> <button class="button-2" role="button">
+            <span> <button class="button-2" role="button" (click)="openEditSkill()">
                     <mat-icon>edit</mat-icon> Edit
                 </button></span>
-            <span> <button class="button-2" role="button">
+            <!-- <span> <button class="button-2" role="button">
                     <mat-icon>remove_red_eye</mat-icon> View
-                </button></span>
+                </button></span> -->
 
-            <span> <button class="button-2" role="button">
+            <span> <button class="button-2" role="button" (click)="openDialogDeleteSkill(editData)">
                     <mat-icon>delete_forever</mat-icon> Delete
                 </button></span>
 
         </div>
-        <table mat-table>
+        <table mat-table [dataSource]="dataSourceSkill">
             <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
                     ID
                 </th>
-                <td mat-cell *matCellDef=" let vacancy">{{vacancy?.id}} </td>
+                <td mat-cell *matCellDef=" let skillData">{{skillData?.id}} </td>
 
             </ng-container>
 
-            <ng-container matColumnDef="skill">
+            <ng-container matColumnDef="skills">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
                     Skill
                 </th>
-                <td mat-cell *matCellDef=" let vacancy">{{vacancy?.skill}} </td>
+                <td mat-cell *matCellDef=" let skillData">{{skillData?.skillName}} </td>
+
+            </ng-container>
+            <ng-container matColumnDef="comment">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">
+                    Comment
+                </th>
+                <td mat-cell *matCellDef=" let skillData">{{skillData?.otherSkill}} </td>
 
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumnsSkill"></tr>
-            <tr mat-row *matRowDef="let vacancy; columns: displayedColumnsSkill;"></tr>
+            <tr mat-row *matRowDef="let skill; columns: displayedColumnsSkill;"
+                [ngClass]="{'highlighted': selectedRowIndexS == skill.id}" (click)="highlightS(skill)"></tr>
         </table>
         <button class="button-7 displayEnd" role="button" (click)="closeForm()">Cancel</button>
     </mat-tab>

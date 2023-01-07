@@ -1,0 +1,38 @@
+<h3>Vacancy Skill</h3>
+
+<form [formGroup]="vacancySkillForm" class="form-container">
+    <mat-card>
+        <mat-card-content>
+            <div class=" px-6 py-4 flex flex-col">
+
+                <div>Skill</div>
+                <mat-form-field appearance="outline" style="font-size: 12px;">
+                    <mat-select formControlName="skillId">
+                        <mat-option *ngFor="let skill of skillList" [value]="skill.id">{{skill.name}}
+                        </mat-option>
+
+                    </mat-select>
+
+
+                </mat-form-field>
+
+
+                <div> Comment : </div>
+                <mat-form-field appearance="outline" style="font-size: 12px;">
+                    <input formControlName="otherSkill" matInput>
+
+                </mat-form-field>
+
+            </div>
+        </mat-card-content>
+
+        <mat-card-actions class="flex flex-col sm:flex-row sm:gap-4 margin">
+            <button mat-button class="button-7" role="button" (click)="saveFormData()">Save</button>
+
+
+            <button class="button-7 " role="button" (click)="closeForm()">Cancel</button>
+
+
+        </mat-card-actions>
+    </mat-card>
+</form>

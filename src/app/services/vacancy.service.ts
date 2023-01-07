@@ -4,7 +4,10 @@ import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
 
 import { List, Vacancy } from "../pages/external-vacancies/model/vacancy";
+import { LanguageVacancy } from "../pages/external-vacancies/model/vacancy-language-model";
 import { ProgramVacancy } from "../pages/external-vacancies/model/vacancy-program-model";
+import { SkillVacancy } from "../pages/external-vacancies/model/vacancy-skill-model";
+
 
 
 
@@ -101,10 +104,45 @@ export class VacancyService {
     }
 
 
+    // vacancy language in edit
+
+    public getAllLanguages(vacancyId: number, page: number, start: number, limit: number): Observable<LanguageVacancy[]> {
+        return this.http.get<LanguageVacancy[]>(`${this.apiServerUrl}/VacancyAdmin/vacancy/laguage?vacancyId=${vacancyId}&page=${page}&start=${start}&limit=${limit}`)
+    }
+
+    //add
+    public addNewLanguage(languageId: number, language: LanguageVacancy['list']): Observable<LanguageVacancy['list']> {
+        return this.http.post<LanguageVacancy['list']>(`${this.apiServerUrl}/VacancyAdmin/vacancy/laguage?vacancyId=${languageId}`, language)
+    }
+
+    //edit
+    public updateLanguage(objectId: number, vacancyId: number, language: LanguageVacancy) {
+        return this.http.put(`${this.apiServerUrl}/VacancyAdmin/vacancy/laguage/${objectId}?vacancyId=${vacancyId}`, language)
+    }
+    //delete
+    public deleteLanguage(language: LanguageVacancy, objectId: number, vacancyId: number) {
+        return this.http.put(`${this.apiServerUrl}/VacancyAdmin/vacancy/laguage/${objectId}?vacancyId=${vacancyId}`, language)
+    }
 
 
+    //vacancy skill in edit
 
+    public getAllSkills(vacancyId: number, page: number, start: number, limit: number): Observable<SkillVacancy[]> {
+        return this.http.get<SkillVacancy[]>(`${this.apiServerUrl}/VacancyAdmin/vacancy/skill?vacancyId=${vacancyId}&page=${page}&start=${start}&limit=${limit}`)
+    }
+    //add
+    public addNewSkill(vacancyId: number, skill: any) {
+        return this.http.post(`${this.apiServerUrl}/VacancyAdmin/vacancy/skill?vacancyId=${vacancyId}`, skill)
+    }
+    //delete
+    public deleteSkill(skill: SkillVacancy, objectId: number, vacancyId: number) {
+        return this.http.put(`${this.apiServerUrl}/VacancyAdmin/vacancy/skill/${objectId}?vacancyId=${vacancyId}`, skill)
+    }
 
+    //edit
+    public updateSkill(objectId: number, vacancyId: number, skill: SkillVacancy) {
+        return this.http.put(`${this.apiServerUrl}/VacancyAdmin/vacancy/skill/${objectId}?vacancyId=${vacancyId}`, skill)
+    }
 }
 
 

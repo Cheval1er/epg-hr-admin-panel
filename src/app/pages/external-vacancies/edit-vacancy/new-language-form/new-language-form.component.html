@@ -1,0 +1,38 @@
+<h3>Vacancy Language</h3>
+
+<form [formGroup]="vacancyLanguageForm" class="form-container">
+    <mat-card>
+        <mat-card-content>
+            <div class=" px-6 py-4 flex flex-col">
+
+                <div>Language</div>
+                <mat-form-field appearance="outline" style="font-size: 12px;">
+                    <mat-select formControlName="languageId">
+                        <mat-option *ngFor="let Language of LanguageList" [value]="Language.id">{{Language.name}}
+                        </mat-option>
+
+                    </mat-select>
+
+
+                </mat-form-field>
+
+
+                <div> Comment : </div>
+                <mat-form-field appearance="outline" style="font-size: 12px;">
+                    <input formControlName="otherLanguage" matInput>
+
+                </mat-form-field>
+
+            </div>
+        </mat-card-content>
+
+        <mat-card-actions class="flex flex-col sm:flex-row sm:gap-4 margin">
+            <button mat-button class="button-7" role="button" (click)="saveFormData()">Save</button>
+
+
+            <button class="button-7 " role="button" (click)="closeForm()">Cancel</button>
+
+
+        </mat-card-actions>
+    </mat-card>
+</form>

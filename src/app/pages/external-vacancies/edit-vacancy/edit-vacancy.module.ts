@@ -9,7 +9,7 @@ import { CommonModule, DatePipe } from '@angular/common';
 
 import { MatNativeDateModule } from '@angular/material/core';
 import { VacancyService } from 'src/app/services/vacancy.service';
-import { DeleteProgramFormComponent, EditVacancyComponent } from './edit-vacancy.component';
+import { DeleteLanguageFormComponent, DeleteProgramFormComponent, DeleteSkillFormComponent, EditVacancyComponent } from './edit-vacancy.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
@@ -37,13 +37,18 @@ import { VacancyFormModule } from '../vacancy-form/vacancy-form.module';
 import { NewProgramFormComponent } from './new-program-form/new-program-form.component';
 import { NewProgramFormModule } from './new-program-form/new-program-form.module';
 import { RouterModule } from '@angular/router';
+import { NewLanguageFormComponent } from './new-language-form/new-language-form.component';
+import { EditLanguageComponent } from './new-language-form/edit-language/edit-language.component';
+import { NewLanguageFormModule } from './new-language-form/new-language-form.module';
+import { NewSkillFormComponent } from './new-skill-form/new-skill-form.component';
+import { NewSkillFormModule } from './new-skill-form/new-skill-form.module';
 
 
 
 
 
 @NgModule({
-    declarations: [EditVacancyComponent, DeleteProgramFormComponent],
+    declarations: [EditVacancyComponent, DeleteProgramFormComponent, DeleteLanguageFormComponent, DeleteSkillFormComponent],
     imports: [
 
         CommonModule,
@@ -86,6 +91,9 @@ import { RouterModule } from '@angular/router';
         MatTabsModule,
         MatDialogModule,
         NewProgramFormModule,
+        NewLanguageFormModule,
+        NewSkillFormModule,
+
 
 
 
