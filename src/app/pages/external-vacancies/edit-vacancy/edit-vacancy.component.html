@@ -315,7 +315,7 @@
             <span> <button class="button-2" role="button">
                     <mat-icon>edit</mat-icon> Edit Applicant
                 </button></span>
-            <span> <button class="button-2" role="button">
+            <span> <button class="button-2" role="button" (click)="moveToShortList()">
                     <mat-icon>remove_red_eye</mat-icon> Short List
                 </button></span>
             <span> <button class="button-2" role="button">
@@ -426,7 +426,7 @@
                     <mat-icon>assignment</mat-icon>
                     Print Applicant
                 </button></span>
-            <span> <button class="button-2" role="button">
+            <span> <button class="button-2" role="button" (click)="removeFromShortList()">
                     <mat-icon>delete_forever</mat-icon> Remove
                 </button></span>
 
@@ -509,9 +509,8 @@
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumnsShortList"></tr>
-            <tr mat-row *matRowDef="let applicantAppS; columns: displayedColumnsShortList;"
-                [ngClass]="{'highlighted': selectedRowIndexApp == applicantAppS.id}"
-                (click)="highlightApp(applicantAppS)">
+            <tr mat-row *matRowDef="let applicantS; columns: displayedColumnsShortList;"
+                [ngClass]="{'highlighted': selectedRowIndexAppS == applicantS.id}" (click)="highlightAppS(applicantS)">
             </tr>
         </table>
         <button class="button-7 displayEnd" role="button" (click)="closeForm()">Cancel</button>

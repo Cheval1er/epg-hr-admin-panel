@@ -6,7 +6,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { VacancyService } from 'src/app/services/vacancy.service';
-import { VacancyApplicant } from '../model/vacancy-applicant-model';
+import { Applicant, VacancyApplicant } from '../model/vacancy-applicant-model';
 import { LanguageVacancy, ListLanguage } from '../model/vacancy-language-model';
 import { ListProgram, ProgramVacancy } from '../model/vacancy-program-model';
 import { VacancyShortListApplicant } from '../model/vacancy-shortList-model';
@@ -35,6 +35,7 @@ export class EditVacancyComponent implements OnInit {
   vacancyForm: any;
 
 
+  data: Applicant[] = [];
 
   dataSourceLanguage: ListLanguage[];
 
@@ -715,6 +716,30 @@ export class EditVacancyComponent implements OnInit {
     this.selectedRowAppS = applicantS;
     this.selectedRowIndexAppS = applicantS.id;
     console.log(applicantS);
+
+
+
+  }
+
+  public moveToShortList(): void {
+
+    this.vacancyService.moveToShortList(this.selectedRowApp).subscribe((result) => {
+      console.log(result);
+      this.ngOnInit();
+    });
+
+
+
+
+  }
+
+  public removeFromShortList(): void {
+
+    this.vacancyService.removeFromShortList(this.selectedRowAppS).subscribe((result) => {
+      console.log(result);
+      this.ngOnInit();
+    });
+
 
 
 

@@ -159,6 +159,14 @@ export class VacancyService {
 
     //active short list
 
+    public moveToShortList(applicant: any) {
+        return this.http.post(`${this.apiServerUrl}/VacancyAdmin/applicant/createShortList`, applicant)
+    }
+
+    public removeFromShortList(applicant: any) {
+        return this.http.post(`${this.apiServerUrl}/VacancyAdmin/applicant/removeFromShortList`, applicant)
+    }
+
     // vacancy applicant shortList
 
     public getAllShortListApplicants(vacancyId: number, page: number, start: number, limit: number) {

@@ -421,7 +421,7 @@
 
             <tr mat-header-row *matHeaderRowDef="displayedColumnsShortList"></tr>
             <tr mat-row *matRowDef="let applicantS; columns: displayedColumnsShortList;"
-                [ngClass]="{'highlighted': selectedRowIndexApp == applicantS.id}" (click)="highlightApp(applicantS)">
+                [ngClass]="{'highlighted': selectedRowIndexAppS == applicantS.id}" (click)="highlightAppS(applicantS)">
             </tr>
         </table>
     </div>
