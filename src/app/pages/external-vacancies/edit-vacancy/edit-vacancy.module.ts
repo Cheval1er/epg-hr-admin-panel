@@ -42,6 +42,7 @@ import { EditLanguageComponent } from './new-language-form/edit-language/edit-la
 import { NewLanguageFormModule } from './new-language-form/new-language-form.module';
 import { NewSkillFormComponent } from './new-skill-form/new-skill-form.component';
 import { NewSkillFormModule } from './new-skill-form/new-skill-form.module';
+import { MatSortModule } from '@angular/material/sort';
 
 
 
@@ -83,7 +84,7 @@ import { NewSkillFormModule } from './new-skill-form/new-skill-form.module';
         MatCardModule,
         VacancyFormModule,
 
-        ResizableModule,
+        MatSortModule,
 
         CdkTableModule,
         ScrollingModule,

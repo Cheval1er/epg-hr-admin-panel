@@ -9,6 +9,7 @@ import { VacancyService } from 'src/app/services/vacancy.service';
 import { EditVacancyComponent } from '../edit-vacancy/edit-vacancy.component';
 import { Vacancy, List } from '../model/vacancy';
 import { VacancyFormComponent } from '../vacancy-form/vacancy-form.component';
+import { ViewVacancyComponent } from '../view-vacancy/view-vacancy.component';
 
 @Component({
   selector: 'vex-stopped-vacancy',
@@ -172,6 +173,22 @@ export class StoppedVacancyComponent implements OnInit, AfterViewInit {
       data: this.selectedRow
 
     })
+    console.log(rowData)
+
+  }
+
+  viewDialog(rowData) {
+
+    rowData = this.selectedRow
+
+    this.dialogRef.open(ViewVacancyComponent, {
+      // disableClose: true,
+      height: '950px',
+      width: '1400px',
+      data: this.selectedRow
+
+    })
+
     console.log(rowData)
 
   }

@@ -11,9 +11,14 @@ import { CustomLayoutModule } from './custom-layout/custom-layout.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { ViewVacancyModule } from "./pages/external-vacancies/view-vacancy/view-vacancy.module";
+
+
 
 @NgModule({
   declarations: [AppComponent],
+  providers: [],
+  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -22,14 +27,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatIconModule,
     MatNativeDateModule,
     MatPaginatorModule,
-
     // Vex
     VexModule,
     CustomLayoutModule,
 
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  ]
 })
 export class AppModule { }
 

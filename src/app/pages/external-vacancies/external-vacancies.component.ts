@@ -12,6 +12,7 @@ import { EditVacancyComponent } from './edit-vacancy/edit-vacancy.component';
 import { List, Vacancy } from './model/vacancy';
 
 import { VacancyFormComponent } from './vacancy-form/vacancy-form.component';
+import { ViewVacancyComponent } from './view-vacancy/view-vacancy.component';
 
 
 @Component({
@@ -262,10 +263,29 @@ export class ExternalVacanciesComponent implements OnInit, AfterViewInit {
 
     })
 
+    // console.log(rowData)
+
+  }
+
+  viewDialog(rowData) {
+
+    rowData = this.selectedRow
+
+    this.dialogRef.open(ViewVacancyComponent, {
+      // disableClose: true,
+      height: '950px',
+      width: '1400px',
+      data: this.selectedRow
+
+    })
+
     console.log(rowData)
 
   }
 
 
+  goToLinks(url: string) {
+    window.open(url, "_blank");
+  }
 }
 

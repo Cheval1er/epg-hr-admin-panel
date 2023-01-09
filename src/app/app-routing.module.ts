@@ -22,6 +22,10 @@ const routes: VexRoutes = [
           loadChildren: () => import('./pages/external-vacancies/external-vacancies.module').then(m => m.ExternalVacanciesModule)
         },
         {
+          path: 'viewVacancy',
+          loadChildren: () => import('./pages/external-vacancies/view-vacancy/view-vacancy.module').then(m => m.ViewVacancyModule)
+        },
+        {
           path: 'vacancy/:id',
           loadChildren: () => import('./pages/external-vacancies/edit-vacancy/edit-vacancy.module').then(m => m.EditVacancyModule)
         },

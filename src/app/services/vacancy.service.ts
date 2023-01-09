@@ -4,8 +4,10 @@ import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
 
 import { List, Vacancy } from "../pages/external-vacancies/model/vacancy";
+import { Applicant, VacancyApplicant } from "../pages/external-vacancies/model/vacancy-applicant-model";
 import { LanguageVacancy } from "../pages/external-vacancies/model/vacancy-language-model";
 import { ProgramVacancy } from "../pages/external-vacancies/model/vacancy-program-model";
+import { VacancyShortListApplicant } from "../pages/external-vacancies/model/vacancy-shortList-model";
 import { SkillVacancy } from "../pages/external-vacancies/model/vacancy-skill-model";
 
 
@@ -57,6 +59,8 @@ export class VacancyService {
     public getAllStoppedVacancies(start: number, limit: number): Observable<List['status']> {
         return this.http.get<List['status']>(`${this.apiServerUrl}/VacancyAdmin/vacancy/vacancyStopped?start=${start}&limit=${limit}`)
     }
+
+
 
 
     //edit vacancy
@@ -143,6 +147,21 @@ export class VacancyService {
     public updateSkill(objectId: number, vacancyId: number, skill: SkillVacancy) {
         return this.http.put(`${this.apiServerUrl}/VacancyAdmin/vacancy/skill/${objectId}?vacancyId=${vacancyId}`, skill)
     }
+
+
+
+    // vacancy applicant
+
+    public getAllApplicants(vacancyId: number, page: number, start: number, limit: number) {
+        return this.http.get(`${this.apiServerUrl}/VacancyAdmin/vacancy/applicants?vacancyId=${vacancyId}&page=${page}&start=${start}&limit=${limit}`)
+    }
+
+
+    //active short list
+
+    // vacancy applicant shortList
+
+    public getAllShortListApplicants(vacancyId: number, page: number, start: number, limit: number) {
+        return this.http.get(`${this.apiServerUrl}/VacancyAdmin/vacancy/shortListApplicants?vacancyId=${vacancyId}&page=${page}&start=${start}&limit=${limit}`)
+    }
 }
-
-
