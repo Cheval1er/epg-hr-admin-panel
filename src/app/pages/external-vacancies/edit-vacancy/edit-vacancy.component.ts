@@ -6,11 +6,11 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { VacancyService } from 'src/app/services/vacancy.service';
-import { Applicant, VacancyApplicant } from '../model/vacancy-applicant-model';
-import { LanguageVacancy, ListLanguage } from '../model/vacancy-language-model';
-import { ListProgram, ProgramVacancy } from '../model/vacancy-program-model';
-import { VacancyShortListApplicant } from '../model/vacancy-shortList-model';
-import { ListSkill, SkillVacancy } from '../model/vacancy-skill-model';
+import { Applicant, VacancyApplicant } from '../../model/vacancy-applicant-model';
+import { LanguageVacancy, ListLanguage } from '../../model/vacancy-language-model';
+import { ListProgram, ProgramVacancy } from '../../model/vacancy-program-model';
+import { VacancyShortListApplicant } from '../../model/vacancy-shortList-model';
+import { ListSkill, SkillVacancy } from '../../model/vacancy-skill-model';
 import { EditLanguageComponent } from './new-language-form/edit-language/edit-language.component';
 
 import { NewLanguageFormComponent } from './new-language-form/new-language-form.component';

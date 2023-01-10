@@ -7,11 +7,11 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { HighlightConfig } from 'src/@vex/components/highlight/highlight.model';
 import { VacancyService } from 'src/app/services/vacancy.service';
-import { VacancyApplicant } from '../model/vacancy-applicant-model';
-import { ListLanguage } from '../model/vacancy-language-model';
-import { ListProgram } from '../model/vacancy-program-model';
-import { VacancyShortListApplicant } from '../model/vacancy-shortList-model';
-import { ListSkill } from '../model/vacancy-skill-model';
+import { VacancyApplicant } from '../../model/vacancy-applicant-model';
+import { ListLanguage } from '../../model/vacancy-language-model';
+import { ListProgram } from '../../model/vacancy-program-model';
+import { VacancyShortListApplicant } from '../../model/vacancy-shortList-model';
+import { ListSkill } from '../../model/vacancy-skill-model';
 
 @Component({
   selector: 'vex-view-vacancy',
@@ -562,6 +562,25 @@ export class ViewVacancyComponent implements OnInit {
     console.log(applicantS);
 
 
+
+  }
+
+  public moveToShortList(): void {
+
+    this.vacancyService.moveToShortList(this.selectedRowApp).subscribe((result) => {
+      console.log(result);
+      this.ngOnInit();
+    });
+
+
+  }
+
+  public removeFromShortList(): void {
+
+    this.vacancyService.removeFromShortList(this.selectedRowAppS).subscribe((result) => {
+      console.log(result);
+      this.ngOnInit();
+    });
 
   }
 }

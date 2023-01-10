@@ -1,9 +1,9 @@
-import { ApplicantsSearchComponent } from "../../applicants-search/applicants-search.component";
+import { ApplicantsSearchComponent } from "../applicants-search/applicants-search.component";
 import { DictionaryItem, Vacancy } from "./vacancy";
 
-export interface ShortListApplicant {
+export interface Applicant {
+    objectId: Number;
     id: number;
-    objectId: number;
     fName: string;
     lName: string;
     customerNumber: string;
@@ -51,14 +51,14 @@ export interface ShortListApplicant {
 
 
 
-
 }
 
-export interface VacancyShortListApplicant {
+export interface VacancyApplicant {
+    objectId: number;
     id: number;
     vacancy: Vacancy;
-    applicant: ShortListApplicant;
+    applicant: Applicant;
     status: number;
     createDate: Date;
-    shortList: true;
+    shortList: boolean;
 }

@@ -3,7 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { VacancyService } from 'src/app/services/vacancy.service';
-import { LanguageVacancy } from '../../model/vacancy-language-model';
+import { LanguageVacancy } from '../../../model/vacancy-language-model';
 
 @Component({
   selector: 'vex-new-language-form',

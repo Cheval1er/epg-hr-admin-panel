@@ -3,12 +3,12 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
 
-import { List, Vacancy } from "../pages/external-vacancies/model/vacancy";
-import { Applicant, VacancyApplicant } from "../pages/external-vacancies/model/vacancy-applicant-model";
-import { LanguageVacancy } from "../pages/external-vacancies/model/vacancy-language-model";
-import { ProgramVacancy } from "../pages/external-vacancies/model/vacancy-program-model";
-import { VacancyShortListApplicant } from "../pages/external-vacancies/model/vacancy-shortList-model";
-import { SkillVacancy } from "../pages/external-vacancies/model/vacancy-skill-model";
+import { List, Vacancy } from "../pages/model/vacancy";
+import { Applicant, VacancyApplicant } from "../pages/model/vacancy-applicant-model";
+import { LanguageVacancy } from "../pages/model/vacancy-language-model";
+import { ProgramVacancy } from "../pages/model/vacancy-program-model";
+import { VacancyShortListApplicant } from "../pages/model/vacancy-shortList-model";
+import { SkillVacancy } from "../pages/model/vacancy-skill-model";
 
 
 

@@ -6,7 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { event } from 'jquery';
 import { VacancyService } from 'src/app/services/vacancy.service';
 import { threadId } from 'worker_threads';
-import { ListProgram, Program, ProgramVacancy } from '../../model/vacancy-program-model';
+import { ListProgram, Program, ProgramVacancy } from '../../../model/vacancy-program-model';
 import { EditVacancyComponent } from '../edit-vacancy.component';
 
 
