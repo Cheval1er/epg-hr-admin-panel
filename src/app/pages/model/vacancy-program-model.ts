@@ -2,7 +2,7 @@ import { Vacancy } from "./vacancy";
 
 export interface DictionaryItem {
 
-    vacancyId: number;
+    id: number;
     fixed: boolean;
     key: string;
     name: string;
