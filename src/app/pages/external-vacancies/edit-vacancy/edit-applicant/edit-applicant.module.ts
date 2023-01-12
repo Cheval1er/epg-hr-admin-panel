@@ -9,7 +9,6 @@ import { CommonModule, DatePipe } from '@angular/common';
 
 import { MatNativeDateModule } from '@angular/material/core';
 import { VacancyService } from 'src/app/services/vacancy.service';
-import { DeleteLanguageFormComponent, DeleteProgramFormComponent, DeleteSkillFormComponent, EditVacancyComponent } from './edit-vacancy.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
@@ -31,27 +30,18 @@ import { A11yModule } from '@angular/cdk/a11y';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CdkTableModule } from '@angular/cdk/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { ResizableModule } from 'angular-resizable-element';
-import { CompletedVacancyRoutingModule } from '../completed-vacancy/completed-vacancy-routing.module';
-import { VacancyFormModule } from '../vacancy-form/vacancy-form.module';
-import { NewProgramFormComponent } from './new-program-form/new-program-form.component';
-import { NewProgramFormModule } from './new-program-form/new-program-form.module';
-import { RouterModule } from '@angular/router';
-import { NewLanguageFormComponent } from './new-language-form/new-language-form.component';
-import { EditLanguageComponent } from './new-language-form/edit-language/edit-language.component';
-import { NewLanguageFormModule } from './new-language-form/new-language-form.module';
-import { NewSkillFormComponent } from './new-skill-form/new-skill-form.component';
-import { NewSkillFormModule } from './new-skill-form/new-skill-form.module';
+import { EditApplicantComponent } from './edit-applicant.component';
 import { MatSortModule } from '@angular/material/sort';
-import { EditApplicantComponent } from './edit-applicant/edit-applicant.component';
-import { EditApplicantModule } from './edit-applicant/edit-applicant.module';
+import { CompletedVacancyRoutingModule } from '../../completed-vacancy/completed-vacancy-routing.module';
+import { VacancyFormModule } from '../../vacancy-form/vacancy-form.module';
+
 
 
 
 
 
 @NgModule({
-    declarations: [EditVacancyComponent, DeleteProgramFormComponent, DeleteLanguageFormComponent, DeleteSkillFormComponent],
+    declarations: [EditApplicantComponent],
     imports: [
 
         CommonModule,
@@ -93,10 +83,8 @@ import { EditApplicantModule } from './edit-applicant/edit-applicant.module';
         A11yModule,
         MatTabsModule,
         MatDialogModule,
-        NewProgramFormModule,
-        NewLanguageFormModule,
-        NewSkillFormModule,
-        EditApplicantModule
+
+
 
 
 
@@ -104,5 +92,5 @@ import { EditApplicantModule } from './edit-applicant/edit-applicant.module';
     providers: [{ provide: LOCALE_ID, useValue: 'en-IN' }, DatePipe, VacancyService
     ]
 })
-export class EditVacancyModule {
+export class EditApplicantModule {
 }

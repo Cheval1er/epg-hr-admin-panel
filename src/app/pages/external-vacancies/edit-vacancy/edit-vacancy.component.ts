@@ -12,6 +12,7 @@ import { ListLanguage, LanguageVacancy } from '../../model/vacancy-language-mode
 import { ListProgram, ProgramVacancy } from '../../model/vacancy-program-model';
 import { VacancyShortListApplicant } from '../../model/vacancy-shortList-model';
 import { ListSkill, SkillVacancy } from '../../model/vacancy-skill-model';
+import { EditApplicantComponent } from './edit-applicant/edit-applicant.component';
 
 import { EditLanguageComponent } from './new-language-form/edit-language/edit-language.component';
 
@@ -693,10 +694,20 @@ export class EditVacancyComponent implements OnInit {
     this.selectedRowApp = applicant;
     this.selectedRowIndexApp = applicant.id;
     console.log(applicant);
+  };
+
+  public openEdit() {
 
 
+    this.dialogRef.open(EditApplicantComponent, {
+      // disableClose: true,
+      height: '950px',
+      width: '1400px',
+      data: this.selectedRowApp
 
+    })
   }
+
   //shortList
 
   public getAllShortListApplicants(page: number, start: number, limit: number) {
