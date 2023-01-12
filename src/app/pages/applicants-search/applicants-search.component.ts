@@ -18,7 +18,7 @@ import { Applicant } from '../model/applicant';
 export class ApplicantsSearchComponent implements OnInit, AfterViewChecked {
 
 
-  dataSource!: MatTableDataSource<any>;
+  searchApplicantsData!: MatTableDataSource<any>;
 
   @ViewChild('paginator') paginator!: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -75,10 +75,10 @@ export class ApplicantsSearchComponent implements OnInit, AfterViewChecked {
 
   public getAllApplicants(page: number, start: number, limit: number) {
     this.applicantService.getAllApplicants(page, start, limit).subscribe(x => {
-      this.dataSource = new MatTableDataSource(this.data = x['list']);
+      this.searchApplicantsData = new MatTableDataSource(this.data = x['list']);
       // this.data = x['list'];
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+      this.searchApplicantsData.paginator = this.paginator;
+      this.searchApplicantsData.sort = this.sort;
       console.log(this.data);
     },
       (error: HttpErrorResponse) => {
@@ -129,13 +129,17 @@ export class ApplicantsSearchComponent implements OnInit, AfterViewChecked {
   }
 
 
-  searchApplicantsData;
+
 
   searchDetails(page: number, start: number, limit: number) {
     this.applicantService.searchApplicants(this.appForm.value.vacancyId, this.appForm.value.languageId, this.appForm.value.gender,
       this.appForm.value.programs, this.appForm.value.departments, this.appForm.value.educationLevel, this.appForm.value.ageFrom, this.appForm.value.ageTo, page, start, limit).subscribe(x => {
         console.log(this.appForm)
         this.searchApplicantsData = x['list'];
+
+        this.searchApplicantsData.paginator = this.paginator;
+        this.searchApplicantsData.sort = this.sort;
+
         console.log(this.searchApplicantsData)
         console.log(this.appForm.value.vacancyId);
         console.log(this.appForm.value.languageId);

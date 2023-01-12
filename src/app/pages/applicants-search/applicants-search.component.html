@@ -1,7 +1,8 @@
 <form [formGroup]="appForm">
 
     <div class="mat-elevation-z8 ">
-        <table mat-table class="full-width-table" matSort aria-label="Elements" [dataSource]="searchApplicantsData">
+        <table mat-table class="full-width-table" matSort aria-label="Elements" [dataSource]="searchApplicantsData"
+            matSort cdkDropListGroup>
 
             <!-- new user header -->
             <ng-container matColumnDef="grouped">
@@ -232,7 +233,8 @@
                 [ngClass]="{'highlighted': selectedRowIndex == applicant.id}" (click)="highlight(applicant)"></tr>
         </table>
 
-        <mat-paginator #paginator [pageSize]="25" [pageSizeOptions]="[10, 25, 50, 100]">
+        <mat-paginator class="full-width-table body" #paginator [pageSize]="10" [pageSizeOptions]="[10,20,30,50]"
+            aria-label="Select page">
         </mat-paginator>
     </div>
 </form>
