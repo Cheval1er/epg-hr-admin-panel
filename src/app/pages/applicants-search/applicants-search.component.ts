@@ -132,6 +132,8 @@ export class ApplicantsSearchComponent implements AfterViewChecked {
   ]
 
 
+    )
+  }
 
   displayedColumns: string[] = ['checked', 'id', 'firstname', 'lastname', 'vacancyname',
     'customernubmer', 'birthdate', 'mail', 'mobile', 'additionalphone', 'createuser', 'createdate', 'status'];
