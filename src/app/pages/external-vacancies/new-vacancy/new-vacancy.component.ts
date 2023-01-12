@@ -6,8 +6,9 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { VacancyService } from 'src/app/services/vacancy.service';
-import { EditVacancyComponent } from '../edit-vacancy/edit-vacancy.component';
 import { Vacancy, List } from '../../model/vacancy';
+import { EditVacancyComponent } from '../edit-vacancy/edit-vacancy.component';
+
 import { VacancyFormComponent } from '../vacancy-form/vacancy-form.component';
 import { ViewVacancyComponent } from '../view-vacancy/view-vacancy.component';
 

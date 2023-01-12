@@ -1,23 +1,29 @@
 <form [formGroup]="appForm">
 
     <div class="mat-elevation-z8 ">
-        <table mat-table class="full-width-table" matSort aria-label="Elements">
+        <table mat-table class="full-width-table" matSort aria-label="Elements" [dataSource]="searchApplicantsData">
 
             <!-- new user header -->
             <ng-container matColumnDef="grouped">
                 <th mat-header-cell *matHeaderCellDef colspan="13" class="size">
                     <div class="flex flex-col sm:flex-row sm:gap-8  searchClass">
                         <span>Vacancy:</span>
-                        <mat-form-field appearance="outline" class="flex-auto" [style.width.%]="80"
-                            style="font-size: 12px;">
-                            <input matInput placeholder="search" autocomplete="off" formControlName="vacancy">
+                        <mat-form-field appearance="outline" class="flex-auto" [style.width.%]="60"
+                            style="font-size: 12px;  ">
+                            <mat-select formControlName="vacancyId">
+                                <mat-option *ngFor="let vacancies of dataVacancy" [value]="vacancies.id">
+                                    {{vacancies.vacancyAndDate}}
+                                </mat-option>
+                            </mat-select>
                         </mat-form-field>
 
 
                         <span>Languages:</span>
                         <mat-form-field appearance="outline" class="flex-auto" style="font-size: 12px;">
-                            <mat-select formControlName="languages">
-                                <mat-option *ngFor="let languages of  languagesList" [value]="languages">{{languages}}
+                            <mat-select formControlName="languageId">
+                                <mat-option *ngFor="let language of  dataLanguage" [value]="language.id">
+                                    {{language.name}}
+
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
@@ -25,7 +31,8 @@
                         <span>Programs:</span>
                         <mat-form-field appearance="outline" class="flex-auto" style="font-size: 12px;">
                             <mat-select formControlName="programs">
-                                <mat-option *ngFor="let programs of  programsList" [value]="programs">{{programs}}
+                                <mat-option *ngFor="let programs of  dataProgram"
+                                    [value]="programs.id">{{programs.name}}
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
@@ -33,7 +40,7 @@
 
                     <div class="flex flex-col sm:flex-row sm:gap-8">
                         <span>Departments:</span>
-                        <mat-form-field appearance="outline" class="flex-auto" [style.width.%]="50"
+                        <mat-form-field appearance="outline" class="flex-auto" [style.width.%]="30"
                             style="font-size: 12px;">
                             <mat-select formControlName="departments">
                                 <mat-option *ngFor="let departments of  departmentsList" [value]="departments">
@@ -43,17 +50,18 @@
                         </mat-form-field>
 
                         <span>Education Level: </span>
-                        <mat-form-field appearance="outline" [style.width.%]="30" style="font-size: 12px;">
+                        <mat-form-field appearance="outline" [style.width.%]="35" style="font-size: 12px;">
                             <mat-select formControlName="educationLevel">
-                                <mat-option *ngFor="let education of educationList" [value]="education">{{education}}
+                                <mat-option *ngFor="let education of dataEducation"
+                                    [value]="education.id">{{education.name}}
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
 
                         <span>Gender:</span>
-                        <mat-form-field appearance="outline" [style.width.%]="30" style="font-size: 12px;">
+                        <mat-form-field appearance="outline" style="font-size: 12px;">
                             <mat-select formControlName="gender">
-                                <mat-option *ngFor="let gender of genderList" [value]="gender">{{gender}}
+                                <mat-option *ngFor="let gender of dataGender" [value]="gender.id">{{gender.name}}
                                 </mat-option>
 
                             </mat-select>
@@ -78,7 +86,7 @@
 
                         <span style="margin-left: 35px;">Date From: </span>
                         <mat-form-field appearance="outline" style="font-size: 12px;">
-                            <input formControlName="dateFrom" [matDatepicker]="datepickerRef1" matInput required>
+                            <input formControlName="dateFrom" [matDatepicker]="datepickerRef1" matInput>
                             <mat-hint>DD/MM/YYYY</mat-hint>
                             <mat-datepicker-toggle [for]="datepickerRef1" matSuffix></mat-datepicker-toggle>
                             <mat-datepicker #datepickerRef1></mat-datepicker>
@@ -86,7 +94,7 @@
                         </mat-form-field>
                         <span style="margin-left: 35px;">Date To: </span>
                         <mat-form-field appearance="outline" style="font-size: 12px;">
-                            <input formControlName="dateTo" [matDatepicker]="datepickerRef" matInput required>
+                            <input formControlName="dateTo" [matDatepicker]="datepickerRef" matInput>
                             <mat-hint>DD/MM/YYYY</mat-hint>
                             <mat-datepicker-toggle [for]="datepickerRef" matSuffix></mat-datepicker-toggle>
                             <mat-datepicker #datepickerRef></mat-datepicker>
@@ -98,9 +106,11 @@
 
                     <div style="margin-top: 10px;">
                         <mat-card-actions class="flex flex-col sm:flex-row sm:gap-4 center">
-                            <button mat-button class="button-7" role="button">Search</button>
-
-                            <button mat-button class="button-7 " role="button" (click)="onReset()">Reset</button>
+                            <span> <button mat-button class="button-7" role="button"
+                                    (click)=" searchDetails(1,0,25)">Search</button>
+                            </span>
+                            <span><button mat-button class="button-7 " role="button"
+                                    (click)="onReset()">Reset</button></span>
 
 
                         </mat-card-actions>
@@ -115,7 +125,7 @@
             <ng-container matColumnDef="edit">
                 <th mat-header-cell *matHeaderCellDef colspan="13">
                     <div class="buttonDisplay">
-                        <span> <button class="button-2" role="button">
+                        <span> <button class="button-2" role="button" (click)="refreshButton()">
                                 <mat-icon>cached</mat-icon> Refresh
                             </button></span>
 
@@ -136,81 +146,81 @@
 
             </ng-container>
 
-            <ng-container matColumnDef="checked">
+            <!-- <ng-container matColumnDef="checked">
                 <th mat-header-cell *matHeaderCellDef>
                     <mat-checkbox></mat-checkbox>
                 </th>
                 <td mat-cell *matCellDef="let element">
                     <mat-checkbox></mat-checkbox>
                 </td>
-            </ng-container>
+            </ng-container> -->
 
             <!-- Id Column -->
             <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">ID</th>
-                <td mat-cell *matCellDef="let row">{{row.id}}</td>
+                <td mat-cell *matCellDef="let applicant">{{applicant.id}}</td>
             </ng-container>
 
 
 
-            <ng-container matColumnDef="firstname">
+            <ng-container matColumnDef="fname">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">First Name</th>
-                <td mat-cell *matCellDef="let row">{{row.firstname}}</td>
+                <td mat-cell *matCellDef="let applicant">{{applicant.fname}}</td>
             </ng-container>
 
 
-            <ng-container matColumnDef="lastname">
+            <ng-container matColumnDef="lname">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Last Name</th>
-                <td mat-cell *matCellDef="let row">{{row.lastname}}</td>
+                <td mat-cell *matCellDef="let applicant">{{applicant.lname}}</td>
             </ng-container>
 
 
-            <ng-container matColumnDef="vacancyname">
+            <ng-container matColumnDef="vacancyName">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Vacancy Name</th>
-                <td mat-cell *matCellDef="let row">{{row.vacancyname}}</td>
+                <td mat-cell *matCellDef="let applicant">{{applicant.vacancyName}}</td>
             </ng-container>
 
-            <ng-container matColumnDef="customernubmer">
+            <ng-container matColumnDef="customerNumber">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Customer Number</th>
-                <td mat-cell *matCellDef="let row">{{row.customernumber}}</td>
+                <td mat-cell *matCellDef="let applicant">{{applicant.customerNumber}}</td>
             </ng-container>
 
-            <ng-container matColumnDef="birthdate">
+            <ng-container matColumnDef="birthDate">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Birth Date</th>
-                <td mat-cell *matCellDef="let row">{{row.birthdate}}</td>
+                <td mat-cell *matCellDef="let applicant">{{applicant.birthDate}}</td>
             </ng-container>
 
 
             <ng-container matColumnDef="mail">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Mail</th>
-                <td mat-cell *matCellDef="let row">{{row.mail}}</td>
+                <td mat-cell *matCellDef="let applicant">{{applicant.mail}}</td>
             </ng-container>
 
 
             <ng-container matColumnDef="mobile">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Mobile</th>
-                <td mat-cell *matCellDef="let row">{{row.mobile}}</td>
+                <td mat-cell *matCellDef="let applicant">{{applicant.phone}}</td>
             </ng-container>
 
             <ng-container matColumnDef="additionalphone">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Additional Phone</th>
-                <td mat-cell *matCellDef="let row">{{row.additionalphone}}</td>
+                <td mat-cell *matCellDef="let applicant">{{applicant.additionalphone}}</td>
             </ng-container>
 
             <ng-container matColumnDef="createuser">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Create User</th>
-                <td mat-cell *matCellDef="let row">{{row.createuser}}</td>
+                <td mat-cell *matCellDef="let applicant">{{applicant.createUser}}</td>
             </ng-container>
 
             <ng-container matColumnDef="createdate">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Create Date</th>
-                <td mat-cell *matCellDef="let row">{{row.createdate}}</td>
+                <td mat-cell *matCellDef="let applicant">{{applicant.createDate}}</td>
             </ng-container>
 
 
             <ng-container matColumnDef="status">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class=" body">Status</th>
-                <td mat-cell *matCellDef="let row">{{row.status}}</td>
+                <td mat-cell *matCellDef="let applicant">{{applicant.status}}</td>
             </ng-container>
 
 
@@ -218,7 +228,8 @@
 
             <tr mat-header-row *matHeaderRowDef="thirdGroupedColumns; sticky: true"></tr>
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr mat-row *matRowDef="let applicant; columns: displayedColumns;"
+                [ngClass]="{'highlighted': selectedRowIndex == applicant.id}" (click)="highlight(applicant)"></tr>
         </table>
 
         <mat-paginator #paginator [pageSize]="25" [pageSizeOptions]="[10, 25, 50, 100]">

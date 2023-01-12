@@ -2,13 +2,11 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
-
-import { List, Vacancy } from "../pages/model/vacancy";
-import { Applicant, VacancyApplicant } from "../pages/model/vacancy-applicant-model";
+import { Vacancy, List } from "../pages/model/vacancy";
 import { LanguageVacancy } from "../pages/model/vacancy-language-model";
 import { ProgramVacancy } from "../pages/model/vacancy-program-model";
-import { VacancyShortListApplicant } from "../pages/model/vacancy-shortList-model";
 import { SkillVacancy } from "../pages/model/vacancy-skill-model";
+
 
 
 

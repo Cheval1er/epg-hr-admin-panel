@@ -2,7 +2,7 @@ const colors = require('tailwindcss/colors');
 const plugin = require('tailwindcss/plugin');
 
 function withOpacityValue(variable) {
-  return ({opacityValue}) => {
+  return ({ opacityValue }) => {
     if (opacityValue === undefined) {
       return `rgb(var(${variable}))`;
     }
@@ -144,7 +144,7 @@ module.exports = {
       fontSize: {
         '2xs': '0.625rem'
       },
-      margin: (theme, {negative}) => ({
+      margin: (theme, { negative }) => ({
         ...negative({
           gutter: 'var(--padding-gutter)'
         })
@@ -182,7 +182,7 @@ module.exports = {
     }
   },
   plugins: [
-    plugin(function ({addUtilities}) {
+    plugin(function ({ addUtilities }) {
       addUtilities({
         '.icon-xs': {
           'font-size': '1rem',

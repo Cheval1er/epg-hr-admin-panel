@@ -2,8 +2,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { ProgramVacancy } from 'src/app/pages/model/vacancy-program-model';
 import { VacancyService } from 'src/app/services/vacancy.service';
-import { ProgramVacancy, Program } from '../../../../model/vacancy-program-model';
 import { NewProgramFormComponent } from '../../new-program-form/new-program-form.component';
 
 @Component({

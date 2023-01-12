@@ -4,9 +4,10 @@ import { FormBuilder } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { event } from 'jquery';
+import { ProgramVacancy, Program } from 'src/app/pages/model/vacancy-program-model';
 import { VacancyService } from 'src/app/services/vacancy.service';
 import { threadId } from 'worker_threads';
-import { ListProgram, Program, ProgramVacancy } from '../../../model/vacancy-program-model';
+
 import { EditVacancyComponent } from '../edit-vacancy.component';
 
 
