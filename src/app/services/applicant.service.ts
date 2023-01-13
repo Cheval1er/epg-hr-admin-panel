@@ -25,4 +25,9 @@ export class ApplicantService {
         return this.http.get(`${this.apiServerUrl}/VacancyAdmin/applicant/search?vacancyIds=${vacancyId}&languageId=${languageId}&programsIds=${programsIds}&departmentsIds=${departmentsIds}&educationLevelsIds=${educationLevelsId}&genderId=${genderId}&ageFrom=${ageFrom}&ageTo=${ageTo}&page=${page}&start=${start}&limit=${limit}`)
     }
 
+
+    // edit Applicants
+    public editApplicant(objectId: number, editApplicant: any) {
+        return this.http.put(`${this.apiServerUrl}/VacancyAdmin/applicant/vacancy/${objectId}`, editApplicant)
+    }
 }
