@@ -255,7 +255,7 @@
                     <mat-icon>cached</mat-icon> Refresh
                 </button></span>
         </div>
-        <table mat-table class="full-width-table mat-elevation-z8 ">
+        <table mat-table class="full-width-table mat-elevation-z8 " [dataSource]="dataSourceApplicantTrain">
 
             <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef class="body">
@@ -269,34 +269,34 @@
                 <th mat-header-cell *matHeaderCellDef class="body">
                     Training Name
                 </th>
-                <td mat-cell *matCellDef=" let trainingData">{{trainingData?.trainingName}} </td>
+                <td mat-cell *matCellDef=" let trainingData">{{trainingData?.traning}} </td>
 
             </ng-container>
             <ng-container matColumnDef="trainingPlace">
                 <th mat-header-cell *matHeaderCellDef class="body">
                     Training Place
                 </th>
-                <td mat-cell *matCellDef=" let trainingData">{{trainingData?.trainingPlace}} </td>
+                <td mat-cell *matCellDef=" let trainingData">{{trainingData?.traningPlace}} </td>
 
             </ng-container>
             <ng-container matColumnDef="trainingCompany">
                 <th mat-header-cell *matHeaderCellDef class="body">
                     Training Company
                 </th>
-                <td mat-cell *matCellDef=" let trainingData">{{trainingData?.trainingCompany}} </td>
+                <td mat-cell *matCellDef=" let trainingData">{{trainingData?.traningCompany}} </td>
 
             </ng-container>
             <ng-container matColumnDef="from">
                 <th mat-header-cell *matHeaderCellDef class="body">
                     From
                 </th>
-                <td mat-cell *matCellDef=" let trainingData">{{trainingData?.from}} </td>
+                <td mat-cell *matCellDef=" let trainingData">{{trainingData?.traningPeriodFrom}} </td>
             </ng-container>
             <ng-container matColumnDef="to">
                 <th mat-header-cell *matHeaderCellDef class="body">
                     To
                 </th>
-                <td mat-cell *matCellDef=" let trainingData">{{trainingData?.to}} </td>
+                <td mat-cell *matCellDef=" let trainingData">{{trainingData?.traningPeriodTo}} </td>
 
             </ng-container>
             <ng-container matColumnDef="trainingDesc">
@@ -310,6 +310,101 @@
 
             <tr mat-header-row *matHeaderRowDef="displayedColumnsTrain; sticky: true"></tr>
             <tr mat-row *matRowDef="let trainingData; columns: displayedColumnsTrain;"></tr>
+        </table>
+
+    </mat-tab>
+    <mat-tab label="Applicant Experience">
+        <div class="buttonDisplay">
+
+            <span> <button class="button-2" role="button" (click)="refreshButton()">
+                    <mat-icon>cached</mat-icon> Refresh
+                </button></span>
+        </div>
+        <table mat-table class="full-width-table mat-elevation-z8 " [dataSource]="dataSourceApplicantExperience">
+
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef class="body">
+                    ID
+                </th>
+                <td mat-cell *matCellDef=" let experienceData">{{experienceData?.id}} </td>
+
+            </ng-container>
+
+            <ng-container matColumnDef="company">
+                <th mat-header-cell *matHeaderCellDef class="body">
+                    Company
+                </th>
+                <td mat-cell *matCellDef=" let experienceData">{{experienceData?.company}} </td>
+
+            </ng-container>
+            <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef class="body">
+                    Position
+                </th>
+                <td mat-cell *matCellDef=" let experienceData">{{experienceData?.position}} </td>
+
+            </ng-container>
+            <ng-container matColumnDef="place">
+                <th mat-header-cell *matHeaderCellDef class="body">
+                    Place
+                </th>
+                <td mat-cell *matCellDef=" let experienceData">{{experienceData?.place}} </td>
+
+            </ng-container>
+            <ng-container matColumnDef="category">
+                <th mat-header-cell *matHeaderCellDef class="body">
+                    Category
+                </th>
+                <td mat-cell *matCellDef=" let experienceData">{{experienceData?.categoryId}} </td>
+
+            </ng-container>
+            <ng-container matColumnDef="level">
+                <th mat-header-cell *matHeaderCellDef class="body">
+                    Level
+                </th>
+                <td mat-cell *matCellDef=" let experienceData">{{experienceData?.levelId}} </td>
+
+            </ng-container>
+            <ng-container matColumnDef="from">
+                <th mat-header-cell *matHeaderCellDef class="body">
+                    From
+                </th>
+                <td mat-cell *matCellDef=" let experienceData">{{experienceData?.periodFrom}} </td>
+            </ng-container>
+            <ng-container matColumnDef="to">
+                <th mat-header-cell *matHeaderCellDef class="body">
+                    To
+                </th>
+                <td mat-cell *matCellDef=" let experienceData">{{experienceData?.periodTo}} </td>
+
+            </ng-container>
+            <ng-container matColumnDef="reason">
+                <th mat-header-cell *matHeaderCellDef class="body">
+                    Reason
+                </th>
+                <td mat-cell *matCellDef=" let experienceData">{{experienceData?.reason}} </td>
+
+            </ng-container>
+
+            <ng-container matColumnDef="salary">
+                <th mat-header-cell *matHeaderCellDef class="body">
+                    Salary
+                </th>
+                <td mat-cell *matCellDef=" let experienceData">{{experienceData?.salary}} </td>
+
+            </ng-container>
+
+            <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef class="body">
+                    Description
+                </th>
+                <td mat-cell *matCellDef=" let experienceData">{{experienceData?.description}} </td>
+
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsExperience; sticky: true"></tr>
+            <tr mat-row *matRowDef="let experienceData; columns: displayedColumnsExperience;"></tr>
         </table>
 
     </mat-tab>

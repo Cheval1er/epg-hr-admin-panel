@@ -17,3 +17,32 @@ export interface ApplicantEducation {
     vacancy: Vacancy
 
 }
+
+export interface ApplicantTraining {
+    id: number;
+    applicant: Applicant;
+    training: string;
+    trainingCompany: string;
+    trainingPeriodFrom: string;
+    trainingPeriodTo: string;
+    trainingNow: boolean;
+    description: string;
+    trainingPlace: string;
+
+}
+
+export interface ApplicantExperience {
+    id: number;
+    applicant: Applicant;
+    company: string;
+    position: string;
+    place: string;
+    category: DictionaryItem;
+    periodFrom: string;
+    periodTo: string;
+    periodNow: string;
+    reason: string;
+    workDesc: string;
+    salary: string;
+}
+

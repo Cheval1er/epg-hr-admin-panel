@@ -35,4 +35,14 @@ export class ApplicantService {
     public applicantEdu(applicantId: number, page: number, start: number, limit: number) {
         return this.http.get(`${this.apiServerUrl}/VacancyAdmin/applicant/education?applicantId=${applicantId}&page=${page}&start=${start}&limit=${limit}`)
     }
+
+    //applicant Training
+    public applicantTrain(applicantId: number, page: number, start: number, limit: number) {
+        return this.http.get(`${this.apiServerUrl}/VacancyAdmin/applicant/traning?applicantId=${applicantId}&page=${page}&start=${start}&limit=${limit}`)
+    }
+
+    // applicant Experience
+    public applicantExperience(applicantId: number, page: number, start: number, limit: number) {
+        return this.http.get(`${this.apiServerUrl}/VacancyAdmin/applicant/experience?applicantId=${applicantId}&page=${page}&start=${start}&limit=${limit}`)
+    }
 }

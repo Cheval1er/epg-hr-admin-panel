@@ -6,9 +6,8 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Applicant } from 'src/app/pages/model/applicant';
-import { ApplicantEducation } from 'src/app/pages/model/applicantDetail';
+import { ApplicantEducation, ApplicantExperience, ApplicantTraining } from 'src/app/pages/model/applicantDetail';
 import { ApplicantService } from 'src/app/services/applicant.service';
-import { VacancyService } from 'src/app/services/vacancy.service';
 
 @Component({
   selector: 'vex-edit-applicant',
@@ -32,10 +31,13 @@ export class EditApplicantComponent implements OnInit {
   displayedColumnsEdu = ['id', 'university', 'profession', 'sphere', 'quality',
     'from', 'to', 'otherUniversity', 'description'];
 
-  displayedColumnsTrain = ['id', 'trainingName', 'trainingPlace', 'trainingCompany', 'from', 'to', 'trainingDesc']
+  displayedColumnsTrain = ['id', 'trainingName', 'trainingPlace', 'trainingCompany', 'from', 'to', 'trainingDesc'];
+  displayedColumnsExperience = ['id', 'company', 'position', 'place', 'category', 'level', 'from', 'to', 'reason', 'salary', 'description'];
 
   dataSource!: MatTableDataSource<any>;
   dataSourceApplicantEdu: ApplicantEducation[];
+  dataSourceApplicantTrain: ApplicantTraining[];
+  dataSourceApplicantExperience: ApplicantExperience[];
 
   dataSourceApplicant: Applicant[] = [];
 
@@ -90,6 +92,9 @@ export class EditApplicantComponent implements OnInit {
     this.getConnection();
     this.getApplicantEdu(1, 0, 25);
     this.getEducation();
+    this.getApplicantTrain(1, 0, 25);
+    this.getExperience();
+    this.getApplicantExperience(1, 0, 25);
 
   }
 
@@ -103,6 +108,18 @@ export class EditApplicantComponent implements OnInit {
         alert(error.message);
       }
   }
+
+  getApplicantExperience(page: number, start: number, limit: number) {
+    this.applicantService.applicantExperience(this.editDataApplicant.applicantId, page, start, limit).subscribe(x => {
+      this.dataSource = new MatTableDataSource(this.dataSourceApplicantExperience = x['list']);
+      // console.log(x['list'])
+      console.log(this.dataSourceApplicant)
+    }),
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+  }
+
   dataEducation;
 
   getEducation() {
@@ -126,12 +143,37 @@ export class EditApplicantComponent implements OnInit {
       }
   }
 
+  getApplicantTrain(page: number, start: number, limit: number) {
+    this.applicantService.applicantTrain(this.editDataApplicant.applicantId, page, start, limit).subscribe(x => {
+      this.dataSource = new MatTableDataSource(this.dataSourceApplicantTrain = x['list']);
+      // console.log(x['list'])
+      console.log(this.dataSourceApplicantTrain)
+    }),
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+  }
+
 
 
   refreshButton() {
+    this.ngOnInit()
 
   }
 
+
+  //experience Level
+  dataExperience;
+  getExperience() {
+    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.experienceLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25')
+      .subscribe(
+        response => {
+          console.log(response);
+          this.dataExperience = response['list']
+        }
+
+      )
+  };
 
 
   saveEditApplicant() {
