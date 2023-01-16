@@ -132,6 +132,22 @@ span {
     hyphens: auto;
 }
 
+.mat-column-vacancyName {
+
+    white-space: unset !important;
+    flex: 0 0 5% !important;
+    width: 5% !important;
+    overflow-wrap: break-word;
+
+
+
+
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
 .mat-column-fname {
 
     white-space: unset !important;

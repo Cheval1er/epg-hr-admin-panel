@@ -58,7 +58,7 @@ export interface Vacancy {
     languages?: string;
     programs?: DictionaryItem;
     departments?: string;
-    educationLevels?: string;
+    educationLevel?: string;
     gender?: string;
     ageFrom?: string;
     ageTo?: string;

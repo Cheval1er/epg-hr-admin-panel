@@ -1,9 +1,12 @@
 import { DatePipe } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { Applicant } from 'src/app/pages/model/applicant';
+import { ApplicantEducation } from 'src/app/pages/model/applicantDetail';
 import { ApplicantService } from 'src/app/services/applicant.service';
 import { VacancyService } from 'src/app/services/vacancy.service';
 
@@ -25,9 +28,16 @@ export class EditApplicantComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public editDataApplicant: any,
   ) { }
 
+
   displayedColumnsEdu = ['id', 'university', 'profession', 'sphere', 'quality',
     'from', 'to', 'otherUniversity', 'description'];
 
+  displayedColumnsTrain = ['id', 'trainingName', 'trainingPlace', 'trainingCompany', 'from', 'to', 'trainingDesc']
+
+  dataSource!: MatTableDataSource<any>;
+  dataSourceApplicantEdu: ApplicantEducation[];
+
+  dataSourceApplicant: Applicant[] = [];
 
   ngOnInit(): void {
     this.applicantForm = this.formBuilder.group({
@@ -73,12 +83,50 @@ export class EditApplicantComponent implements OnInit {
       this.applicantForm.controls['wontedType'].setValue(this.editDataApplicant.wantedTypeId);
     }
 
+    this.geteditApplicant(1, 0, 25);
     this.getGenders();
     this.getWantedType();
     this.getGraphicType();
     this.getConnection();
+    this.getApplicantEdu(1, 0, 25);
+    this.getEducation();
 
   }
+
+  geteditApplicant(page: number, start: number, limit: number) {
+    this.applicantService.editApplicant(this.editDataApplicant.applicantId, page, start, limit).subscribe(x => {
+      this.dataSource = new MatTableDataSource(this.dataSourceApplicant = x['list']);
+      // console.log(x['list'])
+      console.log(this.dataSourceApplicant)
+    }),
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+  }
+  dataEducation;
+
+  getEducation() {
+    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.educationLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+      response => {
+        console.log(response);
+        this.dataEducation = response['list']
+      }
+
+    )
+  }
+
+  getApplicantEdu(page: number, start: number, limit: number) {
+    this.applicantService.applicantEdu(this.editDataApplicant.applicantId, page, start, limit).subscribe(x => {
+      this.dataSource = new MatTableDataSource(this.dataSourceApplicantEdu = x['list']);
+      // console.log(x['list'])
+      console.log(this.dataSourceApplicantEdu)
+    }),
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+  }
+
+
 
   refreshButton() {
 
