@@ -46,3 +46,23 @@ export interface ApplicantExperience {
     salary: string;
 }
 
+export interface ApplicantLanguage {
+    id: number;
+    applicant: Applicant;
+    language: DictionaryItem;
+    otherLanguage: string
+}
+
+export interface ApplicantProgram {
+    id: number;
+    applicant: Applicant;
+    program: DictionaryItem;
+    otherProgram: string;
+}
+
+export interface ApplicantSkill {
+    id: number;
+    applicant: Applicant;
+    skill: DictionaryItem;
+    otherSkill: string;
+}

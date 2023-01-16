@@ -6,7 +6,7 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Applicant } from 'src/app/pages/model/applicant';
-import { ApplicantEducation, ApplicantExperience, ApplicantTraining } from 'src/app/pages/model/applicantDetail';
+import { ApplicantEducation, ApplicantExperience, ApplicantLanguage, ApplicantProgram, ApplicantSkill, ApplicantTraining } from 'src/app/pages/model/applicantDetail';
 import { ApplicantService } from 'src/app/services/applicant.service';
 
 @Component({
@@ -33,11 +33,17 @@ export class EditApplicantComponent implements OnInit {
 
   displayedColumnsTrain = ['id', 'trainingName', 'trainingPlace', 'trainingCompany', 'from', 'to', 'trainingDesc'];
   displayedColumnsExperience = ['id', 'company', 'position', 'place', 'category', 'level', 'from', 'to', 'reason', 'salary', 'description'];
+  displayedColumnsLanguage = ['id', 'language', 'level'];
+  displayedColumnsProgram = ['id', 'program', 'level'];
+  displayedColumnsSkill = ['id', 'skill'];
 
   dataSource!: MatTableDataSource<any>;
   dataSourceApplicantEdu: ApplicantEducation[];
   dataSourceApplicantTrain: ApplicantTraining[];
   dataSourceApplicantExperience: ApplicantExperience[];
+  dataSourceApplicantLanguage: ApplicantLanguage[];
+  dataSourceApplicantProgram: ApplicantProgram[];
+  dataSourceApplicantSkill: ApplicantSkill[];
 
   dataSourceApplicant: Applicant[] = [];
 
@@ -95,6 +101,14 @@ export class EditApplicantComponent implements OnInit {
     this.getApplicantTrain(1, 0, 25);
     this.getExperience();
     this.getApplicantExperience(1, 0, 25);
+    this.getLanguages();
+    this.getUniversity();
+    this.getApplicantLanguage(1, 0, 25);
+    this.getLangLevel();
+    this.getApplicantProgram(1, 0, 25);
+    this.getProgram();
+    this.getSkill();
+    this.getApplicantSkill(1, 0, 25)
 
   }
 
@@ -109,17 +123,49 @@ export class EditApplicantComponent implements OnInit {
       }
   }
 
+  getApplicantLanguage(page: number, start: number, limit: number) {
+    this.applicantService.applicantLanguage(this.editDataApplicant.applicantId, page, start, limit).subscribe(x => {
+      this.dataSource = new MatTableDataSource(this.dataSourceApplicantLanguage = x['list']);
+      // console.log(x['list'])
+      console.log(this.dataSourceApplicantLanguage)
+    }),
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+
+  }
   getApplicantExperience(page: number, start: number, limit: number) {
     this.applicantService.applicantExperience(this.editDataApplicant.applicantId, page, start, limit).subscribe(x => {
       this.dataSource = new MatTableDataSource(this.dataSourceApplicantExperience = x['list']);
       // console.log(x['list'])
-      console.log(this.dataSourceApplicant)
+      console.log(this.dataSourceApplicantExperience)
     }),
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
   }
 
+  getApplicantSkill(page: number, start: number, limit: number) {
+    this.applicantService.applicantSkill(this.editDataApplicant.applicantId, page, start, limit).subscribe(x => {
+      this.dataSource = new MatTableDataSource(this.dataSourceApplicantSkill = x['list']);
+      // console.log(x['list'])
+      console.log(this.dataSourceApplicantSkill)
+    }),
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+  }
+
+  getApplicantProgram(page: number, start: number, limit: number) {
+    this.applicantService.applicantProgram(this.editDataApplicant.applicantId, page, start, limit).subscribe(x => {
+      this.dataSource = new MatTableDataSource(this.dataSourceApplicantProgram = x['list']);
+      // console.log(x['list'])
+      console.log(this.dataSourceApplicantProgram)
+    }),
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+  }
   dataEducation;
 
   getEducation() {
@@ -127,6 +173,17 @@ export class EditApplicantComponent implements OnInit {
       response => {
         console.log(response);
         this.dataEducation = response['list']
+      }
+
+    )
+  }
+
+  dataSkill;
+  getSkill() {
+    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.skill&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+      response => {
+        console.log(response);
+        this.dataSkill = response['list']
       }
 
     )
@@ -175,6 +232,17 @@ export class EditApplicantComponent implements OnInit {
       )
   };
 
+  dataProgram;
+  getProgram() {
+    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.programLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25')
+      .subscribe(
+        response => {
+          console.log(response);
+          this.dataProgram = response['list']
+        }
+
+      )
+  }
 
   saveEditApplicant() {
     // this.applicantService.editApplicant(this.editDataApplicant.applicantId, this.applicantForm.value).subscribe((result) => {
@@ -221,6 +289,43 @@ export class EditApplicantComponent implements OnInit {
       response => {
         console.log(response);
         this.connection = response['list']
+      }
+
+    )
+  }
+
+
+  //for language
+  dataLanguage;
+  getLanguages() {
+    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.language&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+      response => {
+        console.log(response);
+        this.dataLanguage = response['list']
+      }
+
+    )
+  }
+
+  // for university
+  dataUniversity;
+  getUniversity() {
+    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.university&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+      response => {
+        console.log(response);
+        this.dataUniversity = response['list']
+      }
+
+    )
+  }
+
+  // for language level
+  dataLangLevel;
+  getLangLevel() {
+    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.languageLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+      response => {
+        console.log(response);
+        this.dataLangLevel = response['list']
       }
 
     )

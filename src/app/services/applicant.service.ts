@@ -45,4 +45,18 @@ export class ApplicantService {
     public applicantExperience(applicantId: number, page: number, start: number, limit: number) {
         return this.http.get(`${this.apiServerUrl}/VacancyAdmin/applicant/experience?applicantId=${applicantId}&page=${page}&start=${start}&limit=${limit}`)
     }
+
+    // applicant Language
+    public applicantLanguage(applicantId: number, page: number, start: number, limit: number) {
+        return this.http.get(`${this.apiServerUrl}/VacancyAdmin/applicant/language?applicantId=${applicantId}&page=${page}&start=${start}&limit=${limit}`)
+    }
+    // applicant Program
+    public applicantProgram(applicantId: number, page: number, start: number, limit: number) {
+        return this.http.get(`${this.apiServerUrl}/VacancyAdmin/applicant/program?applicantId=${applicantId}&page=${page}&start=${start}&limit=${limit}`)
+    }
+
+    // applicant Skill
+    public applicantSkill(applicantId: number, page: number, start: number, limit: number) {
+        return this.http.get(`${this.apiServerUrl}/VacancyAdmin/applicant/skill?applicantId=${applicantId}&page=${page}&start=${start}&limit=${limit}`)
+    }
 }
