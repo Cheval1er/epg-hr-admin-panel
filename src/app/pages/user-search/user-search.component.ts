@@ -1,11 +1,14 @@
+import { DialogRef } from '@angular/cdk/dialog';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserService } from 'src/app/services/user.service';
 import { User } from '../model/user';
+import { UserViewComponent } from './user-view/user-view.component';
 
 
 @Component({
@@ -32,7 +35,8 @@ export class UserSearchComponent implements OnInit {
 
   constructor(private userService: UserService,
     private httpClient: HttpClient,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private dialogRef: MatDialog) {
 
   }
 
@@ -151,5 +155,23 @@ export class UserSearchComponent implements OnInit {
     setTimeout(() => {
       window.location.reload();
     }, 2);
+  }
+
+
+
+  viewDialog() {
+
+
+
+    this.dialogRef.open(UserViewComponent, {
+      // disableClose: true,
+      height: '1400px',
+      width: '1400px',
+      data: this.selectedRow
+
+    })
+
+    console.log(this.selectedRow)
+
   }
 }

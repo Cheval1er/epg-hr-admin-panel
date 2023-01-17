@@ -23,11 +23,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSliderModule } from '@angular/material/slider';
 import { HttpClientModule } from '@angular/common/http';
+import { UserViewComponent } from './user-view/user-view.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 
 @NgModule({
-    declarations: [UserSearchComponent],
+    declarations: [UserSearchComponent, UserViewComponent],
     imports: [
         CommonModule,
         UserSearchRoutingModule,
@@ -55,7 +57,9 @@ import { HttpClientModule } from '@angular/common/http';
         MatSlideToggleModule,
 
         MatCardModule,
-        HttpClientModule
+        HttpClientModule,
+        MatTableModule,
+        MatTabsModule
 
     ]
 })

@@ -36,5 +36,12 @@ export class UserService {
   public unLockUser(user: any): Observable<User[]> {
     return this.http.post<User[]>(`${this.apiServerUrl}/VacancyAdmin/user/unLockUser`, user)
   }
+
+
+  //user applicant
+
+  public userApplicant(id: number, page: number, start: number, limit: number) {
+    return this.http.get(`${this.apiServerUrl}/VacancyAdmin/user/applicants?id=${id}&page=${page}&start=${start}&limit=${limit}`)
+  }
 }
 
