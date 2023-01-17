@@ -4,7 +4,7 @@ import { Applicant } from './applicant'
 
 export interface ApplicantEducation {
     id: number;
-    applicantId: number;
+
     applicant: Applicant;
     university: DictionaryItem;
     profession: string;
@@ -65,4 +65,28 @@ export interface ApplicantSkill {
     applicant: Applicant;
     skill: DictionaryItem;
     otherSkill: string;
+}
+
+export interface ApplicantDepartment {
+    id: number;
+    applicant: Applicant;
+    department: DictionaryItem;
+    vacancy: Vacancy;
+    otherDepartment: string;
+}
+
+export interface ApplicantFile {
+    id: number;
+    applicant: Applicant;
+    fileName: string;
+    fileKey: string;
+    attachedFile: Blob;
+    fileDate: Date;
+    fileDescription: string;
+    mimetype: string;
+    attachSize: number;
+    fileUser: string;
+    fileData: Blob;
+    fileFormat: string;
+
 }

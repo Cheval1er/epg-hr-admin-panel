@@ -59,4 +59,20 @@ export class ApplicantService {
     public applicantSkill(applicantId: number, page: number, start: number, limit: number) {
         return this.http.get(`${this.apiServerUrl}/VacancyAdmin/applicant/skill?applicantId=${applicantId}&page=${page}&start=${start}&limit=${limit}`)
     }
+
+    // applicant Department
+    public applicantDepartment(applicantId: number, page: number, start: number, limit: number) {
+        return this.http.get(`${this.apiServerUrl}/VacancyAdmin/applicant/department?applicantId=${applicantId}&page=${page}&start=${start}&limit=${limit}`)
+    }
+
+    // applicant file
+    public applicantFile(applicantId: number, page: number, start: number, limit: number) {
+        return this.http.get(`${this.apiServerUrl}/VacancyAdmin/applicant/file?applicantId=${applicantId}&page=${page}&start=${start}&limit=${limit}`)
+    }
+
+    // applicants Vacancies
+
+    public applicantsVacancies(applicantId: number, page: number, start: number, limit: number) {
+        return this.http.get(`${this.apiServerUrl}/VacancyAdmin/applicant/vacancy?applicantId=${applicantId}&page=${page}&start=${start}&limit=${limit}`)
+    }
 }

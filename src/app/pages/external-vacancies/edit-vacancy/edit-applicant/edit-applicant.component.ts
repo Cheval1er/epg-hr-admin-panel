@@ -6,7 +6,7 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Applicant } from 'src/app/pages/model/applicant';
-import { ApplicantEducation, ApplicantExperience, ApplicantLanguage, ApplicantProgram, ApplicantSkill, ApplicantTraining } from 'src/app/pages/model/applicantDetail';
+import { ApplicantDepartment, ApplicantEducation, ApplicantExperience, ApplicantFile, ApplicantLanguage, ApplicantProgram, ApplicantSkill, ApplicantTraining } from 'src/app/pages/model/applicantDetail';
 import { ApplicantService } from 'src/app/services/applicant.service';
 
 @Component({
@@ -36,6 +36,10 @@ export class EditApplicantComponent implements OnInit {
   displayedColumnsLanguage = ['id', 'language', 'level'];
   displayedColumnsProgram = ['id', 'program', 'level'];
   displayedColumnsSkill = ['id', 'skill'];
+  displayedColumnsDepartment = ['id', 'department'];
+  displayedColumnsFile = ['fileName', 'fileRecord', 'fileFormat'];
+  displayedColumnsApplicant = ['id', 'vacancyName', 'createDate']
+
 
   dataSource!: MatTableDataSource<any>;
   dataSourceApplicantEdu: ApplicantEducation[];
@@ -44,6 +48,8 @@ export class EditApplicantComponent implements OnInit {
   dataSourceApplicantLanguage: ApplicantLanguage[];
   dataSourceApplicantProgram: ApplicantProgram[];
   dataSourceApplicantSkill: ApplicantSkill[];
+  dataSourceApplicantDepartment: ApplicantDepartment[];
+  dataSourceApplicantFile: ApplicantFile[];
 
   dataSourceApplicant: Applicant[] = [];
 
@@ -108,10 +114,13 @@ export class EditApplicantComponent implements OnInit {
     this.getApplicantProgram(1, 0, 25);
     this.getProgram();
     this.getSkill();
-    this.getApplicantSkill(1, 0, 25)
+    this.getApplicantSkill(1, 0, 25);
+    this.getApplicantDepartment(1, 0, 25);
+    this.getApplicantFile(1, 0, 25);
+    this.getApplicantsVacancies(1, 0, 25)
 
   }
-
+  // applicants
   geteditApplicant(page: number, start: number, limit: number) {
     this.applicantService.editApplicant(this.editDataApplicant.applicantId, page, start, limit).subscribe(x => {
       this.dataSource = new MatTableDataSource(this.dataSourceApplicant = x['list']);
@@ -123,6 +132,17 @@ export class EditApplicantComponent implements OnInit {
       }
   }
 
+  getApplicantsVacancies(page: number, start: number, limit: number) {
+    this.applicantService.applicantsVacancies(this.editDataApplicant.applicantId, page, start, limit).subscribe(x => {
+      this.dataSource = new MatTableDataSource(this.dataSourceApplicant = x['list']);
+      // console.log(x['list'])
+      console.log(this.dataSourceApplicant)
+    }),
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+  }
+  //applicant language
   getApplicantLanguage(page: number, start: number, limit: number) {
     this.applicantService.applicantLanguage(this.editDataApplicant.applicantId, page, start, limit).subscribe(x => {
       this.dataSource = new MatTableDataSource(this.dataSourceApplicantLanguage = x['list']);
@@ -134,16 +154,18 @@ export class EditApplicantComponent implements OnInit {
       }
 
   }
+  //applicant experience
   getApplicantExperience(page: number, start: number, limit: number) {
     this.applicantService.applicantExperience(this.editDataApplicant.applicantId, page, start, limit).subscribe(x => {
       this.dataSource = new MatTableDataSource(this.dataSourceApplicantExperience = x['list']);
-      // console.log(x['list'])
+      console.log(x['list'])
       console.log(this.dataSourceApplicantExperience)
     }),
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
   }
+  //applicant skill
 
   getApplicantSkill(page: number, start: number, limit: number) {
     this.applicantService.applicantSkill(this.editDataApplicant.applicantId, page, start, limit).subscribe(x => {
@@ -155,7 +177,18 @@ export class EditApplicantComponent implements OnInit {
         alert(error.message);
       }
   }
-
+  //applicant department
+  getApplicantDepartment(page: number, start: number, limit: number) {
+    this.applicantService.applicantDepartment(this.editDataApplicant.applicantId, page, start, limit).subscribe(x => {
+      this.dataSource = new MatTableDataSource(this.dataSourceApplicantDepartment = x['list']);
+      // console.log(x['list'])
+      console.log(this.dataSourceApplicantDepartment)
+    }),
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+  }
+  //applicant program
   getApplicantProgram(page: number, start: number, limit: number) {
     this.applicantService.applicantProgram(this.editDataApplicant.applicantId, page, start, limit).subscribe(x => {
       this.dataSource = new MatTableDataSource(this.dataSourceApplicantProgram = x['list']);
@@ -166,6 +199,43 @@ export class EditApplicantComponent implements OnInit {
         alert(error.message);
       }
   }
+
+
+  //applicant education
+  getApplicantEdu(page: number, start: number, limit: number) {
+    this.applicantService.applicantEdu(this.editDataApplicant.applicantId, page, start, limit).subscribe(x => {
+      this.dataSource = new MatTableDataSource(this.dataSourceApplicantEdu = x['list']);
+      // console.log(x['list'])
+      console.log(this.dataSourceApplicantEdu)
+    }),
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+  }
+  //applicant training
+  getApplicantTrain(page: number, start: number, limit: number) {
+    this.applicantService.applicantTrain(this.editDataApplicant.applicantId, page, start, limit).subscribe(x => {
+      this.dataSource = new MatTableDataSource(this.dataSourceApplicantTrain = x['list']);
+      // console.log(x['list'])
+      console.log(this.dataSourceApplicantTrain)
+    }),
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+  }
+
+  //applicant file
+  getApplicantFile(page: number, start: number, limit: number) {
+    this.applicantService.applicantFile(this.editDataApplicant.applicantId, page, start, limit).subscribe(x => {
+      this.dataSource = new MatTableDataSource(this.dataSourceApplicantFile = x['list']);
+      // console.log(x['list'])
+      console.log(this.dataSourceApplicantFile)
+    }),
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+  }
+
   dataEducation;
 
   getEducation() {
@@ -187,28 +257,6 @@ export class EditApplicantComponent implements OnInit {
       }
 
     )
-  }
-
-  getApplicantEdu(page: number, start: number, limit: number) {
-    this.applicantService.applicantEdu(this.editDataApplicant.applicantId, page, start, limit).subscribe(x => {
-      this.dataSource = new MatTableDataSource(this.dataSourceApplicantEdu = x['list']);
-      // console.log(x['list'])
-      console.log(this.dataSourceApplicantEdu)
-    }),
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-  }
-
-  getApplicantTrain(page: number, start: number, limit: number) {
-    this.applicantService.applicantTrain(this.editDataApplicant.applicantId, page, start, limit).subscribe(x => {
-      this.dataSource = new MatTableDataSource(this.dataSourceApplicantTrain = x['list']);
-      // console.log(x['list'])
-      console.log(this.dataSourceApplicantTrain)
-    }),
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
   }
 
 
