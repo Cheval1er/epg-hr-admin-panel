@@ -68,7 +68,7 @@ export class ApplicantsSearchComponent implements OnInit, AfterViewChecked {
     this.getEducation();
     // this.searchButton(1, 0, 25);
 
-
+    console.log(this.appForm)
 
   }
 
@@ -133,7 +133,8 @@ export class ApplicantsSearchComponent implements OnInit, AfterViewChecked {
 
   searchDetails(page: number, start: number, limit: number) {
     this.applicantService.searchApplicants(this.appForm.value.vacancyId, this.appForm.value.languageId, this.appForm.value.gender,
-      this.appForm.value.programs, this.appForm.value.departments, this.appForm.value.educationLevel, this.appForm.value.ageFrom, this.appForm.value.ageTo, page, start, limit).subscribe(x => {
+      this.appForm.value.programs, this.appForm.value.departments, this.appForm.value.educationLevel,
+      this.appForm.value.ageFrom, this.appForm.value.ageTo, page, start, limit).subscribe(x => {
         console.log(this.appForm)
         this.searchApplicantsData = x['list'];
 

@@ -1,118 +1,122 @@
-<div class="mat-elevation-z8 ">
-    <table mat-table class="full-width-table" matSort [dataSource]="User_Data">
+<form [formGroup]="userSearchForm">
+    <div class="mat-elevation-z8 ">
+        <table mat-table class="full-width-table" matSort [dataSource]="dataSource">
 
-        <!-- new user header -->
-        <ng-container matColumnDef="grouped">
-            <th mat-header-cell *matHeaderCellDef colspan="10">
-                <div class="flex flex-col sm:flex-row sm:gap-8  searchClass">
-                    <span>User Name:</span>
-                    <mat-form-field appearance="fill" class="flex-auto">
-                        <input [(ngModel)]="searchField" matInput placeholder="search" autocomplete="off">
-                    </mat-form-field>
+            <!-- new user header -->
+            <ng-container matColumnDef="grouped">
+                <th mat-header-cell *matHeaderCellDef colspan="10">
 
-
-                    <span>First Name/Last Name:</span><br>
-                    <mat-form-field appearance="fill" class="flex-auto">
-                        <input [(ngModel)]="searchfield2" matInput placeholder="search" autocomplete="off">
-                    </mat-form-field>
-                </div>
-                <div>
-                    <mat-card-actions class="flex flex-col sm:flex-row sm:gap-4 center">
-                        <button mat-button class="button-7" role="button">Search</button>
-
-                        <button mat-button class="button-7 " role="button" (click)="clearSearchField()">Reset</button>
+                    <div class="flex flex-col sm:flex-row sm:gap-8  searchClass">
+                        <span>User Name:</span>
+                        <mat-form-field appearance="fill" class="flex-auto">
+                            <input formControlName="userName" matInput placeholder="search" autocomplete="off">
+                        </mat-form-field>
 
 
-                    </mat-card-actions>
-                </div>
-            </th>
-        </ng-container>
+                        <span>First Name/Last Name:</span><br>
+                        <mat-form-field appearance="fill" class="flex-auto">
+                            <input formControlName="personName" matInput placeholder="search" autocomplete="off">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-card-actions class="flex flex-col sm:flex-row sm:gap-4 center">
+                            <button mat-button class="button-7" role="button"
+                                (click)="searchUser(1,0,25)">Search</button>
+
+                            <button mat-button class="button-7 " role="button" (click)="onReset()">Reset</button>
+
+
+                        </mat-card-actions>
+                    </div>
+
+                </th>
+            </ng-container>
 
 
 
 
-        <!-- edit options header -->
-        <ng-container matColumnDef="edit">
-            <th mat-header-cell *matHeaderCellDef colspan="10">
-                <div class="buttonDisplay">
-                    <span> <button class="button-2" role="button">
-                            <mat-icon>cached</mat-icon> Refresh
-                        </button></span>
-                    <span> <button class="button-2" role="button">
-                            <mat-icon>edit</mat-icon> Edit User
-                        </button></span>
-                    <span> <button class="button-2" role="button">
-                            <mat-icon>remove_red_eye</mat-icon> View User
-                        </button></span>
-                    <span> <button class="button-2" role="button">
-                            <mat-icon>cancel</mat-icon>Cancel User
-                        </button></span>
+            <!-- edit options header -->
+            <ng-container matColumnDef="edit">
+                <th mat-header-cell *matHeaderCellDef colspan="10">
+                    <div class="buttonDisplay">
+                        <span> <button class="button-2" role="button" (click)="refreshButton()">
+                                <mat-icon>cached</mat-icon> Refresh
+                            </button></span>
+                        <!-- <span> <button class="button-2" role="button">
+                                <mat-icon>edit</mat-icon> Edit User
+                            </button></span> -->
+                        <span> <button class="button-2" role="button">
+                                <mat-icon>remove_red_eye</mat-icon> View User
+                            </button></span>
+                        <span> <button class="button-2" role="button" (click)="cancelUser()">
+                                <mat-icon>cancel</mat-icon>Cancel User
+                            </button></span>
 
-                    <span> <button class="button-2" role="button">
-                            <mat-icon>file_copy</mat-icon> Active User
-                        </button></span>
-                </div>
-            </th>
+                        <span> <button class="button-2" role="button" (click)="activeUser()">
+                                <mat-icon>file_copy</mat-icon> Active User
+                            </button></span>
+                        <span> <button class="button-2" role="button" (click)="lockUser()">
+                                <mat-icon>lock</mat-icon> Lock User
+                            </button></span>
+                        <span> <button class="button-2" role="button" (click)="unLockUser()">
+                                <mat-icon>lock_open</mat-icon> Unlock User
+                            </button></span>
+                    </div>
+                </th>
 
-        </ng-container>
-        <ng-container matColumnDef="checked">
-            <th mat-header-cell *matHeaderCellDef>
-                <mat-checkbox></mat-checkbox>
-            </th>
-            <td mat-cell *matCellDef="let element">
-                <mat-checkbox></mat-checkbox>
-            </td>
-        </ng-container>
-
-        <!-- Id Column -->
-        <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">ID</th>
-            <td mat-cell *matCellDef="let user">{{user?.id}}</td>
-        </ng-container>
+            </ng-container>
 
 
-        <ng-container matColumnDef="username">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">User Name</th>
-            <td mat-cell *matCellDef="let user">{{user?.username}}</td>
-
-        </ng-container>
-
-
-        <ng-container matColumnDef="firstName">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">First Name</th>
-            <td mat-cell *matCellDef="let user">{{user?.firstName}}</td>
-        </ng-container>
+            <!-- Id Column -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">ID</th>
+                <td mat-cell *matCellDef="let user">{{user?.id}}</td>
+            </ng-container>
 
 
-        <ng-container matColumnDef="lastName">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Last Name</th>
-            <td mat-cell *matCellDef="let user">{{user?.lastName}}</td>
-        </ng-container>
+            <ng-container matColumnDef="username">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">User Name</th>
+                <td mat-cell *matCellDef="let user">{{user?.email}}</td>
+
+            </ng-container>
 
 
-        <ng-container matColumnDef="mobile">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Mobile</th>
-            <td mat-cell *matCellDef="let user">{{user?.mobile}}</td>
-        </ng-container>
+            <ng-container matColumnDef="firstName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">First Name</th>
+                <td mat-cell *matCellDef="let user">{{user?.firstName}}</td>
+            </ng-container>
 
 
-        <ng-container matColumnDef="status">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class=" body">Status</th>
-            <td mat-cell *matCellDef="let user">{{user?.status}}</td>
-        </ng-container>
+            <ng-container matColumnDef="lastName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Last Name</th>
+                <td mat-cell *matCellDef="let user">{{user?.lastName}}</td>
+            </ng-container>
 
 
-        <tr mat-header-row *matHeaderRowDef="groupedColumns; sticky: true"></tr>
+            <ng-container matColumnDef="mobile">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">Mobile</th>
+                <td mat-cell *matCellDef="let user">{{user?.contactMobile}}</td>
+            </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="thirdGroupedColumns; sticky: true"></tr>
-        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-        <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
-    </table>
 
-    <mat-paginator #paginator [pageSize]="25" [pageSizeOptions]="[10, 25, 50, 100]">
-    </mat-paginator>
-</div>
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class=" body">Status</th>
+                <td mat-cell *matCellDef="let user">{{user?.status}}</td>
+            </ng-container>
 
+
+            <tr mat-header-row *matHeaderRowDef="groupedColumns; sticky: true"></tr>
+
+            <tr mat-header-row *matHeaderRowDef="thirdGroupedColumns; sticky: true"></tr>
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+            <tr mat-row *matRowDef="let user; columns: columnsToDisplay;"
+                [ngClass]="{'highlighted': selectedRowIndex == user.id}" (click)="highlight(user)"></tr>
+        </table>
+
+        <mat-paginator #paginator [pageSize]="25" [pageSizeOptions]="[10, 25, 50, 100]">
+        </mat-paginator>
+    </div>
+</form>
 <!-- <div *ngFor="let user of users">
     <div>{{user.username}}</div>
 </div> -->
