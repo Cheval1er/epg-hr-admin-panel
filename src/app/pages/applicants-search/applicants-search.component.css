@@ -208,3 +208,10 @@ span {
 .highlighted {
     background: #bbcee2;
 }
+
+@media only screen and (max-width: 600px) {
+    .responsive {
+        width: 100%;
+        /* The width is 100%, when the viewport is 800px or smaller */
+    }
+}

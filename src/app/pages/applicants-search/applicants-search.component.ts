@@ -190,34 +190,6 @@ export class ApplicantsSearchComponent implements OnInit, AfterViewChecked {
 
     )
   }
-  // programsList: string[] = [
-  //   'ArcGIS',
-  //   'AutoCAD',
-  //   'Excel',
-  //   'IFS',
-  //   'MS Office',
-  //   'MS Project',
-  //   'Oris',
-  //   'Photoshop',
-  //   'PowerPoint',
-  //   'Visio',
-  //   'Word',
-  //   'სხვა'
-
-
-
-  // ]
-
-  // dataDepartment;
-  // getDepartment() {
-  //   this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.program&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
-  //     response => {
-  //       console.log(response);
-  //       this.dataDepartment = response['list']
-  //     }
-
-  //   )
-  // }
 
 
   departmentsList: string[] = [
@@ -269,7 +241,7 @@ export class ApplicantsSearchComponent implements OnInit, AfterViewChecked {
 
     )
   }
-  // educationList: string[] = [
+
   //   'N/A',
   //   'არასრული უმაღლესი',
   //   'ბაკალავრი',
