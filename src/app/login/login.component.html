@@ -20,7 +20,7 @@
         </mat-form-field>
         <mat-form-field class="flex-1">
           <mat-label>Password</mat-label>
-          <input [type]="inputType" formControlName="password" matInput required>
+          <input [type]="inputType" formControlName="password" matInput required (keyup.enter)="send()">
           <button (click)="toggleVisibility()" mat-icon-button matSuffix matTooltip="Toggle Visibility" type="button">
             <mat-icon *ngIf="visible" svgIcon="mat:visibility"></mat-icon>
             <mat-icon *ngIf="!visible" svgIcon="mat:visibility_off"></mat-icon>

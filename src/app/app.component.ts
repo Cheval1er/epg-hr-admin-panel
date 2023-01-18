@@ -13,6 +13,7 @@ import { ColorSchemeName } from '../@vex/config/colorSchemeName';
 import { MatIconRegistry, SafeResourceUrlWithIconOptions } from '@angular/material/icon';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ColorVariable, colorVariables } from '../@vex/components/config-panel/color-variables';
+import { AuthenticationService } from './login/authentication.service';
 
 
 
@@ -32,7 +33,8 @@ export class AppComponent {
     private navigationService: NavigationService,
     private splashScreenService: SplashScreenService,
     private readonly matIconRegistry: MatIconRegistry,
-    private readonly domSanitizer: DomSanitizer) {
+    private readonly domSanitizer: DomSanitizer,
+    private loginService: AuthenticationService) {
     Settings.defaultLocale = this.localeId;
 
     if (this.platform.BLINK) {

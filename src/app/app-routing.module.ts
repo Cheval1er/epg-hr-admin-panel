@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { QuicklinkModule, QuicklinkStrategy } from 'ngx-quicklink';
 import { VexRoutes } from 'src/@vex/interfaces/vex-route.interface';
 import { CustomLayoutComponent } from './custom-layout/custom-layout.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: VexRoutes = [
 
@@ -10,7 +11,7 @@ const routes: VexRoutes = [
     path: 'login',
     loadChildren: () => import('./login/login.module').then(m => m.LoginModule),
   },
-
+  // { path: 'login', component: LoginComponent },
   {
     path: '',
     component: CustomLayoutComponent,
