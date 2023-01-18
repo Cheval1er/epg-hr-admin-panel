@@ -1,5 +1,6 @@
 
 
+import { DatePipe } from '@angular/common';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { AfterViewChecked, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
@@ -35,7 +36,8 @@ export class ApplicantsSearchComponent implements OnInit, AfterViewChecked {
   constructor(private formBuilder: FormBuilder,
     private readonly changeDetectorRef: ChangeDetectorRef,
     private applicantService: ApplicantService,
-    private httpClient: HttpClient) { }
+    private httpClient: HttpClient,
+    private datePipe: DatePipe) { }
   ngAfterViewChecked(): void {
     this.changeDetectorRef.detectChanges();
   }
@@ -132,20 +134,21 @@ export class ApplicantsSearchComponent implements OnInit, AfterViewChecked {
 
 
   searchDetails(page: number, start: number, limit: number) {
+
+    // this.appForm.value.dateFrom = this.datePipe.transform(this.appForm.value.dateFrom, 'dd-MM-yyyy');
+    // this.appForm.value.dateTo = this.datePipe.transform(this.appForm.value.dateTo, 'dd-MM-yyyy')
     this.applicantService.searchApplicants(this.appForm.value.vacancyId, this.appForm.value.languageId, this.appForm.value.gender,
       this.appForm.value.programs, this.appForm.value.departments, this.appForm.value.educationLevel,
-      this.appForm.value.ageFrom, this.appForm.value.ageTo, page, start, limit).subscribe(x => {
+      this.appForm.value.ageFrom, this.appForm.value.ageTo, this.appForm.value.experience, this.appForm.value.dateFrom, this.appForm.value.dateTo, page, start, limit).subscribe(x => {
         console.log(this.appForm)
         this.searchApplicantsData = x['list'];
 
         this.searchApplicantsData.paginator = this.paginator;
         this.searchApplicantsData.sort = this.sort;
 
-        console.log(this.searchApplicantsData)
-        console.log(this.appForm.value.vacancyId);
-        console.log(this.appForm.value.languageId);
         console.log(this.appForm.value.vacancyId, this.appForm.value.languageId, this.appForm.value.gender,
-          this.appForm.value.programs, this.appForm.value.departments, this.appForm.value.educationLevel, this.appForm.value.ageFrom, this.appForm.value.ageTo)
+          this.appForm.value.programs, this.appForm.value.departments, this.appForm.value.educationLevel,
+          this.appForm.value.ageFrom, this.appForm.value.ageTo, this.appForm.value.experience, this.appForm.value.dateFrom, this.appForm.value.dateTo)
       }
       )
   }

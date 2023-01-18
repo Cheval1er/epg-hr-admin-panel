@@ -165,6 +165,7 @@
                 </mat-card-content>
             </mat-card>
             <button (click)="saveEditApplicant()">Save</button>
+            <button class="button-7  displayEnd" role="button" (click)="closeForm()">Cancel</button>
         </form>
     </mat-tab>
 
@@ -245,7 +246,10 @@
 
             <tr mat-header-row *matHeaderRowDef="displayedColumnsEdu; sticky: true"></tr>
             <tr mat-row *matRowDef="let educationData; columns: displayedColumnsEdu;"></tr>
+
+
         </table>
+        <button class="button-7  displayEnd" role="button" (click)="closeForm()">Cancel</button>
     </mat-tab>
 
     <mat-tab label="Applicant Training">
@@ -311,7 +315,7 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumnsTrain; sticky: true"></tr>
             <tr mat-row *matRowDef="let trainingData; columns: displayedColumnsTrain;"></tr>
         </table>
-
+        <button class="button-7  displayEnd" role="button" (click)="closeForm()">Cancel</button>
     </mat-tab>
     <mat-tab label="Applicant Experience">
         <div class="buttonDisplay">
@@ -406,7 +410,7 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumnsExperience; sticky: true"></tr>
             <tr mat-row *matRowDef="let experienceData; columns: displayedColumnsExperience;"></tr>
         </table>
-
+        <button class="button-7  displayEnd" role="button" (click)="closeForm()">Cancel</button>
     </mat-tab>
     <mat-tab label="Applicant Language">
         <div class="buttonDisplay">
@@ -443,6 +447,7 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumnsLanguage; sticky: true"></tr>
             <tr mat-row *matRowDef="let languageData; columns: displayedColumnsLanguage;"></tr>
         </table>
+        <button class="button-7  displayEnd" role="button" (click)="closeForm()">Cancel</button>
     </mat-tab>
     <mat-tab label="Applicant Program">
         <div class="buttonDisplay">
@@ -479,7 +484,7 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumnsProgram; sticky: true"></tr>
             <tr mat-row *matRowDef="let programData; columns: displayedColumnsProgram;"></tr>
         </table>
-
+        <button class="button-7  displayEnd" role="button" (click)="closeForm()">Cancel</button>
     </mat-tab>
     <mat-tab label="Applicant Skill">
 
@@ -511,6 +516,7 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumnsSkill; sticky: true"></tr>
             <tr mat-row *matRowDef="let skillData; columns: displayedColumnsSkill;"></tr>
         </table>
+        <button class="button-7  displayEnd" role="button" (click)="closeForm()">Cancel</button>
     </mat-tab>
     <mat-tab label="Applicant Department">
         <div class="buttonDisplay">
@@ -541,7 +547,7 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumnsDepartment; sticky: true"></tr>
             <tr mat-row *matRowDef="let departmentData; columns: displayedColumnsDepartment;"></tr>
         </table>
-
+        <button class="button-7  displayEnd" role="button" (click)="closeForm()">Cancel</button>
     </mat-tab>
 
     <mat-tab label="Applicant Files">
@@ -579,6 +585,7 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumnsFile; sticky: true"></tr>
             <tr mat-row *matRowDef="let fileData; columns: displayedColumnsFile;"></tr>
         </table>
+        <button class="button-7  displayEnd" role="button" (click)="closeForm()">Cancel</button>
     </mat-tab>
     <mat-tab label="Vacancies of Applicant">
         <div class="buttonDisplay">
@@ -615,6 +622,6 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumnsApplicant; sticky: true"></tr>
             <tr mat-row *matRowDef="let applicantData; columns: displayedColumnsApplicant;"></tr>
         </table>
-
+        <button class="button-7  displayEnd" role="button" (click)="closeForm()">Cancel</button>
     </mat-tab>
 </mat-tab-group>

@@ -21,8 +21,8 @@ export class ApplicantService {
     }
 
     //search applicants
-    public searchApplicants(vacancyId: number, languageId: number, genderId: number, programsIds: number, departmentsIds: number, educationLevelsId: number, ageFrom: number, ageTo: number, page: number, start: number, limit: number) {
-        return this.http.get(`${this.apiServerUrl}/VacancyAdmin/applicant/search?vacancyIds=${vacancyId}&languageId=${languageId}&programsIds=${programsIds}&departmentsIds=${departmentsIds}&educationLevelsIds=${educationLevelsId}&genderId=${genderId}&ageFrom=${ageFrom}&ageTo=${ageTo}&page=${page}&start=${start}&limit=${limit}`)
+    public searchApplicants(vacancyId: number, languageId: number, genderId: number, programsIds: number, departmentsIds: number, educationLevelsId: number, ageFrom: number, ageTo: number, noexperience: number, dateFrom: Date, dateTo: Date, page: number, start: number, limit: number) {
+        return this.http.get(`${this.apiServerUrl}/VacancyAdmin/applicant/search?vacancyIds=${vacancyId}&languagesIds=${languageId}&programsIds=${programsIds}&departmentsIds=${departmentsIds}&educationLevelsIds=${educationLevelsId}&genderId=${genderId}&ageFrom=${ageFrom}&ageTo=${ageTo}&noExperience=${noexperience}&dateFrom=${dateFrom}&dateTo=${dateTo}&page=${page}&start=${start}&limit=${limit}`)
     }
 
 

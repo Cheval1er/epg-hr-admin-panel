@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 
 import { MatButtonModule } from '@angular/material/button';
@@ -55,7 +55,7 @@ import { MatTableModule } from '@angular/material/table';
 
     ],
     providers: [
-        { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }
+        { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }, DatePipe
     ]
 })
 export class ApplicantsSearchModule {

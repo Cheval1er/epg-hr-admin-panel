@@ -2,7 +2,7 @@ import { DatePipe } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Applicant } from 'src/app/pages/model/applicant';
@@ -18,7 +18,7 @@ export class EditApplicantComponent implements OnInit {
   applicantForm: any;
   constructor(private formBuilder: FormBuilder,
     private router: Router,
-    private dialogRef: MatDialog,
+    private dialogRef: MatDialogRef<EditApplicantComponent>,
     private httpClient: HttpClient,
     private datePipe: DatePipe,
     private applicantService: ApplicantService,
@@ -119,6 +119,10 @@ export class EditApplicantComponent implements OnInit {
     this.getApplicantFile(1, 0, 25);
     this.getApplicantsVacancies(1, 0, 25)
 
+  }
+
+  closeForm() {
+    this.dialogRef.close()
   }
   // applicants
   geteditApplicant(page: number, start: number, limit: number) {
