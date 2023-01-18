@@ -52,7 +52,7 @@
                             <mat-option value="Billing">ბილინგი</mat-option>
                         </mat-select> -->
                                 <mat-select formControlName="categoryId">
-                                    <mat-option *ngFor="let category of categoryList"
+                                    <mat-option *ngFor="let category of dataCategory"
                                         [value]="category.id">{{category.name}}
                                     </mat-option>
                                 </mat-select>
@@ -141,7 +141,7 @@
                 <mat-card-actions class="flex flex-col sm:flex-row sm:gap-4 margin">
                     <button mat-button class="button-7 " role="button" (click)="updateFormData()">Update</button>
 
-                    <button class="button-7" role="button" (click)="closeForm()">Cancel</button>
+                    <button class="button-7" role="button" (click)="closeForm()">Close</button>
 
 
                 </mat-card-actions>
@@ -199,7 +199,7 @@
             <tr mat-row *matRowDef="let language; columns: displayedColumns;"
                 [ngClass]="{'highlighted': selectedRowIndexL == language.id}" (click)="highlightL(language)"></tr>
         </table>
-        <button class="button-7 displayEnd" role="button" (click)="closeForm()">Cancel</button>
+        <button class="button-7 displayEnd" role="button" (click)="closeForm()">Close</button>
 
     </mat-tab>
     <mat-tab label="Vacancy Program">
@@ -251,7 +251,7 @@
             <tr mat-row *matRowDef="let program; columns: columnToDisplay;"
                 [ngClass]="{'highlighted': selectedRowIndex == program.id}" (click)="highlight(program)"></tr>
         </table>
-        <button class="button-7 displayEnd" role="button" (click)="closeForm()">Cancel</button>
+        <button class="button-7 displayEnd" role="button" (click)="closeForm()">Close</button>
 
         <!-- skill -->
     </mat-tab>
@@ -304,7 +304,7 @@
             <tr mat-row *matRowDef="let skill; columns: displayedColumnsSkill;"
                 [ngClass]="{'highlighted': selectedRowIndexS == skill.id}" (click)="highlightS(skill)"></tr>
         </table>
-        <button class="button-7 displayEnd" role="button" (click)="closeForm()">Cancel</button>
+        <button class="button-7 displayEnd" role="button" (click)="closeForm()">Close</button>
     </mat-tab>
     <mat-tab label="Vacancy Applicants">
         <div class="buttonDisplay">
@@ -408,7 +408,7 @@
             <tr mat-row *matRowDef="let applicant; columns: displayedColumnsApplicants;"
                 [ngClass]="{'highlighted': selectedRowIndexApp == applicant.id}" (click)="highlightApp(applicant)"></tr>
         </table>
-        <button class="button-7 displayEnd" role="button" (click)="closeForm()">Cancel</button>
+        <button class="button-7 displayEnd" role="button" (click)="closeForm()">Close</button>
     </mat-tab>
 
     <!-- //short list -->
@@ -513,5 +513,5 @@
                 [ngClass]="{'highlighted': selectedRowIndexAppS == applicantS.id}" (click)="highlightAppS(applicantS)">
             </tr>
         </table>
-        <button class="button-7 displayEnd" role="button" (click)="closeForm()">Cancel</button>
+        <button class="button-7 displayEnd" role="button" (click)="closeForm()">Close</button>
     </mat-tab>

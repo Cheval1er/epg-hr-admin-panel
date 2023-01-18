@@ -43,7 +43,7 @@
                     <span>Category</span>
                     <mat-form-field appearance="outline" class="flex-auto" style="font-size: 12px;">
                         <mat-select formControlName="categoryId">
-                            <mat-option *ngFor="let category of categoryList" [value]="category.id">{{category.name}}
+                            <mat-option *ngFor="let category of dataCategory" [value]="category.id">{{category.name}}
                             </mat-option>
                         </mat-select>
                         <mat-error>This field is required</mat-error>

@@ -52,7 +52,7 @@
                         <mat-option value="Billing">ბილინგი</mat-option>
                     </mat-select> -->
                             <mat-select formControlName="categoryId" class="black">
-                                <mat-option *ngFor="let category of categoryList"
+                                <mat-option *ngFor="let category of dataCategory"
                                     [value]="category.id">{{category.name}}
                                 </mat-option>
                             </mat-select>

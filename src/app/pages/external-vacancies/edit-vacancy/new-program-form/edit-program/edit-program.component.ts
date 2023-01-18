@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -25,6 +26,7 @@ export class EditProgramComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private vacancyService: VacancyService,
     private dialogRef: MatDialogRef<NewProgramFormComponent>,
+    private httpClient: HttpClient,
     @Inject(MAT_DIALOG_DATA) public editData: any,) { }
 
   ngOnInit(): void {
@@ -53,85 +55,20 @@ export class EditProgramComponent implements OnInit {
       this.vacancyProgramForm.controls['programId'].setValue(this.editData.programId)
 
     }
+    this.getProgram();
   }
 
 
-  programList: any[] = [
-    {
-      "id": 267,
-      "name": "ArcGIS",
-      "key": "key.program",
-      "sortOrder": 2
-    },
-    {
-      "id": 182,
-      "name": "AutoCAD",
-      "key": "key.program.autoCard",
-      "sortOrder": 1
-    },
-    {
-      "id": 175,
-      "name": "Excel",
-      "key": "key.program.exel",
-      "sortOrder": 1
-    },
-    {
-      "id": 180,
-      "name": "IFS",
-      "key": "key.program.ifs",
-      "sortOrder": 1
-    },
-    {
-      "id": 239,
-      "name": "MS Office",
-      "key": "key.program.MS Office",
-      "sortOrder": 1
-    },
-    {
-      "id": 179,
-      "name": "MS Project",
-      "key": "key.program.project",
-      "sortOrder": 1
-    },
-    {
-      "id": 174,
-      "name": "Oris",
-      "key": "key.program.oris",
-      "sortOrder": 1
-    },
-    {
-      "id": 268,
-      "name": "Photoshop",
-      "key": "key.program",
-      "sortOrder": 1
-    },
-    {
-      "id": 177,
-      "name": "PowerPoint",
-      "key": "key.program.powerPoint",
-      "sortOrder": 1
-    },
-    {
-      "id": 178,
-      "name": "Visio",
-      "key": "key.program.visio",
-      "sortOrder": 1
-    },
-    {
-      "id": 176,
-      "name": "Word",
-      "key": "key.program.word",
-      "sortOrder": 1
-    },
-    {
-      "id": 183,
-      "name": "სხვა",
-      "key": "key.program.other",
-      "sortOrder": 1
-    }
+  programList;
+  getProgram() {
+    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.program&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+      response => {
+        console.log(response);
+        this.programList = response['list']
+      }
 
-  ]
-
+    )
+  }
   saveFormData() {
     console.log(this.vacancyProgramForm.value);
     this.vacancyService.updateProgram(this.editData.objectId, this.editData.vacancyId, this.vacancyProgramForm.value).subscribe((result) => {

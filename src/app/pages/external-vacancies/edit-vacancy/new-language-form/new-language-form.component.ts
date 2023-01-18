@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -23,6 +24,7 @@ export class NewLanguageFormComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private vacancyService: VacancyService,
     private dialogRef: MatDialogRef<NewLanguageFormComponent>,
+    private httpClient: HttpClient,
     @Inject(MAT_DIALOG_DATA) public editData: any,) { }
 
   ngOnInit(): void {
@@ -42,78 +44,21 @@ export class NewLanguageFormComponent implements OnInit {
 
 
     })
+    this.getLanguage();
 
   }
 
 
-  LanguageList: any[] = [{
-    "id": 168,
-    "name": "ბულგარული",
-    "key": "key.language.bulgarian",
-    "sortOrder": 1
-  },
-  {
-    "id": 163,
-    "name": "გერმანული",
-    "key": "key.language.german",
-    "sortOrder": 1
-  },
-  {
-    "id": 166,
-    "name": "ესპანური",
-    "key": "key.language.espan",
-    "sortOrder": 1
-  },
-  {
-    "id": 169,
-    "name": "თურქული",
-    "key": "key.language.other",
-    "sortOrder": 1
-  },
-  {
-    "id": 160,
-    "name": "ინგლისური",
-    "key": "key.language.english",
-    "sortOrder": 1
-  },
-  {
-    "id": 165,
-    "name": "იტალიური",
-    "key": "key.language.italian",
-    "sortOrder": 1
-  },
-  {
-    "id": 162,
-    "name": "რუსული",
-    "key": "key.language.russion",
-    "sortOrder": 1
-  },
-  {
-    "id": 164,
-    "name": "ფრანგული",
-    "key": "key.language.franch",
-    "sortOrder": 1
-  },
-  {
-    "id": 161,
-    "name": "ქართული",
-    "key": "key.language.georgia",
-    "sortOrder": 1
-  },
-  {
-    "id": 167,
-    "name": "ჩეხური",
-    "key": "key.language.chex",
-    "sortOrder": 1
-  },
-  {
-    "id": 299,
-    "name": "ჩინური",
-    "key": "key.language",
-    "sortOrder": 1
-  }
-  ]
+  LanguageList;
+  getLanguage() {
+    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.language&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+      response => {
+        console.log(response);
+        this.LanguageList = response['list']
+      }
 
+    )
+  }
   saveFormData() {
     console.log(this.vacancyLanguageForm.value);
     this.vacancyService.addNewLanguage(this.editData.id, this.vacancyLanguageForm.value).subscribe((result) => {
