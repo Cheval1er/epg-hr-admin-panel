@@ -1,10 +1,12 @@
 import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { VacancyService } from 'src/app/services/vacancy.service';
+
+
 
 
 @Component({
@@ -27,12 +29,12 @@ export class VacancyFormComponent implements OnInit {
     // @Inject(MAT_DIALOG_DATA) public editData: any,
 
   ) { }
-
+  deadLine: Date = new Date();
   ngOnInit(): void {
     this.vacancyForm = this.formBuilder.group({
       vacancyName: ['', Validators.required],
       vacancyAddress: ['', Validators.required],
-      deadLine: ['', Validators.required],
+      deadLine: new FormControl(this.deadLine),
       schedule: ['', Validators.required],
       categoryId: ['', Validators.required],
       typeId: ['', Validators.required],

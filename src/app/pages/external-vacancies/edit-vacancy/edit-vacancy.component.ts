@@ -1,12 +1,13 @@
-import { DatePipe } from '@angular/common';
+import { DatePipe, formatDate } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { VacancyService } from 'src/app/services/vacancy.service';
 import { Applicant } from '../../model/applicant';
+import { List, Vacancy } from '../../model/vacancy';
 import { VacancyApplicant } from '../../model/vacancy-applicant-model';
 import { ListLanguage, LanguageVacancy } from '../../model/vacancy-language-model';
 import { ListProgram, ProgramVacancy } from '../../model/vacancy-program-model';
@@ -36,6 +37,7 @@ export class EditVacancyComponent implements OnInit {
   dataSourceProgram: ListProgram[]
   showAlert = false;
   vacancyForm: any;
+
 
 
   data: Applicant[] = [];
@@ -79,7 +81,9 @@ export class EditVacancyComponent implements OnInit {
 
   ) { }
 
+
   ngOnInit(): void {
+
 
     this.vacancyForm = this.formBuilder.group({
       vacancyName: ['', Validators.required],
@@ -98,6 +102,7 @@ export class EditVacancyComponent implements OnInit {
       salary: [''],
 
     });
+
     if (this.editData) {
       this.vacancyForm.controls['vacancyName'].setValue(this.editData.vacancyName);
       this.vacancyForm.controls['vacancyAddress'].setValue(this.editData.vacancyAddress);
@@ -141,9 +146,9 @@ export class EditVacancyComponent implements OnInit {
 
     this.vacancyService.updateVacancy(this.vacancyForm.value, this.editData.id).subscribe((result) => {
       console.log(result);
-      setTimeout(() => {
-        window.location.reload();
-      }, 50);
+      // setTimeout(() => {
+      //   window.location.reload();
+      // }, 50);
     })
 
     this.dialogRef.closeAll();

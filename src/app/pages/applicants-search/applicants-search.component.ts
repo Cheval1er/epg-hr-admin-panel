@@ -4,11 +4,13 @@ import { DatePipe } from '@angular/common';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { AfterViewChecked, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApplicantService } from 'src/app/services/applicant.service';
 import { Applicant } from '../model/applicant';
+import { ViewApplicantComponent } from './view-applicant/view-applicant.component';
 
 
 @Component({
@@ -37,7 +39,8 @@ export class ApplicantsSearchComponent implements OnInit, AfterViewChecked {
     private readonly changeDetectorRef: ChangeDetectorRef,
     private applicantService: ApplicantService,
     private httpClient: HttpClient,
-    private datePipe: DatePipe) { }
+    private datePipe: DatePipe,
+    private dialogRef: MatDialog) { }
   ngAfterViewChecked(): void {
     this.changeDetectorRef.detectChanges();
   }
@@ -288,5 +291,19 @@ export class ApplicantsSearchComponent implements OnInit, AfterViewChecked {
     console.log(applicant);
   }
 
+  viewDialog() {
 
+
+
+    this.dialogRef.open(ViewApplicantComponent, {
+      // disableClose: true,
+      height: '1400px',
+      width: '1400px',
+      data: this.selectedRow
+
+    })
+
+    console.log(this.selectedRow)
+
+  }
 }

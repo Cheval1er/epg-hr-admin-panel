@@ -21,10 +21,19 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { ViewApplicantComponent } from './view-applicant/view-applicant.component';
+import { A11yModule } from '@angular/cdk/a11y';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { CdkTableModule } from '@angular/cdk/table';
+import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTabsModule } from '@angular/material/tabs';
+import { CompletedVacancyRoutingModule } from '../external-vacancies/completed-vacancy/completed-vacancy-routing.module';
+import { VacancyFormModule } from '../external-vacancies/vacancy-form/vacancy-form.module';
 
 
 @NgModule({
-    declarations: [ApplicantsSearchComponent],
+    declarations: [ApplicantsSearchComponent, ViewApplicantComponent],
     imports: [
         CommonModule,
         ApplicantsSearchRoutingModule,
@@ -52,6 +61,46 @@ import { MatTableModule } from '@angular/material/table';
         MatSlideToggleModule,
 
         MatCardModule,
+        CommonModule,
+        CompletedVacancyRoutingModule,
+        MatTableModule,
+        MatPaginatorModule,
+
+        MatIconModule,
+        MatButtonModule,
+        MatDialogModule,
+        HttpClientModule,
+        MatDatepickerModule,
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+
+        MatInputModule,
+        MatIconModule,
+        MatButtonModule,
+
+        MatSelectModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+
+        MatAutocompleteModule,
+        MatSliderModule,
+        MatCheckboxModule,
+        MatRadioModule,
+        MatSlideToggleModule,
+
+        MatCardModule,
+        VacancyFormModule,
+
+        MatSortModule,
+
+        CdkTableModule,
+        ScrollingModule,
+        A11yModule,
+        MatTabsModule,
+        MatDialogModule,
+
 
     ],
     providers: [
