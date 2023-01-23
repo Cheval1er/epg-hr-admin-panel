@@ -81,7 +81,7 @@ export class EditVacancyComponent implements OnInit {
 
   ) { }
 
-
+  deadLine: Date = new Date();
   ngOnInit(): void {
 
 
@@ -142,7 +142,7 @@ export class EditVacancyComponent implements OnInit {
   updateFormData() {
     console.log('Form data is ', this.vacancyForm.value);
 
-    this.vacancyForm.value.deadLine = this.datePipe.transform(this.vacancyForm.value.deadLine, 'dd-MM-yyyy');
+    // this.vacancyForm.value.deadLine = this.datePipe.transform(this.vacancyForm.value.deadLine, 'dd-MM-yyyy');
 
     this.vacancyService.updateVacancy(this.vacancyForm.value, this.editData.id).subscribe((result) => {
       console.log(result);

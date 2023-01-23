@@ -21,13 +21,13 @@ export interface ApplicantEducation {
 export interface ApplicantTraining {
     id: number;
     applicant: Applicant;
-    training: string;
-    trainingCompany: string;
-    trainingPeriodFrom: string;
-    trainingPeriodTo: string;
-    trainingNow: boolean;
+    traning: string;
+    traningCompany: string;
+    traningPeriodFrom: string;
+    traningPeriodTo: string;
+    traningNow: boolean;
     description: string;
-    trainingPlace: string;
+    traningPlace: string;
 
 }
 

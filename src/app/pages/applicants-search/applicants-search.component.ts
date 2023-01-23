@@ -274,4 +274,11 @@ export class ApplicantsSearchComponent implements OnInit, AfterViewChecked {
     console.log(this.selectedRow)
 
   }
+  printApplicant(objectId) {
+    this.applicantService.printApplicant(this.selectedRow.objectId).subscribe(x => {
+      console.log(this.selectedRow.objectId)
+    })
+  }
+
+
 }

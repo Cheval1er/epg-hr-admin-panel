@@ -75,4 +75,9 @@ export class ApplicantService {
     public applicantsVacancies(applicantId: number, page: number, start: number, limit: number) {
         return this.http.get(`${this.apiServerUrl}/VacancyAdmin/applicant/vacancy?applicantId=${applicantId}&page=${page}&start=${start}&limit=${limit}`)
     }
+
+    // print applicant
+    public printApplicant(objectId: number) {
+        return this.http.get(`${this.apiServerUrl}/VacancyAdmin/report/vacancy/applicantReport?objectId=${objectId}`)
+    }
 }

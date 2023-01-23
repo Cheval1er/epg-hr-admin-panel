@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
@@ -9,6 +9,8 @@ import { ApplicantService } from 'src/app/services/applicant.service';
 import { EditApplicantComponent } from '../../external-vacancies/edit-vacancy/edit-applicant/edit-applicant.component';
 import { Applicant } from '../../model/applicant';
 import { ApplicantEducation, ApplicantTraining, ApplicantExperience, ApplicantLanguage, ApplicantProgram, ApplicantSkill, ApplicantDepartment, ApplicantFile } from '../../model/applicantDetail';
+import { jsPDF } from "jspdf";
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'vex-view-applicant',
@@ -18,7 +20,7 @@ import { ApplicantEducation, ApplicantTraining, ApplicantExperience, ApplicantLa
 export class ViewApplicantComponent implements OnInit {
   applicantForm: any;
 
-
+  @ViewChild('content', { static: false }) el!: ElementRef;
 
   constructor(private formBuilder: FormBuilder,
     private router: Router,
@@ -375,4 +377,22 @@ export class ViewApplicantComponent implements OnInit {
 
     )
   }
+
+  // public makePdf() {
+  //   let data = document.getElementById('htmltable');
+
+  //   html2canvas(data).then(canvas => {
+
+  //     let docWidth = 208;
+  //     let docHeight = canvas.height * docWidth / canvas.width;
+
+  //     const contentDataURL = canvas.toDataURL('image/png')
+  //     let doc = new jsPDF('p', 'mm', 'a4');
+  //     let position = 0;
+  //     doc.addImage(contentDataURL, 'PNG', 0, position, docWidth, docHeight)
+
+  //     doc.save('exportedPdf.pdf');
+  //   });
+  // }
+
 }

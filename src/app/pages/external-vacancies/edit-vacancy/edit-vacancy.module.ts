@@ -7,7 +7,7 @@ import { CommonModule, DatePipe } from '@angular/common';
 
 
 
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { VacancyService } from 'src/app/services/vacancy.service';
 import { DeleteLanguageFormComponent, DeleteProgramFormComponent, DeleteSkillFormComponent, EditVacancyComponent } from './edit-vacancy.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -101,7 +101,7 @@ import { EditApplicantModule } from './edit-applicant/edit-applicant.module';
 
 
     ],
-    providers: [{ provide: LOCALE_ID, useValue: 'en-IN' }, DatePipe, VacancyService
+    providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }, DatePipe, VacancyService
     ]
 })
 export class EditVacancyModule {
