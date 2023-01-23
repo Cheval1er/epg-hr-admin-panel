@@ -13,7 +13,7 @@ import { ApplicantEducation, ApplicantTraining, ApplicantExperience, ApplicantLa
 @Component({
   selector: 'vex-view-applicant',
   templateUrl: './view-applicant.component.html',
-  styleUrls: ['./view-applicant.component.scss', './view-vacancy.components.css']
+  styleUrls: ['./view-applicant.component.scss', './view-applicant.component.css']
 })
 export class ViewApplicantComponent implements OnInit {
   applicantForm: any;

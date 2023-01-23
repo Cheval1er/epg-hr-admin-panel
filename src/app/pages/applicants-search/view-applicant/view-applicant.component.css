@@ -1,3 +1,18 @@
+input {
+    color: black;
+    -webkit-text-fill-color: black
+}
+
+textarea {
+    color: black;
+    -webkit-text-fill-color: black
+}
+
+.black {
+    color: black;
+    -webkit-text-fill-color: black
+}
+
 span {
     display: inline;
     color: black;
@@ -13,9 +28,12 @@ span {
 
 }
 
+.fitWidth {
+    width: 100%;
+}
 
 
-
+/* 
 .mat-column-id {
 
     white-space: unset !important;
@@ -122,7 +140,7 @@ span {
     -webkit-hyphens: auto;
     hyphens: auto;
 }
-
+ */
 
 
 .button-7 {
@@ -221,7 +239,21 @@ span {
     background: #c1d9f1;
 }
 
-.displayEnd {
-    margin-top: 600px;
-    margin-left: 1200px;
+.formHeight {
+    height: 150px;
+}
+
+.mat-header-row::ng-deep {
+
+    border-top: 1px solid black;
+}
+
+
+
+.mat-table {
+    width: 100%;
+}
+
+h3 {
+    padding-top: 10px;
 }

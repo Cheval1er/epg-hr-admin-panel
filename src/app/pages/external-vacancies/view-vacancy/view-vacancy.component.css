@@ -28,9 +28,12 @@ span {
 
 }
 
+.fitWidth {
+    width: 100%;
+}
 
 
-
+/* 
 .mat-column-id {
 
     white-space: unset !important;
@@ -137,7 +140,7 @@ span {
     -webkit-hyphens: auto;
     hyphens: auto;
 }
-
+ */
 
 
 .button-7 {
@@ -249,4 +252,9 @@ span {
 
 .mat-table {
     width: 100%;
+}
+
+.displayEnd {
+    margin-top: 600px;
+    margin-left: 1200px;
 }

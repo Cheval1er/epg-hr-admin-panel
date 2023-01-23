@@ -1,12 +1,15 @@
 import { DatePipe } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { HighlightConfig } from 'src/@vex/components/highlight/highlight.model';
 import { VacancyService } from 'src/app/services/vacancy.service';
+import { Vacancy, List } from '../../model/vacancy';
 import { VacancyApplicant } from '../../model/vacancy-applicant-model';
 import { ListLanguage } from '../../model/vacancy-language-model';
 import { ListProgram } from '../../model/vacancy-program-model';
@@ -16,7 +19,7 @@ import { ListSkill } from '../../model/vacancy-skill-model';
 @Component({
   selector: 'vex-view-vacancy',
   templateUrl: './view-vacancy.component.html',
-  styleUrls: ['./view-vacancy.component.scss', './view-vacancy.components.css']
+  styleUrls: ['./view-vacancy.component.scss', './view-vacancy.component.css']
 })
 export class ViewVacancyComponent implements OnInit {
 
@@ -51,6 +54,12 @@ export class ViewVacancyComponent implements OnInit {
 
   ) { }
 
+  @ViewChild('paginator') paginator!: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+  data: Vacancy[] = [];
+  public editVacancy: List;
+
   displayedColumns = ['id', 'languages', 'comment'];
 
   columnToDisplay = ['id', 'programs', 'comment'];
@@ -82,6 +91,9 @@ export class ViewVacancyComponent implements OnInit {
       salary: [{ value: this.editData.salary, disabled: true }],
 
     });
+
+
+    this.getAllVacancies();
     this.getAllLanguage(1, 0, 25);
     this.getAllProgram(1, 0, 25);
     this.getAllSkill(1, 0, 25);
@@ -97,7 +109,20 @@ export class ViewVacancyComponent implements OnInit {
   closeForm() {
 
   }
+  public getAllVacancies(): void {
+    this.vacancyService.getAllVacancies().subscribe(x => {
+      this.dataSource = new MatTableDataSource(this.data = x['list']);
+      // this.data = x['list'];
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      console.log(this.data);
+    },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
 
+    )
+  }
 
   educationList;
 

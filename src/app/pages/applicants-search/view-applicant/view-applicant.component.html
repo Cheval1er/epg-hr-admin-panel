@@ -166,7 +166,7 @@
 </form>
 
 <h3>Applicant's Education</h3>
-<table mat-table class="full-width-table mat-elevation-z8 " [dataSource]=" dataSourceApplicantEdu">
+<table mat-table [dataSource]=" dataSourceApplicantEdu">
 
     <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef class="body">
@@ -240,7 +240,7 @@
 </table>
 
 <h3>Applicant's Training</h3>
-<table mat-table class="full-width-table mat-elevation-z8 " [dataSource]="dataSourceApplicantTrain">
+<table mat-table [dataSource]="dataSourceApplicantTrain">
 
     <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef class="body">
@@ -298,7 +298,7 @@
 </table>
 
 <h3>Applicant's Experience</h3>
-<table mat-table class="full-width-table mat-elevation-z8 " [dataSource]="dataSourceApplicantExperience">
+<table mat-table [dataSource]="dataSourceApplicantExperience">
 
     <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef class="body">
@@ -386,7 +386,7 @@
 </table>
 
 <h3>Applicant's Language</h3>
-<table mat-table class="full-width-table mat-elevation-z8 " [dataSource]="dataSourceApplicantLanguage">
+<table mat-table [dataSource]="dataSourceApplicantLanguage">
 
     <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef class="body">
@@ -414,7 +414,7 @@
     <tr mat-row *matRowDef="let languageData; columns: displayedColumnsLanguage;"></tr>
 </table>
 <h3>Applicant's Program</h3>
-<table mat-table class="full-width-table mat-elevation-z8 " [dataSource]="dataSourceApplicantProgram">
+<table mat-table [dataSource]="dataSourceApplicantProgram">
 
     <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef class="body">
@@ -442,7 +442,7 @@
     <tr mat-row *matRowDef="let programData; columns: displayedColumnsProgram;"></tr>
 </table>
 <h3>Applicant's Skill</h3>
-<table mat-table class="full-width-table mat-elevation-z8 " [dataSource]="dataSourceApplicantSkill">
+<table mat-table [dataSource]="dataSourceApplicantSkill">
 
     <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef class="body">
@@ -464,7 +464,7 @@
     <tr mat-row *matRowDef="let skillData; columns: displayedColumnsSkill;"></tr>
 </table>
 <h3>Applicant's Department</h3>
-<table mat-table class="full-width-table mat-elevation-z8 " [dataSource]="dataSourceApplicantDepartment">
+<table mat-table [dataSource]="dataSourceApplicantDepartment">
 
     <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef class="body">
@@ -486,7 +486,7 @@
     <tr mat-row *matRowDef="let departmentData; columns: displayedColumnsDepartment;"></tr>
 </table>
 <h3>Applicant's Files</h3>
-<table mat-table class="full-width-table mat-elevation-z8 " [dataSource]="dataSourceApplicantFile">
+<table mat-table [dataSource]="dataSourceApplicantFile">
 
     <ng-container matColumnDef="fileName">
         <th mat-header-cell *matHeaderCellDef class="body">
@@ -514,7 +514,7 @@
     <tr mat-row *matRowDef="let fileData; columns: displayedColumnsFile;"></tr>
 </table>
 <h3>Vacancies of Applicant</h3>
-<table mat-table class="full-width-table mat-elevation-z8 " [dataSource]="dataSourceApplicant">
+<table mat-table [dataSource]="dataSourceApplicant">
 
     <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef class="body">

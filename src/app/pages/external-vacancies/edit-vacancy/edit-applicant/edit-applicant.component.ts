@@ -12,7 +12,7 @@ import { ApplicantService } from 'src/app/services/applicant.service';
 @Component({
   selector: 'vex-edit-applicant',
   templateUrl: './edit-applicant.component.html',
-  styleUrls: ['./edit-applicant.component.scss', './edit-applicant.components.css']
+  styleUrls: ['./edit-applicant.component.scss', './edit-applicant.component.css']
 })
 export class EditApplicantComponent implements OnInit {
   applicantForm: any;

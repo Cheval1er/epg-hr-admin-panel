@@ -100,23 +100,7 @@ export class ApplicantsSearchComponent implements OnInit, AfterViewChecked {
 
 
 
-  // languagesList: string[] = [
-  //   'ბულგალური',
-  //   'გერმანული',
-  //   'ესპანური',
-  //   'თურქული',
-  //   'ესპანური',
-  //   'იტალიური',
-  //   'რუსული',
-  //   'ფრანგული',
-  //   'ქართული',
-  //   'ჩეხური',
-  //   'ჩინური'
 
-
-
-
-  // ]
   vacancy;
   dataVacancy;
   getVacancies() {
@@ -244,22 +228,6 @@ export class ApplicantsSearchComponent implements OnInit, AfterViewChecked {
 
     )
   }
-
-  //   'N/A',
-  //   'არასრული უმაღლესი',
-  //   'ბაკალავრი',
-  //   'დოქტორი',
-  //   'მაგისტრი',
-  //   'პროფესიული',
-  //   'საშუალო'
-
-  // ];
-
-  // genderList: string[] = [
-  //   'მდედრობითი',
-  //   'მამრობითი'
-  // ]
-
 
 
 
