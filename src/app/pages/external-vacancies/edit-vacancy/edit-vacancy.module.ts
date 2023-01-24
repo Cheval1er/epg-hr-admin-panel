@@ -1,4 +1,4 @@
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 
 
@@ -31,19 +31,12 @@ import { A11yModule } from '@angular/cdk/a11y';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CdkTableModule } from '@angular/cdk/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { ResizableModule } from 'angular-resizable-element';
 import { CompletedVacancyRoutingModule } from '../completed-vacancy/completed-vacancy-routing.module';
 import { VacancyFormModule } from '../vacancy-form/vacancy-form.module';
-import { NewProgramFormComponent } from './new-program-form/new-program-form.component';
 import { NewProgramFormModule } from './new-program-form/new-program-form.module';
-import { RouterModule } from '@angular/router';
-import { NewLanguageFormComponent } from './new-language-form/new-language-form.component';
-import { EditLanguageComponent } from './new-language-form/edit-language/edit-language.component';
 import { NewLanguageFormModule } from './new-language-form/new-language-form.module';
-import { NewSkillFormComponent } from './new-skill-form/new-skill-form.component';
 import { NewSkillFormModule } from './new-skill-form/new-skill-form.module';
 import { MatSortModule } from '@angular/material/sort';
-import { EditApplicantComponent } from './edit-applicant/edit-applicant.component';
 import { EditApplicantModule } from './edit-applicant/edit-applicant.module';
 
 

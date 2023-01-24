@@ -142,13 +142,13 @@ export class EditVacancyComponent implements OnInit {
   updateFormData() {
     console.log('Form data is ', this.vacancyForm.value);
 
-    // this.vacancyForm.value.deadLine = this.datePipe.transform(this.vacancyForm.value.deadLine, 'dd-MM-yyyy');
+    this.vacancyForm.value.deadLine = this.datePipe.transform(this.vacancyForm.value.deadLine, 'dd-MM-yyyy');
 
     this.vacancyService.updateVacancy(this.vacancyForm.value, this.editData.id).subscribe((result) => {
       console.log(result);
-      // setTimeout(() => {
-      //   window.location.reload();
-      // }, 50);
+      setTimeout(() => {
+        window.location.reload();
+      }, 50);
     })
 
     this.dialogRef.closeAll();
