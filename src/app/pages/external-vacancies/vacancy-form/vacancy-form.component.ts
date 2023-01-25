@@ -36,7 +36,7 @@ export class VacancyFormComponent implements OnInit {
       vacancyAddress: ['', Validators.required],
       deadLine: new FormControl(this.deadLine),
       schedule: ['', Validators.required],
-      categoryId: ['', Validators.required],
+      categoryId: new FormBuilder(),
       typeId: ['', Validators.required],
       description: ['', Validators.required],
       experience: ['', Validators.required],
@@ -53,10 +53,22 @@ export class VacancyFormComponent implements OnInit {
     this.getSphere();
     this.getType();
 
+    console.log(this.vacancyForm.value.categoryId)
+
+    if (this.vacancyForm.value.categoryId === 152) {
+      this.vacancyForm.addControl('otherCategory', new FormBuilder());
+
+    } else {
+      this.vacancyForm.removeControl('otherCategory');
+    }
+    this.vacancyForm.updateValueAndValidity();
   }
 
 
 
+  get otherCategory() {
+    return this.vacancyForm.get('optionBExtra') as FormControl;
+  }
 
   saveFormData() {
     console.log('Form data is ', this.vacancyForm.value);

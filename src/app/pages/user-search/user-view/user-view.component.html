@@ -37,7 +37,7 @@
         </form>
     </mat-tab>
     <mat-tab label="User Applicant ">
-        <table mat-table class="full-width-table" matSort aria-label="Elements" [dataSource]="searchApplicantsData"
+        <table mat-table class="full-width-table" matSort aria-label="Elements" [dataSource]="dataSourceApplicant"
             matSort cdkDropListGroup>
             <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="body">ID</th>

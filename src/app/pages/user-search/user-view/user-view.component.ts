@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { VacancyService } from 'src/app/services/vacancy.service';
 import { Applicant } from '../../model/applicant';
+import { VacancyApplicant } from '../../model/vacancy-applicant-model';
 
 @Component({
   selector: 'vex-user-view',
@@ -17,11 +18,14 @@ import { Applicant } from '../../model/applicant';
 export class UserViewComponent implements OnInit {
   userForm: any;
   data: Applicant[] = [];
+  dataSource!: MatTableDataSource<any>;
+  dataSourceApplicant: VacancyApplicant[];
 
   displayedColumns: string[] = ['id', 'fname', 'lname', 'customerNumber', 'birthDate', 'mail', 'mobile', 'additionalphone', 'createuser', 'createdate', 'status'];
   constructor(private formBuilder: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public editData: any,
-    private userService: UserService) { }
+    private userService: UserService,
+    private vacancyService: VacancyService) { }
   searchApplicantsData!: MatTableDataSource<any>;
   ngOnInit(): void {
 
@@ -33,13 +37,15 @@ export class UserViewComponent implements OnInit {
 
     }
     );
-    this.getUserApplicant(1, 0, 25)
+    this.getUserApplicant(1, 0, 25);
+
   }
 
   getUserApplicant(page, start, limit) {
     this.userService.userApplicant(this.editData.id, page, start, limit).subscribe(x => {
-
-      console.log(this.data);
+      this.dataSource = new MatTableDataSource(this.dataSourceApplicant = x['list']);
+      // console.log(x['list'])
+      console.log(this.dataSourceApplicant)
     },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -47,4 +53,6 @@ export class UserViewComponent implements OnInit {
 
     )
   }
+
+
 }

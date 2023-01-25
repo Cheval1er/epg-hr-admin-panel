@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 import { Applicant } from 'src/app/pages/model/applicant';
 import { ApplicantDepartment, ApplicantEducation, ApplicantExperience, ApplicantFile, ApplicantLanguage, ApplicantProgram, ApplicantSkill, ApplicantTraining } from 'src/app/pages/model/applicantDetail';
 import { ApplicantService } from 'src/app/services/applicant.service';
-
+import { saveAs } from 'file-saver';
 @Component({
   selector: 'vex-edit-applicant',
   templateUrl: './edit-applicant.component.html',
@@ -120,6 +120,9 @@ export class EditApplicantComponent implements OnInit {
     this.getApplicantsVacancies(1, 0, 25)
 
   }
+
+
+
 
   closeForm() {
     this.dialogRef.close()

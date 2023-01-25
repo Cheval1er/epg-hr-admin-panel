@@ -10,7 +10,7 @@ export interface ApplicantEducation {
     profession: string;
     sphere: DictionaryItem;
     quality: DictionaryItem;
-    learningFrom: string;
+    learningfrom: string;
     learningTo: string;
     learningNow: boolean;
     otherUniversity: string;

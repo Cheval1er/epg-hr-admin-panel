@@ -38,6 +38,9 @@
                         <mat-datepicker-toggle [for]="datepickerRef" matSuffix></mat-datepicker-toggle>
                         <mat-datepicker #datepickerRef></mat-datepicker>
                         <mat-error>Choose a Date</mat-error>
+
+
+
                     </mat-form-field>
 
                     <span> Schedule *: </span>
@@ -53,6 +56,7 @@
                         <mat-select formControlName="categoryId">
                             <mat-option *ngFor="let category of dataCategory" [value]="category.id">{{category.name}}
                             </mat-option>
+                            <input formControlName="otherCategory" placeholder="Reason" *ngIf="otherCategory">
                         </mat-select>
                         <mat-error>This field is required</mat-error>
                     </mat-form-field>
