@@ -34,7 +34,7 @@ export class VacancyFormComponent implements OnInit {
     this.vacancyForm = this.formBuilder.group({
       vacancyName: ['', Validators.required],
       vacancyAddress: ['', Validators.required],
-      deadLine: new FormControl(this.deadLine),
+      deadLine: ['', Validators.required],
       schedule: ['', Validators.required],
       categoryId: new FormBuilder(),
       typeId: ['', Validators.required],
@@ -55,20 +55,10 @@ export class VacancyFormComponent implements OnInit {
 
     console.log(this.vacancyForm.value.categoryId)
 
-    if (this.vacancyForm.value.categoryId === 152) {
-      this.vacancyForm.addControl('otherCategory', new FormBuilder());
-
-    } else {
-      this.vacancyForm.removeControl('otherCategory');
-    }
-    this.vacancyForm.updateValueAndValidity();
   }
 
 
 
-  get otherCategory() {
-    return this.vacancyForm.get('optionBExtra') as FormControl;
-  }
 
   saveFormData() {
     console.log('Form data is ', this.vacancyForm.value);
@@ -78,10 +68,10 @@ export class VacancyFormComponent implements OnInit {
     this.vacancyService.addVacancy(this.vacancyForm.value).subscribe((result) => {
       console.log(result)
     })
-    this.dialogRef.closeAll();
-    setTimeout(() => {
-      window.location.reload();
-    }, 50);
+    // this.dialogRef.closeAll();
+    // setTimeout(() => {
+    //   window.location.reload();
+    // }, 50);
 
   }
 

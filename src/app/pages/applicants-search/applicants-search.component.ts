@@ -71,6 +71,7 @@ export class ApplicantsSearchComponent implements OnInit, AfterViewChecked {
     this.getProgram();
     this.getVacancies();
     this.getEducation();
+    this.getcategory();
     // this.searchButton(1, 0, 25);
 
     console.log(this.appForm)
@@ -178,45 +179,18 @@ export class ApplicantsSearchComponent implements OnInit, AfterViewChecked {
     )
   }
 
+  departmentsList;;
 
-  departmentsList: string[] = [
-    'ადამიანური რესურსების მართვა',
-    'ადმინისტრაცია',
-    'ანალიტიკა',
-    'აუდიტი',
-    'ბიზნესის მართვა',
-    'ბილინგი',
-    'განათლება',
-    'გარემოს დაცვა',
-    'დიზაინი',
-    'დისტრიბუცია',
-    'ენერგეტიკა',
-    'ენერგეტიკა/საშუალო ძაბვა',
-    'ენერგეტიკა/დაბალი ძაბვა',
-    'ენერგეტიკა/მაღალი ძაბვა',
-    'თბოენერგეტიკა',
-    'ინჟინერია',
-    'ინფორმაციული ტექნოლოგიები',
-    'კვლევები',
-    'კომერციული',
-    'კონსალტინგი',
-    'ლოჯისტიკა',
-    'მენეჯმენტი',
-    'ოპერატიული მართვა',
-    'პროექტის მართვა',
-    'საზოგადოებასთან ურთიერთობა',
-    'სამართალი',
-    'სტრატეგიული დაგეგმვა',
-    'ტრენინგები/სწავლება',
-    'ფინანსები',
-    'ცხელი ხაზი/აბონენტთა მომსახურება',
-    'ხარისხის უზრუნველყოფა',
-    'ხელოვნება',
-    'ჯანდაცვა',
-    'ჰიდრო ენერგეტიკა',
-    'სხვა'
+  getcategory() {
+    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.category&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+      response => {
+        console.log(response);
+        this.departmentsList = response['list']
+      }
 
-  ]
+    )
+  }
+
   dataEducation;
 
   getEducation() {

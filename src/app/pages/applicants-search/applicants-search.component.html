@@ -44,8 +44,8 @@
                         <mat-form-field appearance="outline" class="flex-auto" [style.width.%]="30"
                             style="font-size: 12px;">
                             <mat-select formControlName="departments">
-                                <mat-option *ngFor="let departments of  departmentsList" [value]="departments">
-                                    {{departments}}
+                                <mat-option *ngFor="let departments of  departmentsList" [value]="departments.id">
+                                    {{departments.name}}
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
