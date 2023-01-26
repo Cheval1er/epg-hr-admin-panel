@@ -34,11 +34,11 @@ export class ExternalVacanciesComponent implements OnInit, AfterViewInit {
   @ViewChild('paginator') paginator!: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  data: Vacancy[] = [];
+  data: Vacancy[]
   public editVacancy: List;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'vacancyName', 'title', 'vacancyAddress', 'deadLine',
+  displayedColumns = ['id', 'company', 'vacancyName', 'title', 'vacancyAddress', 'deadLine',
     'category', 'description', 'probationaryPeriod', 'schedule', 'status'];
   groupedColumns: string[] = ['grouped'];
   secondGroupedColumns: string[] = ['options'];

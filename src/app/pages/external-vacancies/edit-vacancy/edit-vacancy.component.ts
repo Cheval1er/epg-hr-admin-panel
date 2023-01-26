@@ -86,6 +86,7 @@ export class EditVacancyComponent implements OnInit {
 
 
     this.vacancyForm = this.formBuilder.group({
+      companyId: [''],
       vacancyName: ['', Validators.required],
       vacancyAddress: ['', Validators.required],
       deadLine: ['', Validators.required],
@@ -104,6 +105,7 @@ export class EditVacancyComponent implements OnInit {
     });
 
     if (this.editData) {
+      this.vacancyForm.controls['companyId'].setValue(this.editData.companyId);
       this.vacancyForm.controls['vacancyName'].setValue(this.editData.vacancyName);
       this.vacancyForm.controls['vacancyAddress'].setValue(this.editData.vacancyAddress);
       this.vacancyForm.controls['deadLine'].setValue(this.editData.deadLine);
@@ -133,8 +135,7 @@ export class EditVacancyComponent implements OnInit {
     this.getSphere();
     this.getType();
 
-
-
+    this.getCompany();
   };
 
 
@@ -160,6 +161,18 @@ export class EditVacancyComponent implements OnInit {
 
   refreshButton() {
     this.ngOnInit()
+  }
+
+
+  companyList;
+  getCompany() {
+    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.company&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+      response => {
+        console.log(response);
+        this.companyList = response['list']
+      }
+
+    )
   }
   educationList;
 

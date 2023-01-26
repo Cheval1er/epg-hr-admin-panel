@@ -32,17 +32,18 @@ export class VacancyFormComponent implements OnInit {
   deadLine: Date = new Date();
   ngOnInit(): void {
     this.vacancyForm = this.formBuilder.group({
-      vacancyName: ['', Validators.required],
-      vacancyAddress: ['', Validators.required],
-      deadLine: ['', Validators.required],
-      schedule: ['', Validators.required],
-      categoryId: new FormBuilder(),
-      typeId: ['', Validators.required],
-      description: ['', Validators.required],
-      experience: ['', Validators.required],
-      probationaryPeriod: ['', Validators.required],
-      educationLevelId: ['', Validators.required],
-      education: ['', Validators.required],
+      companyId: [''],
+      vacancyName: [''],
+      vacancyAddress: [''],
+      deadLine: [''],
+      schedule: [''],
+      categoryId: [''],
+      typeId: [''],
+      description: [''],
+      experience: [''],
+      probationaryPeriod: ['6 თვე'],
+      educationLevelId: [''],
+      education: [''],
       experienceSphereId: [''],
       educationSphereComment: [''],
       salary: [''],
@@ -52,8 +53,9 @@ export class VacancyFormComponent implements OnInit {
     this.getEducation();
     this.getSphere();
     this.getType();
+    this.getCompany();
 
-    console.log(this.vacancyForm.value.categoryId)
+
 
   }
 
@@ -79,7 +81,16 @@ export class VacancyFormComponent implements OnInit {
     this.dialogRef.closeAll();
   }
 
+  companyList;
+  getCompany() {
+    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.company&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+      response => {
+        console.log(response);
+        this.companyList = response['list']
+      }
 
+    )
+  }
   educationList;
 
   getEducation() {

@@ -11,6 +11,7 @@ export interface DictionaryItem {
 }
 
 export class List {
+    company: DictionaryItem;
     createDate: Date;
     createUser: string;
     modifyDate: Date;
