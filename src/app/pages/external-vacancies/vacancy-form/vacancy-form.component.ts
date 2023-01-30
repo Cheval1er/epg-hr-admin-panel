@@ -43,7 +43,7 @@ export class VacancyFormComponent implements OnInit {
       experience: [''],
       probationaryPeriod: ['6 თვე'],
       educationLevelId: [''],
-      education: [''],
+
       experienceSphereId: [''],
       educationSphereComment: [''],
       salary: [''],

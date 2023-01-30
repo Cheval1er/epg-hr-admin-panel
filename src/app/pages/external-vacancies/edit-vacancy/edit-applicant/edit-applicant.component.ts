@@ -5,10 +5,25 @@ import { FormBuilder } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import saveAs from 'file-saver';
 import { Applicant } from 'src/app/pages/model/applicant';
 import { ApplicantDepartment, ApplicantEducation, ApplicantExperience, ApplicantFile, ApplicantLanguage, ApplicantProgram, ApplicantSkill, ApplicantTraining } from 'src/app/pages/model/applicantDetail';
 import { ApplicantService } from 'src/app/services/applicant.service';
-import { saveAs } from 'file-saver';
+
+import { DownloadService } from 'src/app/services/download.service';
+
+
+
+
+const MIME_TYPES = {
+  pdf: 'application/pdf',
+  png: 'image/png',
+  jpg: 'image/jpeg',
+  docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+  doc: 'application/msword',
+  xlsx: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+  xls: 'application/vnd.ms-excel'
+}
 @Component({
   selector: 'vex-edit-applicant',
   templateUrl: './edit-applicant.component.html',
@@ -16,13 +31,14 @@ import { saveAs } from 'file-saver';
 })
 export class EditApplicantComponent implements OnInit {
   applicantForm: any;
+  selectedRowAppFile: any;
   constructor(private formBuilder: FormBuilder,
     private router: Router,
     private dialogRef: MatDialogRef<EditApplicantComponent>,
     private httpClient: HttpClient,
     private datePipe: DatePipe,
     private applicantService: ApplicantService,
-
+    private downloadService: DownloadService,
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public editDataApplicant: any,
   ) { }
@@ -33,7 +49,7 @@ export class EditApplicantComponent implements OnInit {
 
   displayedColumnsTrain = ['id', 'trainingName', 'trainingPlace', 'trainingCompany', 'from', 'to', 'trainingDesc'];
   displayedColumnsExperience = ['id', 'company', 'position', 'place', 'category', 'level', 'from', 'to', 'reason', 'salary', 'description'];
-  displayedColumnsLanguage = ['id', 'language', 'level'];
+  displayedColumnsLanguage = ['id', 'language', 'level', 'otherLanguage'];
   displayedColumnsProgram = ['id', 'program', 'level'];
   displayedColumnsSkill = ['id', 'skill'];
   displayedColumnsDepartment = ['id', 'department'];
@@ -121,9 +137,19 @@ export class EditApplicantComponent implements OnInit {
 
   }
 
+  attachedFile: ApplicantFile[];
+  download(id) {
+    const EXT = this.selectedRowAppFile.fileName.substring(this.selectedRowAppFile.fileName.lastIndexOf('.') + 1);
+    this.downloadService.downloadFile({ 'id': id }).subscribe(fileData =>
+      saveAs(new Blob([fileData], { type: MIME_TYPES[EXT] }), this.selectedRowAppFile.fileName))
 
-
-
+  }
+  selectedRowIndexAppFile = -1;
+  highlightApp(applicantsFile) {
+    this.selectedRowAppFile = applicantsFile;
+    this.selectedRowIndexAppFile = applicantsFile.id;
+    console.log(applicantsFile);
+  };
   closeForm() {
     this.dialogRef.close()
   }

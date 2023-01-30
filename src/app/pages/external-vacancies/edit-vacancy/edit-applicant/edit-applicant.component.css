@@ -4,6 +4,13 @@
 
 }
 
+span {
+    display: inline;
+    color: black;
+    width: 100px;
+    height: 100px;
+    padding: 5px;
+}
 
 .full-width-table {
     width: 100%;
@@ -176,4 +183,8 @@
 .displayEnd {
     margin-top: 600px;
     margin-left: 1200px;
+}
+
+.highlighted {
+    background: #c1d9f1;
 }

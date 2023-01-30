@@ -44,6 +44,8 @@ export interface ApplicantExperience {
     reason: string;
     workDesc: string;
     salary: string;
+    level: DictionaryItem;
+
 }
 
 export interface ApplicantLanguage {
@@ -51,6 +53,7 @@ export interface ApplicantLanguage {
     applicant: Applicant;
     language: DictionaryItem;
     otherLanguage: string
+    level: DictionaryItem;
 }
 
 export interface ApplicantProgram {

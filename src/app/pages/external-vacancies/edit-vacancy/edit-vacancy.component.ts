@@ -81,7 +81,7 @@ export class EditVacancyComponent implements OnInit {
 
   ) { }
 
-  deadLine: Date = new Date();
+
   ngOnInit(): void {
 
 
@@ -97,7 +97,7 @@ export class EditVacancyComponent implements OnInit {
       experience: ['', Validators.required],
       probationaryPeriod: ['', Validators.required],
       educationLevelId: ['', Validators.required],
-      education: ['', Validators.required],
+
       experienceSphereId: [''],
       educationSphereComment: [''],
       salary: [''],
@@ -117,7 +117,7 @@ export class EditVacancyComponent implements OnInit {
       this.vacancyForm.controls['probationaryPeriod'].setValue(this.editData.probationaryPeriod);
 
       this.vacancyForm.controls['educationLevelId'].setValue(this.editData.educationLevelId);
-      this.vacancyForm.controls['education'].setValue(this.editData.education);
+
       this.vacancyForm.controls['experienceSphereId'].setValue(this.editData.experienceSphereId);
       this.vacancyForm.controls['educationSphereComment'].setValue(this.editData.educationSphereComment);
       this.vacancyForm.controls['salary'].setValue(this.editData.salary);

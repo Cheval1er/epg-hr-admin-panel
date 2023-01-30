@@ -6,42 +6,53 @@
         <mat-card-content>
 
             <!-- about vacancy -->
-            <div class=" px-6 py-4 flex flex-col ">
-                <div> Vacancy Name* : </div>
+            <div class=" px-6 py-4 flex flex-col sm:flex-row sm:gap-2">
+
+                <span>Company</span>
+                <mat-form-field appearance="outline" style="font-size: 14px;">
+                    <mat-select formControlName="companyId" class="black">
+                        <mat-option *ngFor="let company of companyList" [value]="company.id">{{company.name}}
+                        </mat-option>
+
+                    </mat-select>
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
+
+                <span> Vacancy Name* : </span>
                 <mat-form-field appearance="outline" style="font-size: 14px; " class="fitWidth">
                     <input formControlName="vacancyName" matInput required>
                     <mat-error>This field is required</mat-error>
                 </mat-form-field>
 
+            </div>
 
+            <div class="flex flex-col sm:flex-row sm:gap-2">
+                <span> Address*: </span>
+                <mat-form-field appearance="outline" class="flex-auto" style="font-size: 14px;">
+                    <input formControlName="vacancyAddress" matInput>
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
 
-                <div class="flex flex-col sm:flex-row sm:gap-2">
-                    <span> Address*: </span>
-                    <mat-form-field appearance="outline" class="flex-auto" style="font-size: 14px;">
-                        <input formControlName="vacancyAddress" matInput>
-                        <mat-error>This field is required</mat-error>
-                    </mat-form-field>
+                <span> Dead Line*: </span>
+                <mat-form-field appearance="outline" class="smallBoxClass" style="font-size: 14px;">
+                    <input matInput [matDatepicker]="datepickerRef" formControlName="deadLine" required>
+                    <mat-hint>DD/MM/YYYY</mat-hint>
+                    <mat-datepicker-toggle [for]="datepickerRef" matSuffix></mat-datepicker-toggle>
+                    <mat-datepicker #datepickerRef></mat-datepicker>
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
 
-                    <span> Dead Line*: </span>
-                    <mat-form-field appearance="outline" class="smallBoxClass" style="font-size: 14px;">
-                        <input matInput [matDatepicker]="datepickerRef" formControlName="deadLine" required>
-                        <mat-hint>DD/MM/YYYY</mat-hint>
-                        <mat-datepicker-toggle [for]="datepickerRef" matSuffix></mat-datepicker-toggle>
-                        <mat-datepicker #datepickerRef></mat-datepicker>
-                        <mat-error>This field is required</mat-error>
-                    </mat-form-field>
-
-                    <span> Schedule *: </span>
-                    <mat-form-field appearance="outline" class="smallBoxClass" style="font-size: 14px;">
-                        <input formControlName="schedule" matInput required>
-                        <mat-error>This field is required</mat-error>
-                    </mat-form-field>
-                </div>
-                <!-- categories (list in vacancy-form.component.ts) -->
-                <div class="flex flex-col sm:flex-row sm:gap-4">
-                    <span>Category</span>
-                    <mat-form-field appearance="outline" class="flex-auto" style="font-size: 14px;">
-                        <!-- <mat-select formControlName="category">
+                <span> Schedule *: </span>
+                <mat-form-field appearance="outline" class="smallBoxClass" style="font-size: 14px;">
+                    <input formControlName="schedule" matInput required>
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
+            </div>
+            <!-- categories (list in vacancy-form.component.ts) -->
+            <div class="flex flex-col sm:flex-row sm:gap-4">
+                <span>Category</span>
+                <mat-form-field appearance="outline" class="flex-auto" style="font-size: 14px;">
+                    <!-- <mat-select formControlName="category">
                         <mat-option value="Hr">ადამიანური რესურსების მართვა</mat-option>
                         <mat-option value="Admin">ადმინისტრაცია</mat-option>
                         <mat-option value="Analytics">ანალიტიკა</mat-option>
@@ -49,88 +60,87 @@
                         <mat-option value="BusinessManager">ბიზნესის მართვა</mat-option>
                         <mat-option value="Billing">ბილინგი</mat-option>
                     </mat-select> -->
-                        <mat-select formControlName="categoryId" class="black">
-                            <mat-option *ngFor="let category of dataCategory" [value]="category.id">{{category.name}}
-                            </mat-option>
-                        </mat-select>
-                        <mat-error>This field is required</mat-error>
-                    </mat-form-field>
+                    <mat-select formControlName="categoryId" class="black">
+                        <mat-option *ngFor="let category of dataCategory" [value]="category.id">{{category.name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
 
 
-                    <span>Type</span>
-                    <mat-form-field appearance="outline" class="flex-auto" style="font-size: 14px;">
-                        <mat-select formControlName="typeId" class="black">
-                            <mat-option *ngFor="let type of typeList" [value]="type.id">{{type.name}}
-                            </mat-option>
-                        </mat-select>
-                        <mat-error>This field is required</mat-error>
-                    </mat-form-field>
-                </div>
-                <div>
-                    <span> Description: </span>
-                    <mat-form-field appearance="outline" [style.width.%]="90" style="font-size: 14px;">
-                        <textarea formControlName="description" matInput cdkTextareaAutosize
-                            #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3" cdkAutosizeMaxRows="50"> </textarea>
-                    </mat-form-field>
-                </div>
-                <div>
-                    <span>Experience: </span>
-                    <mat-form-field appearance="outline" [style.width.%]="90" style="font-size: 14px;">
-                        <textarea formControlName="experience" matInput cdkTextareaAutosize
-                            #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3" cdkAutosizeMaxRows="50"> </textarea>
-                    </mat-form-field>
-                </div>
+                <span>Type</span>
+                <mat-form-field appearance="outline" class="flex-auto" style="font-size: 14px;">
+                    <mat-select formControlName="typeId" class="black">
+                        <mat-option *ngFor="let type of typeList" [value]="type.id">{{type.name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <span> Description: </span>
+                <mat-form-field appearance="outline" [style.width.%]="90" style="font-size: 14px;">
+                    <textarea formControlName="description" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                        cdkAutosizeMinRows="3" cdkAutosizeMaxRows="50"> </textarea>
+                </mat-form-field>
+            </div>
+            <div>
+                <span>Experience: </span>
+                <mat-form-field appearance="outline" [style.width.%]="90" style="font-size: 14px;">
+                    <textarea formControlName="experience" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                        cdkAutosizeMinRows="3" cdkAutosizeMaxRows="50"> </textarea>
+                </mat-form-field>
+            </div>
 
-                <div class="flex flex-col sm:flex-row sm:gap-5">
-                    <span>Probationary Period: </span>
-                    <mat-form-field appearance="outline" [style.width.%]="10" style="font-size: 14px;">
-                        <input formControlName="probationaryPeriod" matInput>
-                    </mat-form-field>
+            <div class="flex flex-col sm:flex-row sm:gap-5">
+                <span>Probationary Period: </span>
+                <mat-form-field appearance="outline" [style.width.%]="10" style="font-size: 14px;">
+                    <input formControlName="probationaryPeriod" matInput>
+                </mat-form-field>
 
-                    <span>Education Level*: </span>
-                    <mat-form-field appearance="outline" [style.width.%]="40" style="font-size: 14px;">
-                        <mat-select formControlName="educationLevelId" class="black">
-                            <mat-option *ngFor="let education of educationList" [value]="education.id">
-                                {{education.name}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-
-                    <mat-checkbox formControlName="education">უმაღლესი განათლება</mat-checkbox>
-                </div>
-
-                <div>
-
-                </div>
-
-                <div class="flex flex-col sm:flex-row sm:gap-2">
-                    <span>Education Sphere*: </span>
-                    <mat-form-field appearance="outline" style="font-size: 14px;">
-                        <mat-select formControlName="experienceSphereId" class="black">
-                            <mat-option *ngFor="let sphere of sphereList"
-                                [value]="sphere.id">{{sphere.name}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-
-                    <span> Education Sphere Comment: </span>
-                    <mat-form-field appearance="outline" class="flex-auto" style="font-size: 14px;">
-                        <input formControlName="educationSphereComment" matInput>
-                        <mat-error>This field is required</mat-error>
-                    </mat-form-field>
-
-                </div>
-
-                <div>
-                    <span>Salary: </span>
-                    <mat-form-field appearance="outline" [style.width.%]="10" style="font-size: 14px;">
-                        <input formControlName="salary" matInput>
-                    </mat-form-field>
-
-
-                </div>
+                <span>Education Level*: </span>
+                <mat-form-field appearance="outline" [style.width.%]="40" style="font-size: 14px;">
+                    <mat-select formControlName="educationLevelId" class="black">
+                        <mat-option *ngFor="let education of educationList" [value]="education.id">
+                            {{education.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
 
 
             </div>
+
+            <div>
+
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:gap-2">
+                <span>Education Sphere*: </span>
+                <mat-form-field appearance="outline" style="font-size: 14px;">
+                    <mat-select formControlName="experienceSphereId" class="black">
+                        <mat-option *ngFor="let sphere of sphereList" [value]="sphere.id">{{sphere.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <span> Education Sphere Comment: </span>
+                <mat-form-field appearance="outline" class="flex-auto" style="font-size: 14px;">
+                    <input formControlName="educationSphereComment" matInput>
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
+
+            </div>
+
+            <div>
+                <span>Salary: </span>
+                <mat-form-field appearance="outline" [style.width.%]="10" style="font-size: 14px;">
+                    <input formControlName="salary" matInput>
+                </mat-form-field>
+
+
+            </div>
+
+
+
         </mat-card-content>
 
 

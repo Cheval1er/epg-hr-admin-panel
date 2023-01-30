@@ -75,6 +75,7 @@ export class ViewVacancyComponent implements OnInit {
   ngOnInit(): void {
 
     this.vacancyForm = this.formBuilder.group({
+      companyId: [{ value: this.editData.companyId, disabled: true }],
       vacancyName: [{ value: this.editData.vacancyName, disabled: true }],
       vacancyAddress: [{ value: this.editData.vacancyAddress, disabled: true }],
       deadLine: [{ value: this.editData.deadLine, disabled: true }],
@@ -85,7 +86,7 @@ export class ViewVacancyComponent implements OnInit {
       experience: [{ value: this.editData.experience, disabled: true }],
       probationaryPeriod: [{ value: this.editData.probationaryPeriod, disabled: true }],
       educationLevelId: [{ value: this.editData.educationLevelId, disabled: true }],
-      education: [{ value: this.editData.education, disabled: true }],
+
       experienceSphereId: [{ value: this.editData.experienceSphereId, disabled: true }],
       educationSphereComment: [{ value: this.editData.educationSphereComment, disabled: true }],
       salary: [{ value: this.editData.salary, disabled: true }],
@@ -104,7 +105,7 @@ export class ViewVacancyComponent implements OnInit {
     this.getEducation();
     this.getSphere();
     this.getType();
-
+    this.getCompany();
   }
   closeForm() {
 
@@ -123,7 +124,16 @@ export class ViewVacancyComponent implements OnInit {
 
     )
   }
+  companyList;
+  getCompany() {
+    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.company&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+      response => {
+        console.log(response);
+        this.companyList = response['list']
+      }
 
+    )
+  }
   educationList;
 
   getEducation() {
