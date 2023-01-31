@@ -9,9 +9,19 @@ import { ApplicantService } from 'src/app/services/applicant.service';
 import { EditApplicantComponent } from '../../external-vacancies/edit-vacancy/edit-applicant/edit-applicant.component';
 import { Applicant } from '../../model/applicant';
 import { ApplicantEducation, ApplicantTraining, ApplicantExperience, ApplicantLanguage, ApplicantProgram, ApplicantSkill, ApplicantDepartment, ApplicantFile } from '../../model/applicantDetail';
-import { jsPDF } from "jspdf";
-import html2canvas from 'html2canvas';
 
+import saveAs from 'file-saver';
+import { DownloadService } from 'src/app/services/download.service';
+
+const MIME_TYPES = {
+  pdf: 'application/pdf',
+  png: 'image/png',
+  jpg: 'image/jpeg',
+  docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+  doc: 'application/msword',
+  xlsx: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+  xls: 'application/vnd.ms-excel'
+}
 @Component({
   selector: 'vex-view-applicant',
   templateUrl: './view-applicant.component.html',
@@ -21,6 +31,8 @@ export class ViewApplicantComponent implements OnInit {
   applicantForm: any;
 
   @ViewChild('content', { static: false }) el!: ElementRef;
+  selectedRowAppFile: any;
+
 
   constructor(private formBuilder: FormBuilder,
     private router: Router,
@@ -28,6 +40,7 @@ export class ViewApplicantComponent implements OnInit {
     private httpClient: HttpClient,
     private datePipe: DatePipe,
     private applicantService: ApplicantService,
+    private downloadService: DownloadService,
 
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public editDataApplicant: any,
@@ -39,9 +52,9 @@ export class ViewApplicantComponent implements OnInit {
 
   displayedColumnsTrain = ['id', 'trainingName', 'trainingPlace', 'trainingCompany', 'from', 'to', 'trainingDesc'];
   displayedColumnsExperience = ['id', 'company', 'position', 'place', 'category', 'level', 'from', 'to', 'reason', 'salary', 'description'];
-  displayedColumnsLanguage = ['id', 'language', 'level'];
-  displayedColumnsProgram = ['id', 'program', 'level'];
-  displayedColumnsSkill = ['id', 'skill'];
+  displayedColumnsLanguage = ['id', 'language', 'level', 'otherLanguage'];
+  displayedColumnsProgram = ['id', 'program', 'level', 'otherProgram'];
+  displayedColumnsSkill = ['id', 'skill', 'level', 'otherSkill'];
   displayedColumnsDepartment = ['id', 'department'];
   displayedColumnsFile = ['fileName', 'fileRecord', 'fileFormat'];
   displayedColumnsApplicant = ['id', 'vacancyName', 'createDate']
@@ -118,6 +131,21 @@ export class ViewApplicantComponent implements OnInit {
     this.getApplicantsVacancies(1, 0, 25)
   }
 
+  download(id) {
+    const EXT = this.selectedRowAppFile.fileName.substring(this.selectedRowAppFile.fileName.lastIndexOf('.') + 1);
+    this.downloadService.downloadFile({ 'id': id }).subscribe(fileData =>
+      saveAs(new Blob([fileData], { type: MIME_TYPES[EXT] }), this.selectedRowAppFile.fileName))
+
+  }
+  closeForm() {
+    this.dialogRef.close()
+  }
+  selectedRowIndexAppFile = -1;
+  highlightApp(applicantsFile) {
+    this.selectedRowAppFile = applicantsFile;
+    this.selectedRowIndexAppFile = applicantsFile.id;
+    console.log(applicantsFile);
+  };
 
   // applicants
   geteditApplicant(page: number, start: number, limit: number) {

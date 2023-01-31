@@ -61,6 +61,7 @@ export interface ApplicantProgram {
     applicant: Applicant;
     program: DictionaryItem;
     otherProgram: string;
+    level: DictionaryItem;
 }
 
 export interface ApplicantSkill {
@@ -68,6 +69,7 @@ export interface ApplicantSkill {
     applicant: Applicant;
     skill: DictionaryItem;
     otherSkill: string;
+    level: DictionaryItem;
 }
 
 export interface ApplicantDepartment {

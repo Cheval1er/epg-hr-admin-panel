@@ -2,7 +2,7 @@ import { DatePipe } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -15,6 +15,7 @@ import { ListLanguage } from '../../model/vacancy-language-model';
 import { ListProgram } from '../../model/vacancy-program-model';
 import { VacancyShortListApplicant } from '../../model/vacancy-shortList-model';
 import { ListSkill } from '../../model/vacancy-skill-model';
+import { EditApplicantComponent } from '../edit-vacancy/edit-applicant/edit-applicant.component';
 
 @Component({
   selector: 'vex-view-vacancy',
@@ -45,7 +46,7 @@ export class ViewVacancyComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private router: Router,
-
+    private dialogRef: MatDialogRef<EditApplicantComponent>,
     private vacancyService: VacancyService,
     private datePipe: DatePipe,
     private httpClient: HttpClient,
@@ -108,7 +109,7 @@ export class ViewVacancyComponent implements OnInit {
     this.getCompany();
   }
   closeForm() {
-
+    this.dialogRef.close()
   }
   public getAllVacancies(): void {
     this.vacancyService.getAllVacancies().subscribe(x => {

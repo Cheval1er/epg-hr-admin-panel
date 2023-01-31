@@ -50,8 +50,8 @@ export class EditApplicantComponent implements OnInit {
   displayedColumnsTrain = ['id', 'trainingName', 'trainingPlace', 'trainingCompany', 'from', 'to', 'trainingDesc'];
   displayedColumnsExperience = ['id', 'company', 'position', 'place', 'category', 'level', 'from', 'to', 'reason', 'salary', 'description'];
   displayedColumnsLanguage = ['id', 'language', 'level', 'otherLanguage'];
-  displayedColumnsProgram = ['id', 'program', 'level'];
-  displayedColumnsSkill = ['id', 'skill'];
+  displayedColumnsProgram = ['id', 'program', 'level', 'otherProgram'];
+  displayedColumnsSkill = ['id', 'skill', 'level', 'otherSkill'];
   displayedColumnsDepartment = ['id', 'department'];
   displayedColumnsFile = ['fileName', 'fileRecord', 'fileFormat'];
   displayedColumnsApplicant = ['id', 'vacancyName', 'createDate']
@@ -129,6 +129,7 @@ export class EditApplicantComponent implements OnInit {
     this.getLangLevel();
     this.getApplicantProgram(1, 0, 25);
     this.getProgram();
+    this.getProgramLevel();
     this.getSkill();
     this.getApplicantSkill(1, 0, 25);
     this.getApplicantDepartment(1, 0, 25);
@@ -314,7 +315,7 @@ export class EditApplicantComponent implements OnInit {
   };
 
   dataProgram;
-  getProgram() {
+  getProgramLevel() {
     this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.programLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25')
       .subscribe(
         response => {
@@ -383,6 +384,17 @@ export class EditApplicantComponent implements OnInit {
       response => {
         console.log(response);
         this.dataLanguage = response['list']
+      }
+
+    )
+  }
+  // for program
+  programList;
+  getProgram() {
+    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.program&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+      response => {
+        console.log(response);
+        this.programList = response['list']
       }
 
     )

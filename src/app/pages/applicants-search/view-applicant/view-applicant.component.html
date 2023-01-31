@@ -265,34 +265,34 @@
             <th mat-header-cell *matHeaderCellDef class="body">
                 Training Place
             </th>
-            <td mat-cell *matCellDef=" let trainingData">{{trainingData?.traningPlace}} </td>
+            <td mat-cell *matCellDef=" let trainingData">{{trainingData?.trainingPlace}} </td>
 
         </ng-container>
         <ng-container matColumnDef="trainingCompany">
             <th mat-header-cell *matHeaderCellDef class="body">
                 Training Company
             </th>
-            <td mat-cell *matCellDef=" let trainingData">{{trainingData?.traningCompany}} </td>
+            <td mat-cell *matCellDef=" let trainingData">{{trainingData?.trainingCompany}} </td>
 
         </ng-container>
         <ng-container matColumnDef="from">
             <th mat-header-cell *matHeaderCellDef class="body">
                 From
             </th>
-            <td mat-cell *matCellDef=" let trainingData">{{trainingData?.traningPeriodFrom}} </td>
+            <td mat-cell *matCellDef=" let trainingData">{{trainingData?.trainingPeriodFrom}} </td>
         </ng-container>
         <ng-container matColumnDef="to">
             <th mat-header-cell *matHeaderCellDef class="body">
                 To
             </th>
-            <td mat-cell *matCellDef=" let trainingData">{{trainingData?.traningPeriodTo}} </td>
+            <td mat-cell *matCellDef=" let trainingData">{{trainingData?.trainingPeriodTo}} </td>
 
         </ng-container>
         <ng-container matColumnDef="trainingDesc">
             <th mat-header-cell *matHeaderCellDef class="body">
                 trainingDesc
             </th>
-            <td mat-cell *matCellDef=" let trainingData">{{trainingData?.trainingDesc}} </td>
+            <td mat-cell *matCellDef=" let trainingData">{{trainingData?.description}} </td>
 
         </ng-container>
 
@@ -380,7 +380,7 @@
             <th mat-header-cell *matHeaderCellDef class="body">
                 Description
             </th>
-            <td mat-cell *matCellDef=" let experienceData">{{experienceData?.description}} </td>
+            <td mat-cell *matCellDef=" let experienceData">{{experienceData?.workDesc}} </td>
 
         </ng-container>
 
@@ -414,6 +414,13 @@
             <td mat-cell *matCellDef=" let languageData">{{languageData?.levelName}} </td>
 
         </ng-container>
+        <ng-container matColumnDef="otherLanguage">
+            <th mat-header-cell *matHeaderCellDef class="body">
+                Comment
+            </th>
+            <td mat-cell *matCellDef=" let languageData">{{languageData?.otherLanguage}}</td>
+
+        </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumnsLanguage; sticky: true"></tr>
         <tr mat-row *matRowDef="let languageData; columns: displayedColumnsLanguage;"></tr>
     </table>
@@ -439,13 +446,20 @@
             <th mat-header-cell *matHeaderCellDef class="body">
                 Level
             </th>
-            <td mat-cell *matCellDef=" let programData">{{programData?.programLevelName}} </td>
+            <td mat-cell *matCellDef=" let programData">{{programData?.levelName}} </td>
+
+        </ng-container>
+
+        <ng-container matColumnDef="otherProgram">
+            <th mat-header-cell *matHeaderCellDef class="body">
+                Comment
+            </th>
+            <td mat-cell *matCellDef=" let programData">{{programData?.otherProgram}} </td>
 
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumnsProgram; sticky: true"></tr>
         <tr mat-row *matRowDef="let programData; columns: displayedColumnsProgram;"></tr>
     </table>
-    <h3>Applicant's Skill</h3>
     <table mat-table [dataSource]="dataSourceApplicantSkill">
 
         <ng-container matColumnDef="id">
@@ -463,7 +477,21 @@
             <td mat-cell *matCellDef=" let skillData">{{skillData?.skillName}} </td>
 
         </ng-container>
+        <ng-container matColumnDef="level">
+            <th mat-header-cell *matHeaderCellDef class="body">
+                Level
+            </th>
+            <td mat-cell *matCellDef=" let skillData">{{skillData?.levelName}} </td>
 
+        </ng-container>
+
+        <ng-container matColumnDef="otherSkill">
+            <th mat-header-cell *matHeaderCellDef class="body">
+                Comment
+            </th>
+            <td mat-cell *matCellDef=" let skillData">{{skillData?.otherSkill}} </td>
+
+        </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumnsSkill; sticky: true"></tr>
         <tr mat-row *matRowDef="let skillData; columns: displayedColumnsSkill;"></tr>
     </table>
@@ -482,7 +510,7 @@
             <th mat-header-cell *matHeaderCellDef class="body">
                 Department
             </th>
-            <td mat-cell *matCellDef=" let departmentData">{{departmentData?.skillName}} </td>
+            <td mat-cell *matCellDef=" let departmentData">{{departmentData?.departmentName}} </td>
 
         </ng-container>
 
@@ -490,6 +518,9 @@
         <tr mat-row *matRowDef="let departmentData; columns: displayedColumnsDepartment;"></tr>
     </table>
     <h3>Applicant's Files</h3>
+    <span> <button class="button-2" role="button" (click)="download(selectedRowAppFile.id)">
+            <mat-icon>cached</mat-icon> Download
+        </button></span>
     <table mat-table [dataSource]="dataSourceApplicantFile">
 
         <ng-container matColumnDef="fileName">
@@ -515,7 +546,8 @@
 
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumnsFile; sticky: true"></tr>
-        <tr mat-row *matRowDef="let fileData; columns: displayedColumnsFile;"></tr>
+        <tr mat-row *matRowDef="let fileData; columns: displayedColumnsFile;"
+            [ngClass]="{'highlighted': selectedRowIndexAppFile ==  fileData.id}" (click)="highlightApp(fileData)"></tr>
     </table>
     <h3>Vacancies of Applicant</h3>
     <table mat-table [dataSource]="dataSourceApplicant">
@@ -545,4 +577,6 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumnsApplicant; sticky: true"></tr>
         <tr mat-row *matRowDef="let applicantData; columns: displayedColumnsApplicant;"></tr>
     </table>
+
+    <button class="button-7  displayEnd" role="button" (click)="closeForm()">Close</button>
 </div>
