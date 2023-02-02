@@ -113,7 +113,7 @@ export class EditApplicantComponent implements OnInit {
       this.applicantForm.controls['wontedType'].setValue(this.editDataApplicant.wantedTypeId);
     }
 
-    this.geteditApplicant(1, 0, 25);
+    // this.geteditApplicant(1, 0, 25);
     this.getGenders();
     this.getWantedType();
     this.getGraphicType();

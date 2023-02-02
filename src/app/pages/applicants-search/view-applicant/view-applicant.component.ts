@@ -108,7 +108,7 @@ export class ViewApplicantComponent implements OnInit {
       createUser: [{ value: this.editDataApplicant.createUser, disabled: true }]
 
     })
-    this.geteditApplicant(1, 0, 25);
+    // this.geteditApplicant(1, 0, 25);
     this.getGenders();
     this.getWantedType();
     this.getGraphicType();
@@ -130,6 +130,7 @@ export class ViewApplicantComponent implements OnInit {
     this.getApplicantFile(1, 0, 25);
     this.getApplicantsVacancies(1, 0, 25)
   }
+
 
   download(id) {
     const EXT = this.selectedRowAppFile.fileName.substring(this.selectedRowAppFile.fileName.lastIndexOf('.') + 1);

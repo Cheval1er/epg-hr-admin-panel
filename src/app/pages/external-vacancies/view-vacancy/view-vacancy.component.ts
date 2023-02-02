@@ -2,13 +2,14 @@ import { DatePipe } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { HighlightConfig } from 'src/@vex/components/highlight/highlight.model';
 import { VacancyService } from 'src/app/services/vacancy.service';
+import { ViewApplicantComponent } from '../../applicants-search/view-applicant/view-applicant.component';
 import { Vacancy, List } from '../../model/vacancy';
 import { VacancyApplicant } from '../../model/vacancy-applicant-model';
 import { ListLanguage } from '../../model/vacancy-language-model';
@@ -50,6 +51,7 @@ export class ViewVacancyComponent implements OnInit {
     private vacancyService: VacancyService,
     private datePipe: DatePipe,
     private httpClient: HttpClient,
+    private dialogReff: MatDialog,
     @Inject(MAT_DIALOG_DATA) public editData: any,
 
 
@@ -107,6 +109,10 @@ export class ViewVacancyComponent implements OnInit {
     this.getSphere();
     this.getType();
     this.getCompany();
+  }
+
+  printReport(): void {
+    window.print();
   }
   closeForm() {
     this.dialogRef.close()
@@ -255,6 +261,19 @@ export class ViewVacancyComponent implements OnInit {
         alert(error.message);
       }
 
+
+  }
+
+  viewDialog() {
+    this.dialogReff.open(ViewApplicantComponent, {
+      // disableClose: true,
+      height: '1400px',
+      width: '1400px',
+      data: this.selectedRowApp
+
+    })
+
+    console.log(this.selectedRowApp)
 
   }
   selectedRowIndexApp = -1;

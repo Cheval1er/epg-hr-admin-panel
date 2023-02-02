@@ -252,18 +252,18 @@
 <div class="buttonDisplay">
 
 
-    <span> <button class="button-2" role="button">
-            <mat-icon>edit</mat-icon> Edit Applicant
+    <span> <button class="button-2" role="button" (click)="viewDialog()">
+            <mat-icon>remove_red_eye</mat-icon> View Applicant
         </button></span>
     <span> <button class="button-2" role="button" (click)="moveToShortList()">
             <mat-icon>favorite</mat-icon> Short List
         </button></span>
-    <span> <button class="button-2" role="button">
-            <mat-icon>assignment</mat-icon>
+    <span> <button class="button-2" role="button" (click)="printReport()">
+            <mat-icon>print</mat-icon>
             Print Applicant
         </button></span>
     <span> <button class="button-2" role="button">
-            <mat-icon>delete_forever</mat-icon> Applicants Excel
+            <mat-icon> format_list_numbered</mat-icon> Applicants Excel
         </button></span>
 
 
@@ -358,9 +358,12 @@
             <mat-icon>edit</mat-icon> Edit Applicant
         </button></span>
 
-    <span> <button class="button-2" role="button">
-            <mat-icon>assignment</mat-icon>
+    <span> <button class="button-2" role="button" (click)="printReport()">
+            <mat-icon>print</mat-icon>
             Print Applicant
+        </button></span>
+    <span> <button class="button-2" role="button">
+            <mat-icon> format_list_numbered</mat-icon> Applicants Excel
         </button></span>
     <span> <button class="button-2" role="button" (click)="removeFromShortList()">
             <mat-icon>delete_forever</mat-icon> Remove

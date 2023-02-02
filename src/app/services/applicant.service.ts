@@ -78,6 +78,10 @@ export class ApplicantService {
 
     // print applicant
     public printApplicant(objectId: number) {
-        return this.http.get(`${this.apiServerUrl}/VacancyAdmin/report/vacancy/applicantReport?objectId=${objectId}`)
+        return this.http.get(`${this.apiServerUrl}/VacancyAdmin/report/applicant/applicantReport?objectId=${objectId}`)
+    }
+
+    public getApplicantsExcel() {
+        return this.http.get(`${this.apiServerUrl}/VacancyAdmin/report/applicant/allApplicantsExel?objectId=null`)
     }
 }

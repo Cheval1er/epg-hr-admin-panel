@@ -43,5 +43,7 @@ export class UserService {
   public userApplicant(id: number, page: number, start: number, limit: number) {
     return this.http.get(`${this.apiServerUrl}/VacancyAdmin/user/applicants?id=${id}&page=${page}&start=${start}&limit=${limit}`)
   }
+
+
 }
 

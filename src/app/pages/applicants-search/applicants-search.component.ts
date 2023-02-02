@@ -73,7 +73,7 @@ export class ApplicantsSearchComponent implements OnInit, AfterViewChecked {
     this.getEducation();
     this.getcategory();
     // this.searchButton(1, 0, 25);
-    this.printApplicant(this.data['objectId']);
+
     console.log(this.appForm)
 
   }
