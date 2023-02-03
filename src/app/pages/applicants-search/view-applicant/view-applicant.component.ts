@@ -113,22 +113,22 @@ export class ViewApplicantComponent implements OnInit {
     this.getWantedType();
     this.getGraphicType();
     this.getConnection();
-    this.getApplicantEdu(1, 0, 25);
+    this.getApplicantEdu();
     this.getEducation();
-    this.getApplicantTrain(1, 0, 25);
+    this.getApplicantTrain();
     this.getExperience();
-    this.getApplicantExperience(1, 0, 25);
+    this.getApplicantExperience();
     this.getLanguages();
     this.getUniversity();
-    this.getApplicantLanguage(1, 0, 25);
+    this.getApplicantLanguage();
     this.getLangLevel();
-    this.getApplicantProgram(1, 0, 25);
+    this.getApplicantProgram();
     this.getProgram();
     this.getSkill();
-    this.getApplicantSkill(1, 0, 25);
-    this.getApplicantDepartment(1, 0, 25);
-    this.getApplicantFile(1, 0, 25);
-    this.getApplicantsVacancies(1, 0, 25)
+    this.getApplicantSkill();
+    this.getApplicantDepartment();
+    this.getApplicantFile();
+    this.getApplicantsVacancies()
   }
 
 
@@ -149,8 +149,8 @@ export class ViewApplicantComponent implements OnInit {
   };
 
   // applicants
-  geteditApplicant(page: number, start: number, limit: number) {
-    this.applicantService.editApplicant(this.editDataApplicant.applicantId, page, start, limit).subscribe(x => {
+  geteditApplicant() {
+    this.applicantService.editApplicant(this.editDataApplicant.applicantId, 1, 0, 25).subscribe(x => {
       this.dataSource = new MatTableDataSource(this.dataSourceApplicant = x['list']);
       // console.log(x['list'])
       console.log(this.dataSourceApplicant)
@@ -160,8 +160,8 @@ export class ViewApplicantComponent implements OnInit {
       }
   }
 
-  getApplicantsVacancies(page: number, start: number, limit: number) {
-    this.applicantService.applicantsVacancies(this.editDataApplicant.applicantId, page, start, limit).subscribe(x => {
+  getApplicantsVacancies() {
+    this.applicantService.applicantsVacancies(this.editDataApplicant.applicantId, 1, 0, 25).subscribe(x => {
       this.dataSource = new MatTableDataSource(this.dataSourceApplicant = x['list']);
       // console.log(x['list'])
       console.log(this.dataSourceApplicant)
@@ -171,8 +171,8 @@ export class ViewApplicantComponent implements OnInit {
       }
   }
   //applicant language
-  getApplicantLanguage(page: number, start: number, limit: number) {
-    this.applicantService.applicantLanguage(this.editDataApplicant.applicantId, page, start, limit).subscribe(x => {
+  getApplicantLanguage() {
+    this.applicantService.applicantLanguage(this.editDataApplicant.applicantId, 1, 0, 25).subscribe(x => {
       this.dataSource = new MatTableDataSource(this.dataSourceApplicantLanguage = x['list']);
       // console.log(x['list'])
       console.log(this.dataSourceApplicantLanguage)
@@ -183,8 +183,8 @@ export class ViewApplicantComponent implements OnInit {
 
   }
   //applicant experience
-  getApplicantExperience(page: number, start: number, limit: number) {
-    this.applicantService.applicantExperience(this.editDataApplicant.applicantId, page, start, limit).subscribe(x => {
+  getApplicantExperience() {
+    this.applicantService.applicantExperience(this.editDataApplicant.applicantId, 1, 0, 25).subscribe(x => {
       this.dataSource = new MatTableDataSource(this.dataSourceApplicantExperience = x['list']);
       console.log(x['list'])
       console.log(this.dataSourceApplicantExperience)
@@ -195,8 +195,8 @@ export class ViewApplicantComponent implements OnInit {
   }
   //applicant skill
 
-  getApplicantSkill(page: number, start: number, limit: number) {
-    this.applicantService.applicantSkill(this.editDataApplicant.applicantId, page, start, limit).subscribe(x => {
+  getApplicantSkill() {
+    this.applicantService.applicantSkill(this.editDataApplicant.applicantId, 1, 0, 25).subscribe(x => {
       this.dataSource = new MatTableDataSource(this.dataSourceApplicantSkill = x['list']);
       // console.log(x['list'])
       console.log(this.dataSourceApplicantSkill)
@@ -206,8 +206,8 @@ export class ViewApplicantComponent implements OnInit {
       }
   }
   //applicant department
-  getApplicantDepartment(page: number, start: number, limit: number) {
-    this.applicantService.applicantDepartment(this.editDataApplicant.applicantId, page, start, limit).subscribe(x => {
+  getApplicantDepartment() {
+    this.applicantService.applicantDepartment(this.editDataApplicant.applicantId, 1, 0, 25).subscribe(x => {
       this.dataSource = new MatTableDataSource(this.dataSourceApplicantDepartment = x['list']);
       // console.log(x['list'])
       console.log(this.dataSourceApplicantDepartment)
@@ -217,8 +217,8 @@ export class ViewApplicantComponent implements OnInit {
       }
   }
   //applicant program
-  getApplicantProgram(page: number, start: number, limit: number) {
-    this.applicantService.applicantProgram(this.editDataApplicant.applicantId, page, start, limit).subscribe(x => {
+  getApplicantProgram() {
+    this.applicantService.applicantProgram(this.editDataApplicant.applicantId, 1, 0, 25).subscribe(x => {
       this.dataSource = new MatTableDataSource(this.dataSourceApplicantProgram = x['list']);
       // console.log(x['list'])
       console.log(this.dataSourceApplicantProgram)
@@ -230,8 +230,8 @@ export class ViewApplicantComponent implements OnInit {
 
 
   //applicant education
-  getApplicantEdu(page: number, start: number, limit: number) {
-    this.applicantService.applicantEdu(this.editDataApplicant.applicantId, page, start, limit).subscribe(x => {
+  getApplicantEdu() {
+    this.applicantService.applicantEdu(this.editDataApplicant.applicantId, 1, 0, 25).subscribe(x => {
       this.dataSource = new MatTableDataSource(this.dataSourceApplicantEdu = x['list']);
       // console.log(x['list'])
       console.log(this.dataSourceApplicantEdu)
@@ -241,8 +241,8 @@ export class ViewApplicantComponent implements OnInit {
       }
   }
   //applicant training
-  getApplicantTrain(page: number, start: number, limit: number) {
-    this.applicantService.applicantTrain(this.editDataApplicant.applicantId, page, start, limit).subscribe(x => {
+  getApplicantTrain() {
+    this.applicantService.applicantTrain(this.editDataApplicant.applicantId, 1, 0, 25).subscribe(x => {
       this.dataSource = new MatTableDataSource(this.dataSourceApplicantTrain = x['list']);
       // console.log(x['list'])
       console.log(this.dataSourceApplicantTrain)
@@ -253,8 +253,8 @@ export class ViewApplicantComponent implements OnInit {
   }
 
   //applicant file
-  getApplicantFile(page: number, start: number, limit: number) {
-    this.applicantService.applicantFile(this.editDataApplicant.applicantId, page, start, limit).subscribe(x => {
+  getApplicantFile() {
+    this.applicantService.applicantFile(this.editDataApplicant.applicantId, 1, 0, 25).subscribe(x => {
       this.dataSource = new MatTableDataSource(this.dataSourceApplicantFile = x['list']);
       // console.log(x['list'])
       console.log(this.dataSourceApplicantFile)

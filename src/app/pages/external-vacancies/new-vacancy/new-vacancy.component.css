@@ -77,7 +77,7 @@ span {
     hyphens: auto;
 }
 
-.mat-column-deadLine {
+/* .mat-column-deadLine {
 
     white-space: unset !important;
     flex: 0 0 10% !important;
@@ -91,7 +91,7 @@ span {
     -moz-hyphens: auto;
     -webkit-hyphens: auto;
     hyphens: auto;
-}
+} */
 
 .mat-column-category {
 

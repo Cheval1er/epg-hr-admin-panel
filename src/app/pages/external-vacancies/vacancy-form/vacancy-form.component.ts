@@ -65,7 +65,7 @@ export class VacancyFormComponent implements OnInit {
   saveFormData() {
     console.log('Form data is ', this.vacancyForm.value);
 
-    this.vacancyForm.value.deadLine = this.datePipe.transform(this.vacancyForm.value.deadLine, 'dd-MM-yyyy')
+    // this.vacancyForm.value.deadLine = this.datePipe.transform(this.vacancyForm.value.deadLine, 'dd-MM-yyyy')
 
     this.vacancyService.addVacancy(this.vacancyForm.value).subscribe((result) => {
       console.log(result)

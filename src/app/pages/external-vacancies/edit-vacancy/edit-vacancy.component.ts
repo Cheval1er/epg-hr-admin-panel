@@ -68,7 +68,7 @@ export class EditVacancyComponent implements OnInit {
   selectedRowApp: any;
   selectedRowAppS: any;
   vacancyDetail: any;
-
+  page: number;
   constructor(private formBuilder: FormBuilder,
     private router: Router,
     private dialogRef: MatDialog,
@@ -125,11 +125,11 @@ export class EditVacancyComponent implements OnInit {
 
 
 
-    this.getAllProgram(1, 0, 25);
-    this.getAllLanguage(1, 0, 25);
-    this.getAllSkill(1, 0, 25);
-    this.getAllApplicants(1, 0, 25);
-    this.getAllShortListApplicants(1, 0, 25);
+    this.getAllProgram();
+    this.getAllLanguage();
+    this.getAllSkill();
+    this.getAllApplicants();
+    this.getAllShortListApplicants();
     this.getcategory();
     this.getEducation();
     this.getSphere();
@@ -221,9 +221,12 @@ export class EditVacancyComponent implements OnInit {
 
     )
   }
+
+
+
   //Programs
-  public getAllProgram(page: number, start: number, limit: number) {
-    this.vacancyService.getAllPrograms(this.editData.id, page, start, limit).subscribe(x => {
+  public getAllProgram() {
+    this.vacancyService.getAllPrograms(this.editData.id, this.page, 0, 25).subscribe(x => {
       this.dataSource = new MatTableDataSource(this.dataSourceProgram = x['list']);
       // console.log(x['list'])
       console.log(this.dataSourceProgram)
@@ -249,7 +252,7 @@ export class EditVacancyComponent implements OnInit {
     this.dialogRef.open(DeleteProgramFormComponent, {
       data: this.selectedRow
     }).afterClosed().subscribe(EditVacancyComponent => {
-      this.getAllProgram(1, 0, 25)
+      this.getAllProgram()
     })
   }
   openDialog() {
@@ -258,7 +261,7 @@ export class EditVacancyComponent implements OnInit {
     }
 
     ).afterClosed().subscribe(EditVacancyComponent => {
-      this.getAllProgram(1, 0, 25)
+      this.getAllProgram()
     })
 
   }
@@ -268,14 +271,14 @@ export class EditVacancyComponent implements OnInit {
       data: this.selectedRow
 
     }).afterClosed().subscribe(EditVacancyComponent => {
-      this.getAllProgram(1, 0, 25)
+      this.getAllProgram()
     })
   }
 
 
   //Language
-  public getAllLanguage(page: number, start: number, limit: number) {
-    this.vacancyService.getAllLanguages(this.editData.id, page, start, limit).subscribe(x => {
+  public getAllLanguage() {
+    this.vacancyService.getAllLanguages(this.editData.id, 1, 0, 25).subscribe(x => {
       this.dataSource = new MatTableDataSource(this.dataSourceLanguage = x['list']);
       // console.log(x['list'])
       console.log(this.dataSourceLanguage)
@@ -301,7 +304,7 @@ export class EditVacancyComponent implements OnInit {
     this.dialogRef.open(DeleteLanguageFormComponent, {
       data: this.selectedRowL
     }).afterClosed().subscribe(EditVacancyComponent => {
-      this.getAllLanguage(1, 0, 25)
+      this.getAllLanguage()
     })
   }
   openDialogL() {
@@ -310,7 +313,7 @@ export class EditVacancyComponent implements OnInit {
     }
 
     ).afterClosed().subscribe(EditVacancyComponent => {
-      this.getAllLanguage(1, 0, 25)
+      this.getAllLanguage()
     })
 
   }
@@ -320,12 +323,12 @@ export class EditVacancyComponent implements OnInit {
       data: this.selectedRowL
 
     }).afterClosed().subscribe(EditVacancyComponent => {
-      this.getAllLanguage(1, 0, 25)
+      this.getAllLanguage()
     })
   }
   // skill
-  public getAllSkill(page: number, start: number, limit: number) {
-    this.vacancyService.getAllSkills(this.editData.id, page, start, limit).subscribe(x => {
+  public getAllSkill() {
+    this.vacancyService.getAllSkills(this.editData.id, this.page, 0, 25).subscribe(x => {
       this.dataSource = new MatTableDataSource(this.dataSourceSkill = x['list']);
       // console.log(x['list'])
       console.log(this.dataSourceSkill)
@@ -351,7 +354,7 @@ export class EditVacancyComponent implements OnInit {
     this.dialogRef.open(DeleteSkillFormComponent, {
       data: this.selectedRowS
     }).afterClosed().subscribe(EditVacancyComponent => {
-      this.getAllSkill(1, 0, 25)
+      this.getAllSkill()
     })
   }
   openDialogS() {
@@ -360,7 +363,7 @@ export class EditVacancyComponent implements OnInit {
     }
 
     ).afterClosed().subscribe(EditVacancyComponent => {
-      this.getAllSkill(1, 0, 25)
+      this.getAllSkill()
     })
 
   }
@@ -370,15 +373,15 @@ export class EditVacancyComponent implements OnInit {
       data: this.selectedRowS
 
     }).afterClosed().subscribe(EditVacancyComponent => {
-      this.getAllSkill(1, 0, 25)
+      this.getAllSkill()
     })
   }
 
 
   //applicants
 
-  public getAllApplicants(page: number, start: number, limit: number) {
-    this.vacancyService.getAllApplicants(this.editData.id, page, start, limit).subscribe(x => {
+  public getAllApplicants() {
+    this.vacancyService.getAllApplicants(this.editData.id, 1, 0, 25).subscribe(x => {
       this.dataSource = new MatTableDataSource(this.dataSourceApplicant = x['list']);
       // console.log(x['list'])
       console.log(this.dataSourceApplicant)
@@ -412,8 +415,8 @@ export class EditVacancyComponent implements OnInit {
 
   //shortList
 
-  public getAllShortListApplicants(page: number, start: number, limit: number) {
-    this.vacancyService.getAllShortListApplicants(this.editData.id, page, start, limit).subscribe(x => {
+  public getAllShortListApplicants() {
+    this.vacancyService.getAllShortListApplicants(this.editData.id, this.page, 0, 25).subscribe(x => {
       this.dataSource = new MatTableDataSource(this.dataSourceShortListApplicant = x['list']);
       // console.log(x['list'])
       console.log(this.dataSourceShortListApplicant)

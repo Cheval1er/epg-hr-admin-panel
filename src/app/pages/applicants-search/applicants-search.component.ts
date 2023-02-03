@@ -65,7 +65,7 @@ export class ApplicantsSearchComponent implements OnInit, AfterViewChecked {
 
 
 
-    this.getAllApplicants(1, 0, 25)
+    this.getAllApplicants()
     this.getLanguages();
     this.getGenders();
     this.getProgram();
@@ -79,8 +79,8 @@ export class ApplicantsSearchComponent implements OnInit, AfterViewChecked {
   }
 
 
-  public getAllApplicants(page: number, start: number, limit: number) {
-    this.applicantService.getAllApplicants(page, start, limit).subscribe(x => {
+  public getAllApplicants() {
+    this.applicantService.getAllApplicants(1, 0, 25).subscribe(x => {
       this.searchApplicantsData = new MatTableDataSource(this.data = x['list']);
       // this.data = x['list'];
       this.searchApplicantsData.paginator = this.paginator;
@@ -121,13 +121,13 @@ export class ApplicantsSearchComponent implements OnInit, AfterViewChecked {
 
 
 
-  searchDetails(page: number, start: number, limit: number) {
+  searchDetails() {
 
     // this.appForm.value.dateFrom = this.datePipe.transform(this.appForm.value.dateFrom, 'dd-MM-yyyy');
     // this.appForm.value.dateTo = this.datePipe.transform(this.appForm.value.dateTo, 'dd-MM-yyyy')
     this.applicantService.searchApplicants(this.appForm.value.vacancyId, this.appForm.value.languageId, this.appForm.value.gender,
       this.appForm.value.programs, this.appForm.value.departments, this.appForm.value.educationLevel,
-      this.appForm.value.ageFrom, this.appForm.value.ageTo, this.appForm.value.experience, this.appForm.value.dateFrom, this.appForm.value.dateTo, page, start, limit).subscribe(x => {
+      this.appForm.value.ageFrom, this.appForm.value.ageTo, this.appForm.value.experience, this.appForm.value.dateFrom, this.appForm.value.dateTo, 1, 0, 25).subscribe(x => {
         console.log(this.appForm)
         this.searchApplicantsData = x['list'];
 

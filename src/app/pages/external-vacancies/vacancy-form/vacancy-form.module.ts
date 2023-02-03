@@ -24,6 +24,7 @@ import { MatCardModule } from '@angular/material/card';
 import { VacancyService } from 'src/app/services/vacancy.service';
 
 
+
 @NgModule({
     declarations: [VacancyFormComponent],
     imports: [

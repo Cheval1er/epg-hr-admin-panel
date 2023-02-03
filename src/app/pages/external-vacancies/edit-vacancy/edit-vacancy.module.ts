@@ -43,6 +43,7 @@ import { EditApplicantModule } from './edit-applicant/edit-applicant.module';
 
 
 
+
 @NgModule({
     declarations: [EditVacancyComponent, DeleteProgramFormComponent, DeleteLanguageFormComponent, DeleteSkillFormComponent],
     imports: [
@@ -89,7 +90,7 @@ import { EditApplicantModule } from './edit-applicant/edit-applicant.module';
         NewProgramFormModule,
         NewLanguageFormModule,
         NewSkillFormModule,
-        EditApplicantModule
+        EditApplicantModule,
 
 
 

@@ -22,7 +22,7 @@ export class List {
     vacancyName: string;
     vacancyAddress: string;
     vacancyDate?: Date;
-    deadLine: string;
+    deadLine?: Date;
     category: DictionaryItem;
     type: DictionaryItem;
     description: string;

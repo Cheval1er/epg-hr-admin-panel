@@ -33,7 +33,7 @@ export class StoppedVacancyComponent implements OnInit, AfterViewInit {
   public editVacancy: List;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id','company', 'vacancyName', 'title', 'vacancyAddress', 'deadLine',
+  displayedColumns = ['id', 'company', 'vacancyName', 'title', 'vacancyAddress', 'deadLine',
     'category', 'description', 'probationaryPeriod', 'schedule', 'status'];
   groupedColumns: string[] = ['grouped'];
   secondGroupedColumns: string[] = ['options'];
@@ -55,7 +55,7 @@ export class StoppedVacancyComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
 
-    this.getAllStoppedVacancies(0, 80);
+    this.getAllStoppedVacancies();
 
 
   }
@@ -65,8 +65,8 @@ export class StoppedVacancyComponent implements OnInit, AfterViewInit {
 
 
   // get allstopped vacancies 
-  public getAllStoppedVacancies(start: number, limit: number): void {
-    this.vacancyService.getAllStoppedVacancies(start, limit).subscribe(c => {
+  public getAllStoppedVacancies(): void {
+    this.vacancyService.getAllStoppedVacancies(0, 25).subscribe(c => {
 
       this.dataSource = new MatTableDataSource(this.data = c['list']);
       this.dataSource.sort = this.sort;
