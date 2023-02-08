@@ -338,7 +338,7 @@
                 </a></span> -->
 
         </div>
-        <table mat-table [dataSource]="dataSourceApplicant" id="tablerecords">
+        <table mat-table [dataSource]="dataSourceApplicant">
             <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef class="body">
                     ID
@@ -453,7 +453,7 @@
                 <th mat-header-cell *matHeaderCellDef class="body">
                     ID
                 </th>
-                <td mat-cell *matCellDef=" let applicantS">{{applicantS?.id}} </td>
+                <td mat-cell *matCellDef=" let applicant">{{applicant?.id}} </td>
 
             </ng-container>
 
@@ -461,14 +461,14 @@
                 <th mat-header-cell *matHeaderCellDef class="body">
                     First Name
                 </th>
-                <td mat-cell *matCellDef=" let applicantS">{{applicantS?.fname}} </td>
+                <td mat-cell *matCellDef=" let applicant">{{applicant?.fname}} </td>
 
             </ng-container>
             <ng-container matColumnDef="lastName">
                 <th mat-header-cell *matHeaderCellDef class="body">
                     Last Name
                 </th>
-                <td mat-cell *matCellDef=" let applicantS">{{applicantS?.lname}} </td>
+                <td mat-cell *matCellDef=" let applicant">{{applicant?.lname}} </td>
 
             </ng-container>
 
@@ -476,21 +476,21 @@
                 <th mat-header-cell *matHeaderCellDef class="body">
                     Personal Number
                 </th>
-                <td mat-cell *matCellDef=" let applicantS">{{applicantS?.customerNumber}} </td>
+                <td mat-cell *matCellDef=" let applicant">{{applicant?.customerNumber}} </td>
 
             </ng-container>
             <ng-container matColumnDef="bDay">
                 <th mat-header-cell *matHeaderCellDef class="body">
                     Birth Day
                 </th>
-                <td mat-cell *matCellDef=" let applicantS">{{applicantS?.birthDate}} </td>
+                <td mat-cell *matCellDef=" let applicant">{{applicant?.birthDate}} </td>
 
             </ng-container>
             <ng-container matColumnDef="mail">
                 <th mat-header-cell *matHeaderCellDef class="body">
                     Mail
                 </th>
-                <td mat-cell *matCellDef=" let applicantS">{{applicantS?.mail}} </td>
+                <td mat-cell *matCellDef=" let applicant">{{applicant?.mail}} </td>
 
             </ng-container>
 
@@ -498,7 +498,7 @@
                 <th mat-header-cell *matHeaderCellDef class="body">
                     Additional Mail
                 </th>
-                <td mat-cell *matCellDef=" let applicantS">{{applicantS?.optionalMail}} </td>
+                <td mat-cell *matCellDef=" let applicant">{{applicant?.optionalMail}} </td>
 
             </ng-container> -->
 
@@ -506,22 +506,31 @@
                 <th mat-header-cell *matHeaderCellDef class="body">
                     Mobile
                 </th>
-                <td mat-cell *matCellDef=" let applicantS">{{applicantS?.phone}} </td>
+                <td mat-cell *matCellDef=" let applicant">{{applicant?.phone}} </td>
 
             </ng-container>
-
+            <!-- 
             <ng-container matColumnDef="additionalPhone">
                 <th mat-header-cell *matHeaderCellDef class="body">
                     Additional Phone
                 </th>
-                <td mat-cell *matCellDef=" let applicantS">{{applicantS?.additionalphone}} </td>
+                <td mat-cell *matCellDef=" let applicant">{{applicant?.additionalphone}} </td>
 
-            </ng-container>
+            </ng-container> -->
             <ng-container matColumnDef="applyDate">
                 <th mat-header-cell *matHeaderCellDef class="body">
                     Apply Date
                 </th>
-                <td mat-cell *matCellDef=" let applicantS">{{applicantS?.applyDate}} </td>
+                <td mat-cell *matCellDef=" let applicant">{{applicant?.applyDate}} </td>
+
+            </ng-container>
+            <ng-container matColumnDef="link">
+                <th mat-header-cell *matHeaderCellDef class="body">
+                    Applicants Link
+                </th>
+                <td mat-cell *matCellDef=" let applicant">
+                    <a href="{{ApplikantLink + applicant.randkey}}" target="_blank">Profile </a>
+                </td>
 
             </ng-container>
 

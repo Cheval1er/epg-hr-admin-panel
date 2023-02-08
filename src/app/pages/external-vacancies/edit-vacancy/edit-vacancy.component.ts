@@ -64,7 +64,7 @@ export class EditVacancyComponent implements OnInit {
     'bDay', 'mail', 'mobile', 'applyDate', 'link'];
 
   displayedColumnsShortList = ['id', 'firstName', 'lastName', 'personalNumber',
-    'bDay', 'mail', 'mobile', 'additionalPhone', 'applyDate']
+    'bDay', 'mail', 'mobile', 'applyDate', 'link']
   vacancyProgramForm: any;
   selectedRowS: any;
   selectedRowL: any;

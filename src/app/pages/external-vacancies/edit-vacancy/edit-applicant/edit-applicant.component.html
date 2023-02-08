@@ -598,7 +598,11 @@
                 <th mat-header-cell *matHeaderCellDef class="body">
                     File Name
                 </th>
-                <td mat-cell *matCellDef=" let fileData">{{fileData?.fileName}} </td>
+                <td mat-cell *matCellDef=" let fileData">
+                    <a href="{{DownloadFiles+''+ fileData.id}}" target="_blank">
+                        {{fileData?.fileName}}
+                    </a>
+                </td>
 
             </ng-container>
 

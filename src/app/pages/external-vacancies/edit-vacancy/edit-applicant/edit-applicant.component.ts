@@ -11,6 +11,7 @@ import { ApplicantDepartment, ApplicantEducation, ApplicantExperience, Applicant
 import { ApplicantService } from 'src/app/services/applicant.service';
 
 import { DownloadService } from 'src/app/services/download.service';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -135,6 +136,7 @@ export class EditApplicantComponent implements OnInit {
     this.getApplicantDepartment(1, 0, 25);
     this.getApplicantFile(1, 0, 25);
     this.getApplicantsVacancies(1, 0, 25)
+    console.log(this.DownloadFiles)
 
   }
 
@@ -145,6 +147,9 @@ export class EditApplicantComponent implements OnInit {
       saveAs(new Blob([fileData], { type: MIME_TYPES[EXT] }), this.selectedRowAppFile.fileName))
 
   }
+
+  public DownloadFiles = environment.apiBaseUrl + '/VacancyAdmin/applicant/file/download?id=';
+
   selectedRowIndexAppFile = -1;
   highlightApp(applicantsFile) {
     this.selectedRowAppFile = applicantsFile;
