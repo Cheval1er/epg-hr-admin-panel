@@ -51,7 +51,7 @@ export class VacancyService {
 
 
     public getAllCompletedVacancies(start: number, limit: number): Observable<List['status']> {
-        return this.http.get<List['status']>(`${this.apiServerUrl}/VacancyAdmin/vacancy/vacancyCompleted?start=${start}&limit=${limit}`)
+        return this.http.get<List['status']>(`${this.apiServerUrl}/VacancyAdmin/vacancy/vacancyComplated?start=${start}&limit=${limit}`)
     }
 
     public getAllStoppedVacancies(start: number, limit: number): Observable<List['status']> {
