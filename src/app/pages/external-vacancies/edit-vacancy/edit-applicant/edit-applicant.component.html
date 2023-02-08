@@ -144,12 +144,13 @@
                         <mat-form-field appearance="outline" style="font-size: 12px; width: 10%;">
                             <input formControlName="relativityPlaceWork" matInput>
                         </mat-form-field>
+
+                    </div>
+                    <div class=" flex flex-col sm:flex-row sm:gap-8 ">
                         <span> Relativity Mobile: </span>
                         <mat-form-field appearance="outline" style="font-size: 12px; width: 10%;">
                             <input formControlName="relativityMobile" matInput>
                         </mat-form-field>
-                    </div>
-                    <div class=" flex flex-col sm:flex-row sm:gap-8 ">
                         <span> Create Date: </span>
                         <mat-form-field appearance="outline" style="font-size: 12px; width: 10%;">
                             <input matInput [matDatepicker]="datepickerRefa" formControlName="createDate">
@@ -163,9 +164,10 @@
                         </mat-form-field>
                     </div>
                 </mat-card-content>
+                <button class="button-7  displayEnd" role="button" (click)="closeForm()">Close</button>
             </mat-card>
-            <button (click)="saveEditApplicant()">Save</button>
-            <button class="button-7  displayEnd" role="button" (click)="closeForm()">Close</button>
+
+
         </form>
     </mat-tab>
 
@@ -177,7 +179,7 @@
                     <mat-icon>cached</mat-icon> Refresh
                 </button></span>
         </div>
-        <table mat-table [dataSource]="dataSourceApplicantEdu">
+        <table mat-table [dataSource]="dataSourceApplicantEdu" style="width: 100%;">
 
             <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef class="body">
@@ -324,7 +326,7 @@
                     <mat-icon>cached</mat-icon> Refresh
                 </button></span>
         </div>
-        <table mat-table [dataSource]="dataSourceApplicantExperience">
+        <table mat-table [dataSource]="dataSourceApplicantExperience" style="width: 100%;">
 
             <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef class="body">

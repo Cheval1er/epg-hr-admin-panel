@@ -26,6 +26,7 @@ import { EditSkillComponent } from './new-skill-form/edit-skill/edit-skill.compo
 import { NewSkillFormComponent } from './new-skill-form/new-skill-form.component';
 
 import saveAs from 'file-saver';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'vex-edit-vacancy',
   templateUrl: './edit-vacancy.component.html',
@@ -139,6 +140,8 @@ export class EditVacancyComponent implements OnInit {
     this.getType();
 
     this.getCompany();
+
+    console.log(this.DownloadLink);
   };
 
 
@@ -409,7 +412,7 @@ export class EditVacancyComponent implements OnInit {
 
     this.dialogRef.open(EditApplicantComponent, {
       // disableClose: true,
-      height: '950px',
+      height: '900px',
       width: '1400px',
       data: this.selectedRowApp
 
@@ -448,7 +451,9 @@ export class EditVacancyComponent implements OnInit {
 
 
 
+  public DownloadLink = environment.apiBaseUrl + '/VacancyAdmin/report/vacancy/applicantsReportLink?objectId=' + this.editData.id;
 
+  public ApplikantLink = 'http://jobs.energo-pro.ge/onlinejobs/#/Viewer/'
 
 
 

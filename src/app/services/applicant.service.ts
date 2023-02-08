@@ -1,8 +1,9 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { catchError, Observable, tap } from "rxjs";
 import { environment } from "src/environments/environment";
 import { Applicant } from "../pages/model/applicant";
+import { ApplicantFile } from "../pages/model/applicantDetail";
 
 
 
@@ -66,8 +67,15 @@ export class ApplicantService {
     }
 
     // applicant file
-    public applicantFile(applicantId: number, page: number, start: number, limit: number) {
-        return this.http.get(`${this.apiServerUrl}/VacancyAdmin/applicant/file?applicantId=${applicantId}&page=${page}&start=${start}&limit=${limit}`)
+    public applicantFile(applicantId: number, page: number, start: number, limit: number): Observable<ApplicantFile[]> {
+        return this.http.get<ApplicantFile[]>(`${this.apiServerUrl}/VacancyAdmin/applicant/file?applicantId=${applicantId}&page=${page}&start=${start}&limit=${limit}`)
+
+    }
+    log(arg0: string): void {
+        throw new Error("Method not implemented.");
+    }
+    handleError<T>(arg0: string, arg1: undefined[]): (err: any, caught: Observable<Object>) => import("rxjs").ObservableInput<any> {
+        throw new Error("Method not implemented.");
     }
 
     // applicants Vacancies
