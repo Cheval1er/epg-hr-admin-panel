@@ -61,4 +61,6 @@ export interface VacancyApplicant {
     status: number;
     createDate: Date;
     shortList: boolean;
+    rendkey: string;
+    applicantsLink: string;
 }

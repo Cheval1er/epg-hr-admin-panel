@@ -93,6 +93,7 @@ span {
     hyphens: auto;
 }
 
+
 .mat-column-category {
 
     white-space: unset !important;
@@ -229,3 +230,52 @@ span {
 .fitWidth {
     width: 100%;
 }
+
+
+.mat-column-personalNumber {
+
+    white-space: unset !important;
+    flex: 0 0 10% !important;
+    width: 10% !important;
+    overflow-wrap: break-word;
+
+
+
+
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+.mat-column-additionalPhone {
+
+    white-space: unset !important;
+    flex: 0 0 10% !important;
+    width: 10% !important;
+    overflow-wrap: break-word;
+
+
+
+
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+/* .mat-column-firstName {
+
+    white-space: unset !important;
+    flex: 0 0 10% !important;
+    width: 10% !important;
+    overflow-wrap: break-word;
+
+
+
+
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+} */

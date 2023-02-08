@@ -10,6 +10,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApplicantService } from 'src/app/services/applicant.service';
 import { Applicant } from '../model/applicant';
+import { VacancyApplicant } from '../model/vacancy-applicant-model';
 import { ViewApplicantComponent } from './view-applicant/view-applicant.component';
 
 
@@ -248,11 +249,12 @@ export class ApplicantsSearchComponent implements OnInit, AfterViewChecked {
     console.log(this.selectedRow)
 
   }
-  printApplicant(objectId) {
-    this.applicantService.printApplicant(this.selectedRow.objectId).subscribe(x => {
-      console.log(this.selectedRow.objectId)
-    })
-  }
+
+
+
+
+
+
 
 
 }

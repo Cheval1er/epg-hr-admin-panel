@@ -76,12 +76,7 @@ export class ApplicantService {
         return this.http.get(`${this.apiServerUrl}/VacancyAdmin/applicant/vacancy?applicantId=${applicantId}&page=${page}&start=${start}&limit=${limit}`)
     }
 
-    // print applicant
-    public printApplicant(objectId: number) {
-        return this.http.get(`${this.apiServerUrl}/VacancyAdmin/report/applicant/applicantReport?objectId=${objectId}`)
-    }
-
-    public getApplicantsExcel() {
-        return this.http.get(`${this.apiServerUrl}/VacancyAdmin/report/applicant/allApplicantsExel?objectId=null`)
+    public applicantsReportLink(objectId: number) {
+        return this.http.get(`${this.apiServerUrl}/VacancyAdmin/report/vacancy/applicantsReportLink?objectId=${objectId}`)
     }
 }

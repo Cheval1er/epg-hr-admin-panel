@@ -258,7 +258,7 @@ export class ExternalVacanciesComponent implements OnInit, AfterViewInit {
     this.dialogRef.open(EditVacancyComponent, {
       // disableClose: true,
       height: '950px',
-      width: '1400px',
+      width: '100%',
       data: this.selectedRow
 
     })

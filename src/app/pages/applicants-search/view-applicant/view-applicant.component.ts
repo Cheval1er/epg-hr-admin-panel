@@ -12,7 +12,7 @@ import { ApplicantEducation, ApplicantTraining, ApplicantExperience, ApplicantLa
 
 import saveAs from 'file-saver';
 import { DownloadService } from 'src/app/services/download.service';
-
+import * as XLSX from 'xlsx';
 const MIME_TYPES = {
   pdf: 'application/pdf',
   png: 'image/png',
@@ -130,6 +130,8 @@ export class ViewApplicantComponent implements OnInit {
     this.getApplicantFile();
     this.getApplicantsVacancies()
   }
+
+
 
 
   download(id) {

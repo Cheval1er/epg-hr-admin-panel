@@ -5,6 +5,8 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+
+import { ApplicantService } from 'src/app/services/applicant.service';
 import { VacancyService } from 'src/app/services/vacancy.service';
 import { Applicant } from '../../model/applicant';
 import { List, Vacancy } from '../../model/vacancy';
@@ -23,7 +25,7 @@ import { NewProgramFormComponent } from './new-program-form/new-program-form.com
 import { EditSkillComponent } from './new-skill-form/edit-skill/edit-skill.component';
 import { NewSkillFormComponent } from './new-skill-form/new-skill-form.component';
 
-
+import saveAs from 'file-saver';
 @Component({
   selector: 'vex-edit-vacancy',
   templateUrl: './edit-vacancy.component.html',
@@ -58,10 +60,10 @@ export class EditVacancyComponent implements OnInit {
   displayedColumnsSkill = ['id', 'skills', 'comment'];
 
   displayedColumnsApplicants = ['id', 'firstName', 'lastName', 'personalNumber',
-    'bDay', 'mail', 'additionalMail', 'mobile', 'additionalPhone', 'applyDate'];
+    'bDay', 'mail', 'mobile', 'applyDate', 'link'];
 
   displayedColumnsShortList = ['id', 'firstName', 'lastName', 'personalNumber',
-    'bDay', 'mail', 'additionalMail', 'mobile', 'additionalPhone', 'applyDate']
+    'bDay', 'mail', 'mobile', 'additionalPhone', 'applyDate']
   vacancyProgramForm: any;
   selectedRowS: any;
   selectedRowL: any;
@@ -76,6 +78,7 @@ export class EditVacancyComponent implements OnInit {
     private datePipe: DatePipe,
     private httpClient: HttpClient,
     public dialog: MatDialog,
+    private applicantService: ApplicantService,
     @Inject(MAT_DIALOG_DATA) public editData: any,
 
 
@@ -439,6 +442,16 @@ export class EditVacancyComponent implements OnInit {
 
   }
 
+  printApplicant() {
+
+  }
+
+
+
+
+
+
+
   public moveToShortList(): void {
 
     this.vacancyService.moveToShortList(this.selectedRowApp).subscribe((result) => {
@@ -484,6 +497,7 @@ export class DeleteProgramFormComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private vacancyService: VacancyService,
     private dialogRef: MatDialogRef<DeleteProgramFormComponent>,
+    private applicantService: ApplicantService,
     @Inject(MAT_DIALOG_DATA) public editDataP: any,) { }
   ngOnInit() {
     this.vacancyProgramForm = this.formBuilder.group({
