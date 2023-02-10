@@ -1,4 +1,3 @@
-<!-- <button (click)="exportexcel()">print</button> -->
 <div id="excel-table">
 
     <h3>Applicant Information</h3>
@@ -146,12 +145,15 @@
                     <mat-form-field appearance="outline" style="font-size: 12px; width: 10%;">
                         <input formControlName="relativityPlaceWork" matInput>
                     </mat-form-field>
+
+                </div>
+                <div class=" flex flex-col sm:flex-row sm:gap-8 ">
+
                     <span> Relativity Mobile: </span>
                     <mat-form-field appearance="outline" style="font-size: 12px; width: 10%;">
                         <input formControlName="relativityMobile" matInput>
                     </mat-form-field>
-                </div>
-                <div class=" flex flex-col sm:flex-row sm:gap-8 ">
+
                     <span> Create Date: </span>
                     <mat-form-field appearance="outline" style="font-size: 12px; width: 10%;">
                         <input matInput [matDatepicker]="datepickerRefa" formControlName="createDate">
@@ -519,16 +521,17 @@
         <tr mat-row *matRowDef="let departmentData; columns: displayedColumnsDepartment;"></tr>
     </table>
     <h3>Applicant's Files</h3>
-    <span> <button class="button-2" role="button" (click)="download(selectedRowAppFile.id)">
-            <mat-icon>cached</mat-icon> Download
-        </button></span>
-    <table mat-table [dataSource]="dataSourceApplicantFile">
+    <table mat-table [dataSource]="dataSourceApplicantFile" style="width: 100%;">
 
         <ng-container matColumnDef="fileName">
             <th mat-header-cell *matHeaderCellDef class="body">
                 File Name
             </th>
-            <td mat-cell *matCellDef=" let fileData">{{fileData?.fileName}} </td>
+            <td mat-cell *matCellDef=" let fileData">
+                <a href="{{DownloadFiles+''+ fileData.id}}" target="_blank">
+                    {{fileData?.fileName}}
+                </a>
+            </td>
 
         </ng-container>
 
@@ -541,14 +544,23 @@
         </ng-container>
         <ng-container matColumnDef="fileFormat">
             <th mat-header-cell *matHeaderCellDef class="body">
-                File Format
+                Download
             </th>
             <td mat-cell *matCellDef=" let fileData">{{fileData?.fileFormat}} </td>
 
         </ng-container>
+        <ng-container matColumnDef="download">
+            <th mat-header-cell *matHeaderCellDef class="body">
+                Download
+            </th>
+            <td mat-cell *matCellDef=" let fileData"><a href="{{DownloadFiles+''+ fileData.id}}"
+                    target="_blank"><mat-icon>download</mat-icon></a></td>
+
+        </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumnsFile; sticky: true"></tr>
         <tr mat-row *matRowDef="let fileData; columns: displayedColumnsFile;"
-            [ngClass]="{'highlighted': selectedRowIndexAppFile ==  fileData.id}" (click)="highlightApp(fileData)"></tr>
+            [ngClass]="{'highlighted': selectedRowIndexAppFile ==  fileData.id}" (click)="highlightApp(fileData)">
+        </tr>
     </table>
     <h3>Vacancies of Applicant</h3>
     <table mat-table [dataSource]="dataSourceApplicant">

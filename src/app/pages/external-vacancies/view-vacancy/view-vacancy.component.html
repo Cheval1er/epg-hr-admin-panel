@@ -7,9 +7,8 @@
 
             <!-- about vacancy -->
             <div class=" px-6 py-4 flex flex-col sm:flex-row sm:gap-2">
-
                 <span>Company</span>
-                <mat-form-field appearance="outline" style="font-size: 14px;">
+                <mat-form-field appearance="outline" style="font-size: 14px;" [style.width.%]="25">
                     <mat-select formControlName="companyId" class="black">
                         <mat-option *ngFor="let company of companyList" [value]="company.id">{{company.name}}
                         </mat-option>
@@ -17,9 +16,8 @@
                     </mat-select>
                     <mat-error>This field is required</mat-error>
                 </mat-form-field>
-
-                <span> Vacancy Name* : </span>
-                <mat-form-field appearance="outline" style="font-size: 14px; " class="fitWidth">
+                <span> Vacancy Name : </span>
+                <mat-form-field appearance="outline" class="flex-auto" style="font-size: 14px;">
                     <input formControlName="vacancyName" matInput required>
                     <mat-error>This field is required</mat-error>
                 </mat-form-field>
@@ -27,22 +25,19 @@
             </div>
 
             <div class="flex flex-col sm:flex-row sm:gap-2">
-                <span> Address*: </span>
+                <span> Address: </span>
                 <mat-form-field appearance="outline" class="flex-auto" style="font-size: 14px;">
                     <input formControlName="vacancyAddress" matInput>
                     <mat-error>This field is required</mat-error>
                 </mat-form-field>
 
-                <span> Dead Line*: </span>
+                <span> Dead Line: </span>
                 <mat-form-field appearance="outline" class="smallBoxClass" style="font-size: 14px;">
-                    <input matInput [matDatepicker]="datepickerRef" formControlName="deadLine" required>
-                    <mat-hint>DD/MM/YYYY</mat-hint>
-                    <mat-datepicker-toggle [for]="datepickerRef" matSuffix></mat-datepicker-toggle>
-                    <mat-datepicker #datepickerRef></mat-datepicker>
-                    <mat-error>This field is required</mat-error>
+                    <input formControlName="deadLine" matInput>
+
                 </mat-form-field>
 
-                <span> Schedule *: </span>
+                <span> Schedule : </span>
                 <mat-form-field appearance="outline" class="smallBoxClass" style="font-size: 14px;">
                     <input formControlName="schedule" matInput required>
                     <mat-error>This field is required</mat-error>
@@ -98,7 +93,7 @@
                     <input formControlName="probationaryPeriod" matInput>
                 </mat-form-field>
 
-                <span>Education Level*: </span>
+                <span>Education Level: </span>
                 <mat-form-field appearance="outline" [style.width.%]="40" style="font-size: 14px;">
                     <mat-select formControlName="educationLevelId" class="black">
                         <mat-option *ngFor="let education of educationList" [value]="education.id">
@@ -115,7 +110,7 @@
             </div>
 
             <div class="flex flex-col sm:flex-row sm:gap-2">
-                <span>Education Sphere*: </span>
+                <span>Education Sphere: </span>
                 <mat-form-field appearance="outline" style="font-size: 14px;">
                     <mat-select formControlName="experienceSphereId" class="black">
                         <mat-option *ngFor="let sphere of sphereList" [value]="sphere.id">{{sphere.name}}</mat-option>
@@ -252,204 +247,215 @@
 <div class="buttonDisplay">
 
 
-    <span> <button class="button-2" role="button" (click)="viewDialog()">
+    <span> <a mat-button class="button-2" role="button" (click)="viewDialog()">
             <mat-icon>remove_red_eye</mat-icon> View Applicant
-        </button></span>
-    <span> <button class="button-2" role="button" (click)="moveToShortList()">
+        </a></span>
+    <span> <a mat-button class="button-2" role="button" (click)="moveToShortList()">
             <mat-icon>favorite</mat-icon> Short List
-        </button></span>
-    <span> <button class="button-2" role="button" (click)="printReport()">
-            <mat-icon>print</mat-icon>
-            Print Applicant
-        </button></span>
-    <span> <button class="button-2" role="button">
-            <mat-icon> format_list_numbered</mat-icon> Applicants Excel
-        </button></span>
+        </a></span>
+    <span> <a mat-button href="{{DownloadLink}}" target="_blank" class="button-2" role="button">
+            <mat-icon>link</mat-icon>
+            Generate Links
+        </a> </span>
 
+</div>
+<table mat-table [dataSource]="dataSourceApplicant">
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef class="body">
+            ID
+        </th>
+        <td mat-cell *matCellDef=" let applicant">{{applicant?.id}} </td>
 
-    <table mat-table [dataSource]="dataSourceApplicant">
-        <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef class="body">
-                ID
-            </th>
-            <td mat-cell *matCellDef=" let applicant">{{applicant?.id}} </td>
+    </ng-container>
 
-        </ng-container>
+    <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef class="body">
+            First Name
+        </th>
+        <td mat-cell *matCellDef=" let applicant">{{applicant?.fname}} </td>
 
-        <ng-container matColumnDef="firstName">
-            <th mat-header-cell *matHeaderCellDef class="body">
-                First Name
-            </th>
-            <td mat-cell *matCellDef=" let applicant">{{applicant?.fname}} </td>
+    </ng-container>
+    <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef class="body">
+            Last Name
+        </th>
+        <td mat-cell *matCellDef=" let applicant">{{applicant?.lname}} </td>
 
-        </ng-container>
-        <ng-container matColumnDef="lastName">
-            <th mat-header-cell *matHeaderCellDef class="body">
-                Last Name
-            </th>
-            <td mat-cell *matCellDef=" let applicant">{{applicant?.lname}} </td>
+    </ng-container>
 
-        </ng-container>
+    <ng-container matColumnDef="personalNumber">
+        <th mat-header-cell *matHeaderCellDef class="body">
+            Personal Number
+        </th>
+        <td mat-cell *matCellDef=" let applicant">{{applicant?.customerNumber}} </td>
 
-        <ng-container matColumnDef="personalNumber">
-            <th mat-header-cell *matHeaderCellDef class="body">
-                Personal Number
-            </th>
-            <td mat-cell *matCellDef=" let applicant">{{applicant?.customerNumber}} </td>
+    </ng-container>
+    <ng-container matColumnDef="bDay">
+        <th mat-header-cell *matHeaderCellDef class="body">
+            Birth Day
+        </th>
+        <td mat-cell *matCellDef=" let applicant">{{applicant?.birthDate}} </td>
 
-        </ng-container>
-        <ng-container matColumnDef="bDay">
-            <th mat-header-cell *matHeaderCellDef class="body">
-                Birth Day
-            </th>
-            <td mat-cell *matCellDef=" let applicant">{{applicant?.birthDate}} </td>
+    </ng-container>
+    <ng-container matColumnDef="mail">
+        <th mat-header-cell *matHeaderCellDef class="body">
+            Mail
+        </th>
+        <td mat-cell *matCellDef=" let applicant">{{applicant?.mail}} </td>
 
-        </ng-container>
-        <ng-container matColumnDef="mail">
-            <th mat-header-cell *matHeaderCellDef class="body">
-                Mail
-            </th>
-            <td mat-cell *matCellDef=" let applicant">{{applicant?.mail}} </td>
+    </ng-container>
 
-        </ng-container>
-
-        <ng-container matColumnDef="additionalMail">
+    <!-- <ng-container matColumnDef="additionalMail">
             <th mat-header-cell *matHeaderCellDef class="body">
                 Additional Mail
             </th>
             <td mat-cell *matCellDef=" let applicant">{{applicant?.optionalMail}} </td>
 
-        </ng-container>
+        </ng-container> -->
 
-        <ng-container matColumnDef="mobile">
-            <th mat-header-cell *matHeaderCellDef class="body">
-                Mobile
-            </th>
-            <td mat-cell *matCellDef=" let applicant">{{applicant?.phone}} </td>
+    <ng-container matColumnDef="mobile">
+        <th mat-header-cell *matHeaderCellDef class="body">
+            Mobile
+        </th>
+        <td mat-cell *matCellDef=" let applicant">{{applicant?.phone}} </td>
 
-        </ng-container>
-
+    </ng-container>
+    <!-- 
         <ng-container matColumnDef="additionalPhone">
             <th mat-header-cell *matHeaderCellDef class="body">
                 Additional Phone
             </th>
             <td mat-cell *matCellDef=" let applicant">{{applicant?.additionalphone}} </td>
 
-        </ng-container>
-        <ng-container matColumnDef="applyDate">
-            <th mat-header-cell *matHeaderCellDef class="body">
-                Apply Date
-            </th>
-            <td mat-cell *matCellDef=" let applicant">{{applicant?.applyDate}} </td>
+        </ng-container> -->
+    <ng-container matColumnDef="applyDate">
+        <th mat-header-cell *matHeaderCellDef class="body">
+            Apply Date
+        </th>
+        <td mat-cell *matCellDef=" let applicant">{{applicant?.applyDate}} </td>
 
-        </ng-container>
+    </ng-container>
+    <ng-container matColumnDef="link">
+        <th mat-header-cell *matHeaderCellDef class="body">
+            Applicants Link
+        </th>
+        <td mat-cell *matCellDef=" let applicant">
+            <a href="{{ApplikantLink + applicant.randkey}}" target="_blank"><mat-icon>link</mat-icon> Profile </a>
+        </td>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumnsApplicants"></tr>
-        <tr mat-row *matRowDef="let applicant; columns: displayedColumnsApplicants;"
-            [ngClass]="{'highlighted': selectedRowIndexApp == applicant.id}" (click)="highlightApp(applicant)"></tr>
-    </table>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsApplicants"></tr>
+    <tr mat-row *matRowDef="let applicant; columns: displayedColumnsApplicants;"
+        [ngClass]="{'highlighted': selectedRowIndexApp == applicant.id}" (click)="highlightApp(applicant)"></tr>
+</table>
 
 
-    <p>
-    <h3>Short List</h3>
+<p>
+<h3>Short List</h3>
+
+<div class="buttonDisplay">
 
 
-    <span> <button class="button-2" role="button">
+    <!-- <span> <button class="button-2" role="button">
             <mat-icon>edit</mat-icon> Edit Applicant
-        </button></span>
+        </button></span> -->
 
-    <span> <button class="button-2" role="button" (click)="printReport()">
-            <mat-icon>print</mat-icon>
-            Print Applicant
-        </button></span>
-    <span> <button class="button-2" role="button">
-            <mat-icon> format_list_numbered</mat-icon> Applicants Excel
-        </button></span>
+
     <span> <button class="button-2" role="button" (click)="removeFromShortList()">
             <mat-icon>delete_forever</mat-icon> Remove
         </button></span>
 
+</div>
+<table mat-table [dataSource]="dataSourceShortListApplicant">
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef class="body">
+            ID
+        </th>
+        <td mat-cell *matCellDef=" let applicant">{{applicant?.id}} </td>
 
-    <table mat-table [dataSource]="dataSourceShortListApplicant">
-        <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef class="body">
-                ID
-            </th>
-            <td mat-cell *matCellDef=" let applicantS">{{applicantS?.id}} </td>
+    </ng-container>
 
-        </ng-container>
+    <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef class="body">
+            First Name
+        </th>
+        <td mat-cell *matCellDef=" let applicant">{{applicant?.fname}} </td>
 
-        <ng-container matColumnDef="firstName">
-            <th mat-header-cell *matHeaderCellDef class="body">
-                First Name
-            </th>
-            <td mat-cell *matCellDef=" let applicantS">{{applicantS?.fname}} </td>
+    </ng-container>
+    <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef class="body">
+            Last Name
+        </th>
+        <td mat-cell *matCellDef=" let applicant">{{applicant?.lname}} </td>
 
-        </ng-container>
-        <ng-container matColumnDef="lastName">
-            <th mat-header-cell *matHeaderCellDef class="body">
-                Last Name
-            </th>
-            <td mat-cell *matCellDef=" let applicantS">{{applicantS?.lname}} </td>
+    </ng-container>
 
-        </ng-container>
+    <ng-container matColumnDef="personalNumber">
+        <th mat-header-cell *matHeaderCellDef class="body">
+            Personal Number
+        </th>
+        <td mat-cell *matCellDef=" let applicant">{{applicant?.customerNumber}} </td>
 
-        <ng-container matColumnDef="personalNumber">
-            <th mat-header-cell *matHeaderCellDef class="body">
-                Personal Number
-            </th>
-            <td mat-cell *matCellDef=" let applicantS">{{applicantS?.customerNumber}} </td>
+    </ng-container>
+    <ng-container matColumnDef="bDay">
+        <th mat-header-cell *matHeaderCellDef class="body">
+            Birth Day
+        </th>
+        <td mat-cell *matCellDef=" let applicant">{{applicant?.birthDate}} </td>
 
-        </ng-container>
-        <ng-container matColumnDef="bDay">
-            <th mat-header-cell *matHeaderCellDef class="body">
-                Birth Day
-            </th>
-            <td mat-cell *matCellDef=" let applicantS">{{applicantS?.birthDate}} </td>
+    </ng-container>
+    <ng-container matColumnDef="mail">
+        <th mat-header-cell *matHeaderCellDef class="body">
+            Mail
+        </th>
+        <td mat-cell *matCellDef=" let applicant">{{applicant?.mail}} </td>
 
-        </ng-container>
-        <ng-container matColumnDef="mail">
-            <th mat-header-cell *matHeaderCellDef class="body">
-                Mail
-            </th>
-            <td mat-cell *matCellDef=" let applicantS">{{applicantS?.mail}} </td>
+    </ng-container>
 
-        </ng-container>
+    <!-- <ng-container matColumnDef="additionalMail">
+        <th mat-header-cell *matHeaderCellDef class="body">
+            Additional Mail
+        </th>
+        <td mat-cell *matCellDef=" let applicant">{{applicant?.optionalMail}} </td>
 
-        <ng-container matColumnDef="additionalMail">
-            <th mat-header-cell *matHeaderCellDef class="body">
-                Additional Mail
-            </th>
-            <td mat-cell *matCellDef=" let applicantS">{{applicantS?.optionalMail}} </td>
+    </ng-container> -->
 
-        </ng-container>
+    <ng-container matColumnDef="mobile">
+        <th mat-header-cell *matHeaderCellDef class="body">
+            Mobile
+        </th>
+        <td mat-cell *matCellDef=" let applicant">{{applicant?.phone}} </td>
 
-        <ng-container matColumnDef="mobile">
-            <th mat-header-cell *matHeaderCellDef class="body">
-                Mobile
-            </th>
-            <td mat-cell *matCellDef=" let applicantS">{{applicantS?.phone}} </td>
+    </ng-container>
+    <!-- 
+    <ng-container matColumnDef="additionalPhone">
+        <th mat-header-cell *matHeaderCellDef class="body">
+            Additional Phone
+        </th>
+        <td mat-cell *matCellDef=" let applicant">{{applicant?.additionalphone}} </td>
 
-        </ng-container>
+    </ng-container> -->
+    <ng-container matColumnDef="applyDate">
+        <th mat-header-cell *matHeaderCellDef class="body">
+            Apply Date
+        </th>
+        <td mat-cell *matCellDef=" let applicant">{{applicant?.applyDate}} </td>
 
-        <ng-container matColumnDef="additionalPhone">
-            <th mat-header-cell *matHeaderCellDef class="body">
-                Additional Phone
-            </th>
-            <td mat-cell *matCellDef=" let applicantS">{{applicantS?.additionalphone}} </td>
+    </ng-container>
+    <ng-container matColumnDef="link">
+        <th mat-header-cell *matHeaderCellDef class="body">
+            Applicants Link
+        </th>
+        <td mat-cell *matCellDef=" let applicant">
+            <a href="{{ApplikantLink + applicant.randkey}}" target="_blank">Profile </a>
+        </td>
 
-        </ng-container>
-        <ng-container matColumnDef="applyDate">
-            <th mat-header-cell *matHeaderCellDef class="body">
-                Apply Date
-            </th>
-            <td mat-cell *matCellDef=" let applicantS">{{applicantS?.applyDate}} </td>
+    </ng-container>
 
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumnsShortList"></tr>
-        <tr mat-row *matRowDef="let applicantS; columns: displayedColumnsShortList;"
-            [ngClass]="{'highlighted': selectedRowIndexAppS == applicantS.id}" (click)="highlightAppS(applicantS)">
-        </tr>
-    </table>
-    <button class="button-7  displayEnd" role="button" (click)="closeForm()">Close</button>
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsShortList"></tr>
+    <tr mat-row *matRowDef="let applicantS; columns: displayedColumnsShortList;"
+        [ngClass]="{'highlighted': selectedRowIndexAppS == applicantS.id}" (click)="highlightAppS(applicantS)">
+    </tr>
+</table>
+<button class="button-7  displayEnd" role="button" (click)="closeForm()">Close</button>

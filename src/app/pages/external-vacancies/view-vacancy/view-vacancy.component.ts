@@ -9,6 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { HighlightConfig } from 'src/@vex/components/highlight/highlight.model';
 import { VacancyService } from 'src/app/services/vacancy.service';
+import { environment } from 'src/environments/environment';
 import { ViewApplicantComponent } from '../../applicants-search/view-applicant/view-applicant.component';
 import { Vacancy, List } from '../../model/vacancy';
 import { VacancyApplicant } from '../../model/vacancy-applicant-model';
@@ -70,10 +71,10 @@ export class ViewVacancyComponent implements OnInit {
   displayedColumnsSkill = ['id', 'skills', 'comment'];
 
   displayedColumnsApplicants = ['id', 'firstName', 'lastName', 'personalNumber',
-    'bDay', 'mail', 'additionalMail', 'mobile', 'additionalPhone', 'applyDate'];
+    'bDay', 'mail', 'mobile', 'applyDate', 'link'];
 
   displayedColumnsShortList = ['id', 'firstName', 'lastName', 'personalNumber',
-    'bDay', 'mail', 'additionalMail', 'mobile', 'additionalPhone', 'applyDate']
+    'bDay', 'mail', 'mobile', 'applyDate', 'link'];
 
   ngOnInit(): void {
 
@@ -114,6 +115,11 @@ export class ViewVacancyComponent implements OnInit {
   printReport(): void {
     window.print();
   }
+
+  public DownloadLink = environment.apiBaseUrl + '/VacancyAdmin/report/vacancy/applicantsReportLink?objectId=' + this.editData.id;
+
+  public ApplikantLink = 'http://jobs.energo-pro.ge/onlinejobs/#/Viewer/'
+
   closeForm() {
     this.dialogRef.close()
   }

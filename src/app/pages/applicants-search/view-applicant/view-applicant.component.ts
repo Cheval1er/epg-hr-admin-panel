@@ -13,6 +13,7 @@ import { ApplicantEducation, ApplicantTraining, ApplicantExperience, ApplicantLa
 import saveAs from 'file-saver';
 import { DownloadService } from 'src/app/services/download.service';
 import * as XLSX from 'xlsx';
+import { environment } from 'src/environments/environment';
 const MIME_TYPES = {
   pdf: 'application/pdf',
   png: 'image/png',
@@ -56,7 +57,7 @@ export class ViewApplicantComponent implements OnInit {
   displayedColumnsProgram = ['id', 'program', 'level', 'otherProgram'];
   displayedColumnsSkill = ['id', 'skill', 'level', 'otherSkill'];
   displayedColumnsDepartment = ['id', 'department'];
-  displayedColumnsFile = ['fileName', 'fileRecord', 'fileFormat'];
+  displayedColumnsFile = ['fileName', 'fileRecord', 'fileFormat', 'download'];
   displayedColumnsApplicant = ['id', 'vacancyName', 'createDate']
 
 
@@ -132,7 +133,7 @@ export class ViewApplicantComponent implements OnInit {
   }
 
 
-
+  public DownloadFiles = environment.apiBaseUrl + '/VacancyAdmin/applicant/file/download?id=';
 
   download(id) {
     const EXT = this.selectedRowAppFile.fileName.substring(this.selectedRowAppFile.fileName.lastIndexOf('.') + 1);

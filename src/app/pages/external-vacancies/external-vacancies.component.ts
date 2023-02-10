@@ -38,7 +38,7 @@ export class ExternalVacanciesComponent implements OnInit, AfterViewInit {
   public editVacancy: List;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'company', 'vacancyName', 'title', 'vacancyAddress', 'deadLine',
+  displayedColumns = ['id', 'company', 'vacancyName', 'vacancyAddress', 'deadLine',
     'category', 'description', 'probationaryPeriod', 'schedule', 'status'];
   groupedColumns: string[] = ['grouped'];
   secondGroupedColumns: string[] = ['options'];

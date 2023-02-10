@@ -46,27 +46,13 @@ span {
     hyphens: auto;
 }
 
-.mat-column-title {
 
-    white-space: unset !important;
-    flex: 0 0 10% !important;
-    width: 10% !important;
-    overflow-wrap: break-word;
-
-
-
-
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-}
 
 .mat-column-vacancyAddress {
 
     white-space: unset !important;
-    flex: 0 0 8% !important;
-    width: 8% !important;
+    flex: 0 0 5% !important;
+    width: 5% !important;
     overflow-wrap: break-word;
 
 
@@ -77,21 +63,6 @@ span {
     hyphens: auto;
 }
 
-.mat-column-deadLine {
-
-    white-space: unset !important;
-    flex: 0 0 10% !important;
-    width: 10% !important;
-    overflow-wrap: break-word;
-
-
-
-
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-}
 
 .mat-column-category {
 
@@ -122,6 +93,7 @@ span {
     -webkit-hyphens: auto;
     hyphens: auto;
 }
+
 
 
 
@@ -219,4 +191,8 @@ span {
 
 .highlighted {
     background: #c1d9f1;
+}
+
+.mat-table {
+    width: 100%;
 }

@@ -54,7 +54,7 @@ export class EditApplicantComponent implements OnInit {
   displayedColumnsProgram = ['id', 'program', 'level', 'otherProgram'];
   displayedColumnsSkill = ['id', 'skill', 'level', 'otherSkill'];
   displayedColumnsDepartment = ['id', 'department'];
-  displayedColumnsFile = ['fileName', 'fileRecord', 'fileFormat'];
+  displayedColumnsFile = ['fileName', 'fileRecord', 'fileFormat', 'download'];
   displayedColumnsApplicant = ['id', 'vacancyName', 'createDate']
 
 

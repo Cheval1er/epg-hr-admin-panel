@@ -38,6 +38,7 @@ import { MatTabGroup, MatTabsModule } from '@angular/material/tabs';
 import { ViewVacancyComponent } from './view-vacancy/view-vacancy.component';
 
 
+
 @NgModule({
     declarations: [ExternalVacanciesComponent],
     imports: [
@@ -84,6 +85,7 @@ import { ViewVacancyComponent } from './view-vacancy/view-vacancy.component';
 
 
     ],
+
     providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }, VacancyService]
 })
 export class ExternalVacanciesModule {
