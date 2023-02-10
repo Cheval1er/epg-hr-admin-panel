@@ -34,7 +34,7 @@ export class CancelledVacancyComponent implements OnInit, AfterViewInit {
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'company', 'vacancyName', 'vacancyAddress', 'deadLine',
-    'category', 'description', 'probationaryPeriod', 'schedule', 'status'];
+    'category', 'description', 'type', 'probationaryPeriod', 'schedule', 'status'];
   groupedColumns: string[] = ['grouped'];
   secondGroupedColumns: string[] = ['options'];
   thirdGroupedColumns: string[] = ['edit'];

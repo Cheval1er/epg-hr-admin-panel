@@ -1,4 +1,5 @@
-<table mat-table class="full-width-table mat-elevation-z8 " [dataSource]="dataSource" matSort cdkDropListGroup>
+<table mat-table class=" mat-elevation-z8 " [dataSource]="dataSource" matSort matSortActive="id" matSortDirection="desc"
+  cdkDropListGroup>
 
 
   <ng-container matColumnDef="grouped">
@@ -123,11 +124,17 @@
     <td mat-cell *matCellDef="let vacancy">{{vacancy?.description}}</td>
   </ng-container>
 
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header class=" body">Type</th>
+    <td mat-cell *matCellDef="let vacancy">{{vacancy?.typeName}}</td>
+  </ng-container>
 
   <ng-container matColumnDef="probationaryPeriod">
     <th mat-header-cell *matHeaderCellDef mat-sort-header class=" body">Probationary Period</th>
     <td mat-cell *matCellDef="let vacancy">{{vacancy?.probationaryPeriod}}</td>
   </ng-container>
+
+
 
 
   <ng-container matColumnDef="schedule">
@@ -150,7 +157,7 @@
   <tr mat-header-row *matHeaderRowDef="thirdGroupedColumns; sticky: true"></tr>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let vacancy; columns: displayedColumns;"
-    [ngClass]="{'highlighted': selectedRowIndex == vacancy.id}" (click)="highlight(vacancy)"></tr>
+    [ngClass]="{'highlighted': selectedRowIndex == vacancy.id}" (click)="highlight(vacancy)" class="mat-row"></tr>
 
 </table>
 
