@@ -1,7 +1,9 @@
-<div id="excel-table">
+<div>
 
     <h3>Applicant Information</h3>
-
+    <span> <button style="color: white;">
+            Print Vacancy
+        </button></span>
     <form [formGroup]="applicantForm" class="form-container">
         <mat-card>
 
@@ -25,10 +27,7 @@
 
                     <span> Birth Date: </span>
                     <mat-form-field appearance="outline" style="font-size: 12px; width: 10%;">
-                        <input matInput [matDatepicker]="datepickerRef" formControlName="birthDate">
-                        <mat-hint>DD/MM/YYYY</mat-hint>
-                        <mat-datepicker-toggle [for]="datepickerRef" matSuffix></mat-datepicker-toggle>
-                        <mat-datepicker #datepickerRef></mat-datepicker>
+                        <input formControlName="birthDate" matInput>
                     </mat-form-field>
 
 

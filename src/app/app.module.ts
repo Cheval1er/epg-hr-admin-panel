@@ -11,7 +11,7 @@ import { CustomLayoutModule } from './custom-layout/custom-layout.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { ViewVacancyModule } from "./pages/external-vacancies/view-vacancy/view-vacancy.module";
+
 
 
 

@@ -71,7 +71,6 @@ export class ExternalVacanciesComponent implements OnInit, AfterViewInit {
   }
 
 
-
   //get all vacancies
   public getAllVacancies(): void {
     this.vacancyService.getAllVacancies().subscribe(x => {
