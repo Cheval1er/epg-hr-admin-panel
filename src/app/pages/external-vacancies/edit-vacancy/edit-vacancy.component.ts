@@ -93,7 +93,7 @@ export class EditVacancyComponent implements OnInit {
       companyId: [''],
       vacancyName: ['', Validators.required],
       vacancyAddress: ['', Validators.required],
-      deadLine: ['', Validators.required],
+      deadLine: new Date(this.editData.deadLine),
       schedule: ['', Validators.required],
       categoryId: ['', Validators.required],
       typeId: ['', Validators.required],
@@ -112,7 +112,7 @@ export class EditVacancyComponent implements OnInit {
       this.vacancyForm.controls['companyId'].setValue(this.editData.companyId);
       this.vacancyForm.controls['vacancyName'].setValue(this.editData.vacancyName);
       this.vacancyForm.controls['vacancyAddress'].setValue(this.editData.vacancyAddress);
-      this.vacancyForm.controls['deadLine'].setValue(this.editData.deadLine);
+      this.vacancyForm.controls['deadLine'].setValue(new Date('this.editData.deadLine'));
       this.vacancyForm.controls['schedule'].setValue(this.editData.schedule);
       this.vacancyForm.controls['categoryId'].setValue(this.editData.categoryId);
       this.vacancyForm.controls['typeId'].setValue(this.editData.typeId);
