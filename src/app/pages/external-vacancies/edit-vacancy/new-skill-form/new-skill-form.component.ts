@@ -56,7 +56,7 @@ export class NewSkillFormComponent implements OnInit {
   skillList;
 
   getSkill() {
-    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.skill&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.skill&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.skillList = response['list']

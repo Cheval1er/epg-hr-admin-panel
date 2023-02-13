@@ -51,7 +51,7 @@ import { VacancyService } from 'src/app/services/vacancy.service';
 
     ],
     providers: [
-        { provide: LOCALE_ID, useValue: 'en-IN' }, DatePipe, VacancyService
+        { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }, DatePipe, VacancyService
 
     ]
 })

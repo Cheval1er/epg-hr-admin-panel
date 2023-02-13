@@ -278,7 +278,7 @@ export class EditApplicantComponent implements OnInit {
   dataEducation;
 
   getEducation() {
-    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.educationLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.educationLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.dataEducation = response['list']
@@ -289,7 +289,7 @@ export class EditApplicantComponent implements OnInit {
 
   dataSkill;
   getSkill() {
-    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.skill&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.skill&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.dataSkill = response['list']
@@ -309,7 +309,7 @@ export class EditApplicantComponent implements OnInit {
   //experience Level
   dataExperience;
   getExperience() {
-    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.experienceLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25')
+    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.experienceLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25')
       .subscribe(
         response => {
           console.log(response);
@@ -321,7 +321,7 @@ export class EditApplicantComponent implements OnInit {
 
   dataProgram;
   getProgramLevel() {
-    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.programLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25')
+    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.programLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25')
       .subscribe(
         response => {
           console.log(response);
@@ -338,7 +338,7 @@ export class EditApplicantComponent implements OnInit {
   }
   dataGender;
   getGenders() {
-    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.gender&includeKeys=&excludeKeys=&page=1&start=0&limit=25')
+    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.gender&includeKeys=&excludeKeys=&page=1&start=0&limit=25')
       .subscribe(
         response => {
           console.log(response);
@@ -350,7 +350,7 @@ export class EditApplicantComponent implements OnInit {
 
   wantedType;
   getWantedType() {
-    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.work&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.work&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.wantedType = response['list']
@@ -361,7 +361,7 @@ export class EditApplicantComponent implements OnInit {
 
   graphicType;
   getGraphicType() {
-    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.grafic&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.grafic&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.graphicType = response['list']
@@ -372,7 +372,7 @@ export class EditApplicantComponent implements OnInit {
 
   connection;
   getConnection() {
-    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.relative&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.relative&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.connection = response['list']
@@ -385,7 +385,7 @@ export class EditApplicantComponent implements OnInit {
   //for language
   dataLanguage;
   getLanguages() {
-    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.language&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.language&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.dataLanguage = response['list']
@@ -396,7 +396,7 @@ export class EditApplicantComponent implements OnInit {
   // for program
   programList;
   getProgram() {
-    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.program&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.program&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.programList = response['list']
@@ -408,7 +408,7 @@ export class EditApplicantComponent implements OnInit {
   // for university
   dataUniversity;
   getUniversity() {
-    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.university&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.university&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.dataUniversity = response['list']
@@ -420,7 +420,7 @@ export class EditApplicantComponent implements OnInit {
   // for language level
   dataLangLevel;
   getLangLevel() {
-    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.languageLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.languageLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.dataLangLevel = response['list']

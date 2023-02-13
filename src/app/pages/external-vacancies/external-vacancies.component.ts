@@ -250,9 +250,9 @@ export class ExternalVacanciesComponent implements OnInit, AfterViewInit {
 
 
 
-  editDialog(rowData) {
+  editDialog() {
 
-    rowData = this.selectedRow
+
 
     this.dialogRef.open(EditVacancyComponent, {
       // disableClose: true,

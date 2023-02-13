@@ -1,7 +1,7 @@
 import { DatePipe, formatDate } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormControlName, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
@@ -86,6 +86,7 @@ export class EditVacancyComponent implements OnInit {
   ) { }
 
 
+  // deadLineForm = this.editData.deadLine
   ngOnInit(): void {
 
 
@@ -93,7 +94,7 @@ export class EditVacancyComponent implements OnInit {
       companyId: [''],
       vacancyName: ['', Validators.required],
       vacancyAddress: ['', Validators.required],
-      deadLine: new Date(this.editData.deadLine),
+      deadLine: [''],
       schedule: ['', Validators.required],
       categoryId: ['', Validators.required],
       typeId: ['', Validators.required],
@@ -108,11 +109,14 @@ export class EditVacancyComponent implements OnInit {
 
     });
 
+
+
+
     if (this.editData) {
       this.vacancyForm.controls['companyId'].setValue(this.editData.companyId);
       this.vacancyForm.controls['vacancyName'].setValue(this.editData.vacancyName);
       this.vacancyForm.controls['vacancyAddress'].setValue(this.editData.vacancyAddress);
-      this.vacancyForm.controls['deadLine'].setValue(new Date('this.editData.deadLine'));
+      this.vacancyForm.controls['deadLine'].setValue(this.editData.deadLine);
       this.vacancyForm.controls['schedule'].setValue(this.editData.schedule);
       this.vacancyForm.controls['categoryId'].setValue(this.editData.categoryId);
       this.vacancyForm.controls['typeId'].setValue(this.editData.typeId);
@@ -128,6 +132,8 @@ export class EditVacancyComponent implements OnInit {
     };
 
 
+    console.log(this.editData.value)
+    console.log(this.vacancyForm.value)
 
     this.getAllProgram();
     this.getAllLanguage();
@@ -149,8 +155,8 @@ export class EditVacancyComponent implements OnInit {
   updateFormData() {
     console.log('Form data is ', this.vacancyForm.value);
 
-    this.vacancyForm.value.deadLine = this.datePipe.transform(this.vacancyForm.value.deadLine, 'dd-MM-yyyy');
-
+    this.vacancyForm.value.deadLine = this.datePipe.transform(this.vacancyForm.value.deadLine, 'dd-MM-yyyy')
+    // this.vacancyForm.value.deadLine = formatDate(this.vacancyForm.deadLine, 'dd-MM-yyyy HH:mm:ss.SS', 'en-GB')
     this.vacancyService.updateVacancy(this.vacancyForm.value, this.editData.id).subscribe((result) => {
       console.log(result);
       setTimeout(() => {
@@ -172,7 +178,7 @@ export class EditVacancyComponent implements OnInit {
 
   companyList;
   getCompany() {
-    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.company&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.company&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.companyList = response['list']
@@ -183,7 +189,7 @@ export class EditVacancyComponent implements OnInit {
   educationList;
 
   getEducation() {
-    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.educationLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.educationLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.educationList = response['list']
@@ -194,7 +200,7 @@ export class EditVacancyComponent implements OnInit {
   dataCategory;
 
   getcategory() {
-    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.category&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.category&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.dataCategory = response['list']
@@ -206,7 +212,7 @@ export class EditVacancyComponent implements OnInit {
 
   typeList;
   getType() {
-    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.type&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.type&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.typeList = response['list']
@@ -219,7 +225,7 @@ export class EditVacancyComponent implements OnInit {
 
   sphereList;
   getSphere() {
-    this.httpClient.get<any>('http://localhost:8585/VacancyAdmin/di/items/getitems?key=key.sphere&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.sphere&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.sphereList = response['list']
@@ -365,6 +371,8 @@ export class EditVacancyComponent implements OnInit {
   }
   openDialogS() {
     this.dialogRef.open(NewSkillFormComponent, {
+      height: '500px',
+      width: '700px',
       data: this.editData
     }
 
@@ -376,6 +384,8 @@ export class EditVacancyComponent implements OnInit {
 
   openEditSkill() {
     this.dialogRef.open(EditSkillComponent, {
+      height: '500px',
+      width: '700px',
       data: this.selectedRowS
 
     }).afterClosed().subscribe(EditVacancyComponent => {
@@ -654,4 +664,8 @@ export class DeleteSkillFormComponent implements OnInit {
   }
 }
 
+
+function moment(deadLine: any): any {
+  throw new Error('Function not implemented.');
+}
 

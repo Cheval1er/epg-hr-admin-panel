@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 
 
@@ -95,7 +95,9 @@ import { EditApplicantModule } from './edit-applicant/edit-applicant.module';
 
 
     ],
-    providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }, DatePipe, VacancyService
+    providers: [
+        { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }, DatePipe, VacancyService
+
     ]
 })
 export class EditVacancyModule {

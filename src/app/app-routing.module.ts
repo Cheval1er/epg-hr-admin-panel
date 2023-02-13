@@ -1,15 +1,24 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { ExtraOptions, PreloadAllModules, RouterModule } from '@angular/router';
 import { QuicklinkModule, QuicklinkStrategy } from 'ngx-quicklink';
+import path from 'path';
 import { VexRoutes } from 'src/@vex/interfaces/vex-route.interface';
 import { CustomLayoutComponent } from './custom-layout/custom-layout.component';
 import { LoginComponent } from './login/login.component';
 
+const routerConfig: ExtraOptions = {
+  preloadingStrategy: PreloadAllModules,
+  scrollPositionRestoration: 'enabled',
+  useHash: true
+};
+
 const routes: VexRoutes = [
 
   {
-    path: 'login',
-    loadChildren: () => import('./login/login.module').then(m => m.LoginModule),
+
+    path: '',
+    loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
+
   },
   // { path: 'login', component: LoginComponent },
   {
@@ -73,12 +82,7 @@ const routes: VexRoutes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    preloadingStrategy: QuicklinkStrategy,
-    scrollPositionRestoration: 'enabled',
-    relativeLinkResolution: 'corrected',
-    anchorScrolling: 'enabled'
-  })],
+  imports: [RouterModule.forRoot(routes, routerConfig)],
   exports: [RouterModule, QuicklinkModule]
 })
 export class AppRoutingModule {
