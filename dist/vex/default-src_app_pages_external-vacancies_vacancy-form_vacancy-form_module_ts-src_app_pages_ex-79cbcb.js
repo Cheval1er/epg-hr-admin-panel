@@ -955,13 +955,13 @@ class ViewApplicantComponent {
             };
     }
     getEducation() {
-        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.educationLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
+        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiBaseUrl + '/VacancyAdmin/di/items/getitems?key=key.educationLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
             console.log(response);
             this.dataEducation = response['list'];
         });
     }
     getSkill() {
-        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.skill&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
+        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiBaseUrl + '/VacancyAdmin/di/items/getitems?key=key.skill&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
             console.log(response);
             this.dataSkill = response['list'];
         });
@@ -970,7 +970,7 @@ class ViewApplicantComponent {
         this.ngOnInit();
     }
     getExperience() {
-        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.experienceLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25')
+        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiBaseUrl + '/VacancyAdmin/di/items/getitems?key=key.experienceLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25')
             .subscribe(response => {
             console.log(response);
             this.dataExperience = response['list'];
@@ -978,7 +978,7 @@ class ViewApplicantComponent {
     }
     ;
     getProgram() {
-        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.programLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25')
+        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiBaseUrl + '/VacancyAdmin/di/items/getitems?key=key.programLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25')
             .subscribe(response => {
             console.log(response);
             this.dataProgram = response['list'];
@@ -990,7 +990,7 @@ class ViewApplicantComponent {
         // })
     }
     getGenders() {
-        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.gender&includeKeys=&excludeKeys=&page=1&start=0&limit=25')
+        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiBaseUrl + '/VacancyAdmin/di/items/getitems?key=key.gender&includeKeys=&excludeKeys=&page=1&start=0&limit=25')
             .subscribe(response => {
             console.log(response);
             this.dataGender = response['list'];
@@ -998,39 +998,39 @@ class ViewApplicantComponent {
     }
     ;
     getWantedType() {
-        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.work&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
+        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiBaseUrl + '/VacancyAdmin/di/items/getitems?key=key.work&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
             console.log(response);
             this.wantedType = response['list'];
         });
     }
     ;
     getGraphicType() {
-        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.grafic&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
+        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiBaseUrl + '/VacancyAdmin/di/items/getitems?key=key.grafic&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
             console.log(response);
             this.graphicType = response['list'];
         });
     }
     ;
     getConnection() {
-        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.relative&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
+        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiBaseUrl + '/VacancyAdmin/di/items/getitems?key=key.relative&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
             console.log(response);
             this.connection = response['list'];
         });
     }
     getLanguages() {
-        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.language&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
+        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiBaseUrl + '/VacancyAdmin/di/items/getitems?key=key.language&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
             console.log(response);
             this.dataLanguage = response['list'];
         });
     }
     getUniversity() {
-        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.university&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
+        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiBaseUrl + '/VacancyAdmin/di/items/getitems?key=key.university&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
             console.log(response);
             this.dataUniversity = response['list'];
         });
     }
     getLangLevel() {
-        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.languageLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
+        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiBaseUrl + '/VacancyAdmin/di/items/getitems?key=key.languageLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
             console.log(response);
             this.dataLangLevel = response['list'];
         });
@@ -1670,31 +1670,31 @@ class VacancyFormComponent {
         this.dialogRef.closeAll();
     }
     getCompany() {
-        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.company&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
+        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiBaseUrl + '/VacancyAdmin/di/items/getitems?key=key.company&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
             console.log(response);
             this.companyList = response['list'];
         });
     }
     getEducation() {
-        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.educationLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
+        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiBaseUrl + '/VacancyAdmin/di/items/getitems?key=key.educationLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
             console.log(response);
             this.educationList = response['list'];
         });
     }
     getcategory() {
-        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.category&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
+        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiBaseUrl + '/VacancyAdmin/di/items/getitems?key=key.category&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
             console.log(response);
             this.dataCategory = response['list'];
         });
     }
     getType() {
-        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.type&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
+        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiBaseUrl + '/VacancyAdmin/di/items/getitems?key=key.type&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
             console.log(response);
             this.typeList = response['list'];
         });
     }
     getSphere() {
-        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.sphere&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
+        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiBaseUrl + '/VacancyAdmin/di/items/getitems?key=key.sphere&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
             console.log(response);
             this.sphereList = response['list'];
         });
@@ -2567,31 +2567,31 @@ class ViewVacancyComponent {
         });
     }
     getCompany() {
-        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.company&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
+        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiBaseUrl + '/VacancyAdmin/di/items/getitems?key=key.company&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
             console.log(response);
             this.companyList = response['list'];
         });
     }
     getEducation() {
-        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.educationLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
+        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiBaseUrl + '/VacancyAdmin/di/items/getitems?key=key.educationLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
             console.log(response);
             this.educationList = response['list'];
         });
     }
     getcategory() {
-        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.category&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
+        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiBaseUrl + '/VacancyAdmin/di/items/getitems?key=key.category&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
             console.log(response);
             this.dataCategory = response['list'];
         });
     }
     getType() {
-        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.type&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
+        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiBaseUrl + '/VacancyAdmin/di/items/getitems?key=key.type&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
             console.log(response);
             this.typeList = response['list'];
         });
     }
     getSphere() {
-        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.sphere&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
+        this.httpClient.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiBaseUrl + '/VacancyAdmin/di/items/getitems?key=key.sphere&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(response => {
             console.log(response);
             this.sphereList = response['list'];
         });
