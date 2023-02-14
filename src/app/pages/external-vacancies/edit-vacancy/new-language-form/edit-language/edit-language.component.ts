@@ -5,6 +5,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProgramVacancy } from 'src/app/pages/model/vacancy-program-model';
 import { VacancyService } from 'src/app/services/vacancy.service';
+import { environment } from 'src/environments/environment';
 import { NewProgramFormComponent } from '../../new-program-form/new-program-form.component';
 
 @Component({
@@ -60,7 +61,7 @@ export class EditLanguageComponent implements OnInit {
   LanguageList;
 
   getLanguage() {
-    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.language&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>(environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.language&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.LanguageList = response['list']

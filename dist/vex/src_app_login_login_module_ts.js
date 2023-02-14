@@ -110,7 +110,7 @@ class LoginComponent {
     send() {
         // this.router.navigate(['/']);
         if (this.loginservice.authenticate(this.form.value.userName, this.form.value.password)) {
-            this.router.navigate(['/']);
+            this.router.navigate(['/pages']);
             this.invalidLogin = false;
             console.log(this.form.value);
         }

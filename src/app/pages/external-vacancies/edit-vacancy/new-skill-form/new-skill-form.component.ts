@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ApplicantSkill } from 'src/app/pages/model/applicantDetail';
 import { SkillVacancy } from 'src/app/pages/model/vacancy-skill-model';
 import { VacancyService } from 'src/app/services/vacancy.service';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -56,7 +57,7 @@ export class NewSkillFormComponent implements OnInit {
   skillList;
 
   getSkill() {
-    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.skill&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>(environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.skill&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.skillList = response['list']

@@ -519,7 +519,7 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumnsDepartment; sticky: true"></tr>
         <tr mat-row *matRowDef="let departmentData; columns: displayedColumnsDepartment;"></tr>
     </table>
-    <h3>Applicant's Files</h3>
+    <!-- <h3>Applicant's Files</h3>
     <table mat-table [dataSource]="dataSourceApplicantFile" style="width: 100%;">
 
         <ng-container matColumnDef="fileName">
@@ -560,7 +560,7 @@
         <tr mat-row *matRowDef="let fileData; columns: displayedColumnsFile;"
             [ngClass]="{'highlighted': selectedRowIndexAppFile ==  fileData.id}" (click)="highlightApp(fileData)">
         </tr>
-    </table>
+    </table> -->
     <h3>Vacancies of Applicant</h3>
     <table mat-table [dataSource]="dataSourceApplicant">
 

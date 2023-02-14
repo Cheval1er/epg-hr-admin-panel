@@ -5,6 +5,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { SkillVacancy } from 'src/app/pages/model/vacancy-skill-model';
 import { VacancyService } from 'src/app/services/vacancy.service';
+import { environment } from 'src/environments/environment';
 
 import { NewSkillFormComponent } from '../new-skill-form.component';
 
@@ -52,8 +53,8 @@ export class EditSkillComponent implements OnInit {
       this.vacancySkillForm.controls['objectId'].setValue(this.editData.objectId);
       this.vacancySkillForm.controls['vacancyId'].setValue(this.editData.vacancyId)
       this.vacancySkillForm.controls['otherSkill'].setValue(this.editData.otherSkill);
-      this.vacancySkillForm.controls['skillName'].setValue(this.editData.SkillName);
-      this.vacancySkillForm.controls['skillId'].setValue(this.editData.SkillId)
+      this.vacancySkillForm.controls['skillName'].setValue(this.editData.skillName);
+      this.vacancySkillForm.controls['skillId'].setValue(this.editData.skillId)
 
     }
 
@@ -63,7 +64,7 @@ export class EditSkillComponent implements OnInit {
 
   skillList;
   getSkill() {
-    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.skill&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>(environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.skill&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.skillList = response['list']

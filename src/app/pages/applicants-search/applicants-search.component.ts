@@ -9,6 +9,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApplicantService } from 'src/app/services/applicant.service';
+import { environment } from 'src/environments/environment';
 import { Applicant } from '../model/applicant';
 import { VacancyApplicant } from '../model/vacancy-applicant-model';
 import { ViewApplicantComponent } from './view-applicant/view-applicant.component';
@@ -106,7 +107,7 @@ export class ApplicantsSearchComponent implements OnInit, AfterViewChecked {
   vacancy;
   dataVacancy;
   getVacancies() {
-    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/vacancy/allVacancy?page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>(environment.apiBaseUrl + 'VacancyAdmin/vacancy/allVacancy?page=1&start=0&limit=25').subscribe(
       response => {
         // console.log(response);
         this.dataVacancy = response['list'];
@@ -146,7 +147,7 @@ export class ApplicantsSearchComponent implements OnInit, AfterViewChecked {
   //for language
   dataLanguage;
   getLanguages() {
-    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.language&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>(environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.language&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.dataLanguage = response['list']
@@ -160,7 +161,7 @@ export class ApplicantsSearchComponent implements OnInit, AfterViewChecked {
 
   dataGender;
   getGenders() {
-    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.gender&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>(environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.gender&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.dataGender = response['list']
@@ -171,7 +172,7 @@ export class ApplicantsSearchComponent implements OnInit, AfterViewChecked {
 
   dataProgram;
   getProgram() {
-    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.program&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>(environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.program&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.dataProgram = response['list']
@@ -183,7 +184,7 @@ export class ApplicantsSearchComponent implements OnInit, AfterViewChecked {
   departmentsList;;
 
   getcategory() {
-    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.category&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>(environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.category&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.departmentsList = response['list']
@@ -195,7 +196,7 @@ export class ApplicantsSearchComponent implements OnInit, AfterViewChecked {
   dataEducation;
 
   getEducation() {
-    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.educationLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>(environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.educationLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.dataEducation = response['list']

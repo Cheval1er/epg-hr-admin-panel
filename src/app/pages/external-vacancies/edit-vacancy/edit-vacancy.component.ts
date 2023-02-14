@@ -27,6 +27,7 @@ import { NewSkillFormComponent } from './new-skill-form/new-skill-form.component
 
 import saveAs from 'file-saver';
 import { environment } from 'src/environments/environment';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 @Component({
   selector: 'vex-edit-vacancy',
   templateUrl: './edit-vacancy.component.html',
@@ -81,6 +82,7 @@ export class EditVacancyComponent implements OnInit {
     public dialog: MatDialog,
     private applicantService: ApplicantService,
     @Inject(MAT_DIALOG_DATA) public editData: any,
+    @Inject(MAT_DATE_LOCALE) public locale: string,
 
 
   ) { }
@@ -116,7 +118,7 @@ export class EditVacancyComponent implements OnInit {
       this.vacancyForm.controls['companyId'].setValue(this.editData.companyId);
       this.vacancyForm.controls['vacancyName'].setValue(this.editData.vacancyName);
       this.vacancyForm.controls['vacancyAddress'].setValue(this.editData.vacancyAddress);
-      this.vacancyForm.controls['deadLine'].setValue(this.editData.deadLine);
+      this.vacancyForm.controls['deadLine'].setValue(this.vacancyForm.value.deadLine);
       this.vacancyForm.controls['schedule'].setValue(this.editData.schedule);
       this.vacancyForm.controls['categoryId'].setValue(this.editData.categoryId);
       this.vacancyForm.controls['typeId'].setValue(this.editData.typeId);
@@ -154,14 +156,14 @@ export class EditVacancyComponent implements OnInit {
 
   updateFormData() {
     console.log('Form data is ', this.vacancyForm.value);
-
+    // this.vacancyForm.value.deadLine = formatDate(this.vacancyForm.value.deadLine, 'EEEE, MMMM d, y, h:mm:ss a zzzz', this.locale, ' en-GB')
     this.vacancyForm.value.deadLine = this.datePipe.transform(this.vacancyForm.value.deadLine, 'dd-MM-yyyy')
     // this.vacancyForm.value.deadLine = formatDate(this.vacancyForm.deadLine, 'dd-MM-yyyy HH:mm:ss.SS', 'en-GB')
     this.vacancyService.updateVacancy(this.vacancyForm.value, this.editData.id).subscribe((result) => {
       console.log(result);
-      setTimeout(() => {
-        window.location.reload();
-      }, 50);
+      // setTimeout(() => {
+      //   window.location.reload();
+      // }, 50);
     })
 
     this.dialogRef.closeAll();
@@ -178,7 +180,7 @@ export class EditVacancyComponent implements OnInit {
 
   companyList;
   getCompany() {
-    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.company&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>(environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.company&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.companyList = response['list']
@@ -189,7 +191,7 @@ export class EditVacancyComponent implements OnInit {
   educationList;
 
   getEducation() {
-    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.educationLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>(environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.educationLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.educationList = response['list']
@@ -200,7 +202,7 @@ export class EditVacancyComponent implements OnInit {
   dataCategory;
 
   getcategory() {
-    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.category&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>(environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.category&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.dataCategory = response['list']
@@ -212,7 +214,7 @@ export class EditVacancyComponent implements OnInit {
 
   typeList;
   getType() {
-    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.type&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>(environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.type&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.typeList = response['list']
@@ -225,7 +227,7 @@ export class EditVacancyComponent implements OnInit {
 
   sphereList;
   getSphere() {
-    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.sphere&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>(environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.sphere&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.sphereList = response['list']
@@ -269,6 +271,7 @@ export class EditVacancyComponent implements OnInit {
   }
   openDialog() {
     this.dialogRef.open(NewProgramFormComponent, {
+      disableClose: true,
       data: this.editData
     }
 
@@ -280,6 +283,7 @@ export class EditVacancyComponent implements OnInit {
 
   openEditProgram() {
     this.dialogRef.open(EditProgramComponent, {
+      disableClose: true,
       data: this.selectedRow
 
     }).afterClosed().subscribe(EditVacancyComponent => {
@@ -321,6 +325,7 @@ export class EditVacancyComponent implements OnInit {
   }
   openDialogL() {
     this.dialogRef.open(NewLanguageFormComponent, {
+      disableClose: true,
       data: this.editData
     }
 
@@ -332,6 +337,7 @@ export class EditVacancyComponent implements OnInit {
 
   openEditLanguage() {
     this.dialogRef.open(EditLanguageComponent, {
+      disableClose: true,
       data: this.selectedRowL
 
     }).afterClosed().subscribe(EditVacancyComponent => {
@@ -371,6 +377,7 @@ export class EditVacancyComponent implements OnInit {
   }
   openDialogS() {
     this.dialogRef.open(NewSkillFormComponent, {
+      disableClose: true,
       height: '500px',
       width: '700px',
       data: this.editData
@@ -384,6 +391,7 @@ export class EditVacancyComponent implements OnInit {
 
   openEditSkill() {
     this.dialogRef.open(EditSkillComponent, {
+      disableClose: true,
       height: '500px',
       width: '700px',
       data: this.selectedRowS

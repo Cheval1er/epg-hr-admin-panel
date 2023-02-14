@@ -2,9 +2,11 @@ import { DatePipe, formatDate } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { VacancyService } from 'src/app/services/vacancy.service';
+import { environment } from 'src/environments/environment';
 import { List } from '../../model/vacancy';
 
 
@@ -26,8 +28,9 @@ export class VacancyFormComponent implements OnInit {
     private vacancyService: VacancyService,
     private datePipe: DatePipe,
     private route: ActivatedRoute,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
     // @Inject(MAT_DIALOG_DATA) public editData: any,
+    @Inject(MAT_DATE_LOCALE) public locale: string,
 
   ) { }
 
@@ -36,7 +39,7 @@ export class VacancyFormComponent implements OnInit {
       companyId: [''],
       vacancyName: [''],
       vacancyAddress: [''],
-      deadLine: new Date(),
+      deadLine: [''],
       schedule: [''],
       categoryId: [''],
       typeId: [''],
@@ -61,20 +64,21 @@ export class VacancyFormComponent implements OnInit {
   }
 
 
-
+  datee: any
 
   saveFormData() {
     console.log('Form data is ', this.vacancyForm.value);
-
+    // this.vacancyForm.value.deadLine = formatDate(this.vacancyForm.value.deadLine, 'EEEE, MMMM d, y, h:mm:ss a zzzz', this.locale, ' en-GB')
     this.vacancyForm.value.deadLine = this.datePipe.transform(this.vacancyForm.value.deadLine, 'dd-MM-yyyy')
-
+    // formatDate(this.vacancyForm.deadLine, 'dd-MM-yyyy', this.locale)
+    console.log(this.vacancyForm.value.deadLine)
     this.vacancyService.addVacancy(this.vacancyForm.value).subscribe((result) => {
       console.log(result)
     })
-    this.dialogRef.closeAll();
-    setTimeout(() => {
-      window.location.reload();
-    }, 50);
+    // this.dialogRef.closeAll();
+    // setTimeout(() => {
+    //   window.location.reload();
+    // }, 50);
 
   }
 
@@ -84,7 +88,7 @@ export class VacancyFormComponent implements OnInit {
 
   companyList;
   getCompany() {
-    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.company&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>(environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.company&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.companyList = response['list']
@@ -95,7 +99,7 @@ export class VacancyFormComponent implements OnInit {
   educationList;
 
   getEducation() {
-    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.educationLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>(environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.educationLevel&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.educationList = response['list']
@@ -106,7 +110,7 @@ export class VacancyFormComponent implements OnInit {
   dataCategory;
 
   getcategory() {
-    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.category&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>(environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.category&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.dataCategory = response['list']
@@ -118,7 +122,7 @@ export class VacancyFormComponent implements OnInit {
 
   typeList;
   getType() {
-    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.type&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>(environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.type&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.typeList = response['list']
@@ -131,7 +135,7 @@ export class VacancyFormComponent implements OnInit {
 
   sphereList;
   getSphere() {
-    this.httpClient.get<any>('http://192.168.150.131:9090/VacancyAdmin/di/items/getitems?key=key.sphere&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
+    this.httpClient.get<any>(environment.apiBaseUrl + 'VacancyAdmin/di/items/getitems?key=key.sphere&includeKeys=&excludeKeys=&page=1&start=0&limit=25').subscribe(
       response => {
         console.log(response);
         this.sphereList = response['list']

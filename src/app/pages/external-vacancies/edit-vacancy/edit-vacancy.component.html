@@ -36,7 +36,7 @@
 
                         <span> Dead Line*: </span>
                         <mat-form-field appearance="outline" class="smallBoxClass" style="font-size: 14px;">
-                            <input matInput [matDatepicker]="deadLine" formControlName="deadLine" required>
+                            <input matInput [matDatepicker]="deadLine" formControlName="deadLine">
                             <mat-hint>DD/MM/YYYY</mat-hint>
                             <mat-datepicker-toggle [for]="deadLine" matSuffix></mat-datepicker-toggle>
                             <mat-datepicker #deadLine></mat-datepicker>

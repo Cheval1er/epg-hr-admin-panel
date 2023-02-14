@@ -77,7 +77,7 @@ export class ToolbarComponent {
   }
 
   onLogout() {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
 
   }
 }
