@@ -133,8 +133,8 @@ export class ApplicantsSearchComponent implements OnInit, AfterViewChecked {
         console.log(this.appForm)
         this.searchApplicantsData = x['list'];
 
-        this.searchApplicantsData.paginator = this.paginator;
-        this.searchApplicantsData.sort = this.sort;
+        // this.searchApplicantsData.paginator = this.paginator;
+        // this.searchApplicantsData.sort = this.sort;
 
         console.log(this.appForm.value.vacancyId, this.appForm.value.languageId, this.appForm.value.gender,
           this.appForm.value.programs, this.appForm.value.departments, this.appForm.value.educationLevel,

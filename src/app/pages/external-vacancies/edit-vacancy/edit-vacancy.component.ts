@@ -161,9 +161,9 @@ export class EditVacancyComponent implements OnInit {
     // this.vacancyForm.value.deadLine = formatDate(this.vacancyForm.deadLine, 'dd-MM-yyyy HH:mm:ss.SS', 'en-GB')
     this.vacancyService.updateVacancy(this.vacancyForm.value, this.editData.id).subscribe((result) => {
       console.log(result);
-      // setTimeout(() => {
-      //   window.location.reload();
-      // }, 50);
+      setTimeout(() => {
+        window.location.reload();
+      }, 50);
     })
 
     this.dialogRef.closeAll();
@@ -672,8 +672,4 @@ export class DeleteSkillFormComponent implements OnInit {
   }
 }
 
-
-function moment(deadLine: any): any {
-  throw new Error('Function not implemented.');
-}
 

@@ -11,7 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { DateAdapter, MatNativeDateModule, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSliderModule } from '@angular/material/slider';
@@ -22,8 +22,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { MatCardModule } from '@angular/material/card';
 import { VacancyService } from 'src/app/services/vacancy.service';
+import { MY_FORMATS } from './myFormats';
 
-
+import { MomentDateModule, MomentDateAdapter } from '@angular/material-moment-adapter';
 
 @NgModule({
     declarations: [VacancyFormComponent],
@@ -46,12 +47,13 @@ import { VacancyService } from 'src/app/services/vacancy.service';
         MatCheckboxModule,
         MatRadioModule,
         MatSlideToggleModule,
-
+        // MomentDateModule,
         MatCardModule,
 
     ],
     providers: [
-        { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }, DatePipe, VacancyService
+        { provide: MAT_DATE_LOCALE, useValue: 'pt-PT' },
+        DatePipe, VacancyService,
 
     ]
 })

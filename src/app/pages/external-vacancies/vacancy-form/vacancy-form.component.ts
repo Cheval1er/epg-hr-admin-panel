@@ -17,6 +17,7 @@ import { List } from '../../model/vacancy';
   templateUrl: './vacancy-form.component.html',
   styleUrls: ['./vacancy-form.component.scss', './vacancy-form.component.css']
 })
+
 export class VacancyFormComponent implements OnInit {
   convertDate: string;
   dateFormat: string;
@@ -71,14 +72,15 @@ export class VacancyFormComponent implements OnInit {
     // this.vacancyForm.value.deadLine = formatDate(this.vacancyForm.value.deadLine, 'EEEE, MMMM d, y, h:mm:ss a zzzz', this.locale, ' en-GB')
     this.vacancyForm.value.deadLine = this.datePipe.transform(this.vacancyForm.value.deadLine, 'dd-MM-yyyy')
     // formatDate(this.vacancyForm.deadLine, 'dd-MM-yyyy', this.locale)
-    console.log(this.vacancyForm.value.deadLine)
+    // this.vacancyForm.value.deadLine = this.vacancyForm.value.deadLine.toLocaleString();
+    console.log((this.vacancyForm.value.deadLine))
     this.vacancyService.addVacancy(this.vacancyForm.value).subscribe((result) => {
       console.log(result)
     })
-    // this.dialogRef.closeAll();
-    // setTimeout(() => {
-    //   window.location.reload();
-    // }, 50);
+    this.dialogRef.closeAll();
+    setTimeout(() => {
+      window.location.reload();
+    }, 50);
 
   }
 
